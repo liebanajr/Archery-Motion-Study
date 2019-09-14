@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
             try fileManager.moveItem(at: srcURL, to: dstURL)
+
         } catch {
             print("Error while moving transfered file: \(error)")
         }

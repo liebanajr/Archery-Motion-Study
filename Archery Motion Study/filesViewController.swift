@@ -8,15 +8,15 @@
 
 import UIKit
 
-class filesViewController: UITableViewController {
+class filesViewController: UITableViewController{
     
     let fileManager = FileManager()
     
-    var filesArray : [String] = ["Path 1:", "Path 2:","Path 3:"]
+    var filesArray : [String] = []
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,6 +24,7 @@ class filesViewController: UITableViewController {
         documentDir = paths.firstObject as! String + "/MotionData"
         print("Motion data directory: \(documentDir)")
         
+        updateTableWithDirectoryData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,18 +54,51 @@ class filesViewController: UITableViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
-        let dir = documentDir
-        do {
-            let contents = try fileManager.contentsOfDirectory(atPath: dir)
-            for path in contents {
-                try fileManager.removeItem(atPath: dir + "/" + path)
+        
+        let alert = UIAlertController(title: "Eliminar todo", message: "¿Seguro que deseas eliminar todos los datos guardados?\nPuede que alguno de los archivos no haya sido sincronizado", preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "Eliminar", style: .destructive) { (action) in
+            self.deleteItems(itemPath: nil)
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    
+    }
+    
+    func deleteItems(itemPath: IndexPath?) {
+        
+        let dir = self.documentDir
+        
+        if itemPath == nil{
+            do {
+                let contents = try fileManager.contentsOfDirectory(atPath: dir)
+                for path in contents {
+                    try fileManager.removeItem(atPath: dir + "/" + path)
+                }
+                print("Removed all items at \(dir)")
+                updateTableWithDirectoryData()
+            } catch {
+                print("Error removing files: \(error)")
             }
-            print("Removed all items at \(dir)")
+            return
+        }
+        
+        let fileName = filesArray[itemPath!.row]
+        do {
+            try fileManager.removeItem(atPath: dir + "/" + fileName)
+            print("Removed item: \(fileName)")
             updateTableWithDirectoryData()
         } catch {
-            print("Error removing files: \(error)")
+            print("Error removing file \(fileName): \(error)")
         }
+        
+    }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteItems(itemPath: indexPath)
+            updateTableWithDirectoryData()
+        }
     }
     
     
