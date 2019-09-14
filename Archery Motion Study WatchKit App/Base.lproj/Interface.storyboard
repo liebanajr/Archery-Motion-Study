@@ -1,15 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14643"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Archery_Motion_Study_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="left" title="Start" id="EIQ-pv-aqC">
+                            <connections>
+                                <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Enviar datos" enabled="NO" id="AWE-au-GL6">
+                            <connections>
+                                <action selector="sendButtonPressed" destination="AgC-eL-Hgc" id="UUE-5Q-A78"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <menu key="menu" id="cXh-Tk-Mpo">
+                        <items>
+                            <menuItem title="Delete all" icon="trash" id="4iP-I0-CJq">
+                                <connections>
+                                    <action selector="deleteButtonPressed" destination="AgC-eL-Hgc" id="5TH-3f-ave"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="sendButton" destination="AWE-au-GL6" id="6vQ-GI-WkO"/>
+                        <outlet property="startButton" destination="EIQ-pv-aqC" id="ah1-EH-Uv5"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="34" y="30.512820512820515"/>
         </scene>
     </scenes>
 </document>

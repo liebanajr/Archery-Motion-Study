@@ -7,15 +7,76 @@
 //
 
 import UIKit
+import WatchConnectivity
+import Foundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+    
 
-
+    let session = WCSession.default
+    let fileManager = FileManager()
+    
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+    var documentDir :String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        documentDir = paths.firstObject as! String + "/MotionData"
+        
+        if WCSession.isSupported() {
+            session.delegate = self
+            session.activate()
+        }
+        
         return true
+    }
+    
+//    MARK: Watch Connectivity methods
+    
+    func session(_ session: WCSession, didReceive file: WCSessionFile) {
+        
+        do{
+            print("File transfer finished successfully")
+            
+            let srcURL = file.fileURL
+            let fileName = file.fileURL.lastPathComponent
+            let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
+            
+            print("Attempting to create directory MotionData")
+            try fileManager.createDirectory(at: URL(fileURLWithPath: documentDir), withIntermediateDirectories: false, attributes: nil)
+            
+            print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
+            try fileManager.moveItem(at: srcURL, to: dstURL)
+        } catch {
+            print("Error while moving transfered file: \(error)")
+        }
+        
+    }
+    
+    
+    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+        if error != nil {
+            print("Error while transfering file: \(error)")
+            return
+        }
+        
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        if activationState != .activated {
+            print(error)
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
     }
 
     // MARK: UISceneSession Lifecycle
