@@ -16,18 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     let session = WCSession.default
     let fileManager = FileManager()
+    let defaults = UserDefaults.standard
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+//        Set path for storing motion data
         documentDir = paths.firstObject as! String + "/MotionData"
-        
+//        Set WCSession
         if WCSession.isSupported() {
             session.delegate = self
             session.activate()
+        }
+//        Set user defaults to tag motion data with archer info
+        if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil{
+            defaults.set("Recurve", forKey: "Category")
+            defaults.set("Bow", forKey: "Hand")
+            print("Setting user defaults: Category = \(defaults.string(forKey: "Category")!) Hand = \(defaults.string(forKey: "Hand")!)")
         }
         
         return true
@@ -41,11 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             print("File transfer finished successfully")
             
             let srcURL = file.fileURL
-            let fileName = file.fileURL.lastPathComponent
+            
+//          Set filename according to archer settings and date
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yy'T'HH:mm:ss"
+            let date = formatter.string(from: Date())
+            let category = defaults.string(forKey: "Category")!
+            let hand = defaults.string(forKey: "Hand")! + "Hand"
+            let fileName = "\(category)_\(hand)_\(date).csv"
+            
             let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
             
-            print("Attempting to create directory MotionData")
-            try fileManager.createDirectory(at: URL(fileURLWithPath: documentDir), withIntermediateDirectories: false, attributes: nil)
+            if !fileManager.fileExists(atPath: documentDir){
+                print("Attempting to create directory MotionData")
+                try fileManager.createDirectory(at: URL(fileURLWithPath: documentDir), withIntermediateDirectories: false, attributes: nil)
+            }
             
             print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
             try fileManager.moveItem(at: srcURL, to: dstURL)
