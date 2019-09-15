@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */; };
 		8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AB232BB9440065CE08 /* AppDelegate.swift */; };
 		8A37D2AE232BB9440065CE08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */; };
 		8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AF232BB9440065CE08 /* filesViewController.swift */; };
@@ -21,6 +22,9 @@
 		8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */; };
 		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
 		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
+		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
+		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
+		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06D6EA8F2A0BAFFA13B388F2 /* Pods-Archery Motion Study WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		165F47E5FB7D5B1D90DB9A28 /* Pods-Archery Motion Study.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study.debug.xcconfig"; sourceTree = "<group>"; };
+		57E558DD5FAFE7964BF7DAC0 /* Pods-Archery Motion Study.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study.release.xcconfig"; sourceTree = "<group>"; };
+		781382D1075FA2B1801ED2E3 /* Pods-Archery Motion Study WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archery Motion Study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A37D2AB232BB9440065CE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,13 +95,25 @@
 		8A37D2D4232BB9470065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A37D2D6232BB9470065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsInterfaceController.swift; sourceTree = "<group>"; };
+		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E03C9D9EAC173A5232CD5E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A37D2A5232BB9440065CE08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +121,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4596ABD710EFABDA1BD012FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */,
+				7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */,
+				938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8A37D29F232BB9440065CE08 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +145,8 @@
 				8A37D2C0232BB9450065CE08 /* Archery Motion Study WatchKit App */,
 				8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */,
 				8A37D2A9232BB9440065CE08 /* Products */,
+				F1CF4E0FC4AFEEAA0F5D561D /* Pods */,
+				4596ABD710EFABDA1BD012FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +170,7 @@
 				8A37D2B4232BB9450065CE08 /* Assets.xcassets */,
 				8A37D2B6232BB9450065CE08 /* LaunchScreen.storyboard */,
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
+				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
 			);
 			path = "Archery Motion Study";
 			sourceTree = "<group>";
@@ -160,6 +197,19 @@
 			path = "Archery Motion Study WatchKit Extension";
 			sourceTree = "<group>";
 		};
+		F1CF4E0FC4AFEEAA0F5D561D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				165F47E5FB7D5B1D90DB9A28 /* Pods-Archery Motion Study.debug.xcconfig */,
+				57E558DD5FAFE7964BF7DAC0 /* Pods-Archery Motion Study.release.xcconfig */,
+				06D6EA8F2A0BAFFA13B388F2 /* Pods-Archery Motion Study WatchKit App.debug.xcconfig */,
+				7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */,
+				ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */,
+				781382D1075FA2B1801ED2E3 /* Pods-Archery Motion Study WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,10 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A37D2E1232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study" */;
 			buildPhases = (
+				A578B7E1464C7E620E257F17 /* [CP] Check Pods Manifest.lock */,
 				8A37D2A4232BB9440065CE08 /* Sources */,
 				8A37D2A5232BB9440065CE08 /* Frameworks */,
 				8A37D2A6232BB9440065CE08 /* Resources */,
 				8A37D2E0232BB9470065CE08 /* Embed Watch Content */,
+				DC1B46F20B8BEB106DB25EE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,8 +238,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A37D2DD232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit App" */;
 			buildPhases = (
+				92D9F503083F97EF553CA71C /* [CP] Check Pods Manifest.lock */,
 				8A37D2BA232BB9450065CE08 /* Resources */,
 				8A37D2DC232BB9470065CE08 /* Embed App Extensions */,
+				2E03C9D9EAC173A5232CD5E2 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,6 +257,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A37D2D9232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit Extension" */;
 			buildPhases = (
+				0D40FBBFE724B0E0936062FF /* [CP] Check Pods Manifest.lock */,
 				8A37D2C7232BB9460065CE08 /* Sources */,
 				8A37D2C8232BB9460065CE08 /* Frameworks */,
 				8A37D2C9232BB9460065CE08 /* Resources */,
@@ -263,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A37D2B8232BB9450065CE08 /* LaunchScreen.storyboard in Resources */,
+				8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */,
 				8A37D2B5232BB9450065CE08 /* Assets.xcassets in Resources */,
 				8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */,
 			);
@@ -286,6 +342,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D40FBBFE724B0E0936062FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Archery Motion Study WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92D9F503083F97EF553CA71C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Archery Motion Study WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A578B7E1464C7E620E257F17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Archery Motion Study-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC1B46F20B8BEB106DB25EE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A37D2A4232BB9440065CE08 /* Sources */ = {
@@ -467,6 +609,7 @@
 		};
 		8A37D2DA232BB9470065CE08 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -489,6 +632,7 @@
 		};
 		8A37D2DB232BB9470065CE08 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 781382D1075FA2B1801ED2E3 /* Pods-Archery Motion Study WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -511,6 +655,7 @@
 		};
 		8A37D2DE232BB9470065CE08 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06D6EA8F2A0BAFFA13B388F2 /* Pods-Archery Motion Study WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -530,6 +675,7 @@
 		};
 		8A37D2DF232BB9470065CE08 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -549,6 +695,7 @@
 		};
 		8A37D2E2232BB9470065CE08 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 165F47E5FB7D5B1D90DB9A28 /* Pods-Archery Motion Study.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -567,6 +714,7 @@
 		};
 		8A37D2E3232BB9470065CE08 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57E558DD5FAFE7964BF7DAC0 /* Pods-Archery Motion Study.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

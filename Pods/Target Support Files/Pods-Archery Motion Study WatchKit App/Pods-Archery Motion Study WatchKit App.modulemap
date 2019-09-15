@@ -1,0 +1,6 @@
+framework module Pods_Archery_Motion_Study_WatchKit_App {
+  umbrella header "Pods-Archery Motion Study WatchKit App-umbrella.h"
+
+  export *
+  module * { export * }
+}

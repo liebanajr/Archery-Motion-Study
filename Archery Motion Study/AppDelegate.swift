@@ -9,6 +9,7 @@
 import UIKit
 import WatchConnectivity
 import Foundation
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 //            defaults.set("Bow", forKey: "Hand")
 //            print("Setting user defaults: Category = \(defaults.string(forKey: "Category")!) Hand = \(defaults.string(forKey: "Hand")!)")
 //        }
+        FirebaseApp.configure()
         
         return true
     }
@@ -68,6 +70,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
             try fileManager.moveItem(at: srcURL, to: dstURL)
+            print("File moved successfully!")
+            
+            print("Attempting to store file in Firebase cloud storage")
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
+            
+            let uploadTask = motionDataDestination.putFile(from: dstURL, metadata: nil) { metadata, error in
+                if error != nil {
+                  // Uh-oh, an error occurred!
+                    print("Error uploading file: \(error!)")
+                    return
+                }
+            }
+            
+            let observer = uploadTask.observe(.success) { (snapshot) in
+                print("File uploaded successfully!!")
+            }
+            
 
         } catch {
             print("Error while moving transfered file: \(error)")
