@@ -17,9 +17,10 @@
 		8A37D2C3232BB9450065CE08 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2C1232BB9450065CE08 /* Interface.storyboard */; };
 		8A37D2C5232BB9460065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2C4232BB9460065CE08 /* Assets.xcassets */; };
 		8A37D2CC232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8A37D2D1232BB9460065CE08 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D0232BB9460065CE08 /* InterfaceController.swift */; };
+		8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D0232BB9460065CE08 /* startViewController.swift */; };
 		8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */; };
 		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
+		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +79,11 @@
 		8A37D2C4232BB9460065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A37D2C6232BB9460065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Archery Motion Study WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A37D2D0232BB9460065CE08 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		8A37D2D0232BB9460065CE08 /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		8A37D2D4232BB9470065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A37D2D6232BB9470065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +151,11 @@
 		8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8A37D2D0232BB9460065CE08 /* InterfaceController.swift */,
+				8A37D2D0232BB9460065CE08 /* startViewController.swift */,
 				8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */,
 				8A37D2D4232BB9470065CE08 /* Assets.xcassets */,
 				8A37D2D6232BB9470065CE08 /* Info.plist */,
+				8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */,
 			);
 			path = "Archery Motion Study WatchKit Extension";
 			sourceTree = "<group>";
@@ -300,7 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
-				8A37D2D1232BB9460065CE08 /* InterfaceController.swift in Sources */,
+				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
+				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -575,7 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

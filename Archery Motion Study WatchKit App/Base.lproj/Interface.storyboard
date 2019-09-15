@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch42"/>
+    <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14643"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--startViewController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Archery_Motion_Study_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" userLabel="startViewController" customClass="startViewController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
-                        <button width="1" alignment="left" title="Start" id="EIQ-pv-aqC">
+                        <button width="137" height="137" alignment="center" verticalAlignment="center" backgroundImage="play.circle.fill" catalog="system" id="EIQ-pv-aqC">
+                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
-                            </connections>
-                        </button>
-                        <button width="1" alignment="left" title="Enviar datos" enabled="NO" id="AWE-au-GL6">
-                            <connections>
-                                <action selector="sendButtonPressed" destination="AgC-eL-Hgc" id="UUE-5Q-A78"/>
                             </connections>
                         </button>
                     </items>
@@ -32,12 +28,45 @@
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="sendButton" destination="AWE-au-GL6" id="6vQ-GI-WkO"/>
                         <outlet property="startButton" destination="EIQ-pv-aqC" id="ah1-EH-Uv5"/>
+                        <segue destination="WGJ-J6-1YK" kind="relationship" relationship="nextPage" id="yGy-6n-FWE"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="34" y="30.512820512820515"/>
+            <point key="canvasLocation" x="-110" y="31"/>
+        </scene>
+        <!--settingsInterfaceController-->
+        <scene sceneID="TN5-Fa-5g1">
+            <objects>
+                <controller identifier="settingsInterfaceController" title="Ajustes" id="WGJ-J6-1YK" userLabel="settingsInterfaceController" customClass="settingsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="u24-8e-bTc">
+                            <items>
+                                <label alignment="center" text="Modalidad" id="ks5-NL-C3Q"/>
+                                <picker width="1" height="50" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="EKq-yJ-H25">
+                                    <connections>
+                                        <action selector="categoryPickerAction:" destination="WGJ-J6-1YK" id="F4O-O5-S0g"/>
+                                    </connections>
+                                </picker>
+                                <label alignment="center" text="Mano del watch" id="lnv-Ft-h9g"/>
+                                <picker width="1" height="50" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="6di-NG-gR4">
+                                    <connections>
+                                        <action selector="handPickerAction:" destination="WGJ-J6-1YK" id="gVP-q5-XCm"/>
+                                    </connections>
+                                </picker>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="categoryPicker" destination="EKq-yJ-H25" id="30Y-Df-pI4"/>
+                        <outlet property="handPicker" destination="6di-NG-gR4" id="MSt-aM-acY"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="177" y="31"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play.circle.fill" catalog="system" width="64" height="62"/>
+    </resources>
 </document>

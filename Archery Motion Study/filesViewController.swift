@@ -40,19 +40,7 @@ class filesViewController: UITableViewController{
     }
     
     
-    @IBAction func refreshButtonPressed(_ sender: Any) {
-        
-        do {
-            let contents = try fileManager.contentsOfDirectory(atPath: documentDir)
-            print("Contenidos = \(contents)")
-        } catch {
-            print("Error obtaining contents: \(error)")
-        }
-        
-        updateTableWithDirectoryData()
-        
-    }
-    
+//    Methods for deleting items
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
         let alert = UIAlertController(title: "Eliminar todo", message: "¿Seguro que deseas eliminar todos los datos guardados?\nPuede que alguno de los archivos no haya sido sincronizado", preferredStyle: .actionSheet)
@@ -64,7 +52,6 @@ class filesViewController: UITableViewController{
         self.present(alert, animated: true)
     
     }
-    
     func deleteItems(itemPath: IndexPath?) {
         
         let dir = self.documentDir
@@ -101,7 +88,7 @@ class filesViewController: UITableViewController{
         }
     }
     
-    
+//    Updates the UI with new data
     func updateTableWithDirectoryData (){
         
         do {
@@ -120,6 +107,32 @@ class filesViewController: UITableViewController{
         tableView.reloadData()
         
     }
+    
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        
+        do {
+            let contents = try fileManager.contentsOfDirectory(atPath: documentDir)
+            print("Contenidos = \(contents)")
+        } catch {
+            print("Error obtaining contents: \(error)")
+        }
+        
+        updateTableWithDirectoryData()
+        
+    }
+    
+//    Sharing data
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let files = [URL(fileURLWithPath: documentDir + "/" + filesArray[indexPath.row])]
+        
+        let activityVC = UIActivityViewController(activityItems: files, applicationActivities: nil)
+        present(activityVC, animated: true) {
+            tableView.deselectRow(at: indexPath, animated: true)
+//            activityVC.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 
 
 }

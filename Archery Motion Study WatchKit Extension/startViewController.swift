@@ -11,27 +11,36 @@ import Foundation
 import CoreMotion
 import WatchConnectivity
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class startViewController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet weak var startButton: WKInterfaceButton!
-    @IBOutlet weak var sendButton: WKInterfaceButton!
+//    @IBOutlet weak var sendButton: WKInterfaceButton!
     
     let motionManager = CMMotionManager()
     let queue = OperationQueue()
     let fileManager = FileManager()
     let session = WCSession.default
+    let defaults = UserDefaults.standard
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
     
-    var csvText = "Timestamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z"
+    let csvTextHeader = "Timestamp;Accelerometer X;Accelerometer Y;Accelerometer Z;Gyroscope X;Gyroscope Y;Gyroscope Z\n"
+    var csvText = ""
     var fileReadyForTransfer = URL(fileURLWithPath: "")
+    
+    let sampleInterval = 1.0/50.0
     
     override func awake(withContext context: Any?) {
         
         super.awake(withContext: context)
+        
+//        defaults.set(nil, forKey: "Category")
+//        defaults.set(nil, forKey: "Hand")
+        print("Setting defaults to nil...")
+        
         motionManager.showsDeviceMovementDisplay = true
-        motionManager.deviceMotionUpdateInterval = 0.5
+        motionManager.deviceMotionUpdateInterval = sampleInterval
         
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
@@ -51,48 +60,80 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
     }
     @IBAction func startButtonPressed() {
         
         print("Start button pressed!")
+        
+        if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil {
+                    
+            defaults.set("Recurve", forKey: "Category")
+            defaults.set("Bow", forKey: "Hand")
+            
+            let action1 = WKAlertAction.init(title: "OK", style:.default) {
+                       print("Okayed nil defaults message")
+                   }
+            
+            let message = "Por favor, antes de comenzar, comprueba que los ajustes son correctos deslizando hacia la izquierda."
+
+            presentAlert(withTitle: "Ajustes iniciales", message: message, preferredStyle:.alert, actions: [action1])
+             return
+        }
+        
         if motionManager.isDeviceMotionActive {
             print("Device motion is already active. Stopping updates...")
             motionManager.stopDeviceMotionUpdates()
-            startButton.setTitle("Start")
-            sendButton.setEnabled(true)
+//            startButton.setTitle("Start")
+            startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
+//            sendButton.setEnabled(true)
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "ddMMyy'T'HHmmss"
+            let date = formatter.string(from: Date())
+            let category = defaults.string(forKey: "Category")!
+            let hand = defaults.string(forKey: "Hand")! + "Hand"
+            let fileName = "\(category)_\(hand)_\(date).csv"
             
-            let fileName = "MotionData\(Date()).csv"
             saveDataLocally(dataString: csvText, fileName: fileName)
-            
-            
+            sendDataToiPhone()
+
         } else {
-            
+
             resetData()
-            
+
             if motionManager.isDeviceMotionAvailable {
                 print("Starting Device Motion Updates...")
-                startButton.setTitle("Stop")
-                
+//                startButton.setTitle("Stop")
+                startButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"))
+
+                var timeStamp : Double = 0.0
+
                 motionManager.startDeviceMotionUpdates(to: self.queue) { (deviceMotion, error) in
-                                                                                
-                    let accX = deviceMotion?.userAcceleration.x
-                    let accY = deviceMotion?.userAcceleration.y
-                    let accZ = deviceMotion?.userAcceleration.z
-                    
-                    let girX = deviceMotion?.rotationRate.x
-                    let girY = deviceMotion?.rotationRate.y
-                    let girZ = deviceMotion?.rotationRate.z
-                    
-                    let motionDataString = "\(accX!),\(accY!),\(accZ!),\(girX!),\(girY!),\(girZ!)"
-                    
+
+                    let motion = deviceMotion!
+
+                    let accX = String(format: "%.3f", motion.userAcceleration.x * 100)
+                    let accY = String(format: "%.3f", motion.userAcceleration.y * 100)
+                    let accZ = String(format: "%.3f", motion.userAcceleration.z * 100)
+
+                    let girX = String(format: "%.3f", motion.rotationRate.x * 100)
+                    let girY = String(format: "%.3f", motion.rotationRate.y * 100)
+                    let girZ = String(format: "%.3f", motion.rotationRate.z * 100)
+
+
+                    let motionDataString = "\(String(format: "%.2f",timeStamp));\(accX);\(accY);\(accZ);\(girX);\(girY);\(girZ)\n"
+
+                    timeStamp += self.sampleInterval
+
                     self.csvText.append(contentsOf: motionDataString)
-                                        
+
 //                    DispatchQueue.main.async {
 //
 //                        TODO : Update UI and save device motion data
 //
 //                    }
-                    
+
                 }
             }
         }
@@ -100,9 +141,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func resetData() {
         print("Resetting data...")
-        csvText = "Timestamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z"
+        csvText = csvTextHeader
         fileReadyForTransfer = URL(fileURLWithPath: "")
-        sendButton.setEnabled(false)
+//        sendButton.setEnabled(false)
     }
     
     func saveDataLocally(dataString: String, fileName: String){
@@ -119,14 +160,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
-    func sendDataToiPhone() -> Bool{
+    func sendDataToiPhone(){
         if session.activationState == .activated {
             print("Sending \(fileReadyForTransfer.absoluteString) to iPhone...")
             session.transferFile(fileReadyForTransfer, metadata: nil)
-            return true
         } else {
             print("Unable to transfer files because WC Session is inactive")
-            return false
         }
     }
     
@@ -146,18 +185,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         
     }
-    @IBAction func sendButtonPressed() {
-        
-        if sendDataToiPhone() {
-            sendButton.setEnabled(false)
-        }
-        
-    }
+
+    //    @IBAction func sendButtonPressed() {
+//
+//        if sendDataToiPhone() {
+//            sendButton.setEnabled(false)
+//        }
+//
+//    }
     
 //    Mark - WatchConnectivity Methods
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if error != nil {
-            print("Activation error: \(error)")
+            print("Activation error: \(error!)")
         }
     }
     

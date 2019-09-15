@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     let session = WCSession.default
     let fileManager = FileManager()
-    let defaults = UserDefaults.standard
+//    let defaults = UserDefaults.standard
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activate()
         }
 //        Set user defaults to tag motion data with archer info
-        if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil{
-            defaults.set("Recurve", forKey: "Category")
-            defaults.set("Bow", forKey: "Hand")
-            print("Setting user defaults: Category = \(defaults.string(forKey: "Category")!) Hand = \(defaults.string(forKey: "Hand")!)")
-        }
+//        if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil{
+//            defaults.set("Recurve", forKey: "Category")
+//            defaults.set("Bow", forKey: "Hand")
+//            print("Setting user defaults: Category = \(defaults.string(forKey: "Category")!) Hand = \(defaults.string(forKey: "Hand")!)")
+//        }
         
         return true
     }
@@ -50,12 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let srcURL = file.fileURL
             
 //          Set filename according to archer settings and date
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yy'T'HH:mm:ss"
-            let date = formatter.string(from: Date())
-            let category = defaults.string(forKey: "Category")!
-            let hand = defaults.string(forKey: "Hand")! + "Hand"
-            let fileName = "\(category)_\(hand)_\(date).csv"
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "dd-MM-yy'T'HH:mm:ss"
+//            let date = formatter.string(from: Date())
+//            let category = defaults.string(forKey: "Category")!
+//            let hand = defaults.string(forKey: "Hand")! + "Hand"
+//            let fileName = "\(category)_\(hand)_\(date).csv"
+            
+            let fileName = file.fileURL.lastPathComponent
             
             let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
             
@@ -76,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
         if error != nil {
-            print("Error while transfering file: \(error)")
+            print("Error while transfering file: \(error!)")
             return
         }
         
@@ -85,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
         if activationState != .activated {
-            print(error)
+            print("WC Session is not active")
         }
     }
     
