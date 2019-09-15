@@ -39,6 +39,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Datos guardados" id="qYI-XM-AqK">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Edit" id="5fj-4p-fXo">
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="IQo-nj-Pki" id="p6w-nw-BQx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Item" image="icloud.and.arrow.up" catalog="system" id="AuN-Ct-92v">
+                                <connections>
+                                    <action selector="uploadButtonPressed:" destination="IQo-nj-Pki" id="QJc-9Y-ecO"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="nJI-4M-BI2">
                                 <connections>
@@ -52,10 +64,14 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="5fj-4p-fXo" id="25L-E2-Tri"/>
+                        <outlet property="uploadButton" destination="AuN-Ct-92v" id="Fl5-rn-FiD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JU-rR-6lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284.05797101449275" y="100.44642857142857"/>
+            <point key="canvasLocation" x="282.60869565217394" y="100.44642857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1CG-KW-zxD">
@@ -76,4 +92,7 @@
             <point key="canvasLocation" x="-626.08695652173913" y="100.44642857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icloud.and.arrow.up" catalog="system" width="64" height="54"/>
+    </resources>
 </document>

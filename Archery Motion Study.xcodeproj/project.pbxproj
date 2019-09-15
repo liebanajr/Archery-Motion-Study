@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */; };
 		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
 		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
+		8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */; };
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
@@ -95,6 +96,7 @@
 		8A37D2D4232BB9470065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A37D2D6232BB9470065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsInterfaceController.swift; sourceTree = "<group>"; };
+		8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,12 +165,10 @@
 		8A37D2AA232BB9440065CE08 /* Archery Motion Study */ = {
 			isa = PBXGroup;
 			children = (
-				8A37D2AB232BB9440065CE08 /* AppDelegate.swift */,
-				8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */,
-				8A37D2AF232BB9440065CE08 /* filesViewController.swift */,
-				8A37D2B1232BB9440065CE08 /* Main.storyboard */,
+				8A6A41F3232ED67300207CA6 /* Controller */,
+				8A6A41F2232ED66B00207CA6 /* View */,
+				8A6A41F1232ED65A00207CA6 /* Model */,
 				8A37D2B4232BB9450065CE08 /* Assets.xcassets */,
-				8A37D2B6232BB9450065CE08 /* LaunchScreen.storyboard */,
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
 				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
 			);
@@ -195,6 +195,33 @@
 				8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */,
 			);
 			path = "Archery Motion Study WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		8A6A41F1232ED65A00207CA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A6A41F2232ED66B00207CA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A37D2B6232BB9450065CE08 /* LaunchScreen.storyboard */,
+				8A37D2B1232BB9440065CE08 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A6A41F3232ED67300207CA6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A37D2AB232BB9440065CE08 /* AppDelegate.swift */,
+				8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */,
+				8A37D2AF232BB9440065CE08 /* filesViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		F1CF4E0FC4AFEEAA0F5D561D /* Pods */ = {
@@ -437,6 +464,7 @@
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
 				8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */,
 				8A37D2AE232BB9440065CE08 /* SceneDelegate.swift in Sources */,
+				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +799,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8A37D2A0232BB9440065CE08 /* Project object */;
 }
