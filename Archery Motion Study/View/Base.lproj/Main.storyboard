@@ -45,7 +45,7 @@
                                     <action selector="editButtonPressed:" destination="IQo-nj-Pki" id="p6w-nw-BQx"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" title="Item" image="icloud.and.arrow.up" catalog="system" id="AuN-Ct-92v">
+                            <barButtonItem enabled="NO" systemItem="action" id="AuN-Ct-92v">
                                 <connections>
                                     <action selector="uploadButtonPressed:" destination="IQo-nj-Pki" id="QJc-9Y-ecO"/>
                                 </connections>
@@ -95,7 +95,4 @@
             <point key="canvasLocation" x="-626.08695652173913" y="100.44642857142857"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icloud.and.arrow.up" catalog="system" width="64" height="54"/>
-    </resources>
 </document>

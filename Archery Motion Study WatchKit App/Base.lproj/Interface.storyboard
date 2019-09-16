@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
+        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14643"/>
     </dependencies>
@@ -11,7 +12,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="startViewController" customClass="startViewController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
-                        <button width="137" height="137" alignment="center" verticalAlignment="center" backgroundImage="play.circle.fill" catalog="system" id="EIQ-pv-aqC">
+                        <button width="137" height="137" alignment="center" verticalAlignment="center" backgroundImage="play" id="EIQ-pv-aqC">
                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
@@ -67,6 +68,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="play.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="play" width="512" height="512"/>
     </resources>
 </document>

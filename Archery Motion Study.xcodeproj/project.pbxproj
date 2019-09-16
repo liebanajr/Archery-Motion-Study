@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */; };
 		8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AB232BB9440065CE08 /* AppDelegate.swift */; };
-		8A37D2AE232BB9440065CE08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */; };
 		8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AF232BB9440065CE08 /* filesViewController.swift */; };
 		8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B1232BB9440065CE08 /* Main.storyboard */; };
 		8A37D2B5232BB9450065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B4232BB9450065CE08 /* Assets.xcassets */; };
@@ -81,7 +80,6 @@
 		7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archery Motion Study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A37D2AB232BB9440065CE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8A37D2AF232BB9440065CE08 /* filesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filesViewController.swift; sourceTree = "<group>"; };
 		8A37D2B2232BB9440065CE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A37D2B4232BB9450065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				8A37D2AB232BB9440065CE08 /* AppDelegate.swift */,
-				8A37D2AD232BB9440065CE08 /* SceneDelegate.swift */,
 				8A37D2AF232BB9440065CE08 /* filesViewController.swift */,
 				8AA589EB232F125A007879E0 /* SpinnerViewController.swift */,
 			);
@@ -467,7 +464,6 @@
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
 				8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */,
 				8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */,
-				8A37D2AE232BB9440065CE08 /* SceneDelegate.swift in Sources */,
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,7 +654,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Debug;
 		};
@@ -681,7 +677,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Release;
 		};
@@ -701,7 +697,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Debug;
 		};
@@ -721,7 +717,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
 			};
 			name = Release;
 		};
@@ -733,6 +729,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -752,6 +749,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

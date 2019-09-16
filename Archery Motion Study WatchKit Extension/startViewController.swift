@@ -85,7 +85,12 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
             print("Device motion is already active. Stopping updates...")
             motionManager.stopDeviceMotionUpdates()
 //            startButton.setTitle("Start")
-            startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
+            if #available(watchOSApplicationExtension 6.0, *) {
+                startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
+            } else {
+                // Fallback on earlier versions
+                startButton.setBackgroundImage(UIImage(named: "play"))
+            }
 //            sendButton.setEnabled(true)
 
             let formatter = DateFormatter()
@@ -105,7 +110,12 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
             if motionManager.isDeviceMotionAvailable {
                 print("Starting Device Motion Updates...")
 //                startButton.setTitle("Stop")
-                startButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"))
+                if #available(watchOSApplicationExtension 6.0, *) {
+                    startButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"))
+                } else {
+                    // Fallback on earlier versions
+                    startButton.setBackgroundImage(UIImage(named: "pause"))
+                }
 
                 var timeStamp : Double = 0.0
 
