@@ -120,6 +120,8 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
                 var timeStamp : Double = 0.0
 
                 motionManager.startDeviceMotionUpdates(to: self.queue) { (deviceMotion, error) in
+                    
+                    print("Device motion data!")
 
                     let motion = deviceMotion!
 
