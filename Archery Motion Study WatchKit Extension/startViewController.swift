@@ -101,6 +101,8 @@ class startViewController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         }
 
         let formatter = DateFormatter()
+        let timeZone = TimeZone(abbreviation: "UTC+2")
+        formatter.timeZone = .some(timeZone!)
         formatter.dateFormat = "ddMMyy'T'HHmmss"
         let date = formatter.string(from: Date())
         let category = defaults.string(forKey: "Category")!
