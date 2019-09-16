@@ -75,35 +75,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             self.saveContext()
             print("Data saved successfully!")
             
-//            print("Attempting to store file in Firebase cloud storage")
-//            let storage = Storage.storage()
-//            let storageRef = storage.reference()
-//            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
+            print("Attempting to store file in Firebase cloud storage")
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
+
+            let uploadTask = motionDataDestination.putFile(from: dstURL, metadata: nil) { metadata, error in
+                if error != nil {
+                  // Uh-oh, an error occurred!
+                    print("Error uploading file: \(error!)")
+                    return
+                }
+            }
+
+            uploadTask.observe(.success) { (snapshot) in
+                print("File uploaded successfully!!")
+                motionDataFileItem.setValue(true, forKey: "isUploaded")
+                self.saveContext()
+
+//                do {
 //
-//            let uploadTask = motionDataDestination.putFile(from: dstURL, metadata: nil) { metadata, error in
-//                if error != nil {
-//                  // Uh-oh, an error occurred!
-//                    print("Error uploading file: \(error!)")
-//                    return
+//                    let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
+//                    let fetchedItem = try context.fetch(request).last
+//                    print(fetchedItem!.fileName! + "isUploaded: \(fetchedItem!.isUploaded)")
+//
+//                } catch {
+//                    print("Error fetching data from context \(error)")
 //                }
-//            }
-//
-//            let observer = uploadTask.observe(.success) { (snapshot) in
-//                print("File uploaded successfully!!")
-//                motionDataFileItem.setValue(true, forKey: "isUploaded")
-//                self.saveContext()
-//
-////                do {
-////
-////                    let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
-////                    let fetchedItem = try context.fetch(request).last
-////                    print(fetchedItem!.fileName! + "isUploaded: \(fetchedItem!.isUploaded)")
-////
-////                } catch {
-////                    print("Error fetching data from context \(error)")
-////                }
-//
-//            }
+
+            }
             
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
