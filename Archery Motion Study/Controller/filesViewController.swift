@@ -29,6 +29,10 @@ class filesViewController: UITableViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if #available(iOS 13, *) {
+            uploadButton.setBackButtonBackgroundImage(UIImage(systemName: "icloud.and.arrow.up"), for: .normal, barMetrics: .default)
+        }
+        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateTableWithDirectoryData), name: Notification.Name("NewDataAvailable"), object: nil)
         

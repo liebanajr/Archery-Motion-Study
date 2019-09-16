@@ -46,7 +46,7 @@
                                     <action selector="editButtonPressed:" destination="IQo-nj-Pki" id="p6w-nw-BQx"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="AuN-Ct-92v">
+                            <barButtonItem enabled="NO" title="Upload" image="upload" id="AuN-Ct-92v">
                                 <connections>
                                     <action selector="uploadButtonPressed:" destination="IQo-nj-Pki" id="QJc-9Y-ecO"/>
                                 </connections>
@@ -59,7 +59,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="trash" id="fpb-5x-fJQ">
-                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="IQo-nj-Pki" id="YTg-nS-Rpj"/>
                                 </connections>
@@ -96,4 +96,7 @@
             <point key="canvasLocation" x="-626.08695652173913" y="100.44642857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="upload" width="25" height="25"/>
+    </resources>
 </document>

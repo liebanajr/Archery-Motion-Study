@@ -46,14 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             let srcURL = file.fileURL
             
-//          Set filename according to archer settings and date
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "dd-MM-yy'T'HH:mm:ss"
-//            let date = formatter.string(from: Date())
-//            let category = defaults.string(forKey: "Category")!
-//            let hand = defaults.string(forKey: "Hand")! + "Hand"
-//            let fileName = "\(category)_\(hand)_\(date).csv"
-            
             let fileName = file.fileURL.lastPathComponent
             
             let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
@@ -92,16 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 print("File uploaded successfully!!")
                 motionDataFileItem.setValue(true, forKey: "isUploaded")
                 self.saveContext()
-
-//                do {
-//
-//                    let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
-//                    let fetchedItem = try context.fetch(request).last
-//                    print(fetchedItem!.fileName! + "isUploaded: \(fetchedItem!.isUploaded)")
-//
-//                } catch {
-//                    print("Error fetching data from context \(error)")
-//                }
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
 
             }
             

@@ -38,6 +38,10 @@ class startViewController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     override func awake(withContext context: Any?) {
         
         super.awake(withContext: context)
+        
+        if #available(watchOSApplicationExtension 6.0, *) {
+            startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
+        }
                 
         motionManager.showsDeviceMovementDisplay = true
         motionManager.deviceMotionUpdateInterval = sampleInterval
