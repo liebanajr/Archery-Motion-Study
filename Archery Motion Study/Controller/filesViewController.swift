@@ -28,6 +28,9 @@ class filesViewController: UITableViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(updateTableWithDirectoryData), name: Notification.Name("NewDataAvailable"), object: nil)
+        
         documentDir = paths.firstObject as! String + "/MotionData"
         print("Motion data directory: \(documentDir)")
         
@@ -105,7 +108,7 @@ class filesViewController: UITableViewController{
     }
     
 //    Updates the UI with new data
-    func updateTableWithDirectoryData (){
+    @objc func updateTableWithDirectoryData (){
         
         do {
 
@@ -126,8 +129,9 @@ class filesViewController: UITableViewController{
         } catch {
             print("Error looking for files in database: \(error)")
         }
-        
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
     }
     

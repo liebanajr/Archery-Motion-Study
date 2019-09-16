@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 //            let storage = Storage.storage()
 //            let storageRef = storage.reference()
 //            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
-//            
+//
 //            let uploadTask = motionDataDestination.putFile(from: dstURL, metadata: nil) { metadata, error in
 //                if error != nil {
 //                  // Uh-oh, an error occurred!
@@ -87,12 +87,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 //                    return
 //                }
 //            }
-//            
+//
 //            let observer = uploadTask.observe(.success) { (snapshot) in
 //                print("File uploaded successfully!!")
 //                motionDataFileItem.setValue(true, forKey: "isUploaded")
 //                self.saveContext()
-//                
+//
 ////                do {
 ////
 ////                    let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
@@ -102,9 +102,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 ////                } catch {
 ////                    print("Error fetching data from context \(error)")
 ////                }
-//                
+//
 //            }
             
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
 
         } catch {
             print("Error while moving transfered file: \(error)")
