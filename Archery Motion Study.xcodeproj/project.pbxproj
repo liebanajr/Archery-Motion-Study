@@ -22,6 +22,7 @@
 		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
 		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
 		8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */; };
+		8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7DB34923302C5700781F0D /* HealthKit.framework */; };
 		8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */; };
 		8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA589EB232F125A007879E0 /* SpinnerViewController.swift */; };
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
@@ -97,6 +98,8 @@
 		8A37D2D6232BB9470065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsInterfaceController.swift; sourceTree = "<group>"; };
 		8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion Study WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		8A7DB34923302C5700781F0D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8AA589EB232F125A007879E0 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */,
+				8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +139,7 @@
 		4596ABD710EFABDA1BD012FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A7DB34923302C5700781F0D /* HealthKit.framework */,
 				7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */,
 				7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */,
 				938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */,
@@ -190,6 +195,7 @@
 		8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */,
 				8A37D2D0232BB9460065CE08 /* startViewController.swift */,
 				8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */,
 				8A37D2D4232BB9470065CE08 /* Assets.xcassets */,
@@ -644,6 +650,7 @@
 			baseConfigurationReference = ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";
@@ -667,6 +674,7 @@
 			baseConfigurationReference = 781382D1075FA2B1801ED2E3 /* Pods-Archery Motion Study WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";

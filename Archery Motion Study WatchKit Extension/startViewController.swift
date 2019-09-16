@@ -10,13 +10,17 @@ import WatchKit
 import Foundation
 import CoreMotion
 import WatchConnectivity
+import HealthKit
 
-class startViewController: WKInterfaceController, WCSessionDelegate {
+class startViewController: WKInterfaceController, WCSessionDelegate, HKWorkoutSessionDelegate {
     
     @IBOutlet weak var startButton: WKInterfaceButton!
-//    @IBOutlet weak var sendButton: WKInterfaceButton!
     
     let motionManager = CMMotionManager()
+    
+    let healthStore = HKHealthStore()
+    var workoutSession : HKWorkoutSession?
+    
     let queue = OperationQueue()
     let fileManager = FileManager()
     let session = WCSession.default
@@ -34,11 +38,7 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
     override func awake(withContext context: Any?) {
         
         super.awake(withContext: context)
-        
-//        defaults.set(nil, forKey: "Category")
-//        defaults.set(nil, forKey: "Hand")
-        print("Setting defaults to nil...")
-        
+                
         motionManager.showsDeviceMovementDisplay = true
         motionManager.deviceMotionUpdateInterval = sampleInterval
         
@@ -62,9 +62,8 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
         
     }
-    @IBAction func startButtonPressed() {
-        
-        print("Start button pressed!")
+    
+    func userDefaultsExists () -> Bool {
         
         if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil {
                     
@@ -78,84 +77,109 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
             let message = "Por favor, antes de comenzar, comprueba que los ajustes son correctos deslizando hacia la izquierda."
 
             presentAlert(withTitle: "Ajustes iniciales", message: message, preferredStyle:.alert, actions: [action1])
-             return
+            return false
         }
+        return true
         
-        if motionManager.isDeviceMotionActive {
-            print("Device motion is already active. Stopping updates...")
-            motionManager.stopDeviceMotionUpdates()
-//            startButton.setTitle("Start")
-            if #available(watchOSApplicationExtension 6.0, *) {
-                startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
-            } else {
-                // Fallback on earlier versions
-                startButton.setBackgroundImage(UIImage(named: "play"))
-            }
-//            sendButton.setEnabled(true)
+    }
+    
+//    Mark: Motion and UI
+    
+    func stopMotionUpdates() {
+        motionManager.stopDeviceMotionUpdates()
+        workoutSession?.end()
+        workoutSession = nil
+        if #available(watchOSApplicationExtension 6.0, *) {
+            startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
+        } else {
+            // Fallback on earlier versions
+            startButton.setBackgroundImage(UIImage(named: "play"))
+        }
 
-            let formatter = DateFormatter()
-            formatter.dateFormat = "ddMMyy'T'HHmmss"
-            let date = formatter.string(from: Date())
-            let category = defaults.string(forKey: "Category")!
-            let hand = defaults.string(forKey: "Hand")! + "Hand"
-            let fileName = "\(category)_\(hand)_\(date).csv"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ddMMyy'T'HHmmss"
+        let date = formatter.string(from: Date())
+        let category = defaults.string(forKey: "Category")!
+        let hand = defaults.string(forKey: "Hand")! + "Hand"
+        let fileName = "\(category)_\(hand)_\(date).csv"
+        
+        saveDataLocally(dataString: csvText, fileName: fileName)
+        sendDataToiPhone()
+    }
+    
+    func startMotionUpdates(){
+        if #available(watchOSApplicationExtension 6.0, *) {
+            startButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"))
+        } else {
+            // Fallback on earlier versions
+            startButton.setBackgroundImage(UIImage(named: "pause"))
+        }
+
+        var timeStamp : Double = 0.0
+        
+        let workoutConfiguration = HKWorkoutConfiguration()
+        workoutConfiguration.activityType = .archery
+        workoutConfiguration.locationType = .outdoor
+        
+        do {
+            workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
+           } catch {
+               fatalError("Unable to create the workout session!")
+           }
+        
+        workoutSession?.prepare()
+        workoutSession?.startActivity(with: nil)
+        
+        motionManager.startDeviceMotionUpdates(to: self.queue) { (deviceMotion, error) in
             
-            saveDataLocally(dataString: csvText, fileName: fileName)
-            sendDataToiPhone()
+            let motion = deviceMotion!
+
+            let accX = String(format: "%.3f", motion.userAcceleration.x * 100)
+            let accY = String(format: "%.3f", motion.userAcceleration.y * 100)
+            let accZ = String(format: "%.3f", motion.userAcceleration.z * 100)
+
+            let girX = String(format: "%.3f", motion.rotationRate.x * 100)
+            let girY = String(format: "%.3f", motion.rotationRate.y * 100)
+            let girZ = String(format: "%.3f", motion.rotationRate.z * 100)
+
+
+            let motionDataString = "\(String(format: "%.2f",timeStamp));\(accX);\(accY);\(accZ);\(girX);\(girY);\(girZ)\n"
+
+            timeStamp += self.sampleInterval
+
+            self.csvText.append(contentsOf: motionDataString)
+
+        }
+    }
+    
+    @IBAction func startButtonPressed() {
+        
+        print("Start button pressed!")
+        
+        if !userDefaultsExists() {
+            return
+        }
+                
+        if motionManager.isDeviceMotionActive {
+            
+            print("Device motion is already active. Stopping updates...")
+            stopMotionUpdates()
 
         } else {
-
-            resetData()
-
+            
             if motionManager.isDeviceMotionAvailable {
+                resetData()
                 print("Starting Device Motion Updates...")
-//                startButton.setTitle("Stop")
-                if #available(watchOSApplicationExtension 6.0, *) {
-                    startButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"))
-                } else {
-                    // Fallback on earlier versions
-                    startButton.setBackgroundImage(UIImage(named: "pause"))
-                }
-
-                var timeStamp : Double = 0.0
-
-                motionManager.startDeviceMotionUpdates(to: self.queue) { (deviceMotion, error) in
-                    
-                    print("Device motion data!")
-
-                    let motion = deviceMotion!
-
-                    let accX = String(format: "%.3f", motion.userAcceleration.x * 100)
-                    let accY = String(format: "%.3f", motion.userAcceleration.y * 100)
-                    let accZ = String(format: "%.3f", motion.userAcceleration.z * 100)
-
-                    let girX = String(format: "%.3f", motion.rotationRate.x * 100)
-                    let girY = String(format: "%.3f", motion.rotationRate.y * 100)
-                    let girZ = String(format: "%.3f", motion.rotationRate.z * 100)
-
-
-                    let motionDataString = "\(String(format: "%.2f",timeStamp));\(accX);\(accY);\(accZ);\(girX);\(girY);\(girZ)\n"
-
-                    timeStamp += self.sampleInterval
-
-                    self.csvText.append(contentsOf: motionDataString)
-
-//                    DispatchQueue.main.async {
-//
-//                        TODO : Update UI and save device motion data
-//
-//                    }
-
-                }
+                startMotionUpdates()
             }
         }
     }
     
+//    Mark: data management functions
     func resetData() {
         print("Resetting data...")
         csvText = csvTextHeader
         fileReadyForTransfer = URL(fileURLWithPath: "")
-//        sendButton.setEnabled(false)
     }
     
     func saveDataLocally(dataString: String, fileName: String){
@@ -197,14 +221,6 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
         }
         
     }
-
-    //    @IBAction func sendButtonPressed() {
-//
-//        if sendDataToiPhone() {
-//            sendButton.setEnabled(false)
-//        }
-//
-//    }
     
 //    Mark - WatchConnectivity Methods
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -213,4 +229,16 @@ class startViewController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+//    Mark: HealthKit delegate methods
+    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
+        print("Workout session changed to \(toState)")
+    }
+    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
+        print("Workout session failed: \(error)")
+    }
+    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didGenerate event: HKWorkoutEvent) {
+        print("Generated workout event \(event)")
+    }
 }
