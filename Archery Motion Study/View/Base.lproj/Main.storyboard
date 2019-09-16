@@ -58,6 +58,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="trash" id="fpb-5x-fJQ">
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="IQo-nj-Pki" id="YTg-nS-Rpj"/>
                                 </connections>
@@ -65,7 +66,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="fpb-5x-fJQ" id="vqG-At-cWQ"/>
                         <outlet property="editButton" destination="5fj-4p-fXo" id="25L-E2-Tri"/>
+                        <outlet property="updateButton" destination="nJI-4M-BI2" id="Svi-zu-vql"/>
                         <outlet property="uploadButton" destination="AuN-Ct-92v" id="Fl5-rn-FiD"/>
                     </connections>
                 </tableViewController>

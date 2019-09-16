@@ -9,6 +9,7 @@ target 'Archery Motion Study' do
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Storage'
+  pod 'ProgressHUD'
 
 end
 
