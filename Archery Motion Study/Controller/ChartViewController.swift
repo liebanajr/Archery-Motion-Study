@@ -8,9 +8,24 @@
 
 import UIKit
 import Charts
+import Accelerate
+
+struct LowPassFilterSignal {
+    /// Current signal value
+    var value: Double
+    
+    /// A scaling factor in the range 0.0..<1.0 that determines
+    /// how resistant the value is to change
+    let filterFactor: Double
+
+    /// Update the value, using filterFactor to attenuate changes
+    mutating func update(newValue: Double) {
+        value = filterFactor * value + (1.0 - filterFactor) * newValue
+    }
+}
 
 class ChartViewController: UIViewController {
-    
+        
     @IBOutlet weak var chtChart: LineChartView!
     
     @IBOutlet weak var accXSwitch: UISwitch!
@@ -100,13 +115,18 @@ class ChartViewController: UIViewController {
         if !desiredDataSets!.isEmpty {
             let data = LineChartData()
             
+            
             for dataSet in desiredDataSets!{
                 
                 var lineChartEntry = [ChartDataEntry]()
                 
+                var smoothData = LowPassFilterSignal(value: 0, filterFactor: 0.9)
+                
                 for (index,value) in dataSet.data.enumerated() {
-                    let value = ChartDataEntry(x: timeStamp!.data[index], y: value)
-                    lineChartEntry.append(value)
+                    
+                    let entry = ChartDataEntry(x: timeStamp!.data[index], y: smoothData.value)
+                    lineChartEntry.append(entry)
+                    smoothData.update(newValue: value)
                 }
                 
                 let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
@@ -133,10 +153,12 @@ class ChartViewController: UIViewController {
                 data.addDataSet(line1)
                 
             }
+            
             chtChart.data = data
-            chtChart.legend.enabled = false
+//            chtChart.legend.enabled = false
             chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
             chtChart.animate(xAxisDuration: 2.5)
+            
         } else {
             chtChart.data = nil
         }
