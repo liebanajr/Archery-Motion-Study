@@ -22,6 +22,8 @@ class filesViewController: UITableViewController{
     
     var filesArray : [MotionDataFile] = []
     
+    var exportedFileName = ""
+    
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
     
@@ -48,11 +50,18 @@ class filesViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "fileItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fileItemCell", for: indexPath) as! FileItemViewCell
+        
+        if #available(iOS 13, *) {
+            cell.uploadedCheckmark.image = UIImage(systemName: "cloud.fill")
+        }
+        
         let item = filesArray[indexPath.row]
-        cell.textLabel?.text = item.fileName
-        cell.accessoryType = item.isUploaded ? .checkmark : .none
-        cell.isUserInteractionEnabled = item.isUploaded ? false : true
+//        cell.textLabel?.text = item.fileName
+        cell.fileNameLabel.text = item.fileName
+//        cell.accessoryType = item.isUploaded ? .checkmark : .none
+        cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
+//        cell.isUserInteractionEnabled = item.isUploaded ? false : true
         
         return cell
     }
@@ -249,17 +258,31 @@ class filesViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        uploadButton.isEnabled = true
-        deleteButton.isEnabled = false
-        updateButton.isEnabled = false
+        if !tableView.isEditing {
+            let file = filesArray[indexPath.row]
+            exportedFileName = documentDir + "/" + file.fileName!
+            tableView.deselectRow(at: indexPath, animated: true)
+
+            
+//            destinationVC.performSegue(withIdentifier: "goToGraph", sender: self)
+            self.performSegue(withIdentifier: "goToGraph", sender: self)
+            exportedFileName = ""
+            
+        }
         
-//        let files = [URL(fileURLWithPath: documentDir + "/" + filesArray[indexPath.row].fileName!)]
-//
-//        let activityVC = UIActivityViewController(activityItems: files, applicationActivities: nil)
-//        present(activityVC, animated: true) {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//
-//        }
+//        uploadButton.isEnabled = true
+//        deleteButton.isEnabled = false
+//        updateButton.isEnabled = false
+        
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToGraph" {
+            let vc = segue.destination as? ChartViewController
+            vc?.importedFileName = exportedFileName
+        }
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {
