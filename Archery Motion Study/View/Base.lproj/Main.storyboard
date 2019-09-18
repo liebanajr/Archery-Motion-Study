@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CgT-oE-lM4">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -127,7 +126,7 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BXB-Ul-VAE">
                                                         <rect key="frame" x="325" y="0.0" width="51" height="31"/>
-                                                        <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="onTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -202,7 +201,7 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hGs-x4-Ohq">
                                                         <rect key="frame" x="325" y="0.0" width="51" height="31"/>
-                                                        <color key="onTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="onTintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -217,28 +216,29 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q80-Ud-cBO">
-                                <rect key="frame" x="0.0" y="394" width="414" height="502"/>
+                                <rect key="frame" x="0.0" y="394" width="414" height="419"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-0I-d4x" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="502"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ySg-0I-d4x" secondAttribute="bottom" id="AWT-6G-pkZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ySg-0I-d4x" secondAttribute="bottom" id="CwC-x3-Fcv"/>
                                     <constraint firstAttribute="trailing" secondItem="ySg-0I-d4x" secondAttribute="trailing" id="c7l-GQ-hea"/>
                                     <constraint firstItem="ySg-0I-d4x" firstAttribute="top" secondItem="q80-Ud-cBO" secondAttribute="top" id="dPL-Jc-b5f"/>
                                     <constraint firstItem="ySg-0I-d4x" firstAttribute="leading" secondItem="q80-Ud-cBO" secondAttribute="leading" id="lSB-yf-ecE"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="PyD-oJ-LvK"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="q80-Ud-cBO" firstAttribute="bottom" secondItem="338-eY-cl7" secondAttribute="bottom" id="6bD-ih-S6n"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="top" secondItem="wRL-xn-Udg" secondAttribute="bottom" constant="40" id="EKj-BU-1BT"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="trailing" secondItem="338-eY-cl7" secondAttribute="trailing" id="FFl-ol-j1A"/>
                             <constraint firstItem="wRL-xn-Udg" firstAttribute="leading" secondItem="338-eY-cl7" secondAttribute="leading" constant="20" id="PWJ-hQ-CqP"/>
-                            <constraint firstAttribute="bottom" secondItem="q80-Ud-cBO" secondAttribute="bottom" id="cHv-7M-RSm"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="leading" secondItem="338-eY-cl7" secondAttribute="leading" id="jQ3-su-DJU"/>
                             <constraint firstItem="wRL-xn-Udg" firstAttribute="top" secondItem="338-eY-cl7" secondAttribute="top" id="n6X-7C-7Vf"/>
                             <constraint firstItem="338-eY-cl7" firstAttribute="trailing" secondItem="wRL-xn-Udg" secondAttribute="trailing" constant="20" id="sG5-qD-jam"/>

@@ -55,7 +55,7 @@ class ChartViewController: UIViewController {
         gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         
         switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
-        colorArray = [.black, .blue, .brown, .cyan, .green, .yellow]
+        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple]
         
         availableDataSets = extractDataSets(tableArray: readDataFromCSV(fileName: importedFileName))
         timeStamp = availableDataSets?.remove(at: 0)
@@ -155,7 +155,7 @@ class ChartViewController: UIViewController {
             }
             
             chtChart.data = data
-//            chtChart.legend.enabled = false
+            chtChart.legend.enabled = false
             chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
             chtChart.animate(xAxisDuration: 2.5)
             
