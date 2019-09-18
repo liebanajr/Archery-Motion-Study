@@ -110,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRL-xn-Udg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRL-xn-Udg" userLabel="togglesView">
                                 <rect key="frame" x="20" y="88" width="374" height="266"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-zz-bYT">
@@ -216,21 +216,22 @@
                                     <constraint firstItem="V4A-zz-bYT" firstAttribute="leading" secondItem="wRL-xn-Udg" secondAttribute="leading" id="iEh-XE-HAh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q80-Ud-cBO">
-                                <rect key="frame" x="0.0" y="394" width="414" height="502"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q80-Ud-cBO" userLabel="chartView">
+                                <rect key="frame" x="0.0" y="394" width="414" height="419"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-0I-d4x" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="502"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ySg-0I-d4x" secondAttribute="bottom" id="AWT-6G-pkZ"/>
+                                    <constraint firstItem="V9a-jF-3pm" firstAttribute="bottom" secondItem="ySg-0I-d4x" secondAttribute="bottom" id="NRF-Wo-SuY"/>
                                     <constraint firstAttribute="trailing" secondItem="ySg-0I-d4x" secondAttribute="trailing" id="c7l-GQ-hea"/>
                                     <constraint firstItem="ySg-0I-d4x" firstAttribute="top" secondItem="q80-Ud-cBO" secondAttribute="top" id="dPL-Jc-b5f"/>
                                     <constraint firstItem="ySg-0I-d4x" firstAttribute="leading" secondItem="q80-Ud-cBO" secondAttribute="leading" id="lSB-yf-ecE"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="V9a-jF-3pm"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -238,18 +239,26 @@
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="top" secondItem="wRL-xn-Udg" secondAttribute="bottom" constant="40" id="EKj-BU-1BT"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="trailing" secondItem="338-eY-cl7" secondAttribute="trailing" id="FFl-ol-j1A"/>
                             <constraint firstItem="wRL-xn-Udg" firstAttribute="leading" secondItem="338-eY-cl7" secondAttribute="leading" constant="20" id="PWJ-hQ-CqP"/>
-                            <constraint firstAttribute="bottom" secondItem="q80-Ud-cBO" secondAttribute="bottom" id="cHv-7M-RSm"/>
+                            <constraint firstItem="q80-Ud-cBO" firstAttribute="bottom" secondItem="338-eY-cl7" secondAttribute="bottom" id="jIg-Gb-aG8"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="leading" secondItem="338-eY-cl7" secondAttribute="leading" id="jQ3-su-DJU"/>
                             <constraint firstItem="wRL-xn-Udg" firstAttribute="top" secondItem="338-eY-cl7" secondAttribute="top" id="n6X-7C-7Vf"/>
                             <constraint firstItem="338-eY-cl7" firstAttribute="trailing" secondItem="wRL-xn-Udg" secondAttribute="trailing" constant="20" id="sG5-qD-jam"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7"/>
+                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7">
+                        <barButtonItem key="rightBarButtonItem" title="Full screen" id="qYi-2d-kh5">
+                            <connections>
+                                <action selector="fullScreenButtonPressed:" destination="FtX-gL-NzW" id="NMG-9A-IYE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="accXSwitch" destination="BXB-Ul-VAE" id="6ej-hM-kCF"/>
                         <outlet property="accYSwitch" destination="k3h-R1-mqR" id="LUJ-rY-uhz"/>
                         <outlet property="accZSwitch" destination="kBC-Av-yfK" id="9PW-RP-jpK"/>
+                        <outlet property="chartViewContainer" destination="q80-Ud-cBO" id="mLi-L7-M5b"/>
+                        <outlet property="chartViewContainerTopConstraint" destination="EKj-BU-1BT" id="8tw-ka-N1a"/>
                         <outlet property="chtChart" destination="ySg-0I-d4x" id="CJb-cv-M9I"/>
                         <outlet property="gyrXSwitch" destination="S6s-fq-6xt" id="Qrv-sq-oBs"/>
                         <outlet property="gyrYSwitch" destination="rTi-fB-zNQ" id="iTX-DH-w6o"/>

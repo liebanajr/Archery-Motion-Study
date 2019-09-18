@@ -11,7 +11,13 @@ import Charts
 
 class ChartViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var chtChart: LineChartView!
+    
+    @IBOutlet weak var chartViewContainer: UIView!
+    @IBOutlet var chartViewContainerTopConstraint: NSLayoutConstraint!
+    
     
     @IBOutlet weak var accXSwitch: UISwitch!
     @IBOutlet weak var accYSwitch: UISwitch!
@@ -156,6 +162,14 @@ class ChartViewController: UIViewController {
         
     }
 
+    @IBAction func fullScreenButtonPressed(_ sender: Any) {
+        
+        print("Pressed full screen button")
+        chartViewContainerTopConstraint = NSLayoutConstraint(item: chartViewContainer!, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
+        chartViewContainer.updateConstraints()
+        self.view.layoutIfNeeded()
+        
+    }
     /*
     // MARK: - Navigation
 
