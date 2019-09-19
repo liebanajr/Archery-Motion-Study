@@ -13,9 +13,9 @@ import Firebase
 class filesViewController: UITableViewController{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
-    @IBOutlet weak var uploadButton: UIBarButtonItem!
+//    @IBOutlet weak var uploadButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    @IBOutlet weak var updateButton: UIBarButtonItem!
+//    @IBOutlet weak var updateButton: UIBarButtonItem!
     
     let fileManager = FileManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -31,15 +31,18 @@ class filesViewController: UITableViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if #available(iOS 13, *) {
-            uploadButton.setBackButtonBackgroundImage(UIImage(systemName: "icloud.and.arrow.up"), for: .normal, barMetrics: .default)
-        }
+//        if #available(iOS 13, *) {
+//            uploadButton.setBackButtonBackgroundImage(UIImage(systemName: "icloud.and.arrow.up"), for: .normal, barMetrics: .default)
+//        }
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateTableWithDirectoryData), name: Notification.Name("NewDataAvailable"), object: nil)
         
+        
         documentDir = paths.firstObject as! String + "/MotionData"
         print("Motion data directory: \(documentDir)")
+        
+        uploadFiles()
         
         updateTableWithDirectoryData()
     }
@@ -57,11 +60,8 @@ class filesViewController: UITableViewController{
         }
         
         let item = filesArray[indexPath.row]
-//        cell.textLabel?.text = item.fileName
         cell.fileNameLabel.text = item.fileName
-//        cell.accessoryType = item.isUploaded ? .checkmark : .none
         cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
-//        cell.isUserInteractionEnabled = item.isUploaded ? false : true
         
         return cell
     }
@@ -70,16 +70,21 @@ class filesViewController: UITableViewController{
 //    Methods for deleting items
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Eliminar todo", message: "¿Seguro que deseas eliminar todos los datos guardados?\nPuede que alguno de los archivos no haya sido sincronizado", preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: "Eliminar", style: .destructive) { (action) in
+        let alert = UIAlertController(title: "Eliminar datos", message: "¿Seguro que deseas eliminar los datos seleccionados de tu dispositivo?\nPor favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul en la fila correspondiente", preferredStyle: .actionSheet)
+        let actionDelete = UIAlertAction(title: "Eliminar seleccionados", style: .destructive) { (action) in
+            let items = self.tableView.indexPathsForSelectedRows!
+            self.deleteItems(itemPath: items)
+        }
+        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
             self.deleteItems(itemPath: nil)
         }
-        alert.addAction(action)
+        alert.addAction(actionDelete)
+        alert.addAction(actionDeleteAll)
         alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     
     }
-    func deleteItems(itemPath: IndexPath?) {
+    func deleteItems(itemPath: [IndexPath]?) {
         
         let dir = self.documentDir
         
@@ -101,23 +106,25 @@ class filesViewController: UITableViewController{
             return
         }
         
-        let file = filesArray[itemPath!.row]
-        let fileName = file.fileName!
-        do {
-            try fileManager.removeItem(atPath: dir + "/" + fileName)
-            context.delete(file)
-            try context.save()
-            print("Removed item: \(fileName)")
-            updateTableWithDirectoryData()
-        } catch {
-            print("Error removing file \(fileName): \(error)")
+        for item in itemPath! {
+            let file = filesArray[item.row]
+            let fileName = file.fileName!
+            do {
+                try fileManager.removeItem(atPath: dir + "/" + fileName)
+                context.delete(file)
+                try context.save()
+                print("Removed item: \(fileName)")
+                updateTableWithDirectoryData()
+            } catch {
+                print("Error removing file \(fileName): \(error)")
+            }
         }
         
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteItems(itemPath: indexPath)
+            deleteItems(itemPath: [indexPath])
         }
     }
     
@@ -147,84 +154,84 @@ class filesViewController: UITableViewController{
             self.tableView.isEditing = false
             self.editButton.title = "Edit"
             self.editButton.style = .plain
-            self.uploadButton.isEnabled = false
-            self.deleteButton.isEnabled = true
-            self.updateButton.isEnabled = true
+//            self.uploadButton.isEnabled = false
+            self.deleteButton.isEnabled = false
+//            self.updateButton.isEnabled = true
             self.tableView.reloadData()
         }
         
     }
     
-    @IBAction func refreshButtonPressed(_ sender: Any) {
-        
-        do {
-            let contents = try fileManager.contentsOfDirectory(atPath: documentDir)
-            print("Contenidos del directorio= \(contents)")
-        } catch {
-            print("Error obtaining contents: \(error)")
-        }
-        
-        updateTableWithDirectoryData()
-        
-    }
+//    @IBAction func refreshButtonPressed(_ sender: Any) {
+//        
+//        do {
+//            let contents = try fileManager.contentsOfDirectory(atPath: documentDir)
+//            print("Contenidos del directorio= \(contents)")
+//        } catch {
+//            print("Error obtaining contents: \(error)")
+//        }
+//        
+//        uploadFiles()
+//        
+//        updateTableWithDirectoryData()
+//        
+//    }
 //    Sharing data
     
-    @IBAction func uploadButtonPressed(_ sender: Any) {
-        
-        let paths = tableView.indexPathsForSelectedRows!
-        var currentUploads = 0
-        
-        tableView.isEditing = false
-        editButton.title = "Edit"
-        editButton.style = .plain
-        uploadButton.isEnabled = false
-        deleteButton.isEnabled = true
-        updateButton.isEnabled = true
-        
-        let spinnerView = createSpinnerView()
-        
-        print("Files to upload: ")
-        for index in paths {
-            
-            currentUploads += 1
-            
-            let motionDataFileItem = filesArray[index.row]
-            let fileName = motionDataFileItem.fileName!
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
-            let srcURL = URL(fileURLWithPath: documentDir + "/" + fileName)
-            
+    func uploadFiles() {
 
-            let uploadTask = motionDataDestination.putFile(from: srcURL, metadata: nil) { metadata, error in
-                if error != nil {
-                  // Uh-oh, an error occurred!
-                    print("Error uploading file: \(error!)")
-                    return
-                }
-            }
+        for motionDataFileItem in filesArray {
+            
+            if !motionDataFileItem.isUploaded {
+                
+                let fileName = motionDataFileItem.fileName!
+                let storage = Storage.storage()
+                let storageRef = storage.reference()
+                let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
+                let srcURL = URL(fileURLWithPath: documentDir + "/" + fileName)
+                
 
-            uploadTask.observe(.success) { (snapshot) in
-                
-                print("Uploaded \(fileName) successfully!!")
-                motionDataFileItem.setValue(true, forKey: "isUploaded")
-                do {
-                    try self.context.save()
-                } catch {
-                    print("Error while saving context: \(error)")
+                let uploadTask = motionDataDestination.putFile(from: srcURL, metadata: nil) { metadata, error in
+                    if error != nil {
+                      // Uh-oh, an error occurred!
+                        print("Error uploading file: \(error!)")
+                        return
+                    }
                 }
-                self.updateTableWithDirectoryData()
-                uploadTask.removeAllObservers()
-                
-                currentUploads -= 1
-                print("CurrentUploads: \(currentUploads)")
-                if currentUploads <= 0 {
-                    self.removeSpinnerView(child: spinnerView)
+
+                uploadTask.observe(.success) { (snapshot) in
+                    
+                    print("Uploaded \(fileName) successfully!!")
+                    motionDataFileItem.setValue(true, forKey: "isUploaded")
+                    do {
+                        try self.context.save()
+                    } catch {
+                        print("Error while saving context: \(error)")
+                    }
+                    self.updateTableWithDirectoryData()
+                    uploadTask.removeAllObservers()
                 }
+                
             }
         }
         
     }
+    
+//    @IBAction func uploadButtonPressed(_ sender: Any) {
+//
+//        let paths = tableView.indexPathsForSelectedRows!
+//
+//        tableView.isEditing = false
+//        editButton.title = "Edit"
+//        editButton.style = .plain
+//        uploadButton.isEnabled = false
+//        deleteButton.isEnabled = true
+//        updateButton.isEnabled = true
+//
+//        print("Files to upload: ")
+//        uploadFiles()
+//
+//    }
     
     func createSpinnerView() -> SpinnerViewController{
         let child = SpinnerViewController()
@@ -250,9 +257,9 @@ class filesViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if tableView.indexPathsForSelectedRows == nil {
-            uploadButton.isEnabled = false
-            deleteButton.isEnabled = true
-            updateButton.isEnabled = true
+//            uploadButton.isEnabled = false
+            deleteButton.isEnabled = false
+//            updateButton.isEnabled = true
         }
     }
     
@@ -271,7 +278,7 @@ class filesViewController: UITableViewController{
         }
         
 //        uploadButton.isEnabled = true
-//        deleteButton.isEnabled = false
+        deleteButton.isEnabled = true
 //        updateButton.isEnabled = false
         
         
@@ -291,15 +298,15 @@ class filesViewController: UITableViewController{
             tableView.setEditing(false, animated: true)
             editButton.title = "Edit"
             editButton.style = .plain
-            uploadButton.isEnabled = false
-            deleteButton.isEnabled = true
-            updateButton.isEnabled = true
+//            uploadButton.isEnabled = false
+            deleteButton.isEnabled = false
+//            updateButton.isEnabled = true
         } else {
             tableView.setEditing(true, animated: true)
             editButton.title = "Done"
             editButton.style = .done
-            deleteButton.isEnabled = false
-            updateButton.isEnabled = false
+//            deleteButton.isEnabled = true
+//            updateButton.isEnabled = false
         }
         
     }

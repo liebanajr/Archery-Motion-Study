@@ -69,32 +69,18 @@
                                     <action selector="editButtonPressed:" destination="IQo-nj-Pki" id="p6w-nw-BQx"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" title="Upload" image="upload" id="AuN-Ct-92v">
-                                <connections>
-                                    <action selector="uploadButtonPressed:" destination="IQo-nj-Pki" id="QJc-9Y-ecO"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="nJI-4M-BI2">
-                                <connections>
-                                    <action selector="refreshButtonPressed:" destination="IQo-nj-Pki" id="K73-NP-HJg"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="trash" id="fpb-5x-fJQ">
+                            <barButtonItem enabled="NO" systemItem="trash" id="fpb-5x-fJQ">
                                 <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="IQo-nj-Pki" id="YTg-nS-Rpj"/>
                                 </connections>
                             </barButtonItem>
-                        </rightBarButtonItems>
+                        </leftBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="fpb-5x-fJQ" id="vqG-At-cWQ"/>
                         <outlet property="editButton" destination="5fj-4p-fXo" id="25L-E2-Tri"/>
-                        <outlet property="updateButton" destination="nJI-4M-BI2" id="Svi-zu-vql"/>
-                        <outlet property="uploadButton" destination="AuN-Ct-92v" id="Fl5-rn-FiD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JU-rR-6lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -281,6 +267,5 @@
     </scenes>
     <resources>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
-        <image name="upload" width="25" height="25"/>
     </resources>
 </document>
