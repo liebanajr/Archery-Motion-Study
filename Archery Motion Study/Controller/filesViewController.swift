@@ -13,9 +13,7 @@ import Firebase
 class filesViewController: UITableViewController{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
-//    @IBOutlet weak var uploadButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-//    @IBOutlet weak var updateButton: UIBarButtonItem!
     
     let fileManager = FileManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -30,10 +28,6 @@ class filesViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-//        if #available(iOS 13, *) {
-//            uploadButton.setBackButtonBackgroundImage(UIImage(systemName: "icloud.and.arrow.up"), for: .normal, barMetrics: .default)
-//        }
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateTableWithDirectoryData), name: Notification.Name("NewDataAvailable"), object: nil)
@@ -133,12 +127,8 @@ class filesViewController: UITableViewController{
         
         do {
 
-//            let files = try fileManager.contentsOfDirectory(atPath: documentDir)
             filesArray.removeAll(keepingCapacity: false)
 
-//            for path in files {
-//                filesArray.append(path)
-//            }
             let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
             filesArray = try context.fetch(request)
             
@@ -162,20 +152,6 @@ class filesViewController: UITableViewController{
         
     }
     
-//    @IBAction func refreshButtonPressed(_ sender: Any) {
-//        
-//        do {
-//            let contents = try fileManager.contentsOfDirectory(atPath: documentDir)
-//            print("Contenidos del directorio= \(contents)")
-//        } catch {
-//            print("Error obtaining contents: \(error)")
-//        }
-//        
-//        uploadFiles()
-//        
-//        updateTableWithDirectoryData()
-//        
-//    }
 //    Sharing data
     
     func uploadFiles() {
@@ -217,49 +193,9 @@ class filesViewController: UITableViewController{
         
     }
     
-//    @IBAction func uploadButtonPressed(_ sender: Any) {
-//
-//        let paths = tableView.indexPathsForSelectedRows!
-//
-//        tableView.isEditing = false
-//        editButton.title = "Edit"
-//        editButton.style = .plain
-//        uploadButton.isEnabled = false
-//        deleteButton.isEnabled = true
-//        updateButton.isEnabled = true
-//
-//        print("Files to upload: ")
-//        uploadFiles()
-//
-//    }
-    
-    func createSpinnerView() -> SpinnerViewController{
-        let child = SpinnerViewController()
-
-        // add the spinner view controller
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-
-        // wait two seconds to simulate some work happening
-        return child
-    }
-    
-    func removeSpinnerView(child: SpinnerViewController) {
-        DispatchQueue.main.async() {
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if tableView.indexPathsForSelectedRows == nil {
-//            uploadButton.isEnabled = false
             deleteButton.isEnabled = false
-//            updateButton.isEnabled = true
         }
     }
     
@@ -271,15 +207,12 @@ class filesViewController: UITableViewController{
             tableView.deselectRow(at: indexPath, animated: true)
 
             
-//            destinationVC.performSegue(withIdentifier: "goToGraph", sender: self)
             self.performSegue(withIdentifier: "goToGraph", sender: self)
             exportedFileName = ""
             
         }
         
-//        uploadButton.isEnabled = true
         deleteButton.isEnabled = true
-//        updateButton.isEnabled = false
         
         
         
@@ -298,15 +231,11 @@ class filesViewController: UITableViewController{
             tableView.setEditing(false, animated: true)
             editButton.title = "Edit"
             editButton.style = .plain
-//            uploadButton.isEnabled = false
             deleteButton.isEnabled = false
-//            updateButton.isEnabled = true
         } else {
             tableView.setEditing(true, animated: true)
             editButton.title = "Done"
             editButton.style = .done
-//            deleteButton.isEnabled = true
-//            updateButton.isEnabled = false
         }
         
     }
