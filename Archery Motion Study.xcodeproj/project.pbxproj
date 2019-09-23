@@ -23,6 +23,7 @@
 		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
 		8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */; };
 		8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7DB34923302C5700781F0D /* HealthKit.framework */; };
+		8A91E053233437BF00F39055 /* PrivateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E052233437BF00F39055 /* PrivateTableViewController.swift */; };
 		8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */; };
 		8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA589EB232F125A007879E0 /* SpinnerViewController.swift */; };
 		8AB2FE06233232A800C1F554 /* SensorDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2FE05233232A800C1F554 /* SensorDataSet.swift */; };
@@ -103,6 +104,7 @@
 		8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion Study WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		8A7DB34923302C5700781F0D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		8A91E052233437BF00F39055 /* PrivateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateTableViewController.swift; sourceTree = "<group>"; };
 		8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8AA589EB232F125A007879E0 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		8AB2FE05233232A800C1F554 /* SensorDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataSet.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */,
 				8ADC42C623312408005B079F /* ChartViewController.swift */,
 				8AA589EB232F125A007879E0 /* SpinnerViewController.swift */,
+				8A91E052233437BF00F39055 /* PrivateTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
 				8AB2FE06233232A800C1F554 /* SensorDataSet.swift in Sources */,
 				8ADC42C723312408005B079F /* ChartViewController.swift in Sources */,
+				8A91E053233437BF00F39055 /* PrivateTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

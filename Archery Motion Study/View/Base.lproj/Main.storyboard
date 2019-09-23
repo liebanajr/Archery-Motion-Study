@@ -76,6 +76,12 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="lock.open" catalog="system" id="JdD-Q1-6jh">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="MwM-3f-KUA" kind="show" identifier="goToPrivate" id="57Q-z7-9ck"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -86,6 +92,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JU-rR-6lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282.60869565217394" y="100.44642857142857"/>
+        </scene>
+        <!--Descargar-->
+        <scene sceneID="YVE-x6-Ky9">
+            <objects>
+                <tableViewController id="MwM-3f-KUA" customClass="PrivateTableViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sRk-bc-Pjj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fireBaseItemCell" id="yRH-Y9-NXg">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yRH-Y9-NXg" id="h4f-We-ieI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MwM-3f-KUA" id="CQw-nd-nBq"/>
+                            <outlet property="delegate" destination="MwM-3f-KUA" id="CGE-uw-uSz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Descargar" id="kXJ-h8-w5U">
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" systemItem="action" id="yOX-37-U7j">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="MwM-3f-KUA" id="ImQ-BA-MBL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="trash" id="Fbg-rJ-ctC">
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="MwM-3f-KUA" id="wqa-dJ-8jq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Select" id="54V-yn-4FZ">
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="MwM-3f-KUA" id="vmH-Um-T3v"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="Fbg-rJ-ctC" id="dqw-Ch-VZl"/>
+                        <outlet property="editButton" destination="54V-yn-4FZ" id="eem-bK-piJ"/>
+                        <outlet property="shareButton" destination="yOX-37-U7j" id="70d-5L-vfJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gxd-AQ-UJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="283" y="775"/>
         </scene>
         <!--Gráfica-->
         <scene sceneID="csd-eq-bwk">
@@ -267,5 +326,6 @@
     </scenes>
     <resources>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
+        <image name="lock.open" catalog="system" width="64" height="58"/>
     </resources>
 </document>
