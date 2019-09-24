@@ -116,8 +116,14 @@
                             <outlet property="delegate" destination="MwM-3f-KUA" id="CGE-uw-uSz"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Descargar" id="kXJ-h8-w5U">
                         <rightBarButtonItems>
+                            <barButtonItem enabled="NO" title="Item" image="tray.and.arrow.down.fill" catalog="system" width="25" id="BQa-a9-ZcO">
+                                <connections>
+                                    <action selector="downloadButtonPressed:" destination="MwM-3f-KUA" id="tZc-8C-hvu"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="action" id="yOX-37-U7j">
                                 <connections>
                                     <action selector="shareButtonPressed:" destination="MwM-3f-KUA" id="ImQ-BA-MBL"/>
@@ -129,15 +135,17 @@
                                     <action selector="deleteButtonPressed:" destination="MwM-3f-KUA" id="wqa-dJ-8jq"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Select" id="54V-yn-4FZ">
+                            <barButtonItem title="Select" image="ellipsis" catalog="system" width="54.299999999999997" id="54V-yn-4FZ">
                                 <connections>
                                     <action selector="editButtonPressed:" destination="MwM-3f-KUA" id="vmH-Um-T3v"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="Fbg-rJ-ctC" id="dqw-Ch-VZl"/>
+                        <outlet property="downloadButton" destination="BQa-a9-ZcO" id="gZl-Eq-Gfn"/>
                         <outlet property="editButton" destination="54V-yn-4FZ" id="eem-bK-piJ"/>
                         <outlet property="shareButton" destination="yOX-37-U7j" id="70d-5L-vfJ"/>
                     </connections>
@@ -326,6 +334,8 @@
     </scenes>
     <resources>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
+        <image name="ellipsis" catalog="system" width="64" height="20"/>
         <image name="lock.open" catalog="system" width="64" height="58"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="64" height="58"/>
     </resources>
 </document>

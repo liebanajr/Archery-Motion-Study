@@ -8,24 +8,29 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class PrivateTableViewController: UITableViewController {
     
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var downloadButton: UIBarButtonItem!
     
     var itemsList : [StorageReference]?
     
     let fileManager = FileManager()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var downloadsDir :String = ""
+    var documentsDir : String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         downloadsDir = paths.firstObject as! String + "/MotionData/Downloads"
+        documentsDir = paths.firstObject as! String + "/MotionData"
         
         do{
             try fileManager.removeItem(atPath: downloadsDir)
@@ -71,6 +76,7 @@ class PrivateTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         shareButton.isEnabled = true
         deleteButton.isEnabled = true
+        downloadButton.isEnabled = true
     }
     func updateTableView(){
         
@@ -165,6 +171,7 @@ class PrivateTableViewController: UITableViewController {
             tableView.setEditing(false, animated: true)
             shareButton.isEnabled = false
             deleteButton.isEnabled = false
+            downloadButton.isEnabled = false
             button.title = "Select"
             button.style = .plain
         } else {
@@ -173,6 +180,37 @@ class PrivateTableViewController: UITableViewController {
             button.style = .done
         }
         
+        
+    }
+    
+    
+    @IBAction func downloadButtonPressed(_ sender: Any) {
+        
+        let itemsPaths = tableView.indexPathsForSelectedRows
+        var pendingDownloads = 0
+        let spinnerView = createSpinnerView()
+        for index in itemsPaths! {
+            let filePath = URL(fileURLWithPath: documentsDir + itemsList![index.row].name)
+            pendingDownloads += 1
+            itemsList![index.row].write(toFile: filePath) { (url, error) in
+                pendingDownloads -= 1
+                if error != nil {
+                    print("Error while getting download URL: \(error!)")
+                } else {
+                    let item = MotionDataFile(context: self.context)
+                    item.fileName = self.itemsList![index.row].name
+                    item.isUploaded = true
+                    do {
+                        try self.context.save()
+                    } catch {
+                        print("Error saving context \(error)")
+                    }
+                    if pendingDownloads <= 0 {
+                        self.removeSpinnerView(child: spinnerView)
+                    }
+                }
+            }
+        }
         
     }
     
