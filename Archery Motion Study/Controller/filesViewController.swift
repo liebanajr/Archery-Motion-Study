@@ -41,6 +41,10 @@ class filesViewController: UITableViewController{
         updateTableWithDirectoryData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateTableWithDirectoryData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filesArray.count
     }
