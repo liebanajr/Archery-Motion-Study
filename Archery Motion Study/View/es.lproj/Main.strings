@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Ratio de giro eje Z"; ObjectID = "3Ho-VN-Zu9"; */
+"3Ho-VN-Zu9.text" = "Ratio de giro eje Z";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "5fj-4p-fXo"; */
+"5fj-4p-fXo.title" = "Edit";
+
+/* Class = "UINavigationItem"; title = "Gráfica"; ObjectID = "6eC-49-tZ7"; */
+"6eC-49-tZ7.title" = "Gráfica";
+
+/* Class = "UILabel"; text = "Acelereación eje Y"; ObjectID = "Awe-Uj-UwZ"; */
+"Awe-Uj-UwZ.text" = "Acelereación eje Y";
+
+/* Class = "UITableViewController"; title = "Datos Guardados"; ObjectID = "IQo-nj-Pki"; */
+"IQo-nj-Pki.title" = "Datos Guardados";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "LXl-NH-fsP"; */
+"LXl-NH-fsP.text" = "Text";
+
+/* Class = "UILabel"; text = "Acelereación eje Z"; ObjectID = "Off-Dn-0lg"; */
+"Off-Dn-0lg.text" = "Acelereación eje Z";
+
+/* Class = "UILabel"; text = "Acelereación eje X"; ObjectID = "hRx-Gi-s9f"; */
+"hRx-Gi-s9f.text" = "Acelereación eje X";
+
+/* Class = "UILabel"; text = "Ratio de giro eje Y"; ObjectID = "ixt-f0-hGf"; */
+"ixt-f0-hGf.text" = "Ratio de giro eje Y";
+
+/* Class = "UINavigationItem"; title = "Datos"; ObjectID = "qYI-XM-AqK"; */
+"qYI-XM-AqK.title" = "Datos";
+
+/* Class = "UILabel"; text = "Ratio de giro eje X"; ObjectID = "rOv-fY-AfM"; */
+"rOv-fY-AfM.text" = "Ratio de giro eje X";

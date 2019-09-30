@@ -118,16 +118,52 @@ class ChartViewController: UIViewController {
             
             for dataSet in desiredDataSets!{
                 
+                var nSamples = 2
+                
+                repeat {
+                    
+                    nSamples = nSamples * 2
+                    
+                } while nSamples < dataSet.data.count
+                
+                let fftManager = TempiFFT(withSize: nSamples, sampleRate: 1.0/50.0)
+                
+                
+                //TODO----------------------------------
+                let newData = Array(dataSet.data[..<nSamples]).map { (num) -> Float in
+                    return Float(num)
+                }
+                let newTimeStamp = Array(timeStamp!.data[..<nSamples])
+                
+                fftManager.fftForward(newData)
+                fftManager.calculateLinearBands(minFrequency: 1.0, maxFrequency: 200.0, numberOfBands: 200)
+                
+                var frequencies = [Float]()
+                var magnitudes = [Float]()
+                
+                for i in 0..<fftManager.numberOfBands {
+                    frequencies.append(fftManager.frequencyAtBand(i))
+                    magnitudes.append(fftManager.magnitudeAtBand(i))
+                }
+                
                 var lineChartEntry = [ChartDataEntry]()
                 
-                var smoothData = LowPassFilterSignal(value: 0, filterFactor: 0.9)
                 
-                for (index,value) in dataSet.data.enumerated() {
+                for (index,value) in magnitudes.enumerated() {
                     
-                    let entry = ChartDataEntry(x: timeStamp!.data[index], y: smoothData.value)
+                    let entry = ChartDataEntry(x: Double(frequencies[index]), y: Double(value))
                     lineChartEntry.append(entry)
-                    smoothData.update(newValue: value)
                 }
+                
+//                var smoothData = LowPassFilterSignal(value: 0, filterFactor: 0.9)
+                
+//                for (index,value) in dataSet.data.enumerated() {
+//
+//                    let entry = ChartDataEntry(x: timeStamp!.data[index], y: smoothData.value)
+//                    let entry = ChartDataEntry(x: timeStamp!.data[index], y: value)
+//                    lineChartEntry.append(entry)
+//                    smoothData.update(newValue: value)
+//                }
                 
                 let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
 

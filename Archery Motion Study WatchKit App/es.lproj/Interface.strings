@@ -1,0 +1,12 @@
+
+/* Class = "WKInterfaceMenuItem"; title = "Delete all"; ObjectID = "4iP-I0-CJq"; */
+"4iP-I0-CJq.title" = "Delete all";
+
+/* Class = "WKInterfaceController"; title = "Ajustes"; ObjectID = "WGJ-J6-1YK"; */
+"WGJ-J6-1YK.title" = "Ajustes";
+
+/* Class = "WKInterfaceLabel"; text = "Modalidad"; ObjectID = "ks5-NL-C3Q"; */
+"ks5-NL-C3Q.text" = "Modalidad";
+
+/* Class = "WKInterfaceLabel"; text = "Mano del watch"; ObjectID = "lnv-Ft-h9g"; */
+"lnv-Ft-h9g.text" = "Mano del watch";
