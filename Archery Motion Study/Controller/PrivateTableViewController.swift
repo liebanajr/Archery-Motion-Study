@@ -190,7 +190,7 @@ class PrivateTableViewController: UITableViewController {
         var pendingDownloads = 0
         let spinnerView = createSpinnerView()
         for index in itemsPaths! {
-            let filePath = URL(fileURLWithPath: documentsDir + itemsList![index.row].name)
+            let filePath = URL(fileURLWithPath: "\(documentsDir)/\(itemsList![index.row].name)")
             pendingDownloads += 1
             itemsList![index.row].write(toFile: filePath) { (url, error) in
                 pendingDownloads -= 1
