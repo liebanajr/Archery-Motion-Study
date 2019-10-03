@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */; };
+		8A002DA223466042000C14E1 /* SampleAverageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A002DA123466042000C14E1 /* SampleAverageManager.swift */; };
 		8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AB232BB9440065CE08 /* AppDelegate.swift */; };
 		8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AF232BB9440065CE08 /* filesViewController.swift */; };
 		8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B1232BB9440065CE08 /* Main.storyboard */; };
@@ -83,6 +84,7 @@
 		7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		8A002DA123466042000C14E1 /* SampleAverageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAverageManager.swift; sourceTree = "<group>"; };
 		8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archery Motion Study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A37D2AB232BB9440065CE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A37D2AF232BB9440065CE08 /* filesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filesViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */,
 				8AB2FE05233232A800C1F554 /* SensorDataSet.swift */,
+				8A002DA123466042000C14E1 /* SampleAverageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
 				8AB2FE06233232A800C1F554 /* SensorDataSet.swift in Sources */,
 				8ADC42C723312408005B079F /* ChartViewController.swift in Sources */,
+				8A002DA223466042000C14E1 /* SampleAverageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
