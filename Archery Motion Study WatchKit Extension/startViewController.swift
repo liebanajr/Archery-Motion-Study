@@ -33,7 +33,7 @@ class startViewController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     var csvText = ""
     var fileReadyForTransfer = URL(fileURLWithPath: "")
     
-    let sampleInterval = 1.0/50.0
+    let sampleInterval = 1.0/20.0
     
     override func awake(withContext context: Any?) {
         

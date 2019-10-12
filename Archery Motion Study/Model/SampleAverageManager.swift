@@ -10,28 +10,65 @@ import Foundation
 
 class SampleAverageManager : NSObject {
     
-    var nSamples : Int = 0
-    
-    var currentValue : Double
-    
+    var nSamples : Int
+    var filterLevel : Int
+        
     private var samples : [Double]
     
-    init(nSamples : Int){
+    init(nSamples : Int, filterLevel: Int){
         
         self.nSamples = nSamples
+        self.filterLevel = filterLevel
+        
         self.samples = Array(repeating: 0.0, count: nSamples)
-        self.currentValue = 0
 
     }
     
-    func calculateNewAverage(newSample: Double) -> Double {
+    func averageSignal(inputSignal: [Double]) -> [Double] {
         
-        addNewSampleToArray(newSample: newSample)
+        var auxSignal = inputSignal
+        
+        for index in 0...filterLevel-1 {
+            
+            auxSignal = averageSignalOnce(inputSignal: auxSignal)
+            
+        }
+        
+        return auxSignal
+        
+    }
+    
+    func averageSignalOnce(inputSignal: [Double]) -> [Double]{
+        
+        var outputSignal = [Double]()
+        
+//        Fill up first nSamples positions of the samples array
+        for index in 0...nSamples-1 {
+            addNewSampleToArray(newSample: inputSignal[index])
+        }
+        
+        outputSignal.append(calculateNewAverage())
+        
+        for index in (nSamples)...(inputSignal.count-1) {
+            
+            addNewSampleToArray(newSample: inputSignal[index])
+            outputSignal.append(calculateNewAverage())
+            
+        }
+        
+        resetAverages()
+        
+        return outputSignal
+        
+    }
+    
+    func calculateNewAverage() -> Double {
+                    
         let sum = samples.reduce(0, { x, y in
             x + y
         })
         
-        currentValue = sum / Double(nSamples)
+        let currentValue = sum / Double(nSamples)
         
         return currentValue
     }
@@ -47,6 +84,12 @@ class SampleAverageManager : NSObject {
         }
 //        New sample is added to the last index
         samples[samples.count-1] = newSample
+        
+    }
+    
+    func resetAverages() {
+        
+        self.samples = Array(repeating: 0.0, count: nSamples)
         
     }
     
