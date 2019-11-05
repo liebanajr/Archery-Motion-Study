@@ -165,6 +165,9 @@ class startViewController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         if !userDefaultsExists() {
             return
         }
+        
+        presentController(withName: "WorkoutInterfaceController", context: self)
+        return
                 
         if motionManager.isDeviceMotionActive {
             
