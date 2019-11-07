@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We will store relevant workout data to the Health app so you can keep track of your evolution</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We will use data related to your workout to inform you about your progress</string>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>

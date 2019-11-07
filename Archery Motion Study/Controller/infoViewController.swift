@@ -25,10 +25,6 @@ class infoViewController: UIViewController {
     
     func authorizeHealthKit() {
         
-        guard HKHealthStore.isHealthDataAvailable() else {
-          return
-        }
-        
         let types = Set([HKObjectType.workoutType(),
                          HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
                          HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,

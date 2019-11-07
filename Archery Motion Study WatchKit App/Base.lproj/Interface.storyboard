@@ -16,7 +16,7 @@
                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
-                                <segue destination="hOH-hO-zEw" kind="modal" id="1d1-eJ-PRK"/>
+                                <segue destination="hOH-hO-zEw" kind="modal" identifier="goToWorkout" id="1d1-eJ-PRK"/>
                             </connections>
                         </button>
                     </items>
@@ -74,20 +74,48 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="KY4-1d-VfG">
                             <items>
-                                <label width="1" alignment="left" text="00:00:00" id="SEn-bd-IvM"/>
-                                <label width="1" alignment="left" text="0 kCal" id="oMz-dk-Vls"/>
+                                <timer width="1" alignment="left" previewedSeconds="0" id="t3L-21-cS3">
+                                    <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="32"/>
+                                </timer>
+                                <group width="1" alignment="left" id="hbf-w2-MjH">
+                                    <items>
+                                        <label alignment="left" verticalAlignment="center" text="0" id="oMz-dk-Vls">
+                                            <fontDescription key="font" type="system" pointSize="25"/>
+                                        </label>
+                                        <label alignment="left" verticalAlignment="center" text=" kCal" id="mkw-H6-Jty">
+                                            <fontDescription key="font" type="system" pointSize="25"/>
+                                        </label>
+                                        <imageView alignment="left" verticalAlignment="center" image="flame.fill" catalog="system" id="wKf-An-fFn">
+                                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="W1e-HZ-Eh1">
+                                    <items>
+                                        <label alignment="left" verticalAlignment="center" text="0" id="yFY-EC-Lfe">
+                                            <fontDescription key="font" type="system" pointSize="25"/>
+                                        </label>
+                                        <label alignment="left" verticalAlignment="center" text=" bpm" id="vnX-LW-HQR">
+                                            <fontDescription key="font" type="system" pointSize="25"/>
+                                        </label>
+                                        <imageView alignment="left" verticalAlignment="center" image="heart.fill" catalog="system" id="Hc1-4b-PNE">
+                                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                    </items>
+                                </group>
                             </items>
                         </group>
-                        <group width="1" alignment="center" verticalAlignment="bottom" spacing="10" id="9us-si-dh8">
+                        <group width="1" alignment="center" verticalAlignment="bottom" spacing="14" id="9us-si-dh8">
                             <items>
-                                <button width="0.5" alignment="left" title="Add" id="v9T-cp-0Zt">
-                                    <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <button width="60" height="60" alignment="center" backgroundImage="plus" catalog="system" id="v9T-cp-0Zt">
+                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="addButtonPressed" destination="hOH-hO-zEw" id="5Cq-Fj-cU7"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" alignment="right" title="End" id="uKi-uo-AQx">
-                                    <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <button width="60" height="60" alignment="center" backgroundImage="xmark" catalog="system" id="uKi-uo-AQx">
+                                    <color key="backgroundColor" red="0.55175280902335022" green="0.063697890094803644" blue="0.0015666906389925155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="endButtonPressed" destination="hOH-hO-zEw" id="6zQ-k7-Rp4"/>
                                     </connections>
@@ -95,12 +123,33 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="calorieLabel" destination="oMz-dk-Vls" id="bPF-Qz-mFp"/>
+                        <outlet property="heartRateLabel" destination="yFY-EC-Lfe" id="irt-fY-oW7"/>
+                        <outlet property="timer" destination="t3L-21-cS3" id="FXB-3x-NtV"/>
+                        <segue destination="kZ1-jG-gbw" kind="relationship" relationship="nextPage" id="Yno-TW-dph"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="177" y="462"/>
+            <point key="canvasLocation" x="176.65217391304347" y="381.74107142857144"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="dMJ-rk-8H3">
+            <objects>
+                <controller id="kZ1-jG-gbw">
+                    <items>
+                        <nowPlayingView alignment="left" id="yAe-Of-brF"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="444" y="382"/>
         </scene>
     </scenes>
     <resources>
+        <image name="flame.fill" catalog="system" width="54" height="64"/>
+        <image name="heart.fill" catalog="system" width="64" height="52"/>
         <image name="play" width="512" height="512"/>
+        <image name="plus" catalog="system" width="64" height="58"/>
+        <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>

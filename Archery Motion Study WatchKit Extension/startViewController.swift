@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-
+import HealthKit
 
 class startViewController: WKInterfaceController {
     
@@ -31,6 +31,7 @@ class startViewController: WKInterfaceController {
         print("Document directory: \(documentDir)")
         
         deleteAllLocalData()
+        authorizeHealthKit()
         
     }
     
@@ -42,6 +43,30 @@ class startViewController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+    }
+    
+    func authorizeHealthKit() {
+        
+        guard HKHealthStore.isHealthDataAvailable() else {
+            print("Health data already available")
+            return
+        }
+        
+        let types = Set([HKObjectType.workoutType(),
+                         HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+                         HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+                         HKObjectType.quantityType(forIdentifier: .heartRate)!
+                        ])
+        let healthStore = HKHealthStore()
+        
+        healthStore.requestAuthorization(toShare: types, read: types) { (success, error) in
+            if !success {
+                print(error)
+            } else {
+                print("HealthKit successfully authorized!")
+            }
+        }
         
     }
     
@@ -71,9 +96,10 @@ class startViewController: WKInterfaceController {
         
         if !userDefaultsExists() {
             return
+        } else {
+//            pushController(withName: "goToWorkout", context: self)
+            presentController(withName: "WorkoutInterfaceController", context: self)
         }
-        
-        presentController(withName: "WorkoutInterfaceController", context: self)
         
     }
     
