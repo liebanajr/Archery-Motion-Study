@@ -168,6 +168,14 @@ class ChartViewController: UIViewController {
         
     }
 
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        
+        let items = [URL(fileURLWithPath: importedFileName)]
+        
+        let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(action, animated: true)
+        
+    }
     /*
     // MARK: - Navigation
 

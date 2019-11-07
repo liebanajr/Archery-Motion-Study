@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CgT-oE-lM4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CgT-oE-lM4">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,18 +20,18 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6b8-0O-Vas" id="mYk-kE-oSQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="44.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="44.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud-fill" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-mT-DmC">
-                                            <rect key="frame" x="346" y="13.333333333333334" width="24" height="17.666666666666664"/>
+                                            <rect key="frame" x="346.33333333333331" y="13.333333333333334" width="24" height="17.666666666666664"/>
                                             <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="7h0-LB-7yC"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-NH-fsP">
-                                            <rect key="frame" x="20" y="0.0" width="318" height="44.333333333333336"/>
+                                            <rect key="frame" x="20" y="0.0" width="318.33333333333331" height="44.333333333333336"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="ozT-4A-aS3"/>
                                             </constraints>
@@ -87,7 +87,7 @@
             </objects>
             <point key="canvasLocation" x="282.60869565217394" y="100.44642857142857"/>
         </scene>
-        <!--Gráfica-->
+        <!--Title-->
         <scene sceneID="csd-eq-bwk">
             <objects>
                 <viewController id="FtX-gL-NzW" customClass="ChartViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,7 +231,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7"/>
+                    <navigationItem key="navigationItem" title="Title" id="S0I-j7-PFb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="jia-yq-jGW">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="eC6-qj-hdP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="accXSwitch" destination="BXB-Ul-VAE" id="6ej-hM-kCF"/>
                         <outlet property="accYSwitch" destination="k3h-R1-mqR" id="LUJ-rY-uhz"/>
@@ -262,7 +268,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKN-eq-hEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-626.08695652173913" y="100.44642857142857"/>
+            <point key="canvasLocation" x="-943" y="104"/>
         </scene>
     </scenes>
     <resources>

@@ -70,8 +70,9 @@ class filesViewController: UITableViewController{
         
         let alert = UIAlertController(title: "Eliminar datos", message: "¿Seguro que deseas eliminar los datos seleccionados de tu dispositivo?\nPor favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul en la fila correspondiente", preferredStyle: .actionSheet)
         let actionDelete = UIAlertAction(title: "Eliminar seleccionados", style: .destructive) { (action) in
-            let items = self.tableView.indexPathsForSelectedRows!
-            self.deleteItems(itemPath: items)
+            if let items = self.tableView.indexPathsForSelectedRows {
+                self.deleteItems(itemPath: items)
+            }
         }
         let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
             self.deleteItems(itemPath: nil)
@@ -240,6 +241,7 @@ class filesViewController: UITableViewController{
             tableView.setEditing(true, animated: true)
             editButton.title = "Done"
             editButton.style = .done
+            deleteButton.isEnabled = true
         }
         
     }
