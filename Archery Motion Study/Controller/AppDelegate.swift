@@ -44,7 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         do{
             print("File transfer finished successfully")
             let metadata = file.metadata!
-            print("End: \(metadata["end"]!)   SessionId: \(metadata["sessionId"]!)   Calories so far: \(metadata["calories"]!)      Max HR: \(metadata["maxHR"]!)" )
+            
+            let endIndex = metadata["end"]! as! Int64
+            let sessionId = metadata["sessionId"]! as! String
+            let calories = metadata["calories"]! as! Int64
+            let maxHR = metadata["maxHR"]! as! Int64
+            let avgHR = metadata["avgHR"]! as! Int64
+            let distance = metadata["distance"]! as! Int64
+            print("End: \(endIndex)   SessionId: \(sessionId)   Calories so far: \(calories)      Max HR: \(maxHR)" )
             
             let srcURL = file.fileURL
             
@@ -65,7 +72,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let context = persistentContainer.viewContext
             let motionDataFileItem = MotionDataFile(context: context)
             motionDataFileItem.fileName = fileName
+            motionDataFileItem.endIndex = endIndex
             motionDataFileItem.isUploaded = false
+            
+            let sessionRequest = NSFetchRequest<Session>(entityName: "Session")
+            sessionRequest.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [sessionId])
+            do {
+                let result = try context.fetch(sessionRequest)
+                print("Fetch request result: \(result)")
+                var workoutSession : Session
+                if result.isEmpty {
+                    print("Session does not exist. Creating new workout session with id: \(sessionId)")
+                    workoutSession = Session(context: context)
+                } else {
+                    print("Session exists. Updating session with id: \(sessionId)")
+                    workoutSession = result.first!
+                }
+                workoutSession.sessionId = sessionId
+                workoutSession.averageHeartRate = avgHR
+                workoutSession.caloriesBurned = calories
+                workoutSession.maxHeartRate = maxHR
+                workoutSession.distanceWalked = distance
+            } catch {
+                print("Error fetching existing Session: \(error)")
+            }
+            
             self.saveContext()
             print("Data saved successfully!")
             
