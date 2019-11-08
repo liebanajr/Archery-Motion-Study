@@ -4,6 +4,7 @@
         <attribute name="endIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fileName" optional="YES" attributeType="String"/>
         <attribute name="isUploaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sessionId" optional="YES" attributeType="String"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session"/>
     </entity>
     <entity name="Session" representedClassName="Session" syncable="YES" codeGenerationType="class">
@@ -11,9 +12,10 @@
         <attribute name="caloriesBurned" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="distanceWalked" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="maxHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sessionId" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Session" positionX="-63" positionY="9" width="128" height="103"/>
+        <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Session" positionX="-63" positionY="9" width="128" height="118"/>
     </elements>
 </model>

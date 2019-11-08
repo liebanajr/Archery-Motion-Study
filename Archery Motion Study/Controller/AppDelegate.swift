@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         do{
             print("File transfer finished successfully")
+            let metadata = file.metadata!
+            print("End: \(metadata["end"]!)   SessionId: \(metadata["sessionId"]!)   Calories so far: \(metadata["calories"]!)      Max HR: \(metadata["maxHR"]!)" )
             
             let srcURL = file.fileURL
             

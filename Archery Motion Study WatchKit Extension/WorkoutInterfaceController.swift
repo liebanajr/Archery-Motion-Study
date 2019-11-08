@@ -38,11 +38,10 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     let csvTextHeader = "Timestamp;Accelerometer X;Accelerometer Y;Accelerometer Z;Gyroscope X;Gyroscope Y;Gyroscope Z\n"
     var csvText = ""
     
-    var fileReadyForTransfer = URL(fileURLWithPath: "")
+    var fileReadyForTransfer : URL?
+    var workoutInfo : WorkoutSessionDetails?
     
     let sampleInterval = 1.0/20.0
-    
-    var endCounter = 1
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -55,7 +54,16 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
         
+        resetData()
         startWorkout()
+        
+//        Create a session identifier to group ends
+        let formatter = DateFormatter()
+        let timeZone = TimeZone(abbreviation: "UTC+2")
+        formatter.timeZone = .some(timeZone!)
+        formatter.dateFormat = "ddMMyy'T'HHmmss"
+        let date = formatter.string(from: Date())
+        workoutInfo = WorkoutSessionDetails(sessionId: date)
                 
         // Configure interface objects here.
     }
@@ -68,6 +76,8 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        endWorkout()
+        
     }
     
     @IBAction func addButtonPressed() {
@@ -75,16 +85,16 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         saveDataLocally(dataString: csvText)
         sendDataToiPhone()
         resetData()
-        endCounter += 1
-        endLabel.setText("\(endCounter)")
+        workoutInfo!.endCounter += 1
+        endLabel.setText("\(workoutInfo!.endCounter)")
         
     }
     
     @IBAction func endButtonPressed() {
         
-        endWorkout()
         saveDataLocally(dataString: csvText)
         sendDataToiPhone()
+        endWorkout()
         resetData()
         self.dismiss()
         
@@ -171,7 +181,7 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
             }
             self.builder.finishWorkout { (workout, error) in
                 if error != nil {
-                    print("Error finishing workout: \(error)")
+                    print("Error finishing workout: \(error!)")
                 }
             }
         }
@@ -220,7 +230,7 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     func resetData() {
         print("Resetting data...")
         csvText = csvTextHeader
-        fileReadyForTransfer = URL(fileURLWithPath: "")
+        fileReadyForTransfer = nil
     }
     
     func saveDataLocally(dataString: String){
@@ -230,8 +240,8 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         formatter.timeZone = .some(timeZone!)
         formatter.dateFormat = "ddMMyy'T'HHmmss"
         let date = formatter.string(from: Date())
-        let category = defaults.string(forKey: "Category")!
-        let hand = defaults.string(forKey: "Hand")! + "Hand"
+        let category = defaults.string(forKey: "Category") ?? "Recurve"
+        let hand = (defaults.string(forKey: "Hand") ?? "Bow") + "Hand"
         
         let fileName = "\(category)_\(hand)_\(date).csv"
         
@@ -249,8 +259,11 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     
     func sendDataToiPhone(){
         if session.activationState == .activated {
-            print("Sending \(fileReadyForTransfer.absoluteString) to iPhone...")
-            session.transferFile(fileReadyForTransfer, metadata: nil)
+            if let file = fileReadyForTransfer {
+                print("Sending \(file.absoluteString) to iPhone...")
+                let dictionary : [String : Any] = ["end" : workoutInfo!.endCounter , "sessionId" : workoutInfo!.sessionId , "calories" : workoutInfo!.cumulativeCaloriesBurned , "avgHR" : workoutInfo!.averageHeartRate , "maxHR" : workoutInfo!.maxHeartRate , "distance" : workoutInfo!.cumulativeDistance]
+                session.transferFile(file, metadata: dictionary)
+            }
             
         } else {
             print("Unable to transfer files because WC Session is inactive")
@@ -297,13 +310,15 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     func updateLabelForQuantityType(_ quantityType: HKQuantityType, _ statistics: HKStatistics){
                 
         switch quantityType {
-//        case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
-//            let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.meter()))
+        case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
+            let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.meter()))
+            workoutInfo!.cumulativeDistance = value
 //            distanceLabel.setText("\(value)")
-//            print("Updating distance label with: \(value)")
-//            return
+            print("Updating distance label with: \(value)")
+            return
         case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
             let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.kilocalorie()))
+            workoutInfo!.cumulativeCaloriesBurned = value
             calorieLabel.setText("\(value)")
             print("Updating calorie label with: \(value)")
             return
@@ -311,6 +326,12 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
             let value = Int(statistics.mostRecentQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
             heartRateLabel.setText("\(value)")
             print("Updating heart rate label with: \(value)")
+            
+            let maxValue = Int(statistics.maximumQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
+            let avgValue = Int(statistics.averageQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
+            workoutInfo!.maxHeartRate = maxValue
+            workoutInfo!.averageHeartRate = avgValue
+            
             return
         default:
             return

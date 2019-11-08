@@ -16,6 +16,7 @@
                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
+                                <segue destination="hOH-hO-zEw" kind="modal" id="baQ-dc-uUp"/>
                             </connections>
                         </button>
                     </items>
