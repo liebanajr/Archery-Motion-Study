@@ -19,6 +19,7 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     @IBOutlet weak var timer: WKInterfaceTimer!
     @IBOutlet weak var calorieLabel: WKInterfaceLabel!
     @IBOutlet weak var heartRateLabel: WKInterfaceLabel!
+    @IBOutlet weak var endLabel: WKInterfaceLabel!
     
     
     let motionManager = CMMotionManager()
@@ -40,6 +41,8 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     var fileReadyForTransfer = URL(fileURLWithPath: "")
     
     let sampleInterval = 1.0/20.0
+    
+    var endCounter = 1
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -72,6 +75,8 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         saveDataLocally(dataString: csvText)
         sendDataToiPhone()
         resetData()
+        endCounter += 1
+        endLabel.setText("\(endCounter)")
         
     }
     
