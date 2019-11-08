@@ -106,6 +106,11 @@ class startViewController: WKInterfaceController {
     @IBAction func deleteButtonPressed() {
         self.deleteAllLocalData()
     }
+    @IBAction func settingsButtonPressed() {
+        
+        presentController(withName: "settingsInterfaceController", context: self)
+        
+    }
     
     func deleteAllLocalData(){
         do {

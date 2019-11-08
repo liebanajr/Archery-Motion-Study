@@ -16,7 +16,6 @@
                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
-                                <segue destination="hOH-hO-zEw" kind="modal" identifier="goToWorkout" id="1d1-eJ-PRK"/>
                             </connections>
                         </button>
                     </items>
@@ -27,15 +26,19 @@
                                     <action selector="deleteButtonPressed" destination="AgC-eL-Hgc" id="5TH-3f-ave"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Settings" icon="more" id="7fY-c5-Lc0">
+                                <connections>
+                                    <action selector="settingsButtonPressed" destination="AgC-eL-Hgc" id="6U1-1C-SL5"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
                         <outlet property="startButton" destination="EIQ-pv-aqC" id="ah1-EH-Uv5"/>
-                        <segue destination="WGJ-J6-1YK" kind="relationship" relationship="nextPage" id="yGy-6n-FWE"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-110" y="31"/>
+            <point key="canvasLocation" x="-127" y="31"/>
         </scene>
         <!--settingsInterfaceController-->
         <scene sceneID="TN5-Fa-5g1">
@@ -44,18 +47,28 @@
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" id="u24-8e-bTc">
                             <items>
-                                <label alignment="center" text="Modalidad" id="ks5-NL-C3Q"/>
-                                <picker width="1" height="50" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="EKq-yJ-H25">
+                                <label alignment="center" text="Category" id="ks5-NL-C3Q">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <picker width="1" height="30" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="EKq-yJ-H25">
                                     <connections>
                                         <action selector="categoryPickerAction:" destination="WGJ-J6-1YK" id="F4O-O5-S0g"/>
                                     </connections>
                                 </picker>
-                                <label alignment="center" text="Mano del watch" id="lnv-Ft-h9g"/>
-                                <picker width="1" height="50" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="6di-NG-gR4">
+                                <label alignment="center" text="Watch location" id="lnv-Ft-h9g">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <picker width="1" height="30" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="6di-NG-gR4">
                                     <connections>
                                         <action selector="handPickerAction:" destination="WGJ-J6-1YK" id="gVP-q5-XCm"/>
                                     </connections>
                                 </picker>
+                                <button width="1" alignment="left" verticalAlignment="bottom" title="Done" id="3Z8-aE-rcF">
+                                    <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="doneButtonPressed" destination="WGJ-J6-1YK" id="WJw-25-HlM"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
@@ -65,7 +78,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="177" y="31"/>
+            <point key="canvasLocation" x="176" y="31"/>
         </scene>
         <!--Workout Interface Controller-->
         <scene sceneID="uIj-yk-tAT">
@@ -146,7 +159,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="176.10256410256412" y="380.97435897435901"/>
+            <point key="canvasLocation" x="-127" y="371"/>
         </scene>
         <!--Interface Controller-->
         <scene sceneID="dMJ-rk-8H3">
@@ -157,7 +170,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="444" y="382"/>
+            <point key="canvasLocation" x="175" y="371"/>
         </scene>
     </scenes>
     <resources>

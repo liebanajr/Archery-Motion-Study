@@ -65,6 +65,11 @@ class settingsInterfaceController: WKInterfaceController {
         print("Setting user defaults: [Hand : \(handPickerItems[value].title!)]")
         
     }
+    @IBAction func doneButtonPressed() {
+        
+        self.dismiss()
+        
+    }
     
 
 }

@@ -231,7 +231,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7"/>
+                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="cXa-7J-XkD">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="MCc-n4-9dT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="accXSwitch" destination="BXB-Ul-VAE" id="6ej-hM-kCF"/>
                         <outlet property="accYSwitch" destination="k3h-R1-mqR" id="LUJ-rY-uhz"/>
@@ -310,6 +316,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oYc-GF-KSw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9am-us-D8m">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
