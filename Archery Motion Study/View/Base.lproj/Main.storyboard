@@ -62,8 +62,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Datos" id="qYI-XM-AqK">
-                        <leftBarButtonItems>
+                    <navigationItem key="navigationItem" title="Ends" id="qYI-XM-AqK">
+                        <rightBarButtonItems>
                             <barButtonItem title="Edit" id="5fj-4p-fXo">
                                 <connections>
                                     <action selector="editButtonPressed:" destination="IQo-nj-Pki" id="p6w-nw-BQx"/>
@@ -75,9 +75,8 @@
                                     <action selector="deleteButtonPressed:" destination="IQo-nj-Pki" id="YTg-nS-Rpj"/>
                                 </connections>
                             </barButtonItem>
-                        </leftBarButtonItems>
+                        </rightBarButtonItems>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="fpb-5x-fJQ" id="vqG-At-cWQ"/>
                         <outlet property="editButton" destination="5fj-4p-fXo" id="25L-E2-Tri"/>
@@ -85,9 +84,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JU-rR-6lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192.753623188406" y="100.44642857142857"/>
+            <point key="canvasLocation" x="2564" y="153"/>
         </scene>
-        <!--Gráfica-->
+        <!--Graph-->
         <scene sceneID="csd-eq-bwk">
             <objects>
                 <viewController id="FtX-gL-NzW" customClass="ChartViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
@@ -202,10 +201,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q80-Ud-cBO">
-                                <rect key="frame" x="0.0" y="394" width="414" height="370"/>
+                                <rect key="frame" x="0.0" y="394" width="414" height="419"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-0I-d4x" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="370"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
                                         <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -231,7 +230,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gráfica" id="6eC-49-tZ7">
+                    <navigationItem key="navigationItem" title="Graph" id="6eC-49-tZ7">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="cXa-7J-XkD">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="MCc-n4-9dT"/>
@@ -250,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnb-k8-aD6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011.594202898551" y="103.79464285714285"/>
+            <point key="canvasLocation" x="3454" y="153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1CG-KW-zxD">
@@ -264,12 +263,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IQo-nj-Pki" kind="relationship" relationship="rootViewController" id="6aH-dp-nAL"/>
+                        <segue destination="Oyk-Ou-ZcP" kind="relationship" relationship="rootViewController" id="alq-Zl-kMS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKN-eq-hEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284.05797101449275" y="100.44642857142857"/>
+            <point key="canvasLocation" x="322" y="153"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="aRI-Id-J8P">
@@ -328,6 +327,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkq-4x-iRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1186" y="-276"/>
+        </scene>
+        <!--Training Sessions-->
+        <scene sceneID="oQv-P3-m8z">
+            <objects>
+                <tableViewController id="Oyk-Ou-ZcP" customClass="WorkoutSessionsViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pwJ-TT-cff">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Oyk-Ou-ZcP" id="MhX-E7-als"/>
+                            <outlet property="delegate" destination="Oyk-Ou-ZcP" id="Sm8-z1-oF4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Training Sessions" id="lcf-mS-ftF"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="fN0-fI-hgy">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="IQo-nj-Pki" kind="show" identifier="goToEnds" id="qay-U8-EeL"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gu-ek-Uuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1427.536231884058" y="152.67857142857142"/>
         </scene>
     </scenes>
     <resources>

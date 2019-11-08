@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let motionDataFileItem = MotionDataFile(context: context)
             motionDataFileItem.fileName = fileName
             motionDataFileItem.endIndex = endIndex
+            motionDataFileItem.sessionId = sessionId
             motionDataFileItem.isUploaded = false
             
             let sessionRequest = NSFetchRequest<Session>(entityName: "Session")

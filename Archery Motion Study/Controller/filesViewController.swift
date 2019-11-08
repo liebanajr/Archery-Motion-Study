@@ -21,6 +21,7 @@ class filesViewController: UITableViewController{
     var filesArray : [MotionDataFile] = []
     
     var exportedFileName = ""
+    var importedSessionId : String?
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
@@ -58,7 +59,7 @@ class filesViewController: UITableViewController{
         }
         
         let item = filesArray[indexPath.row]
-        cell.fileNameLabel.text = item.fileName
+        cell.fileNameLabel.text = "End \(item.endIndex)"
         cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
         
         return cell
@@ -74,6 +75,7 @@ class filesViewController: UITableViewController{
                 self.deleteItems(itemPath: items)
             }
         }
+//        REMOVE FROM FINAL RELEASE
         let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
             self.deleteItems(itemPath: nil)
         }
@@ -135,9 +137,10 @@ class filesViewController: UITableViewController{
             filesArray.removeAll(keepingCapacity: false)
 
             let request : NSFetchRequest<MotionDataFile> = MotionDataFile.fetchRequest()
+            request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [importedSessionId!])
             filesArray = try context.fetch(request)
             
-            print("Updated table view with data:")
+            print("Updated table view with data from session \(importedSessionId!): ")
             for item in filesArray{
                 print("\(item.fileName!) isUploaded: \(item.isUploaded)")
             }

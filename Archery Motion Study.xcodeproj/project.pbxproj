@@ -34,6 +34,9 @@
 		D966A64F2371FD8F00EB2141 /* infoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A64E2371FD8F00EB2141 /* infoViewController.swift */; };
 		D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966A651237204DD00EB2141 /* HealthKit.framework */; };
 		D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */; };
+		D98422C52375E482003130E7 /* WorkoutSessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */; };
+		D98422C82375EDE9003130E7 /* WorkoutSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */; };
+		D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +125,9 @@
 		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
 		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
+		D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionsViewController.swift; sourceTree = "<group>"; };
+		D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionCell.swift; sourceTree = "<group>"; };
+		D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +249,8 @@
 				8A37D2B6232BB9450065CE08 /* LaunchScreen.storyboard */,
 				8A37D2B1232BB9440065CE08 /* Main.storyboard */,
 				8AC060FD233275D600F40881 /* FileItemViewCell.swift */,
+				D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */,
+				D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				8ADC42C623312408005B079F /* ChartViewController.swift */,
 				8AA589EB232F125A007879E0 /* SpinnerViewController.swift */,
 				D966A64E2371FD8F00EB2141 /* infoViewController.swift */,
+				D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -384,6 +393,7 @@
 				8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */,
 				8A37D2B5232BB9450065CE08 /* Assets.xcassets in Resources */,
 				8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */,
+				D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,8 +509,10 @@
 			files = (
 				8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */,
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
+				D98422C82375EDE9003130E7 /* WorkoutSessionCell.swift in Sources */,
 				D966A64F2371FD8F00EB2141 /* infoViewController.swift in Sources */,
 				8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */,
+				D98422C52375E482003130E7 /* WorkoutSessionsViewController.swift in Sources */,
 				8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */,
 				8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */,
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
