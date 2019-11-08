@@ -30,6 +30,9 @@
 		8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC060FD233275D600F40881 /* FileItemViewCell.swift */; };
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
 		8ADC42C723312408005B079F /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC42C623312408005B079F /* ChartViewController.swift */; };
+		D966A64F2371FD8F00EB2141 /* infoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A64E2371FD8F00EB2141 /* infoViewController.swift */; };
+		D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966A651237204DD00EB2141 /* HealthKit.framework */; };
+		D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +116,10 @@
 		8ADC42C623312408005B079F /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		D966A64E2371FD8F00EB2141 /* infoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoViewController.swift; sourceTree = "<group>"; };
+		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
+		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */,
+				D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +155,7 @@
 		4596ABD710EFABDA1BD012FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D966A651237204DD00EB2141 /* HealthKit.framework */,
 				8A7DB34923302C5700781F0D /* HealthKit.framework */,
 				7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */,
 				7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */,
@@ -180,6 +189,7 @@
 		8A37D2AA232BB9440065CE08 /* Archery Motion Study */ = {
 			isa = PBXGroup;
 			children = (
+				D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */,
 				8A6A41F3232ED67300207CA6 /* Controller */,
 				8A6A41F2232ED66B00207CA6 /* View */,
 				8A6A41F1232ED65A00207CA6 /* Model */,
@@ -209,6 +219,7 @@
 				8A37D2D4232BB9470065CE08 /* Assets.xcassets */,
 				8A37D2D6232BB9470065CE08 /* Info.plist */,
 				8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */,
+				D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */,
 			);
 			path = "Archery Motion Study WatchKit Extension";
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 				8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */,
 				8ADC42C623312408005B079F /* ChartViewController.swift */,
 				8AA589EB232F125A007879E0 /* SpinnerViewController.swift */,
+				D966A64E2371FD8F00EB2141 /* infoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -484,6 +496,7 @@
 			files = (
 				8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */,
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
+				D966A64F2371FD8F00EB2141 /* infoViewController.swift in Sources */,
 				8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */,
 				8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */,
 				8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */,
@@ -500,6 +513,7 @@
 			files = (
 				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
 				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
+				D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */,
 				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,6 +768,7 @@
 			baseConfigurationReference = 165F47E5FB7D5B1D90DB9A28 /* Pods-Archery Motion Study.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study/Archery Motion StudyDebug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
