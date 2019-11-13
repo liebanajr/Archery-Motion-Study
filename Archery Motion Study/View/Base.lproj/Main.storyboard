@@ -205,7 +205,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-0I-d4x" customClass="LineChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
-                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -218,7 +218,7 @@
                                 <viewLayoutGuide key="safeArea" id="PyD-oJ-LvK"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="bottom" secondItem="338-eY-cl7" secondAttribute="bottom" id="6bD-ih-S6n"/>
                             <constraint firstItem="q80-Ud-cBO" firstAttribute="top" secondItem="wRL-xn-Udg" secondAttribute="bottom" constant="40" id="EKj-BU-1BT"/>
@@ -251,11 +251,11 @@
             </objects>
             <point key="canvasLocation" x="3454" y="153"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Recorded Sessions-->
         <scene sceneID="1CG-KW-zxD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CgT-oE-lM4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="KVD-yP-kEs"/>
+                    <tabBarItem key="tabBarItem" title="Recorded Sessions" selectedImage="book.fill" catalog="system" id="KVD-yP-kEs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kim-8f-jE8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="322" y="153"/>
         </scene>
-        <!--Info View Controller-->
+        <!--Instructions-->
         <scene sceneID="aRI-Id-J8P">
             <objects>
                 <viewController id="EnI-nu-Si3" customClass="infoViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +303,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jWq-K8-m91"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="xgP-Y1-319"/>
+                    <tabBarItem key="tabBarItem" title="Instructions" selectedImage="info.circle.fill" catalog="system" id="xgP-Y1-319"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EtT-61-WeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,7 +332,7 @@
         <scene sceneID="oQv-P3-m8z">
             <objects>
                 <tableViewController id="Oyk-Ou-ZcP" customClass="WorkoutSessionsViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pwJ-TT-cff">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pwJ-TT-cff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -356,6 +356,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
+        <image name="info.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

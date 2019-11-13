@@ -23,10 +23,11 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Registering cell")
         tableView.register(UINib(nibName: "WorkoutSessionCell", bundle: nil), forCellReuseIdentifier: "sessionCell")
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadTableWithNewData), name: Notification.Name("NewDataAvailable"), object: nil)
-        
+        print("Done registering cell")
         documentDir = paths.firstObject as! String + "/MotionData"
         
         fetchAvailableSessions()
@@ -36,7 +37,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     }
     
     @objc func fetchAvailableSessions(){
-        
+        print("Fetching data from model")
         let request = NSFetchRequest<Session>(entityName: "Session")
         do {
             let result = try context.fetch(request)
@@ -47,6 +48,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         } catch {
             print("Error fetching sessions: \(error)")
         }
+        print("Done fetching data from model")
         if self.refreshControl!.isRefreshing {
             self.tableView.reloadData()
             self.refreshControl!.endRefreshing()
@@ -61,9 +63,33 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let session = availableSessions![indexPath.row]
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = K.dateFormat
+        let formattedDate = formatter.date(from: session.sessionId!)
+        formatter.locale = .current
+        formatter.dateFormat = "MMMM d, yyy HH:mm"
+        let dateString = formatter.string(from: formattedDate!)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+        cell.selectionStyle = .none
         cell.delegate = self
         cell.currentCellIndex = indexPath
+        cell.titleLabel.text = dateString
+        cell.avgHRLabel.text = "\(session.averageHeartRate) bpm \(NSLocalizedString("average", comment: ""))"
+        cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
+        do{
+            let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
+            request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
+            let result = try context.fetch(request)
+            let endsCount = result.count
+            
+            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: ""))"
+        } catch {
+            print("Error fetching ends count: \(error)")
+        }
         return cell
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,7 +98,8 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        exportedSessionId = availableSessions![indexPath.row].sessionId
+        let session = availableSessions![indexPath.row]
+        exportedSessionId = session.sessionId
         performSegue(withIdentifier: "goToEnds", sender: self)
         exportedSessionId = nil
         

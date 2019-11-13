@@ -37,6 +37,12 @@ class filesViewController: UITableViewController{
         documentDir = paths.firstObject as! String + "/MotionData"
         print("Motion data directory: \(documentDir)")
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = K.dateFormat
+        let date = formatter.date(from: importedSessionId!)!
+        formatter.dateFormat =  NSLocalizedString("filesTitleDateFormat", comment: "")
+        self.navigationItem.title = formatter.string(from: date)
+        
         uploadFiles()
         
         updateTableWithDirectoryData()
@@ -59,7 +65,7 @@ class filesViewController: UITableViewController{
         }
         
         let item = filesArray[indexPath.row]
-        cell.fileNameLabel.text = "End \(item.endIndex)"
+        cell.fileNameLabel.text = NSLocalizedString("Analysis end", comment: "") + " \(item.endIndex)"
         cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
         
         return cell

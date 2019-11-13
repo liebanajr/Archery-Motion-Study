@@ -50,14 +50,16 @@ class ChartViewController: UIViewController {
         
         desiredDataSets = []
         
-        averageManager = SampleAverageManager(nSamples: 10, filterLevel: 4)
+        averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
         
         chtChart.dragXEnabled = true
-        chtChart.dragYEnabled = false
+        chtChart.dragYEnabled = true
         chtChart.setScaleEnabled(true)
         chtChart.pinchZoomEnabled = true
         chtChart.drawMarkers = false
         chtChart.dragDecelerationEnabled = false
+        chtChart.noDataTextColor = .label
+        chtChart.noDataText = ""
     }
     
     func readDataFromCSV(fileName: String) -> [[String]]{
@@ -146,8 +148,11 @@ class ChartViewController: UIViewController {
             
             chtChart.data = data
             chtChart.legend.enabled = false
-            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
-            chtChart.animate(xAxisDuration: 2.5)
+            chtChart.xAxis.labelTextColor = .label
+            chtChart.leftAxis.labelTextColor = .label
+            chtChart.rightAxis.labelTextColor = .label
+//            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
+            chtChart.animate(xAxisDuration: 1.3)
             
         } else {
             chtChart.data = nil
