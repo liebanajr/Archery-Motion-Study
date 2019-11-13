@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Archery Motion Study
+
+  Created by Juan I Rodriguez on 13/11/2019.
+  Copyright © 2019 liebanajr. All rights reserved.
+*/
+
+"Analysis end" = "Analysis end";
+"filesTitleDateFormat" = "MM-dd-yy, HH:mm";
+"cellTitleDateFormat" = "MMMM d, yyyy HH:mm";
+"average" = "average";
+"Ends" = "ends";
+"Delete data" = "Delete data";
+"deleteDataMessage" = "Please, before removing the data, make sure it's synced and a blue cloud icon appears next to each end";
+"Delete selected" = "Delete selected";
+"Cancel" = "Cancel";
+"Edit" = "Edit";
+"Done" = "Done";

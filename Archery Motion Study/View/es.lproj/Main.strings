@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Ratio de giro eje Z"; ObjectID = "3Ho-VN-Zu9"; */
+"3Ho-VN-Zu9.text" = "Rotación eje Z";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "5fj-4p-fXo"; */
+"5fj-4p-fXo.title" = "Editar";
+
+/* Class = "UINavigationItem"; title = "Graph"; ObjectID = "6eC-49-tZ7"; */
+"6eC-49-tZ7.title" = "Gráfica";
+
+/* Class = "UILabel"; text = "Acelereación eje Y"; ObjectID = "Awe-Uj-UwZ"; */
+"Awe-Uj-UwZ.text" = "Aceleración eje Y";
+
+/* Class = "UIButton"; normalTitle = "Authorize Healthkit"; ObjectID = "DgO-Ml-7be"; */
+"DgO-Ml-7be.normalTitle" = "Autorizar Healthkit";
+
+/* Class = "UITableViewController"; title = "Datos Guardados"; ObjectID = "IQo-nj-Pki"; */
+"IQo-nj-Pki.title" = "Datos Guardados";
+
+/* Class = "UITabBarItem"; title = "Recorded Sessions"; ObjectID = "KVD-yP-kEs"; */
+"KVD-yP-kEs.title" = "Entrenamientos";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "LXl-NH-fsP"; */
+"LXl-NH-fsP.text" = "Text";
+
+/* Class = "UILabel"; text = "Acelereación eje Z"; ObjectID = "Off-Dn-0lg"; */
+"Off-Dn-0lg.text" = "Aceleración eje Z";
+
+/* Class = "UILabel"; text = "Acelereación eje X"; ObjectID = "hRx-Gi-s9f"; */
+"hRx-Gi-s9f.text" = "Aceleración eje X";
+
+/* Class = "UILabel"; text = "Ratio de giro eje Y"; ObjectID = "ixt-f0-hGf"; */
+"ixt-f0-hGf.text" = "Rotación eje Y";
+
+/* Class = "UINavigationItem"; title = "Training Sessions"; ObjectID = "lcf-mS-ftF"; */
+"lcf-mS-ftF.title" = "Entrenamientos";
+
+/* Class = "UINavigationItem"; title = "Ends"; ObjectID = "qYI-XM-AqK"; */
+"qYI-XM-AqK.title" = "Ends";
+
+/* Class = "UILabel"; text = "Ratio de giro eje X"; ObjectID = "rOv-fY-AfM"; */
+"rOv-fY-AfM.text" = "Rotación eje X";
+
+/* Class = "UITabBarItem"; title = "Instructions"; ObjectID = "xgP-Y1-319"; */
+"xgP-Y1-319.title" = "Instrucciones";

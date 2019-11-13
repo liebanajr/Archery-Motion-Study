@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch42"/>
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
@@ -106,7 +105,7 @@
                                         </group>
                                         <group width="1" alignment="left" id="hbf-w2-MjH">
                                             <items>
-                                                <label alignment="left" verticalAlignment="center" text="0" id="oMz-dk-Vls">
+                                                <label alignment="left" verticalAlignment="center" text="---" id="oMz-dk-Vls">
                                                     <fontDescription key="font" type="system" pointSize="22"/>
                                                 </label>
                                                 <label alignment="left" verticalAlignment="center" text=" kCal" id="mkw-H6-Jty">
@@ -119,7 +118,7 @@
                                         </group>
                                         <group width="1" alignment="left" id="W1e-HZ-Eh1">
                                             <items>
-                                                <label alignment="left" verticalAlignment="center" text="0" id="yFY-EC-Lfe">
+                                                <label alignment="left" verticalAlignment="center" text="---" id="yFY-EC-Lfe">
                                                     <fontDescription key="font" type="system" pointSize="22"/>
                                                 </label>
                                                 <label alignment="left" verticalAlignment="center" text=" bpm" id="vnX-LW-HQR">

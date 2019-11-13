@@ -1,0 +1,36 @@
+
+/* Class = "WKInterfaceButton"; title = "Done"; ObjectID = "3Z8-aE-rcF"; */
+"3Z8-aE-rcF.title" = "Done";
+
+/* Class = "WKInterfaceMenuItem"; title = "Delete all"; ObjectID = "4iP-I0-CJq"; */
+"4iP-I0-CJq.title" = "Delete all";
+
+/* Class = "WKInterfaceMenuItem"; title = "Settings"; ObjectID = "7fY-c5-Lc0"; */
+"7fY-c5-Lc0.title" = "Settings";
+
+/* Class = "WKInterfaceLabel"; text = "End "; ObjectID = "TP1-hu-ctz"; */
+"TP1-hu-ctz.text" = "End ";
+
+/* Class = "WKInterfaceController"; title = "Ajustes"; ObjectID = "WGJ-J6-1YK"; */
+"WGJ-J6-1YK.title" = "Ajustes";
+
+/* Class = "WKInterfaceLabel"; text = "1"; ObjectID = "eQ9-A8-vbg"; */
+"eQ9-A8-vbg.text" = "1";
+
+/* Class = "WKInterfaceLabel"; text = "Category"; ObjectID = "ks5-NL-C3Q"; */
+"ks5-NL-C3Q.text" = "Category";
+
+/* Class = "WKInterfaceLabel"; text = "Watch location"; ObjectID = "lnv-Ft-h9g"; */
+"lnv-Ft-h9g.text" = "Watch location";
+
+/* Class = "WKInterfaceLabel"; text = " kCal"; ObjectID = "mkw-H6-Jty"; */
+"mkw-H6-Jty.text" = " kCal";
+
+/* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "oMz-dk-Vls"; */
+"oMz-dk-Vls.text" = "0";
+
+/* Class = "WKInterfaceLabel"; text = " bpm"; ObjectID = "vnX-LW-HQR"; */
+"vnX-LW-HQR.text" = " bpm";
+
+/* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "yFY-EC-Lfe"; */
+"yFY-EC-Lfe.text" = "0";

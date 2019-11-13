@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     let fileManager = FileManager()
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
-    var documentDir :String = ""
+    var documentDir : String!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
 //        Set path for storing motion data
-        documentDir = paths.firstObject as! String + "/MotionData"
+        documentDir = paths.firstObject as! String + K.motionDataFolder
 //        Set WCSession
         if WCSession.isSupported() {
             session.delegate = self

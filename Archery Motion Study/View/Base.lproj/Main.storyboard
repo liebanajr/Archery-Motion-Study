@@ -103,7 +103,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="wLM-ZE-Fm0">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acelereación eje X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-Gi-s9f">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X axis acceleration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-Gi-s9f">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -118,7 +118,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="9QE-3o-0id">
                                                 <rect key="frame" x="0.0" y="39" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acelereación eje Y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awe-Uj-UwZ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Y axis acceleration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awe-Uj-UwZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -133,7 +133,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="nV1-Xh-G62">
                                                 <rect key="frame" x="0.0" y="78" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acelereación eje Z" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-Dn-0lg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z axis acceleration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-Dn-0lg">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -148,7 +148,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="Zwc-et-ZzM">
                                                 <rect key="frame" x="0.0" y="117" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ratio de giro eje X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOv-fY-AfM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X axis rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOv-fY-AfM">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -163,7 +163,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="HQT-tm-goC">
                                                 <rect key="frame" x="0.0" y="156" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ratio de giro eje Y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-f0-hGf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Y axis rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-f0-hGf">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -178,7 +178,7 @@
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="D4q-nu-EmP">
                                                 <rect key="frame" x="0.0" y="195" width="374" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ratio de giro eje Z" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-VN-Zu9">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z axis rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-VN-Zu9">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -251,11 +251,11 @@
             </objects>
             <point key="canvasLocation" x="3454" y="153"/>
         </scene>
-        <!--Recorded Sessions-->
+        <!--Sessions-->
         <scene sceneID="1CG-KW-zxD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CgT-oE-lM4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recorded Sessions" selectedImage="book.fill" catalog="system" id="KVD-yP-kEs"/>
+                    <tabBarItem key="tabBarItem" title="Sessions" image="book.fill" catalog="system" selectedImage="book.fill" id="KVD-yP-kEs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kim-8f-jE8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -303,7 +303,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jWq-K8-m91"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Instructions" selectedImage="info.circle.fill" catalog="system" id="xgP-Y1-319"/>
+                    <tabBarItem key="tabBarItem" title="Instructions" image="info.circle.fill" catalog="system" selectedImage="info.circle.fill" id="xgP-Y1-319"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EtT-61-WeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

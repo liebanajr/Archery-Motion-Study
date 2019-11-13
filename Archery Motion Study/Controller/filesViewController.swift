@@ -24,7 +24,7 @@ class filesViewController: UITableViewController{
     var importedSessionId : String?
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
-    var documentDir :String = ""
+    var documentDir : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,8 @@ class filesViewController: UITableViewController{
         nc.addObserver(self, selector: #selector(updateTableWithDirectoryData), name: Notification.Name("NewDataAvailable"), object: nil)
         
         
-        documentDir = paths.firstObject as! String + "/MotionData"
-        print("Motion data directory: \(documentDir)")
+        documentDir = paths.firstObject as! String + K.motionDataFolder
+        print("Motion data directory: \(documentDir!)")
         
         let formatter = DateFormatter()
         formatter.dateFormat = K.dateFormat
@@ -75,8 +75,8 @@ class filesViewController: UITableViewController{
 //    Methods for deleting items
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Eliminar datos", message: "¿Seguro que deseas eliminar los datos seleccionados de tu dispositivo?\nPor favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul en la fila correspondiente", preferredStyle: .actionSheet)
-        let actionDelete = UIAlertAction(title: "Eliminar seleccionados", style: .destructive) { (action) in
+        let alert = UIAlertController(title: NSLocalizedString("Delete data", comment: ""), message: NSLocalizedString("deleteDataMessage", comment: ""), preferredStyle: .actionSheet)
+        let actionDelete = UIAlertAction(title: NSLocalizedString("Delete selected", comment: ""), style: .destructive) { (action) in
             if let items = self.tableView.indexPathsForSelectedRows {
                 self.deleteItems(itemPath: items)
             }
@@ -87,13 +87,13 @@ class filesViewController: UITableViewController{
         }
         alert.addAction(actionDelete)
         alert.addAction(actionDeleteAll)
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: true)
     
     }
     func deleteItems(itemPath: [IndexPath]?) {
         
-        let dir = self.documentDir
+        let dir = self.documentDir!
         
         if itemPath == nil{
             do {
@@ -243,12 +243,12 @@ class filesViewController: UITableViewController{
         
         if tableView.isEditing {
             tableView.setEditing(false, animated: true)
-            editButton.title = "Edit"
+            editButton.title = NSLocalizedString("Edit", comment: "")
             editButton.style = .plain
             deleteButton.isEnabled = false
         } else {
             tableView.setEditing(true, animated: true)
-            editButton.title = "Done"
+            editButton.title = NSLocalizedString("Done", comment: "")
             editButton.style = .done
             deleteButton.isEnabled = true
         }

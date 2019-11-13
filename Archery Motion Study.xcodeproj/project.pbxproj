@@ -38,7 +38,7 @@
 		D98422C82375EDE9003130E7 /* WorkoutSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */; };
 		D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */; };
 		D9917BE5237C46960078B6A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
-		D9917BE9237C80AD0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BE8237C80AD0078B6A4 /* Localizable.strings */; };
+		D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BEE237C8E9F0078B6A4 /* Localizable.strings */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -131,7 +131,10 @@
 		D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionCell.swift; sourceTree = "<group>"; };
 		D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell.xib; sourceTree = "<group>"; };
 		D9917BE4237C46960078B6A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D9917BE8237C80AD0078B6A4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D9917BEA237C8E790078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D9917BEB237C8E7A0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
+		D9917BED237C8E9F0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9917BF0237C8F710078B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +212,7 @@
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
 				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
 				D9917BE4237C46960078B6A4 /* Constants.swift */,
-				D9917BE8237C80AD0078B6A4 /* Localizable.strings */,
+				D9917BEE237C8E9F0078B6A4 /* Localizable.strings */,
 			);
 			path = "Archery Motion Study";
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 8A37D29F232BB9440065CE08;
 			productRefGroup = 8A37D2A9232BB9440065CE08 /* Products */;
@@ -396,7 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A37D2B8232BB9450065CE08 /* LaunchScreen.storyboard in Resources */,
-				D9917BE9237C80AD0078B6A4 /* Localizable.strings in Resources */,
+				D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */,
 				8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */,
 				8A37D2B5232BB9450065CE08 /* Assets.xcassets in Resources */,
 				8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */,
@@ -562,6 +566,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A37D2B2232BB9440065CE08 /* Base */,
+				D9917BEA237C8E790078B6A4 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -578,8 +583,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A37D2C2232BB9450065CE08 /* Base */,
+				D9917BEB237C8E7A0078B6A4 /* es */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		D9917BEE237C8E9F0078B6A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9917BED237C8E9F0078B6A4 /* es */,
+				D9917BF0237C8F710078B6A4 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -589,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -649,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

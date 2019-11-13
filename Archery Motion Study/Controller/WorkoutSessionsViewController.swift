@@ -70,7 +70,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         formatter.dateFormat = K.dateFormat
         let formattedDate = formatter.date(from: session.sessionId!)
         formatter.locale = .current
-        formatter.dateFormat = "MMMM d, yyy HH:mm"
+        formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
         let dateString = formatter.string(from: formattedDate!)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell

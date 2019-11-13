@@ -72,12 +72,12 @@
                                 </subviews>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="5lK-WP-IcE">
-                                <rect key="frame" x="4" y="4" width="213" height="23"/>
+                                <rect key="frame" x="4" y="4" width="211" height="23"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cni-1D-Cjv">
-                                        <rect key="frame" x="0.0" y="0.5" width="19.5" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="17.5" height="22"/>
                                         <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="xmark.square.fill" catalog="system">
+                                        <state key="normal" image="xmark" catalog="system">
                                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -85,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 8th, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gK-ya-JqQ">
-                                        <rect key="frame" x="30.5" y="0.0" width="182.5" height="23"/>
+                                        <rect key="frame" x="28.5" y="0.0" width="182.5" height="23"/>
                                         <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,6 +143,6 @@
         <image name="flame.fill" catalog="system" width="54" height="64"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="plus.magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="xmark.square.fill" catalog="system" width="64" height="56"/>
+        <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>
