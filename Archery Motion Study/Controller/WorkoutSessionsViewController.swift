@@ -19,6 +19,10 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     var availableSessions : [Session]?
     
     var exportedSessionId : String?
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +32,9 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadTableWithNewData), name: Notification.Name("NewDataAvailable"), object: nil)
         print("Done registering cell")
-        documentDir = paths.firstObject as! String + "/MotionData"
+        documentDir = paths.firstObject as! String + K.motionDataFolder
+        
+        tableView.separatorStyle = .none
         
         fetchAvailableSessions()
         self.refreshControl?.addTarget(self, action: #selector(fetchAvailableSessions), for: .valueChanged)
@@ -93,6 +99,14 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         return cell
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if availableSessions!.count == 0 {
+            tableView.setEmptyView(title: NSLocalizedString("noDataTitle", comment: ""), message: NSLocalizedString("noDataMessage", comment: ""))
+        }
+        else {
+            tableView.restore()
+        }
+        
         return availableSessions!.count
     }
     
@@ -106,8 +120,17 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     }
     
     func deleteSelectedCell(atIndex index: IndexPath) {
-        
-        deleteSession(fromSessionObject: availableSessions![index.row])
+        let rowToDelete = index.row
+        let alert = UIAlertController(title: NSLocalizedString("deleteSessionAlertTitle", comment: ""), message: NSLocalizedString("deleteSessionAlertMessage", comment: ""), preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: NSLocalizedString("deleteSessionAction", comment: ""), style: .destructive) { (action) in
+            self.deleteSession(fromSessionObject: self.availableSessions![rowToDelete])
+        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+            return
+        }
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
         
     }
     
@@ -146,4 +169,34 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
     }
     */
 
+}
+
+extension UITableView {
+    func setEmptyView(title: String, message: String) {
+        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
+        let titleLabel = UILabel()
+        let messageLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = UIColor.label
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        messageLabel.textColor = UIColor.lightGray
+        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        emptyView.addSubview(titleLabel)
+        emptyView.addSubview(messageLabel)
+        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
+        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
+        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
+        titleLabel.text = title
+        messageLabel.text = message
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        // The only tricky part is here:
+        self.backgroundView = emptyView
+    }
+    func restore() {
+        self.backgroundView = nil
+    }
 }

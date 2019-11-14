@@ -36,6 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         return true
     }
+//    MARK: Selective autorotation
+    
+    var enableAllOrientation = false
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if (enableAllOrientation == true){
+            return UIInterfaceOrientationMask.allButUpsideDown
+        }
+        return UIInterfaceOrientationMask.portrait
+    }
     
 //    MARK: Watch Connectivity methods
     

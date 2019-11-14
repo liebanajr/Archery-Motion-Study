@@ -7,7 +7,7 @@
 */
 
 "Analysis end" = "Analysis end";
-"filesTitleDateFormat" = "MM-dd-yy, HH:mm";
+"filesTitleDateFormat" = "MMMM dd HH:mm yyyy";
 "cellTitleDateFormat" = "MMMM d, yyyy HH:mm";
 "average" = "average";
 "Ends" = "ends";
@@ -17,3 +17,8 @@
 "Cancel" = "Cancel";
 "Edit" = "Edit";
 "Done" = "Done";
+"noDataTitle"="No sessions available";
+"noDataMessage"="Add sessions by starting a workout on your apple watch";
+"deleteSessionAlertTitle" = "Delete session?";
+"deleteSessionAlertMessage" = "";
+"deleteSessionAction" = "Delete";

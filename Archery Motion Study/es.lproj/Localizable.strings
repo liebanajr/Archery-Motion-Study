@@ -7,7 +7,7 @@
 */
 
 "Analysis end" = "Análisis serie";
-"filesTitleDateFormat" = "dd-MM-yy, HH:mm";
+"filesTitleDateFormat" = "dd MMMM HH:mm yyyy";
 "cellTitleDateFormat" = "d MMMM, yyy HH:mm";
 "average" = "promedio";
 "Ends" = "series";
@@ -17,3 +17,8 @@
 "Cancel" = "Cancelar";
 "Edit" = "Editar";
 "Done" = "Hecho";
+"noDataTitle"="No hay entrenamientos disponibles";
+"noDataMessage"="Añade sesiones de entrenamiento desde tu Apple Watch";
+"deleteSessionAlertTitle" = "¿Deseas eliminar el entrenamiento?";
+"deleteSessionAlertMessage" = "";
+"deleteSessionAction" = "Eliminar";

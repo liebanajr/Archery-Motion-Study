@@ -13,6 +13,7 @@ import Accelerate
 class ChartViewController: UIViewController {
         
     @IBOutlet weak var chtChart: LineChartView!
+    @IBOutlet var chartSuperview: UIView!
     
     @IBOutlet weak var accXSwitch: UISwitch!
     @IBOutlet weak var accYSwitch: UISwitch!
@@ -27,6 +28,15 @@ class ChartViewController: UIViewController {
     var importedFileName = ""
     var timeStamp : SensorDataSet?
     var availableDataSets : [SensorDataSet]?
+    
+    @IBOutlet var fullScreenButton: UIButton!
+    @IBOutlet var chartTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var chartBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var chartTopConstraint: NSLayoutConstraint!
+    @IBOutlet var chartLeadingConstraint: NSLayoutConstraint!
+    var chartConstraints : [NSLayoutConstraint]?
+    
+    var chartIsFullScreen = false
     
     var desiredDataSets : [SensorDataSet]?
     
@@ -50,6 +60,8 @@ class ChartViewController: UIViewController {
         
         desiredDataSets = []
         
+        chartConstraints = [chartTopConstraint, chartBottomConstraint, chartLeadingConstraint, chartTrailingConstraint]
+        
         averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
         
         chtChart.dragXEnabled = true
@@ -60,6 +72,24 @@ class ChartViewController: UIViewController {
         chtChart.dragDecelerationEnabled = false
         chtChart.noDataTextColor = .label
         chtChart.noDataText = ""
+        chtChart.backgroundColor = .systemBackground
+        
+        fullScreenButton.layer.cornerRadius = fullScreenButton.frame.size.width / 5
+    }
+//    MARK: Enable rotation on view controller
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.enableAllOrientation = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.enableAllOrientation = false
+            
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     func readDataFromCSV(fileName: String) -> [[String]]{
@@ -103,8 +133,9 @@ class ChartViewController: UIViewController {
     }
     
     func updateGraph () {
-        
+        chtChart.clear()
         if !desiredDataSets!.isEmpty {
+            fullScreenButton.isHidden = false
             let data = LineChartData()
             
             
@@ -156,6 +187,7 @@ class ChartViewController: UIViewController {
             
         } else {
             chtChart.data = nil
+            fullScreenButton.isHidden = true
         }
         
     }
@@ -190,5 +222,58 @@ class ChartViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func toggleDeviceOrientation() {
+        
+        var value : Int = UIInterfaceOrientation.landscapeRight.rawValue
+        if UIApplication.shared.windows.first?.windowScene?.interfaceOrientation == .landscapeLeft || UIApplication.shared.windows.first?.windowScene?.interfaceOrientation == .landscapeRight{
+           value = UIInterfaceOrientation.portrait.rawValue
+        }
+
+        UIDevice.current.setValue(value, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
+        
+    }
+    
+    @IBAction func fullScreenButtonPressed(_ sender: Any) {
+        
+        print("Toggle full screen")
+        toggleDeviceOrientation()
+        
+        if chartIsFullScreen {
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
+            chtChart.removeFromSuperview()
+            chartSuperview.addSubview(chtChart)
+            chtChart.pinEdges(to: chartSuperview)
+            fullScreenButton.setBackgroundImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
+            chartIsFullScreen = false
+        } else {
+            self.tabBarController?.tabBar.isHidden = true
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            
+
+            chtChart.removeFromSuperview()
+            self.view.addSubview(chtChart)
+            chtChart.pinEdges(to: self.view)
+            fullScreenButton.setBackgroundImage(UIImage(systemName: "arrow.down.right.and.arrow.up.left"), for: .normal)
+            chartIsFullScreen = true
+        }
+        
+    }
+    
+
+}
+
+extension UIView {
+        
+    func pinEdges(to other: UIView) {
+        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
+        
+    }
 
 }

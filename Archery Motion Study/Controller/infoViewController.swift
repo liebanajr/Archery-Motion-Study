@@ -12,6 +12,10 @@ import HealthKitUI
 
 class infoViewController: UIViewController {
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +38,7 @@ class infoViewController: UIViewController {
         
         healthStore.requestAuthorization(toShare: types, read: types) { (success, error) in
             if !success {
-                print(error)
+                print(error!)
             } else {
                 print("HealthKit successfully authorized!")
             }
