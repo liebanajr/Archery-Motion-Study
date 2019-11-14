@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="2564" y="153"/>
         </scene>
-        <!--Graph-->
+        <!--Analysis-->
         <scene sceneID="csd-eq-bwk">
             <objects>
                 <viewController id="FtX-gL-NzW" customClass="ChartViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,7 +249,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Graph" id="6eC-49-tZ7">
+                    <navigationItem key="navigationItem" title="Analysis" id="6eC-49-tZ7">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="cXa-7J-XkD">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="MCc-n4-9dT"/>
