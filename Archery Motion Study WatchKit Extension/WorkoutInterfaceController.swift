@@ -240,8 +240,8 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         formatter.timeZone = .some(timeZone!)
         formatter.dateFormat = "ddMMyy'T'HHmmss"
         let date = formatter.string(from: Date())
-        let category = defaults.string(forKey: "Category") ?? "Recurve"
-        let hand = (defaults.string(forKey: "Hand") ?? "Bow") + "Hand"
+        let category = defaults.string(forKey: K.bowTypeKey) ?? K.categoryValues[0]
+        let hand = (defaults.string(forKey: K.handKey) ?? K.handValues[0]).replacingOccurrences(of: " ", with: "-")
         
         let fileName = "\(category)_\(hand)_\(date).csv"
         

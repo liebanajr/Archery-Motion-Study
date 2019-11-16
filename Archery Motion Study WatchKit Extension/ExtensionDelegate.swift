@@ -23,6 +23,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         for element in userInfo {
             print("Key: \(element.key)   Value: \(element.value)")
         }
+        
+        
+        
         defaults.setValuesForKeys(userInfo)
     }
     

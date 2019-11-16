@@ -19,6 +19,8 @@ struct K {
     static let handKey : String = "hand"
     static let sessionTypeKey : String = "sessionType"
     
+    static let firebaseFolders : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
+    
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
     static let sessionValues = ["Shooting", "Aborting", "Other"]

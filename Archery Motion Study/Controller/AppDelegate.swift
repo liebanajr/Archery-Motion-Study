@@ -97,6 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 if result.isEmpty {
                     print("Session does not exist. Creating new workout session with id: \(sessionId)")
                     workoutSession = Session(context: context)
+                    workoutSession.bowType = defaults.value(forKey: K.bowTypeKey) as? String
+                    workoutSession.watchLocation = defaults.value(forKey: K.handKey) as? String
+                    workoutSession.sessionType = defaults.value(forKey: K.sessionTypeKey) as? String
                 } else {
                     print("Session exists. Updating session with id: \(sessionId)")
                     workoutSession = result.first!
@@ -106,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 workoutSession.caloriesBurned = calories
                 workoutSession.maxHeartRate = maxHR
                 workoutSession.distanceWalked = distance
+                
             } catch {
                 print("Error fetching existing Session: \(error)")
             }
@@ -113,10 +117,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             self.saveContext()
             print("Data saved successfully!")
             
-            print("Attempting to store file in Firebase cloud storage")
+            let folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            print("Attempting to store \(fileName) in folder \(folderName) in Firebase cloud storage")
             let storage = Storage.storage()
             let storageRef = storage.reference()
-            let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
+            let motionDataDestination = storageRef.child(folderName + fileName)
 
             let uploadTask = motionDataDestination.putFile(from: dstURL, metadata: nil) { metadata, error in
                 if error != nil {
