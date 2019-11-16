@@ -22,3 +22,10 @@
 "deleteSessionAlertTitle" = "Delete session?";
 "deleteSessionAlertMessage" = "";
 "deleteSessionAction" = "Delete";
+"Recurve" = "Recurve";
+"Compund" = "Compound";
+"Bow Hand" = "Bow hand";
+"String Hand" = "String hand";
+"Shooting" = "Shooting";
+"Aborting" = "Aborting";
+"Other" = "Other";

@@ -72,10 +72,11 @@ class startViewController: WKInterfaceController {
     
     func userDefaultsExists () -> Bool {
         
-        if defaults.string(forKey: "Category") == nil || defaults.string(forKey: "Hand") == nil {
+        if defaults.string(forKey: K.bowTypeKey) == nil || defaults.string(forKey: K.handKey) == nil {
                     
-            defaults.set("Recurve", forKey: "Category")
-            defaults.set("Bow", forKey: "Hand")
+            defaults.set("Recurve", forKey: K.bowTypeKey)
+            defaults.set("Bow", forKey: K.handKey)
+            defaults.set("Shot", forKey: K.sessionTypeKey)
             
             let action1 = WKAlertAction.init(title: "OK", style:.default) {
                        print("Okayed nil defaults message")

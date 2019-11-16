@@ -22,3 +22,10 @@
 "deleteSessionAlertTitle" = "¿Deseas eliminar el entrenamiento?";
 "deleteSessionAlertMessage" = "";
 "deleteSessionAction" = "Eliminar";
+"Recurve" = "Recurvo";
+"Compund" = "Compuesto";
+"Bow Hand" = "Mano de arco";
+"String Hand" = "Mano de cuerda";
+"Shooting" = "Tiro normal";
+"Aborting" = "Tiro abortado";
+"Other" = "Otros";

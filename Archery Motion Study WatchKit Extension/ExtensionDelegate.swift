@@ -7,12 +7,32 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
+    
+    let defaults = UserDefaults.standard
+    let session = WCSession.default
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if activationState != .activated {
+            print("WC Session is not active: \(error!)")
+        }
+    }
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        for element in userInfo {
+            print("Key: \(element.key)   Value: \(element.value)")
+        }
+        defaults.setValuesForKeys(userInfo)
+    }
     
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.                
+        // Perform any final initialization of your application.
+        if WCSession.isSupported() {
+            session.delegate = self
+            session.activate()
+        }
     }
 
     func applicationDidBecomeActive() {

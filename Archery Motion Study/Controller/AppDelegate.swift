@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir : String!
+    
+    let defaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -140,6 +142,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             print("Error while moving transfered file: \(error)")
         }
         
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        for element in userInfo {
+            print("Key: \(element.key)   Value: \(element.value)")
+        }
+        defaults.setValuesForKeys(userInfo)
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
     }
     
     

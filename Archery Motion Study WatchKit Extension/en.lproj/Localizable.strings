@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Archery Motion Study
+
+  Created by Juan I Rodriguez on 14/11/2019.
+  Copyright © 2019 liebanajr. All rights reserved.
+*/
+
+
+"Recurve" = "Recurve";
+"Compund" = "Compound";
+"Bow Hand" = "Bow hand";
+"String Hand" = "String hand";
+"Shooting" = "Shooting";
+"Aborting" = "Aborting";
+"Other" = "Other";
+"Bow type" = "Bow type";
+"Watch location" = "Watch location";
+"Session type" = "Session type";

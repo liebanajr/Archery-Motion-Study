@@ -295,7 +295,7 @@
             </objects>
             <point key="canvasLocation" x="322" y="153"/>
         </scene>
-        <!--Instructions-->
+        <!--Info-->
         <scene sceneID="aRI-Id-J8P">
             <objects>
                 <viewController id="EnI-nu-Si3" customClass="infoViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,36 +303,162 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-Ml-7be">
-                                <rect key="frame" x="107" y="431" width="200" height="34"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPU-nc-DWL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz5-2Q-M7F" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtA-cY-dKQ">
+                                                <rect key="frame" x="20" y="8" width="374" height="191.66666666666666"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sx-Gf-Qys">
+                                                        <rect key="frame" x="10.000000000000007" y="10" width="120.66666666666669" height="40.666666666666664"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0w9-Kt-xTk">
+                                                        <rect key="frame" x="10" y="70.666666666666671" width="354" height="113.00000000000001"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="104" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-oU-TgO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="31"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Bow type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VS-pG-V9X">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="71.333333333333329" height="31"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="54l-zZ-iz8">
+                                                                        <rect key="frame" x="175.33333333333337" y="0.0" width="178.66666666666663" height="32"/>
+                                                                        <segments>
+                                                                            <segment title="Recurve   "/>
+                                                                            <segment title="Compound"/>
+                                                                        </segments>
+                                                                        <connections>
+                                                                            <action selector="bowTypeSwithed:" destination="EnI-nu-Si3" eventType="valueChanged" id="s9j-Yo-LOd"/>
+                                                                        </connections>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-IE-lhP">
+                                                                <rect key="frame" x="0.0" y="40.999999999999986" width="354" height="31"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Watch location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLK-e7-k0o">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="31"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IXE-Eg-Hm1">
+                                                                        <rect key="frame" x="174.66666666666663" y="0.0" width="179.33333333333337" height="32"/>
+                                                                        <segments>
+                                                                            <segment title="Bow hand"/>
+                                                                            <segment title="String hand"/>
+                                                                        </segments>
+                                                                        <connections>
+                                                                            <action selector="watchLocationSwitched:" destination="EnI-nu-Si3" eventType="valueChanged" id="n4x-s8-FYQ"/>
+                                                                        </connections>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="1KD-Pa-ujU">
+                                                                <rect key="frame" x="0.0" y="81.999999999999986" width="354" height="31"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Session type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-g7-ryq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="31"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-dx-bsO">
+                                                                        <rect key="frame" x="132" y="0.0" width="222" height="32"/>
+                                                                        <segments>
+                                                                            <segment title="Shooting"/>
+                                                                            <segment title="Aborting"/>
+                                                                            <segment title="Other"/>
+                                                                        </segments>
+                                                                        <connections>
+                                                                            <action selector="sessionTypeSwitched:" destination="EnI-nu-Si3" eventType="valueChanged" id="rgT-VE-iDS"/>
+                                                                        </connections>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="5Sx-Gf-Qys" firstAttribute="top" secondItem="xtA-cY-dKQ" secondAttribute="top" constant="10" id="BXr-4a-eZR"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0w9-Kt-xTk" secondAttribute="bottom" constant="8" id="QI3-24-ofz"/>
+                                                    <constraint firstItem="0w9-Kt-xTk" firstAttribute="top" secondItem="5Sx-Gf-Qys" secondAttribute="bottom" constant="20" id="UM6-Nw-8Lm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0w9-Kt-xTk" secondAttribute="trailing" constant="10" id="WQI-sN-t5R"/>
+                                                    <constraint firstItem="5Sx-Gf-Qys" firstAttribute="leading" secondItem="xtA-cY-dKQ" secondAttribute="leading" constant="10" id="uOF-Uu-n8m"/>
+                                                    <constraint firstItem="0w9-Kt-xTk" firstAttribute="leading" secondItem="xtA-cY-dKQ" secondAttribute="leading" constant="10" id="vIL-Xd-bLb"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-Ml-7be">
+                                                <rect key="frame" x="107" y="243.66666666666669" width="200" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="0hM-Oi-TOO"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="KAp-5N-zkG"/>
+                                                    <constraint firstAttribute="height" constant="34" id="puL-pd-6e8"/>
+                                                    <constraint firstAttribute="width" constant="200" id="vsC-3m-ISo"/>
+                                                </constraints>
+                                                <state key="normal" title="Authorize Healthkit"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="authorizeHealthkitButtonPressed:" destination="EnI-nu-Si3" eventType="touchUpInside" id="6uM-Fb-Hyx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <accessibility key="accessibilityConfiguration" label="content"/>
+                                        <constraints>
+                                            <constraint firstItem="DgO-Ml-7be" firstAttribute="centerX" secondItem="Fz5-2Q-M7F" secondAttribute="centerX" id="0XU-rC-SRj"/>
+                                            <constraint firstItem="DgO-Ml-7be" firstAttribute="top" secondItem="xtA-cY-dKQ" secondAttribute="bottom" constant="44" id="1uX-8N-IzJ"/>
+                                            <constraint firstItem="xtA-cY-dKQ" firstAttribute="leading" secondItem="Fz5-2Q-M7F" secondAttribute="leading" constant="20" id="5Rr-4e-aMf"/>
+                                            <constraint firstItem="xtA-cY-dKQ" firstAttribute="top" secondItem="Fz5-2Q-M7F" secondAttribute="top" constant="8" id="T1c-Bt-Fkk"/>
+                                            <constraint firstAttribute="height" constant="1500" id="TUd-bW-qvK"/>
+                                            <constraint firstAttribute="trailing" secondItem="xtA-cY-dKQ" secondAttribute="trailing" constant="20" id="oHV-eI-fy5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="0hM-Oi-TOO"/>
-                                    <constraint firstAttribute="height" constant="34" id="puL-pd-6e8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fz5-2Q-M7F" secondAttribute="trailing" id="R4u-S5-xvr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fz5-2Q-M7F" secondAttribute="bottom" id="Uyf-3W-Ye3"/>
+                                    <constraint firstItem="Fz5-2Q-M7F" firstAttribute="leading" secondItem="FPU-nc-DWL" secondAttribute="leading" id="VRg-eo-weg"/>
+                                    <constraint firstItem="Fz5-2Q-M7F" firstAttribute="top" secondItem="FPU-nc-DWL" secondAttribute="top" id="tKQ-z3-XQb"/>
                                 </constraints>
-                                <state key="normal" title="Authorize Healthkit"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="authorizeHealthkitButtonPressed:" destination="EnI-nu-Si3" eventType="touchUpInside" id="6uM-Fb-Hyx"/>
-                                </connections>
-                            </button>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YDs-Pb-vnK"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ESa-K3-imx"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="DgO-Ml-7be" firstAttribute="centerY" secondItem="dZi-K0-9WJ" secondAttribute="centerY" id="XBj-qF-Eua"/>
-                            <constraint firstItem="DgO-Ml-7be" firstAttribute="centerX" secondItem="dZi-K0-9WJ" secondAttribute="centerX" id="zwk-3y-haR"/>
+                            <constraint firstItem="FPU-nc-DWL" firstAttribute="bottom" secondItem="jWq-K8-m91" secondAttribute="bottom" id="2IU-ER-Yux"/>
+                            <constraint firstItem="Fz5-2Q-M7F" firstAttribute="width" secondItem="dZi-K0-9WJ" secondAttribute="width" id="AbE-EG-I9C"/>
+                            <constraint firstItem="FPU-nc-DWL" firstAttribute="top" secondItem="jWq-K8-m91" secondAttribute="top" id="MhW-Dl-HkP"/>
+                            <constraint firstItem="FPU-nc-DWL" firstAttribute="leading" secondItem="jWq-K8-m91" secondAttribute="leading" id="cZb-Tr-Xgf"/>
+                            <constraint firstItem="FPU-nc-DWL" firstAttribute="trailing" secondItem="jWq-K8-m91" secondAttribute="trailing" id="gpY-6p-9bN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jWq-K8-m91"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Instructions" image="info.circle.fill" catalog="system" selectedImage="info.circle.fill" id="xgP-Y1-319"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="info.circle.fill" catalog="system" selectedImage="info.circle.fill" id="Ku1-M5-vl7"/>
+                    <connections>
+                        <outlet property="bowTypeSegment" destination="54l-zZ-iz8" id="t2d-EI-sim"/>
+                        <outlet property="sessionTypeSegment" destination="IIs-dx-bsO" id="tJJ-fj-eb6"/>
+                        <outlet property="watchLocationSegment" destination="IXE-Eg-Hm1" id="bmz-jh-tH8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EtT-61-WeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282.60869565217394" y="-613.39285714285711"/>
+            <point key="canvasLocation" x="165" y="-717"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="f1G-VU-peD">
@@ -345,8 +471,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="EnI-nu-Si3" kind="relationship" relationship="viewControllers" id="ayV-uv-oPK"/>
                         <segue destination="CgT-oE-lM4" kind="relationship" relationship="viewControllers" id="AhX-wa-Qhj"/>
+                        <segue destination="EnI-nu-Si3" kind="relationship" relationship="viewControllers" id="z49-gp-a14"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkq-4x-iRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

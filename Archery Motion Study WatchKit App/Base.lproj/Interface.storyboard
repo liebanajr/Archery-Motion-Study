@@ -43,42 +43,62 @@
         <!--settingsInterfaceController-->
         <scene sceneID="TN5-Fa-5g1">
             <objects>
-                <controller identifier="settingsInterfaceController" title="Ajustes" id="WGJ-J6-1YK" userLabel="settingsInterfaceController" customClass="settingsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                <controller identifier="settingsInterfaceController" fullBounds="YES" id="WGJ-J6-1YK" userLabel="settingsInterfaceController" customClass="settingsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
-                        <group width="1" height="1" alignment="left" layout="vertical" id="u24-8e-bTc">
+                        <group width="1" alignment="left" layout="vertical" id="v5g-xo-pv8">
                             <items>
-                                <label alignment="center" text="Category" id="ks5-NL-C3Q">
-                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                                </label>
-                                <picker width="1" height="30" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="EKq-yJ-H25">
-                                    <connections>
-                                        <action selector="categoryPickerAction:" destination="WGJ-J6-1YK" id="F4O-O5-S0g"/>
-                                    </connections>
-                                </picker>
-                                <label alignment="center" text="Watch location" id="lnv-Ft-h9g">
-                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                                </label>
-                                <picker width="1" height="30" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="6di-NG-gR4">
-                                    <connections>
-                                        <action selector="handPickerAction:" destination="WGJ-J6-1YK" id="gVP-q5-XCm"/>
-                                    </connections>
-                                </picker>
-                                <button width="1" alignment="left" verticalAlignment="bottom" title="Done" id="3Z8-aE-rcF">
-                                    <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="doneButtonPressed" destination="WGJ-J6-1YK" id="WJw-25-HlM"/>
-                                    </connections>
-                                </button>
+                                <table alignment="left" id="usJ-ZV-j3f">
+                                    <items>
+                                        <tableRow identifier="navigationRow" id="5GG-Ul-Vta" customClass="NavigationRowController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                                            <group key="rootItem" width="1" alignment="left" id="RXZ-Oq-XJr">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Label" id="2Fn-nc-vVr"/>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="titleLabel" destination="2Fn-nc-vVr" id="MpO-JN-Cmu"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
                             </items>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="categoryPicker" destination="EKq-yJ-H25" id="30Y-Df-pI4"/>
-                        <outlet property="handPicker" destination="6di-NG-gR4" id="MSt-aM-acY"/>
+                        <outlet property="settingsTable" destination="usJ-ZV-j3f" id="QbN-he-Tgc"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="176" y="31"/>
+            <point key="canvasLocation" x="156" y="31"/>
+        </scene>
+        <!--defaultsInterfaceController-->
+        <scene sceneID="cOb-GJ-KqC">
+            <objects>
+                <controller identifier="defaultsInterfaceController" id="sWR-FT-cBa" customClass="DefaultsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="ZLM-sC-Zgk">
+                            <items>
+                                <tableRow identifier="simpleRow" id="asl-xx-MNr" customClass="SettingsRowController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="QEb-vX-Ldt">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="Label" id="TYL-z4-Pvi"/>
+                                            <imageView width="20" height="20" alignment="right" verticalAlignment="center" image="circle.fill" catalog="system" id="SPk-3c-bHS"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="selectedAccesory" destination="SPk-3c-bHS" id="Xg3-m9-XTb"/>
+                                        <outlet property="titleLabel" destination="TYL-z4-Pvi" id="cV0-Uv-yBm"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="defaultsTable" destination="ZLM-sC-Zgk" id="VEf-P3-gKO"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="451" y="31"/>
         </scene>
         <!--Workout Interface Controller-->
         <scene sceneID="uIj-yk-tAT">
@@ -174,6 +194,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
         <image name="flame.fill" catalog="system" width="54" height="64"/>
         <image name="heart.fill" catalog="system" width="64" height="52"/>
         <image name="play" width="512" height="512"/>
