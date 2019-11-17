@@ -116,7 +116,7 @@ class startViewController: WKInterfaceController {
     }
     @IBAction func settingsButtonPressed() {
         
-        presentController(withName: "settingsInterfaceController", context: self)
+        pushController(withName: "settingsInterfaceController", context: nil)
         
     }
     

@@ -46,7 +46,7 @@ class settingsInterfaceController: WKInterfaceController {
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         let row = settingsTable.rowController(at: rowIndex) as! NavigationRowController
         let destination = row.destinationKey
-        presentController(withName: "defaultsInterfaceController", context: destination)
+        pushController(withName: "defaultsInterfaceController", context: destination)
     }
     
     
