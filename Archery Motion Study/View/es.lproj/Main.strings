@@ -1,45 +1,99 @@
 
-/* Class = "UILabel"; text = "Ratio de giro eje Z"; ObjectID = "3Ho-VN-Zu9"; */
-"3Ho-VN-Zu9.text" = "Rotación eje Z";
+/* Class = "UILabel"; text = "Z axis rotation"; ObjectID = "3Ho-VN-Zu9"; */
+"3Ho-VN-Zu9.text" = "Z axis rotation";
+
+/* Class = "UISegmentedControl"; 54l-zZ-iz8.segmentTitles[0] = "Recurve   "; ObjectID = "54l-zZ-iz8"; */
+"54l-zZ-iz8.segmentTitles[0]" = "Recurve   ";
+
+/* Class = "UISegmentedControl"; 54l-zZ-iz8.segmentTitles[1] = "Compound"; ObjectID = "54l-zZ-iz8"; */
+"54l-zZ-iz8.segmentTitles[1]" = "Compound";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "5fj-4p-fXo"; */
-"5fj-4p-fXo.title" = "Editar";
+"5fj-4p-fXo.title" = "Edit";
 
-/* Class = "UINavigationItem"; title = "Graph"; ObjectID = "6eC-49-tZ7"; */
-"6eC-49-tZ7.title" = "Análisis";
+/* Class = "UINavigationItem"; title = "Analysis"; ObjectID = "6eC-49-tZ7"; */
+"6eC-49-tZ7.title" = "Analysis";
 
-/* Class = "UILabel"; text = "Acelereación eje Y"; ObjectID = "Awe-Uj-UwZ"; */
-"Awe-Uj-UwZ.text" = "Aceleración eje Y";
+/* Class = "UILabel"; text = "Bow type"; ObjectID = "8VS-pG-V9X"; */
+"8VS-pG-V9X.text" = "Bow type";
+
+/* Class = "UILabel"; text = "Session type"; ObjectID = "Ai5-g7-ryq"; */
+"Ai5-g7-ryq.text" = "Session type";
+
+/* Class = "UILabel"; text = "Y axis acceleration"; ObjectID = "Awe-Uj-UwZ"; */
+"Awe-Uj-UwZ.text" = "Y axis acceleration";
 
 /* Class = "UIButton"; normalTitle = "Authorize Healthkit"; ObjectID = "DgO-Ml-7be"; */
-"DgO-Ml-7be.normalTitle" = "Autorizar Healthkit";
+"DgO-Ml-7be.normalTitle" = "Authorize Healthkit";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Dnu-li-vrK"; */
+"Dnu-li-vrK.title" = "Item";
+
+/* Class = "UIView"; accessibilityLabel = "content"; ObjectID = "Fz5-2Q-M7F"; */
+"Fz5-2Q-M7F.accessibilityLabel" = "content";
+
+/* Class = "UILabel"; text = "Authorize access to healthkit to allow us to read and record data about your workouts"; ObjectID = "G2D-qh-4iR"; */
+"G2D-qh-4iR.text" = "Authorize access to healthkit to allow us to read and record data about your workouts";
+
+/* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[0] = "Shooting"; ObjectID = "IIs-dx-bsO"; */
+"IIs-dx-bsO.segmentTitles[0]" = "Shooting";
+
+/* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[1] = "Aborting"; ObjectID = "IIs-dx-bsO"; */
+"IIs-dx-bsO.segmentTitles[1]" = "Aborting";
+
+/* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[2] = "Other"; ObjectID = "IIs-dx-bsO"; */
+"IIs-dx-bsO.segmentTitles[2]" = "Other";
 
 /* Class = "UITableViewController"; title = "Datos Guardados"; ObjectID = "IQo-nj-Pki"; */
 "IQo-nj-Pki.title" = "Datos Guardados";
 
-/* Class = "UITabBarItem"; title = "Recorded Sessions"; ObjectID = "KVD-yP-kEs"; */
-"KVD-yP-kEs.title" = "Entrenamientos";
+/* Class = "UISegmentedControl"; IXE-Eg-Hm1.segmentTitles[0] = "Bow hand"; ObjectID = "IXE-Eg-Hm1"; */
+"IXE-Eg-Hm1.segmentTitles[0]" = "Bow hand";
+
+/* Class = "UISegmentedControl"; IXE-Eg-Hm1.segmentTitles[1] = "String hand"; ObjectID = "IXE-Eg-Hm1"; */
+"IXE-Eg-Hm1.segmentTitles[1]" = "String hand";
+
+/* Class = "UITabBarItem"; title = "Sessions"; ObjectID = "KVD-yP-kEs"; */
+"KVD-yP-kEs.title" = "Sessions";
 
 /* Class = "UILabel"; text = "Text"; ObjectID = "LXl-NH-fsP"; */
 "LXl-NH-fsP.text" = "Text";
 
-/* Class = "UILabel"; text = "Acelereación eje Z"; ObjectID = "Off-Dn-0lg"; */
-"Off-Dn-0lg.text" = "Aceleración eje Z";
+/* Class = "UILabel"; text = "Healthkit"; ObjectID = "LnB-GA-sUP"; */
+"LnB-GA-sUP.text" = "Healthkit";
 
-/* Class = "UILabel"; text = "Acelereación eje X"; ObjectID = "hRx-Gi-s9f"; */
-"hRx-Gi-s9f.text" = "Aceleración eje X";
+/* Class = "UILabel"; text = "Z axis acceleration"; ObjectID = "Off-Dn-0lg"; */
+"Off-Dn-0lg.text" = "Z axis acceleration";
 
-/* Class = "UILabel"; text = "Ratio de giro eje Y"; ObjectID = "ixt-f0-hGf"; */
-"ixt-f0-hGf.text" = "Rotación eje Y";
+/* Class = "UITabBarItem"; title = "Info"; ObjectID = "QIm-t8-yBY"; */
+"QIm-t8-yBY.title" = "Info";
 
-/* Class = "UINavigationItem"; title = "Training Sessions"; ObjectID = "lcf-mS-ftF"; */
-"lcf-mS-ftF.title" = "Entrenamientos";
+/* Class = "UILabel"; text = "Watch location"; ObjectID = "fLK-e7-k0o"; */
+"fLK-e7-k0o.text" = "Watch location";
+
+/* Class = "UILabel"; text = "X axis acceleration"; ObjectID = "hRx-Gi-s9f"; */
+"hRx-Gi-s9f.text" = "X axis acceleration";
+
+/* Class = "UILabel"; text = "Y axis rotation"; ObjectID = "ixt-f0-hGf"; */
+"ixt-f0-hGf.text" = "Y axis rotation";
+
+/* Class = "UILabel"; text = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s."; ObjectID = "jfH-ws-bph"; */
+"jfH-ws-bph.text" = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s.";
+
+/* Class = "UINavigationItem"; title = "Sessions"; ObjectID = "lcf-mS-ftF"; */
+"lcf-mS-ftF.title" = "Sessions";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "lwg-u0-2Zm"; */
+"lwg-u0-2Zm.title" = "Settings";
 
 /* Class = "UINavigationItem"; title = "Ends"; ObjectID = "qYI-XM-AqK"; */
 "qYI-XM-AqK.title" = "Ends";
 
-/* Class = "UILabel"; text = "Ratio de giro eje X"; ObjectID = "rOv-fY-AfM"; */
-"rOv-fY-AfM.text" = "Rotación eje X";
+/* Class = "UILabel"; text = "X axis rotation"; ObjectID = "rOv-fY-AfM"; */
+"rOv-fY-AfM.text" = "X axis rotation";
 
-/* Class = "UITabBarItem"; title = "Instructions"; ObjectID = "xgP-Y1-319"; */
-"xgP-Y1-319.title" = "Instrucciones";
+/* Class = "UINavigationItem"; title = "Info"; ObjectID = "swD-b3-vcS"; */
+"swD-b3-vcS.title" = "Info";
+
+/* Class = "UIView"; accessibilityLabel = "content"; ObjectID = "t0j-Gh-wfZ"; */
+"t0j-Gh-wfZ.accessibilityLabel" = "content";

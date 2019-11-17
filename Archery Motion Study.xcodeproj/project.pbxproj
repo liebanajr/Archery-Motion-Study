@@ -128,6 +128,8 @@
 		938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionDetails.swift; sourceTree = "<group>"; };
+		D925046723816810001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D92504692381684A001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
 		D966A64E2371FD8F00EB2141 /* infoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoViewController.swift; sourceTree = "<group>"; };
 		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
 		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -136,8 +138,6 @@
 		D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionCell.swift; sourceTree = "<group>"; };
 		D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell.xib; sourceTree = "<group>"; };
 		D9917BE4237C46960078B6A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D9917BEA237C8E790078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		D9917BEB237C8E7A0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
 		D9917BED237C8E9F0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9917BF0237C8F710078B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9967F72237DF39900C2253C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -587,7 +587,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A37D2B2232BB9440065CE08 /* Base */,
-				D9917BEA237C8E790078B6A4 /* es */,
+				D925046723816810001AD73D /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A37D2C2232BB9450065CE08 /* Base */,
-				D9917BEB237C8E7A0078B6A4 /* es */,
+				D92504692381684A001AD73D /* es */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";

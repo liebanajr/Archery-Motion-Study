@@ -250,11 +250,18 @@
                         <viewLayoutGuide key="safeArea" id="338-eY-cl7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Analysis" id="6eC-49-tZ7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="cXa-7J-XkD">
-                            <connections>
-                                <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="MCc-n4-9dT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="cXa-7J-XkD">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="FtX-gL-NzW" id="MCc-n4-9dT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="info.circle" catalog="system" id="fFM-7w-YuL">
+                                <connections>
+                                    <segue destination="O3p-nD-c6q" kind="presentation" id="Dwy-Jl-E59"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="accXSwitch" destination="BXB-Ul-VAE" id="6ej-hM-kCF"/>
@@ -275,6 +282,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnb-k8-aD6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3453.6231884057975" y="152.67857142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vp2-c6-X8q">
+            <objects>
+                <viewController id="O3p-nD-c6q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UWP-qK-yap">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watchaxis" translatesAutoresizingMaskIntoConstraints="NO" id="VRU-tT-lVa">
+                                <rect key="frame" x="57" y="64" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VRU-tT-lVa" secondAttribute="height" multiplier="1:1" id="yuL-Kt-lQf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jfH-ws-bph">
+                                <rect key="frame" x="20" y="384" width="374" height="204.33333333333337"/>
+                                <string key="text">Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. The positive X axis being the one where the Digital Crown is pointing. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DiV-5I-7HL" firstAttribute="trailing" secondItem="jfH-ws-bph" secondAttribute="trailing" constant="20" id="9sy-fT-TeD"/>
+                            <constraint firstItem="VRU-tT-lVa" firstAttribute="leading" secondItem="DiV-5I-7HL" secondAttribute="leading" constant="57" id="DmM-r6-1HQ"/>
+                            <constraint firstItem="jfH-ws-bph" firstAttribute="top" secondItem="VRU-tT-lVa" secondAttribute="bottom" constant="20" id="Itn-nB-jPb"/>
+                            <constraint firstItem="VRU-tT-lVa" firstAttribute="top" secondItem="DiV-5I-7HL" secondAttribute="top" constant="64" id="tUa-6W-dOc"/>
+                            <constraint firstItem="jfH-ws-bph" firstAttribute="leading" secondItem="DiV-5I-7HL" secondAttribute="leading" constant="20" id="yKT-8c-U63"/>
+                            <constraint firstItem="DiV-5I-7HL" firstAttribute="trailing" secondItem="VRU-tT-lVa" secondAttribute="trailing" constant="57" id="zaN-Zz-QXk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DiV-5I-7HL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haD-j5-OZi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4315.9420289855079" y="160.71428571428569"/>
         </scene>
         <!--Sessions-->
         <scene sceneID="1CG-KW-zxD">
@@ -580,6 +625,8 @@
         <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
         <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="info.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="watchaxis" width="876" height="875"/>
     </resources>
 </document>
