@@ -321,11 +321,11 @@
             </objects>
             <point key="canvasLocation" x="4315.9420289855079" y="160.71428571428569"/>
         </scene>
-        <!--Sessions-->
+        <!--Saved Sessions-->
         <scene sceneID="1CG-KW-zxD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CgT-oE-lM4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sessions" image="book.fill" catalog="system" selectedImage="book.fill" id="KVD-yP-kEs"/>
+                    <tabBarItem key="tabBarItem" title="Saved Sessions" image="rectangle.stack.fill" catalog="system" selectedImage="rectangle.stack.fill" id="KVD-yP-kEs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="kim-8f-jE8">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -600,11 +600,11 @@
             </objects>
             <point key="canvasLocation" x="1427.536231884058" y="152.67857142857142"/>
         </scene>
-        <!--Info-->
+        <!--Information-->
         <scene sceneID="mfC-Xj-F52">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J4J-gk-Syo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Info" image="info.circle.fill" catalog="system" selectedImage="info.circle.fill" id="QIm-t8-yBY"/>
+                    <tabBarItem key="tabBarItem" title="Information" image="info.circle.fill" catalog="system" selectedImage="info.circle.fill" id="QIm-t8-yBY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pdC-KP-yjX">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -622,11 +622,11 @@
     </scenes>
     <resources>
         <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="64" height="56"/>
-        <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="cloud-fill" width="26" height="17.666666030883789"/>
         <image name="gear" catalog="system" width="64" height="58"/>
         <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="info.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="rectangle.stack.fill" catalog="system" width="64" height="60"/>
         <image name="watchaxis" width="876" height="875"/>
     </resources>
 </document>
