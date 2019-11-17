@@ -41,6 +41,7 @@
 		D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BEE237C8E9F0078B6A4 /* Localizable.strings */; };
 		D9967F73237DF39900C2253C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9967F72237DF39900C2253C /* Constants.swift */; };
 		D9967F76237E0EB500C2253C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9967F78237E0EB500C2253C /* Localizable.strings */; };
+		D996D27223802E9400793F17 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D996D27123802E9400793F17 /* InstructionsViewController.swift */; };
 		D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE741237F57C800E4809A /* SettingsRowController.swift */; };
 		D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
@@ -142,6 +143,7 @@
 		D9967F72237DF39900C2253C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D9967F77237E0EB500C2253C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9967F79237E0EBD00C2253C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D996D27123802E9400793F17 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		D99FE741237F57C800E4809A /* SettingsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowController.swift; sourceTree = "<group>"; };
 		D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 				8AA589EB232F125A007879E0 /* SpinnerViewController.swift */,
 				D966A64E2371FD8F00EB2141 /* infoViewController.swift */,
 				D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */,
+				D996D27123802E9400793F17 /* InstructionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
 				8AB2FE06233232A800C1F554 /* SensorDataSet.swift in Sources */,
 				8ADC42C723312408005B079F /* ChartViewController.swift in Sources */,
+				D996D27223802E9400793F17 /* InstructionsViewController.swift in Sources */,
 				8A002DA223466042000C14E1 /* SampleAverageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,7 +28,7 @@ class SampleAverageManager : NSObject {
         
         var auxSignal = inputSignal
         
-        for index in 0...filterLevel-1 {
+        for _ in 0...filterLevel-1 {
             
             auxSignal = averageSignalOnce(inputSignal: auxSignal)
             

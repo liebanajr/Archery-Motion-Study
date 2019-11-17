@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import HealthKit
+import WatchConnectivity
 
 class startViewController: WKInterfaceController {
     
@@ -18,6 +19,8 @@ class startViewController: WKInterfaceController {
     var documentDir :String = ""
     let defaults = UserDefaults.standard
     let fileManager = FileManager()
+    
+    let session = WCSession.default
     
     override func awake(withContext context: Any?) {
         
@@ -62,7 +65,7 @@ class startViewController: WKInterfaceController {
         
         healthStore.requestAuthorization(toShare: types, read: types) { (success, error) in
             if !success {
-                print(error)
+                print(error!)
             } else {
                 print("HealthKit successfully authorized!")
             }
@@ -79,12 +82,16 @@ class startViewController: WKInterfaceController {
             defaults.set("Shot", forKey: K.sessionTypeKey)
             
             let action1 = WKAlertAction.init(title: "OK", style:.default) {
-                       print("Okayed nil defaults message")
-                   }
+                print("Okayed nil defaults message. Setting default values")
+                self.defaults.set(K.categoryValues[0], forKey: K.bowTypeKey)
+                self.defaults.set(K.handValues[0], forKey: K.handKey)
+                self.defaults.set(K.sessionValues[0], forKey: K.sessionTypeKey)
+                self.syncUserDefaults()
+           }
             
-            let message = "Por favor, antes de comenzar, comprueba que los ajustes son correctos deslizando hacia la izquierda."
-
-            presentAlert(withTitle: "Ajustes iniciales", message: message, preferredStyle:.alert, actions: [action1])
+            let message = NSLocalizedString("userDefaultsAlert", comment: "")
+            
+            presentAlert(withTitle: NSLocalizedString("Initial settings", comment: ""), message: message, preferredStyle:.alert, actions: [action1])
             return false
         }
         return true
@@ -110,6 +117,13 @@ class startViewController: WKInterfaceController {
     @IBAction func settingsButtonPressed() {
         
         presentController(withName: "settingsInterfaceController", context: self)
+        
+    }
+    
+    func syncUserDefaults(){
+        
+        let info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!]
+        session.transferUserInfo(info)
         
     }
     

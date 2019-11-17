@@ -35,13 +35,11 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
     
-    let csvTextHeader = "Timestamp;Accelerometer X;Accelerometer Y;Accelerometer Z;Gyroscope X;Gyroscope Y;Gyroscope Z\n"
     var csvText = ""
-    
     var fileReadyForTransfer : URL?
     var workoutInfo : WorkoutSessionDetails?
     
-    let sampleInterval = 1.0/20.0
+    let sampleInterval = K.sampleInterval
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -61,7 +59,7 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         let formatter = DateFormatter()
         let timeZone = TimeZone(abbreviation: "UTC+2")
         formatter.timeZone = .some(timeZone!)
-        formatter.dateFormat = "ddMMyy'T'HHmmss"
+        formatter.dateFormat = K.dateFormat
         let date = formatter.string(from: Date())
         workoutInfo = WorkoutSessionDetails(sessionId: date)
                 
@@ -117,7 +115,6 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
             workoutSession.delegate = self
         } catch {
             fatalError("Unable to create the workout session!")
-            return
         }
         
         workoutSession?.prepare()
@@ -171,9 +168,6 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     func endWorkout(){
         
         print("Ending workout session...")
-        workoutSession?.end()
-        workoutSession = nil
-        stopMotionUpdates()
         builder.endCollection(withEnd: Date()) { (success, error) in
             guard success else {
                 print("Error when ending builder collection: \(error!)")
@@ -185,6 +179,9 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
                 }
             }
         }
+        workoutSession?.end()
+        workoutSession = nil
+        stopMotionUpdates()
         
     }
     
@@ -207,16 +204,16 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
             
             let motion = deviceMotion!
 
-            let accX = String(format: "%.3f", motion.userAcceleration.x * 100)
-            let accY = String(format: "%.3f", motion.userAcceleration.y * 100)
-            let accZ = String(format: "%.3f", motion.userAcceleration.z * 100)
+            let accX = String(format: K.sensorPrecision, motion.userAcceleration.x * K.sensorScaleFactor)
+            let accY = String(format: K.sensorPrecision, motion.userAcceleration.y * K.sensorScaleFactor)
+            let accZ = String(format: K.sensorPrecision, motion.userAcceleration.z * K.sensorScaleFactor)
 
-            let girX = String(format: "%.3f", motion.rotationRate.x * 100)
-            let girY = String(format: "%.3f", motion.rotationRate.y * 100)
-            let girZ = String(format: "%.3f", motion.rotationRate.z * 100)
+            let girX = String(format: K.sensorPrecision, motion.rotationRate.x * K.sensorScaleFactor)
+            let girY = String(format: K.sensorPrecision, motion.rotationRate.y * K.sensorScaleFactor)
+            let girZ = String(format: K.sensorPrecision, motion.rotationRate.z * K.sensorScaleFactor)
 
 
-            let motionDataString = "\(String(format: "%.2f",timeStamp));\(accX);\(accY);\(accZ);\(girX);\(girY);\(girZ)\n"
+            let motionDataString = "\(String(format: K.timeStampPrecision,timeStamp))" + K.csvSeparator + "\(accX)" + K.csvSeparator + "\(accY)" + K.csvSeparator + "\(accZ)" + K.csvSeparator + "\(girX)" + K.csvSeparator + "\(girY)" + K.csvSeparator + "\(girZ)\n"
 
             timeStamp += self.sampleInterval
 
@@ -229,7 +226,7 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     //    Mark: data management functions
     func resetData() {
         print("Resetting data...")
-        csvText = csvTextHeader
+        csvText = K.csvTextHeader
         fileReadyForTransfer = nil
     }
     
@@ -238,12 +235,14 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         let formatter = DateFormatter()
         let timeZone = TimeZone(abbreviation: "UTC+2")
         formatter.timeZone = .some(timeZone!)
-        formatter.dateFormat = "ddMMyy'T'HHmmss"
+        formatter.dateFormat = K.dateFormat
         let date = formatter.string(from: Date())
+        let randNum = Int.random(in: 0...9999)
+        let id = "\(randNum)"
         let category = defaults.string(forKey: K.bowTypeKey) ?? K.categoryValues[0]
-        let hand = (defaults.string(forKey: K.handKey) ?? K.handValues[0]).replacingOccurrences(of: " ", with: "-")
+        let hand = (defaults.string(forKey: K.handKey) ?? K.handValues[0]).replacingOccurrences(of: " ", with: "")
         
-        let fileName = "\(category)_\(hand)_\(date).csv"
+        let fileName = "\(category)_\(hand)_\(date)_\(id).csv"
         
         let url = URL(fileURLWithPath: documentDir + "/" + fileName)
         print("Guardando datos en: \(url.absoluteString)")
@@ -279,7 +278,24 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
         
     //    Mark: HealthKit delegate methods
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
-        print("Workout session changed to \(toState)")
+        var from = ""
+        switch toState {
+        case .ended:
+             from = "Ended"
+        case .notStarted:
+            from = "Not started"
+        case .paused:
+             from = "Paused"
+        case .prepared:
+             from = "Prepared"
+        case .running:
+             from = "Running"
+        case .stopped:
+             from = "Stopped"
+        default:
+             from = "XXX"
+        }
+        print("Workout session changed to \(from)")
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {

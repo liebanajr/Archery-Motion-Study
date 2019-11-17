@@ -21,6 +21,10 @@ class WorkoutSessionCell: UITableViewCell {
     @IBOutlet var avgHRLabel: UILabel!
     @IBOutlet var endsLabel: UILabel!
     
+    @IBOutlet var sessionTypeLabel: UILabel!
+    @IBOutlet var watchLocationLabel: UILabel!
+    
+    
     var delegate : SessionCellDelegate?
     var currentCellIndex : IndexPath?
     

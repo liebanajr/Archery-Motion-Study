@@ -18,4 +18,12 @@ struct K {
     static let handValues = ["Bow Hand", "String Hand"]
     static let sessionValues = ["Shooting", "Aborting", "Other"]
     
+    static let dateFormat : String = "ddMMyy'T'HHmmss"
+    static let sampleInterval = 1.0/20.0
+    static let sensorScaleFactor = 1.0
+    static let sensorPrecision : String = "%.8f"
+    static let timeStampPrecision : String  = "%.2f"
+    static let csvSeparator = ","
+    static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z\n"
+    
 }

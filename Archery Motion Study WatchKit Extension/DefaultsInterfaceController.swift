@@ -69,7 +69,7 @@ class DefaultsInterfaceController: WKInterfaceController {
         let value = actualValues![rowIndex]
         defaults.setValue(value, forKey: actualKey!)
         updateTable()
-        syncUserDefaults()
+        self.syncUserDefaults()
     }
     
     func syncUserDefaults(){

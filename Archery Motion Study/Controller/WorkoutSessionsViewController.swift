@@ -86,6 +86,8 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         cell.titleLabel.text = dateString
         cell.avgHRLabel.text = "\(session.averageHeartRate) bpm \(NSLocalizedString("average", comment: ""))"
         cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
+        cell.sessionTypeLabel.text = NSLocalizedString(session.sessionType!, comment: "") + " " + NSLocalizedString(session.bowType!, comment: "") + ","
+        cell.watchLocationLabel.text = NSLocalizedString("Watch in", comment: "") + " " + NSLocalizedString(session.watchLocation!, comment: "")
         do{
             let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
             request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
