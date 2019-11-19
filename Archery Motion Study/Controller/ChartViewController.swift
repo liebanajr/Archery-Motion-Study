@@ -269,11 +269,25 @@ class ChartViewController: UIViewController {
 extension UIView {
         
     func pinEdges(to other: UIView) {
-        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
+        let margins = other.safeAreaLayoutGuide
+        leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         
     }
 
+}
+
+class AxisInfoViewController: UIViewController {
+    
+    
+    @IBAction func okButtonPressed(_ sender: Any) {
+        
+        self.dismiss(animated: true) {
+            
+        }
+        
+    }
+    
 }
