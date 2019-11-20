@@ -30,11 +30,6 @@ class ChartViewController: UIViewController {
     var availableDataSets : [SensorDataSet]?
     
     @IBOutlet var fullScreenButton: UIButton!
-    @IBOutlet var chartTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet var chartBottomConstraint: NSLayoutConstraint!
-    @IBOutlet var chartTopConstraint: NSLayoutConstraint!
-    @IBOutlet var chartLeadingConstraint: NSLayoutConstraint!
-    var chartConstraints : [NSLayoutConstraint]?
     
     var chartIsFullScreen = false
     
@@ -59,9 +54,7 @@ class ChartViewController: UIViewController {
         timeStamp = availableDataSets?.remove(at: 0)
         
         desiredDataSets = []
-        
-        chartConstraints = [chartTopConstraint, chartBottomConstraint, chartLeadingConstraint, chartTrailingConstraint]
-        
+                
         averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
         
         chtChart.dragXEnabled = true
@@ -281,6 +274,9 @@ extension UIView {
 
 class AxisInfoViewController: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
     
     @IBAction func okButtonPressed(_ sender: Any) {
         
