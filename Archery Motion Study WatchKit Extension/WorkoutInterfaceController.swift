@@ -168,14 +168,17 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
     func endWorkout(){
         
         print("Ending workout session...")
-        builder.endCollection(withEnd: Date()) { (success, error) in
-            guard success else {
-                print("Error when ending builder collection: \(error!)")
-                return
-            }
-            self.builder.finishWorkout { (workout, error) in
-                if error != nil {
-                    print("Error finishing workout: \(error!)")
+//        When using private build we're not storing workout data on healthkit
+        if K.saveWorkoutData {
+            builder.endCollection(withEnd: Date()) { (success, error) in
+                guard success else {
+                    print("Error when ending builder collection: \(error!)")
+                    return
+                }
+                self.builder.finishWorkout { (workout, error) in
+                    if error != nil {
+                        print("Error finishing workout: \(error!)")
+                    }
                 }
             }
         }
