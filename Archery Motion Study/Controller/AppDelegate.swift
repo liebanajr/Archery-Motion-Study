@@ -87,6 +87,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             motionDataFileItem.endIndex = endIndex
             motionDataFileItem.sessionId = sessionId
             motionDataFileItem.isUploaded = false
+            let folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            motionDataFileItem.firebaseLocation = folderName
             
             let sessionRequest = NSFetchRequest<Session>(entityName: "Session")
             sessionRequest.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [sessionId])
@@ -113,11 +115,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             } catch {
                 print("Error fetching existing Session: \(error)")
             }
-            
             self.saveContext()
             print("Data saved successfully!")
             
-            let folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
             print("Attempting to store \(fileName) in folder \(folderName) in Firebase cloud storage")
             let storage = Storage.storage()
             let storageRef = storage.reference()

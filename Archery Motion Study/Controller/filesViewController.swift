@@ -47,13 +47,12 @@ class filesViewController: UITableViewController{
         formatter.dateFormat =  NSLocalizedString("filesTitleDateFormat", comment: "")
         self.navigationItem.title = formatter.string(from: date)
         
-        uploadFiles()
-        
         updateTableWithDirectoryData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         updateTableWithDirectoryData()
+        uploadFiles()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,11 +85,11 @@ class filesViewController: UITableViewController{
             }
         }
 //        REMOVE FROM FINAL RELEASE
-        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
-            self.deleteItems(itemPath: nil)
-        }
+//        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
+//            self.deleteItems(itemPath: nil)
+//        }
+//        alert.addAction(actionDeleteAll)
         alert.addAction(actionDelete)
-        alert.addAction(actionDeleteAll)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: true)
     
@@ -99,29 +98,29 @@ class filesViewController: UITableViewController{
         
         let dir = self.documentDir!
         
-        if itemPath == nil{
-            do {
-                let contents = try fileManager.contentsOfDirectory(atPath: dir)
-                for path in contents {
-                    try fileManager.removeItem(atPath: dir + "/" + path)
-                }
-                for object in filesArray {
-                    context.delete(object)
-                }
-                try context.save()
-                print("Removed all items at \(dir)")
-                updateTableWithDirectoryData()
-            } catch {
-                print("Error removing files: \(error)")
-            }
-            return
-        }
+//        if itemPath == nil{
+//            do {
+//                let contents = try fileManager.contentsOfDirectory(atPath: dir)
+//                for path in contents {
+//                    try fileManager.removeItem(atPath: dir + path)
+//                }
+//                for object in filesArray {
+//                    context.delete(object)
+//                }
+//                try context.save()
+//                print("Removed all items at \(dir)")
+//                updateTableWithDirectoryData()
+//            } catch {
+//                print("Error removing files: \(error)")
+//            }
+//            return
+//        }
         
         for item in itemPath! {
             let file = filesArray[item.row]
             let fileName = file.fileName!
             do {
-                try fileManager.removeItem(atPath: dir + "/" + fileName)
+                try fileManager.removeItem(atPath: dir + fileName)
                 context.delete(file)
                 try context.save()
                 print("Removed item: \(fileName)")
@@ -130,6 +129,8 @@ class filesViewController: UITableViewController{
                 print("Error removing file \(fileName): \(error)")
             }
         }
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
         
     }
     
@@ -181,8 +182,8 @@ class filesViewController: UITableViewController{
                 let fileName = motionDataFileItem.fileName!
                 let storage = Storage.storage()
                 let storageRef = storage.reference()
-                let motionDataDestination = storageRef.child("motion-study-v1/" + fileName)
-                let srcURL = URL(fileURLWithPath: documentDir + "/" + fileName)
+                let motionDataDestination = storageRef.child(motionDataFileItem.firebaseLocation! + fileName)
+                let srcURL = URL(fileURLWithPath: documentDir + fileName)
                 
 
                 let uploadTask = motionDataDestination.putFile(from: srcURL, metadata: nil) { metadata, error in
@@ -195,7 +196,7 @@ class filesViewController: UITableViewController{
 
                 uploadTask.observe(.success) { (snapshot) in
                     
-                    print("Uploaded \(fileName) successfully!!")
+                    print("Uploaded \(fileName) successfully to \(motionDataFileItem.firebaseLocation!)!!")
                     motionDataFileItem.setValue(true, forKey: "isUploaded")
                     do {
                         try self.context.save()
