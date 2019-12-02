@@ -1,60 +1,66 @@
 
-/* Class = "UILabel"; text = "Z axis rotation"; ObjectID = "3Ho-VN-Zu9"; */
-"3Ho-VN-Zu9.text" = "Z axis rotation";
+/* Class = "UILabel"; text = "Z axis rotation [rad/s]"; ObjectID = "3Ho-VN-Zu9"; */
+"3Ho-VN-Zu9.text" = "Ratio de giro eje Z [rad/s]";
 
 /* Class = "UISegmentedControl"; 54l-zZ-iz8.segmentTitles[0] = "Recurve   "; ObjectID = "54l-zZ-iz8"; */
-"54l-zZ-iz8.segmentTitles[0]" = "Recurve   ";
+"54l-zZ-iz8.segmentTitles[0]" = "Recurvo";
 
 /* Class = "UISegmentedControl"; 54l-zZ-iz8.segmentTitles[1] = "Compound"; ObjectID = "54l-zZ-iz8"; */
-"54l-zZ-iz8.segmentTitles[1]" = "Compound";
+"54l-zZ-iz8.segmentTitles[1]" = "Compuesto";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "5fj-4p-fXo"; */
-"5fj-4p-fXo.title" = "Edit";
+"5fj-4p-fXo.title" = "Editar";
 
 /* Class = "UINavigationItem"; title = "Analysis"; ObjectID = "6eC-49-tZ7"; */
-"6eC-49-tZ7.title" = "Analysis";
+"6eC-49-tZ7.title" = "Análisis";
 
 /* Class = "UILabel"; text = "Bow type"; ObjectID = "8VS-pG-V9X"; */
-"8VS-pG-V9X.text" = "Bow type";
+"8VS-pG-V9X.text" = "Arco";
 
 /* Class = "UILabel"; text = "Session type"; ObjectID = "Ai5-g7-ryq"; */
-"Ai5-g7-ryq.text" = "Session type";
+"Ai5-g7-ryq.text" = "Sesión";
 
-/* Class = "UILabel"; text = "Y axis acceleration"; ObjectID = "Awe-Uj-UwZ"; */
-"Awe-Uj-UwZ.text" = "Y axis acceleration";
+/* Class = "UILabel"; text = "Y axis acceleration [G]"; ObjectID = "Awe-Uj-UwZ"; */
+"Awe-Uj-UwZ.text" = "Aceleración eje Y [G]";
+
+/* Class = "UITabBarItem"; title = "Cloud Access"; ObjectID = "CHy-se-VoC"; */
+"CHy-se-VoC.title" = "Cloud Access";
 
 /* Class = "UIButton"; normalTitle = "Authorize Healthkit"; ObjectID = "DgO-Ml-7be"; */
-"DgO-Ml-7be.normalTitle" = "Authorize Healthkit";
+"DgO-Ml-7be.normalTitle" = "Autorizar Healthkit";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Dnu-li-vrK"; */
 "Dnu-li-vrK.title" = "Item";
 
-/* Class = "UIView"; accessibilityLabel = "content"; ObjectID = "Fz5-2Q-M7F"; */
-"Fz5-2Q-M7F.accessibilityLabel" = "content";
+/* Class = "UILabel"; text = "1"; ObjectID = "F0s-Mg-j7I"; */
+"F0s-Mg-j7I.text" = "1";
 
 /* Class = "UILabel"; text = "Authorize access to healthkit to allow us to read and record data about your workouts"; ObjectID = "G2D-qh-4iR"; */
-"G2D-qh-4iR.text" = "Authorize access to healthkit to allow us to read and record data about your workouts";
+"G2D-qh-4iR.text" = "Autoriza el acceso a Healthkit para poder leer y guardar datos sobre tus entrenamientos";
 
 /* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[0] = "Shooting"; ObjectID = "IIs-dx-bsO"; */
-"IIs-dx-bsO.segmentTitles[0]" = "Shooting";
+"IIs-dx-bsO.segmentTitles[0]" = "Normal";
 
 /* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[1] = "Aborting"; ObjectID = "IIs-dx-bsO"; */
-"IIs-dx-bsO.segmentTitles[1]" = "Aborting";
+"IIs-dx-bsO.segmentTitles[1]" = "Abortado";
 
 /* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[2] = "Other"; ObjectID = "IIs-dx-bsO"; */
-"IIs-dx-bsO.segmentTitles[2]" = "Other";
+"IIs-dx-bsO.segmentTitles[2]" = "Otro";
 
 /* Class = "UITableViewController"; title = "Datos Guardados"; ObjectID = "IQo-nj-Pki"; */
 "IQo-nj-Pki.title" = "Datos Guardados";
 
 /* Class = "UISegmentedControl"; IXE-Eg-Hm1.segmentTitles[0] = "Bow hand"; ObjectID = "IXE-Eg-Hm1"; */
-"IXE-Eg-Hm1.segmentTitles[0]" = "Bow hand";
+"IXE-Eg-Hm1.segmentTitles[0]" = "Mano arco";
 
 /* Class = "UISegmentedControl"; IXE-Eg-Hm1.segmentTitles[1] = "String hand"; ObjectID = "IXE-Eg-Hm1"; */
-"IXE-Eg-Hm1.segmentTitles[1]" = "String hand";
+"IXE-Eg-Hm1.segmentTitles[1]" = "Mano cuerda";
 
-/* Class = "UITabBarItem"; title = "Sessions"; ObjectID = "KVD-yP-kEs"; */
-"KVD-yP-kEs.title" = "Sessions";
+/* Class = "UILabel"; text = "Go to settings and select your bow type and the hand in which your watch is located."; ObjectID = "JGE-df-TBL"; */
+"JGE-df-TBL.text" = "Ve a Ajustes y selecciona tu tipo de arco y la mano en la que tienes puesto tu Apple Watch.";
+
+/* Class = "UITabBarItem"; title = "Saved Sessions"; ObjectID = "KVD-yP-kEs"; */
+"KVD-yP-kEs.title" = "Sesiones Guardadas";
 
 /* Class = "UILabel"; text = "Text"; ObjectID = "LXl-NH-fsP"; */
 "LXl-NH-fsP.text" = "Text";
@@ -62,38 +68,65 @@
 /* Class = "UILabel"; text = "Healthkit"; ObjectID = "LnB-GA-sUP"; */
 "LnB-GA-sUP.text" = "Healthkit";
 
-/* Class = "UILabel"; text = "Z axis acceleration"; ObjectID = "Off-Dn-0lg"; */
-"Off-Dn-0lg.text" = "Z axis acceleration";
+/* Class = "UILabel"; text = "Start a workout by tapping the play button on your apple watch."; ObjectID = "NJQ-2w-o06"; */
+"NJQ-2w-o06.text" = "Comienza un entreno pulsando el botón play en tu Apple Watch.";
 
-/* Class = "UITabBarItem"; title = "Info"; ObjectID = "QIm-t8-yBY"; */
-"QIm-t8-yBY.title" = "Info";
+/* Class = "UILabel"; text = "Z axis acceleration [G]"; ObjectID = "Off-Dn-0lg"; */
+"Off-Dn-0lg.text" = "Aceleración eje Z [G]";
+
+/* Class = "UITabBarItem"; title = "How To"; ObjectID = "QIm-t8-yBY"; */
+"QIm-t8-yBY.title" = "Modo de uso";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "RBy-fo-08R"; */
+"RBy-fo-08R.text" = "4";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "X8w-OW-0RU"; */
+"X8w-OW-0RU.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "e6a-1u-i0e"; */
+"e6a-1u-i0e.normalTitle" = "OK";
 
 /* Class = "UILabel"; text = "Watch location"; ObjectID = "fLK-e7-k0o"; */
-"fLK-e7-k0o.text" = "Watch location";
+"fLK-e7-k0o.text" = "Ubicación reloj";
 
-/* Class = "UILabel"; text = "X axis acceleration"; ObjectID = "hRx-Gi-s9f"; */
-"hRx-Gi-s9f.text" = "X axis acceleration";
+/* Class = "UILabel"; text = "X axis acceleration [G]"; ObjectID = "hRx-Gi-s9f"; */
+"hRx-Gi-s9f.text" = "Aceleración eje X [G]";
 
-/* Class = "UILabel"; text = "Y axis rotation"; ObjectID = "ixt-f0-hGf"; */
-"ixt-f0-hGf.text" = "Y axis rotation";
+/* Class = "UILabel"; text = "Y axis rotation [rad/s]"; ObjectID = "ixt-f0-hGf"; */
+"ixt-f0-hGf.text" = "Ratio de giro eje Y [rad/s]";
 
-/* Class = "UILabel"; text = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s."; ObjectID = "jfH-ws-bph"; */
-"jfH-ws-bph.text" = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s.";
+/* Class = "UILabel"; text = "Title"; ObjectID = "j8s-zy-TbS"; */
+"j8s-zy-TbS.text" = "Title";
+
+/* Class = "UILabel"; text = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. The positive X axis being the one where the Digital Crown is pointing. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s."; ObjectID = "jfH-ws-bph"; */
+"jfH-ws-bph.text" = "Las aceleraciones y ratios de giro hacen referencia a los ejes mostrados en la imagen anterior. Estos permanecen constantes sea cual sea la posición y orientación del Apple Watch. El eje X positivo se encuentra en la dirección de la Digital Crown. La aceleración se mide en G's (1G es el equivalente a la gravedad terrestre) y la rotación en rad/s.";
+
+/* Class = "UILabel"; text = "On the workout view, tap the plus button after every end to improve the final report readability."; ObjectID = "kLC-V8-sbz"; */
+"kLC-V8-sbz.text" = "En la vista de entrenamiento, pulsa el botón '+' tras cada serie para mejorar los resultados del análisis.";
 
 /* Class = "UINavigationItem"; title = "Sessions"; ObjectID = "lcf-mS-ftF"; */
-"lcf-mS-ftF.title" = "Sessions";
+"lcf-mS-ftF.title" = "Sesiones";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "lwg-u0-2Zm"; */
-"lwg-u0-2Zm.title" = "Settings";
+"lwg-u0-2Zm.title" = "Ajustes";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "meU-3o-99Z"; */
+"meU-3o-99Z.text" = "2";
 
 /* Class = "UINavigationItem"; title = "Ends"; ObjectID = "qYI-XM-AqK"; */
-"qYI-XM-AqK.title" = "Ends";
+"qYI-XM-AqK.title" = "Series";
 
-/* Class = "UILabel"; text = "X axis rotation"; ObjectID = "rOv-fY-AfM"; */
-"rOv-fY-AfM.text" = "X axis rotation";
+/* Class = "UILabel"; text = "X axis rotation [rad/s]"; ObjectID = "rOv-fY-AfM"; */
+"rOv-fY-AfM.text" = "Ratio de giro eje X [rad/s]";
 
 /* Class = "UINavigationItem"; title = "Info"; ObjectID = "swD-b3-vcS"; */
 "swD-b3-vcS.title" = "Info";
 
 /* Class = "UIView"; accessibilityLabel = "content"; ObjectID = "t0j-Gh-wfZ"; */
 "t0j-Gh-wfZ.accessibilityLabel" = "content";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "u7u-At-Q7A"; */
+"u7u-At-Q7A.text" = "3";
+
+/* Class = "UILabel"; text = "Go to the Analysis section of any session at any time to view a report of your shots."; ObjectID = "wTE-S6-K2a"; */
+"wTE-S6-K2a.text" = "Ve a la sección Análisis en cualquier momento para ver el informe de tus tiros.";

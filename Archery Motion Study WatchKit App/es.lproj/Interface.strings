@@ -3,13 +3,13 @@
 "2Fn-nc-vVr.text" = "Label";
 
 /* Class = "WKInterfaceMenuItem"; title = "Delete all"; ObjectID = "4iP-I0-CJq"; */
-"4iP-I0-CJq.title" = "Delete all";
+"4iP-I0-CJq.title" = "Eliminar todo";
 
 /* Class = "WKInterfaceMenuItem"; title = "Settings"; ObjectID = "7fY-c5-Lc0"; */
-"7fY-c5-Lc0.title" = "Settings";
+"7fY-c5-Lc0.title" = "Ajustes";
 
 /* Class = "WKInterfaceLabel"; text = "End "; ObjectID = "TP1-hu-ctz"; */
-"TP1-hu-ctz.text" = "End ";
+"TP1-hu-ctz.text" = "Serie ";
 
 /* Class = "WKInterfaceLabel"; text = "Label"; ObjectID = "TYL-z4-Pvi"; */
 "TYL-z4-Pvi.text" = "Label";

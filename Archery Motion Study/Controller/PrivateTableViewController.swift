@@ -29,11 +29,11 @@ class PrivateTableViewController: UITableViewController {
         downloadsDir = paths.firstObject as! String + K.motionDataFolderDownloads
         documentsDir = paths.firstObject as! String + K.motionDataFolder
         
-        deleteLocalFiles()
-        
         if !fileManager.fileExists(atPath: downloadsDir) {
             fileManager.createFile(atPath: downloadsDir, contents: nil, attributes: nil)
         }
+        
+        deleteLocalFiles()
                 
         itemsList = [StorageReference]()
                 // Uncomment the following line to preserve selection between presentations
