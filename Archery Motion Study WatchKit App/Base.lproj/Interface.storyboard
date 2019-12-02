@@ -21,11 +21,6 @@
                     </items>
                     <menu key="menu" id="cXh-Tk-Mpo">
                         <items>
-                            <menuItem title="Delete all" icon="trash" id="4iP-I0-CJq">
-                                <connections>
-                                    <action selector="deleteButtonPressed" destination="AgC-eL-Hgc" id="5TH-3f-ave"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Settings" icon="more" id="7fY-c5-Lc0">
                                 <connections>
                                     <action selector="settingsButtonPressed" destination="AgC-eL-Hgc" id="6U1-1C-SL5"/>
