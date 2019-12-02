@@ -20,8 +20,9 @@ struct K {
     static let handKey : String = "hand"
     static let sessionTypeKey : String = "sessionType"
     
-    static let firebaseFolders : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
     static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/"]
+//    static let firebaseFolders : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
+    static let firebaseFolders = firebaseFoldersAdmin
     
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
