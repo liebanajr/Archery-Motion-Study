@@ -29,7 +29,7 @@ class infoViewController: UIViewController {
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)
-        
+        setInitialDefaults()
         updateInterface()
     }
     @IBAction func authorizeHealthkitButtonPressed(_ sender: Any) {
@@ -67,6 +67,17 @@ class infoViewController: UIViewController {
             self.bowTypeSegment.selectedSegmentIndex = bowTypeIndex
             self.watchLocationSegment.selectedSegmentIndex = watchLocationIndex
             self.sessionTypeSegment.selectedSegmentIndex = sessionTypeIndex
+        }
+        
+    }
+    
+    func setInitialDefaults() {
+        
+        if defaults.value(forKey: K.bowTypeKey) == nil {
+            defaults.setValue(K.categoryValues[0], forKey: K.bowTypeKey)
+            defaults.setValue(K.handValues[0], forKey: K.handKey)
+            defaults.setValue(K.sessionValues[0], forKey: K.sessionTypeKey)
+            syncDefaults()
         }
         
     }

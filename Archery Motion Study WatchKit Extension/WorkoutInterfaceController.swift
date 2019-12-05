@@ -13,7 +13,7 @@ import WatchConnectivity
 import HealthKit
 
 
-class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
+class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
     
     
     @IBOutlet weak var timer: WKInterfaceTimer!
@@ -43,11 +43,6 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        if WCSession.isSupported() {
-            session.delegate = self
-            session.activate()
-        }
         
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
@@ -271,13 +266,6 @@ class WorkoutInterfaceController: WKInterfaceController,WCSessionDelegate, HKWor
             print("Unable to transfer files because WC Session is inactive")
         }
     }
-    
-    //    Mark - WatchConnectivity Methods
-        func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-            if error != nil {
-                print("Activation error: \(error!)")
-            }
-        }
         
     //    Mark: HealthKit delegate methods
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {

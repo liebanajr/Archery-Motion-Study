@@ -334,7 +334,6 @@
                                             <constraint firstAttribute="trailing" secondItem="jfH-ws-bph" secondAttribute="trailing" constant="20" id="JNx-BT-Jxi"/>
                                             <constraint firstAttribute="height" constant="744" id="Zts-dK-aAc"/>
                                             <constraint firstItem="VRU-tT-lVa" firstAttribute="top" secondItem="G69-3k-Hg9" secondAttribute="top" constant="20" id="uAA-ed-FzC"/>
-                                            <constraint firstItem="jfH-ws-bph" firstAttribute="centerX" secondItem="G69-3k-Hg9" secondAttribute="centerX" id="zw2-kt-cub"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -350,10 +349,6 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-1u-i0e">
                                 <rect key="frame" x="364" y="20" width="30" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="3pU-pg-ChY"/>
-                                    <constraint firstAttribute="height" constant="36" id="XWB-jw-yOQ"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
@@ -370,6 +365,7 @@
                             <constraint firstItem="oz6-5k-RYP" firstAttribute="trailing" secondItem="DiV-5I-7HL" secondAttribute="trailing" id="cuy-OG-IBY"/>
                             <constraint firstItem="e6a-1u-i0e" firstAttribute="top" secondItem="DiV-5I-7HL" secondAttribute="top" constant="20" id="ttg-Il-H56"/>
                             <constraint firstItem="oz6-5k-RYP" firstAttribute="bottom" secondItem="DiV-5I-7HL" secondAttribute="bottom" id="yhj-Im-jv4"/>
+                            <constraint firstItem="e6a-1u-i0e" firstAttribute="leading" secondItem="DiV-5I-7HL" secondAttribute="leading" constant="364" id="zoO-NL-zYS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DiV-5I-7HL"/>
                     </view>
@@ -430,7 +426,7 @@
                                                                     <constraint firstAttribute="width" constant="136" id="Iad-y3-4Qy"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to settings and select your bow type and the hand in which your watch is located." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGE-df-TBL">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to settings and select your bow type and the hand in which your watch is located." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGE-df-TBL">
                                                                 <rect key="frame" x="21" y="69.666666666666657" width="225" height="81.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -446,6 +442,7 @@
                                                             <constraint firstItem="JGE-df-TBL" firstAttribute="top" secondItem="F0s-Mg-j7I" secondAttribute="bottom" constant="8" id="Thi-Ge-C9c"/>
                                                             <constraint firstAttribute="height" constant="216" id="WyN-PR-Tac"/>
                                                             <constraint firstItem="F0s-Mg-j7I" firstAttribute="leading" secondItem="PHC-At-dc0" secondAttribute="leading" constant="21" id="eeo-GP-qLO"/>
+                                                            <constraint firstItem="khS-td-OA2" firstAttribute="leading" secondItem="F0s-Mg-j7I" secondAttribute="trailing" constant="217.33000000000001" id="lmW-wr-z0E"/>
                                                             <constraint firstItem="JGE-df-TBL" firstAttribute="leading" secondItem="PHC-At-dc0" secondAttribute="leading" constant="21" id="yQ9-3s-VYu"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -463,7 +460,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a workout by tapping the play button on your apple watch." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-2w-o06">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a workout by tapping the play button on your apple watch." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-2w-o06">
                                                                 <rect key="frame" x="21" y="69.666666666666686" width="225" height="61"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -482,6 +479,7 @@
                                                             <constraint firstItem="meU-3o-99Z" firstAttribute="top" secondItem="wyU-RV-gDd" secondAttribute="top" constant="21" id="1W2-YY-HCQ"/>
                                                             <constraint firstItem="meU-3o-99Z" firstAttribute="leading" secondItem="wyU-RV-gDd" secondAttribute="leading" constant="21" id="2Q8-VZ-R5A"/>
                                                             <constraint firstItem="NJQ-2w-o06" firstAttribute="top" secondItem="meU-3o-99Z" secondAttribute="bottom" constant="8" id="58E-2F-ziX"/>
+                                                            <constraint firstItem="vvs-3K-nHt" firstAttribute="leading" secondItem="meU-3o-99Z" secondAttribute="trailing" constant="213.33000000000001" id="gfc-rH-NIY"/>
                                                             <constraint firstItem="vvs-3K-nHt" firstAttribute="leading" secondItem="NJQ-2w-o06" secondAttribute="trailing" constant="8" id="kAx-AH-Fow"/>
                                                             <constraint firstAttribute="height" constant="216" id="laa-7r-Lfl"/>
                                                             <constraint firstAttribute="trailing" secondItem="vvs-3K-nHt" secondAttribute="trailing" constant="8" id="niS-Qf-Nhz"/>
@@ -503,7 +501,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the workout view, tap the plus button after every end to improve the final report readability." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLC-V8-sbz">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the workout view, tap the plus button after every end to improve the final report readability." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLC-V8-sbz">
                                                                 <rect key="frame" x="21" y="69.666666666666629" width="225" height="81.333333333333314"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -520,6 +518,7 @@
                                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="kLC-V8-sbz" firstAttribute="top" secondItem="u7u-At-Q7A" secondAttribute="bottom" constant="8" id="CC0-sr-cMo"/>
+                                                            <constraint firstItem="ACo-NP-BYb" firstAttribute="leading" secondItem="u7u-At-Q7A" secondAttribute="trailing" constant="212.33000000000001" id="Q5E-bb-uKV"/>
                                                             <constraint firstItem="ACo-NP-BYb" firstAttribute="leading" secondItem="kLC-V8-sbz" secondAttribute="trailing" constant="8" id="hYk-dS-YIs"/>
                                                             <constraint firstItem="kLC-V8-sbz" firstAttribute="leading" secondItem="W5C-ee-bqz" secondAttribute="leading" constant="21" id="ku5-W8-LOV"/>
                                                             <constraint firstAttribute="trailing" secondItem="ACo-NP-BYb" secondAttribute="trailing" constant="8" id="oAV-M1-7YN"/>
@@ -543,7 +542,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to the Analysis section of any session at any time to view a report of your shots." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTE-S6-K2a">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to the Analysis section of any session at any time to view a report of your shots." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTE-S6-K2a">
                                                                 <rect key="frame" x="21" y="69.666666666666629" width="225" height="61"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -567,6 +566,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="qcj-G6-01e" secondAttribute="trailing" constant="8" id="dOw-qm-mvZ"/>
                                                             <constraint firstItem="wTE-S6-K2a" firstAttribute="leading" secondItem="sMg-Ar-zJD" secondAttribute="leading" constant="21" id="iVv-aF-FkS"/>
                                                             <constraint firstAttribute="height" constant="216" id="reQ-go-VfJ"/>
+                                                            <constraint firstItem="qcj-G6-01e" firstAttribute="leading" secondItem="RBy-fo-08R" secondAttribute="trailing" constant="212" id="uf6-cc-79S"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -630,7 +630,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0w9-Kt-xTk">
                                 <rect key="frame" x="29" y="148" width="356" height="113"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="104" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-oU-TgO">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-oU-TgO">
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Bow type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VS-pG-V9X">
@@ -640,7 +640,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="54l-zZ-iz8">
-                                                <rect key="frame" x="175.33333333333337" y="0.0" width="180.66666666666663" height="32"/>
+                                                <rect key="frame" x="131.33333333333337" y="0.0" width="224.66666666666663" height="32"/>
                                                 <segments>
                                                     <segment title="Recurve"/>
                                                     <segment title="Compound"/>
@@ -651,7 +651,7 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-IE-lhP">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cf-IE-lhP">
                                         <rect key="frame" x="0.0" y="41" width="356" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Watch location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLK-e7-k0o">
@@ -661,7 +661,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IXE-Eg-Hm1">
-                                                <rect key="frame" x="174.66666666666663" y="0.0" width="181.33333333333337" height="32"/>
+                                                <rect key="frame" x="130.66666666666663" y="0.0" width="225.33333333333337" height="32"/>
                                                 <segments>
                                                     <segment title="Bow hand"/>
                                                     <segment title="String hand"/>
@@ -672,7 +672,7 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="1KD-Pa-ujU">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="1KD-Pa-ujU">
                                         <rect key="frame" x="0.0" y="82" width="356" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Session type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-g7-ryq">
@@ -682,7 +682,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-dx-bsO">
-                                                <rect key="frame" x="132" y="0.0" width="224" height="32"/>
+                                                <rect key="frame" x="130" y="0.0" width="226" height="32"/>
                                                 <segments>
                                                     <segment title="Shooting"/>
                                                     <segment title="Aborting"/>
@@ -706,10 +706,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorize access to healthkit to allow us to read and record data about your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2D-qh-4iR">
-                                        <rect key="frame" x="0.0" y="43.666666666666686" width="356" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="356" id="1Br-kv-r2Q"/>
-                                        </constraints>
+                                        <rect key="frame" x="12.333333333333343" y="43.666666666666686" width="331.33333333333326" height="38"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

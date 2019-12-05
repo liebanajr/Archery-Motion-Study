@@ -24,8 +24,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             print("Key: \(element.key)   Value: \(element.value)")
         }
         
-        
-        
         defaults.setValuesForKeys(userInfo)
     }
     
@@ -35,6 +33,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         if WCSession.isSupported() {
             session.delegate = self
             session.activate()
+        } else {
+            print("WCSession not supported")
         }
     }
 
