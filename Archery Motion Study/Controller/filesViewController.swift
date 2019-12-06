@@ -10,10 +10,18 @@ import UIKit
 import CoreData
 import Firebase
 
+protocol FIlesDelegate {
+    
+    func didEmptySession(with id: String)
+    
+}
+
 class filesViewController: UITableViewController{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    var filesDelegate : FIlesDelegate?
     
     let fileManager = FileManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -115,22 +123,28 @@ class filesViewController: UITableViewController{
 //            }
 //            return
 //        }
-        
-        for item in itemPath! {
-            let file = filesArray[item.row]
-            let fileName = file.fileName!
-            do {
+        do {
+            
+            for item in itemPath! {
+                let file = filesArray[item.row]
+                let fileName = file.fileName!
                 try fileManager.removeItem(atPath: dir + fileName)
                 context.delete(file)
-                try context.save()
                 print("Removed item: \(fileName)")
-                updateTableWithDirectoryData()
-            } catch {
-                print("Error removing file \(fileName): \(error)")
             }
+            try context.save()
+            updateTableWithDirectoryData()
+        
+        } catch {
+            print("Error removing files: \(error)")
         }
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
+        
+        if filesArray.isEmpty {
+            filesDelegate!.didEmptySession(with: importedSessionId!)
+            self.navigationController?.popViewController(animated: true)
+        }
         
     }
     
@@ -255,7 +269,7 @@ class filesViewController: UITableViewController{
             tableView.setEditing(true, animated: true)
             editButton.title = NSLocalizedString("Done", comment: "")
             editButton.style = .done
-            deleteButton.isEnabled = true
+//            deleteButton.isEnabled = true
         }
         
     }

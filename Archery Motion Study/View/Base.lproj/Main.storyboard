@@ -745,6 +745,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="lwg-u0-2Zm"/>
                     <connections>
                         <outlet property="bowTypeSegment" destination="54l-zZ-iz8" id="t2d-EI-sim"/>
+                        <outlet property="healthkitButton" destination="DgO-Ml-7be" id="dB4-qB-rpE"/>
                         <outlet property="sessionTypeSegment" destination="IIs-dx-bsO" id="tJJ-fj-eb6"/>
                         <outlet property="watchLocationSegment" destination="IXE-Eg-Hm1" id="bmz-jh-tH8"/>
                     </connections>
@@ -764,8 +765,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="CgT-oE-lM4" kind="relationship" relationship="viewControllers" id="AhX-wa-Qhj"/>
-                        <segue destination="J4J-gk-Syo" kind="relationship" relationship="viewControllers" id="bjj-F4-Nil"/>
+                        <segue destination="J4J-gk-Syo" kind="relationship" relationship="viewControllers" id="54D-P6-IFg"/>
+                        <segue destination="CgT-oE-lM4" kind="relationship" relationship="viewControllers" id="Z4I-P6-BUw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkq-4x-iRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

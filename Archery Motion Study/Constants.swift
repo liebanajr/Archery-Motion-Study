@@ -19,6 +19,7 @@ struct K {
     static let bowTypeKey : String = "bowType"
     static let handKey : String = "hand"
     static let sessionTypeKey : String = "sessionType"
+    static let healthkitKey : String = "isHealthkitAuthorized"
     
     static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/"]
     static let firebaseFolders : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]

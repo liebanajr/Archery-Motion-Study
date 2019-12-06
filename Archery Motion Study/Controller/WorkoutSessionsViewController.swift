@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate {
+class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate, FIlesDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fileManager = FileManager()
@@ -35,6 +35,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         documentDir = paths.firstObject as! String + K.motionDataFolder
         
         tableView.separatorStyle = .none
+        
         
         fetchAvailableSessions()
         self.refreshControl?.addTarget(self, action: #selector(fetchAvailableSessions), for: .valueChanged)
@@ -146,8 +147,8 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
             for file in result {
                 context.delete(file)
                 try fileManager.removeItem(at: URL(fileURLWithPath: documentDir + "/" + file.fileName!))
-                try context.save()
             }
+            try context.save()
         } catch {
             print("Error deleting files from session with id: \(session.sessionId!)")
         }
@@ -159,6 +160,17 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate 
         if segue.identifier == "goToEnds" {
             let vc = segue.destination as! filesViewController
             vc.importedSessionId = exportedSessionId
+            vc.filesDelegate = self
+        }
+    }
+    
+    func didEmptySession(with id: String){
+        print("Deleting empty session")
+        
+        for session in availableSessions! {
+            if session.sessionId == id {
+                deleteSession(fromSessionObject: session)
+            }
         }
     }
     /*

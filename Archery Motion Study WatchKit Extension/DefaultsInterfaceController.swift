@@ -43,6 +43,9 @@ class DefaultsInterfaceController: WKInterfaceController {
         setInitialDefaults()
         updateTable()
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(updateTable), name: Notification.Name("NewDataAvailable"), object: nil)
+        
     }
     
     func setInitialDefaults() {
@@ -56,7 +59,7 @@ class DefaultsInterfaceController: WKInterfaceController {
         
     }
     
-    func updateTable() {
+    @objc func updateTable() {
         
         let currentDefaultValue = defaults.value(forKey: actualKey!) as? String
         

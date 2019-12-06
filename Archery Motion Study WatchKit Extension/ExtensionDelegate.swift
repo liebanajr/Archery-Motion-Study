@@ -25,6 +25,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         }
         
         defaults.setValuesForKeys(userInfo)
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
     }
     
 

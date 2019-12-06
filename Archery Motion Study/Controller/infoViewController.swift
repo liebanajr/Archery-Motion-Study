@@ -16,9 +16,12 @@ class infoViewController: UIViewController {
     @IBOutlet var bowTypeSegment: UISegmentedControl!
     @IBOutlet var watchLocationSegment: UISegmentedControl!
     @IBOutlet var sessionTypeSegment: UISegmentedControl!
+    @IBOutlet var healthkitButton: UIButton!
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
+    
+    let healthStore = HKHealthStore()
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
@@ -30,6 +33,16 @@ class infoViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)
         setInitialDefaults()
+        
+        if defaults.value(forKey: K.healthkitKey) != nil {
+        
+            healthkitButton.isEnabled = false
+            healthkitButton.setTitle(NSLocalizedString("healthkitButton", comment: ""), for: .normal)
+            healthkitButton.backgroundColor = UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
+            healthkitButton.setTitleColor(.systemGreen, for: .normal)
+            
+        }
+        
         updateInterface()
     }
     @IBAction func authorizeHealthkitButtonPressed(_ sender: Any) {
@@ -45,13 +58,13 @@ class infoViewController: UIViewController {
                          HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                          HKObjectType.quantityType(forIdentifier: .heartRate)!
                         ])
-        let healthStore = HKHealthStore()
         
         healthStore.requestAuthorization(toShare: types, read: types) { (success, error) in
             if !success {
                 print(error!)
             } else {
                 print("HealthKit successfully authorized!")
+                self.defaults.setValue(true, forKey: K.healthkitKey)
             }
         }
         
