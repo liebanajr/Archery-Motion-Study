@@ -12,6 +12,8 @@ import CoreData
 
 class PrivateTableViewController: UITableViewController {
     
+    @IBOutlet var deleteButton: UIBarButtonItem!
+    
     var itemsList : [StorageReference]?
     
     let fileManager = FileManager()
@@ -89,6 +91,7 @@ class PrivateTableViewController: UITableViewController {
             }
             self.itemsList = result.items
             self.tableView.isEditing = false
+            self.deleteButton.isEnabled = false
             self.tableView.reloadData()
             self.title = self.selectedFolder
         })
@@ -143,11 +146,22 @@ class PrivateTableViewController: UITableViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
         let itemsPaths = tableView.indexPathsForSelectedRows ?? []
+        var items : [StorageReference]
+        
+        if itemsPaths.isEmpty {
+            items = itemsList!
+        } else {
+            items = itemsPaths.map({ (path) -> StorageReference in
+                return itemsList![path.row]
+            })
+        }
         var pendingDeletes = 0
         let spinnerView = createSpinnerView()
-        for index in itemsPaths {
+        
+            
+        for item in items {
             pendingDeletes += 1
-            itemsList![index.row].delete { error in
+            item.delete { error in
                 pendingDeletes -= 1
                 if error != nil {
                     print("Error while deleting file: \(error!)")
@@ -188,8 +202,10 @@ class PrivateTableViewController: UITableViewController {
                 
         if tableView.isEditing {
             tableView.setEditing(false, animated: true)
+            deleteButton.isEnabled = false
         } else {
             tableView.setEditing(true, animated: true)
+            deleteButton.isEnabled = true
         }
         
         

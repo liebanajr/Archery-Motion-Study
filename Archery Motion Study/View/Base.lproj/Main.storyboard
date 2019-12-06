@@ -874,13 +874,16 @@
                                     <action selector="shareButtonPressed:" destination="nxk-Di-EUs" id="GeI-l4-uog"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="trash" id="Xma-ea-s0t">
+                            <barButtonItem enabled="NO" systemItem="trash" id="Xma-ea-s0t">
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="nxk-Di-EUs" id="QeT-ZF-9Y7"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="Xma-ea-s0t" id="XMx-QE-KLb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E51-3K-Ytl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
