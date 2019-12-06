@@ -26,6 +26,11 @@
                                     <action selector="settingsButtonPressed" destination="AgC-eL-Hgc" id="6U1-1C-SL5"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Delete All" id="gOz-Q2-4dc">
+                                <connections>
+                                    <action selector="deleteButtonPressed" destination="AgC-eL-Hgc" id="zvp-7f-KxJ"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>

@@ -199,16 +199,16 @@ class PrivateTableViewController: UITableViewController {
                 
         let list = UIAlertController(title: "Select folder", message: "", preferredStyle: .actionSheet)
         
-        let action1 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[0]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[0]]!
+        let action1 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[0]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[0]]!
             self.updateTableView()
         }
-        let action2 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[1]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[1]]!
+        let action2 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[1]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[1]]!
             self.updateTableView()
         }
-        let action3 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[2]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[2]]!
+        let action3 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[2]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[2]]!
             self.updateTableView()
         }
         
