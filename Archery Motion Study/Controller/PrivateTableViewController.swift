@@ -11,6 +11,7 @@ import Firebase
 import CoreData
 
 class PrivateTableViewController: UITableViewController {
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     var itemsList : [StorageReference]?
     
@@ -89,6 +90,7 @@ class PrivateTableViewController: UITableViewController {
             }
             self.itemsList = result.items
             self.tableView.isEditing = false
+            self.deleteButton.isEnabled = false
             self.tableView.reloadData()
             self.title = self.selectedFolder
         })
@@ -143,11 +145,23 @@ class PrivateTableViewController: UITableViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
         let itemsPaths = tableView.indexPathsForSelectedRows ?? []
+        
+        var items : [StorageReference]
+        
+        if itemsPaths.isEmpty {
+            items = itemsList!
+        } else {
+            items = itemsPaths.map({ (path) -> StorageReference in
+                return itemsList![path.row]
+            })
+        }
+        
         var pendingDeletes = 0
         let spinnerView = createSpinnerView()
-        for index in itemsPaths {
+        
+        for item in items {
             pendingDeletes += 1
-            itemsList![index.row].delete { error in
+            item.delete { error in
                 pendingDeletes -= 1
                 if error != nil {
                     print("Error while deleting file: \(error!)")
@@ -188,8 +202,10 @@ class PrivateTableViewController: UITableViewController {
                 
         if tableView.isEditing {
             tableView.setEditing(false, animated: true)
+            self.deleteButton.isEnabled = false
         } else {
             tableView.setEditing(true, animated: true)
+            self.deleteButton.isEnabled = true
         }
         
         
@@ -199,16 +215,16 @@ class PrivateTableViewController: UITableViewController {
                 
         let list = UIAlertController(title: "Select folder", message: "", preferredStyle: .actionSheet)
         
-        let action1 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[0]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[0]]!
+        let action1 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[0]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[0]]!
             self.updateTableView()
         }
-        let action2 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[1]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[1]]!
+        let action2 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[1]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[1]]!
             self.updateTableView()
         }
-        let action3 = UIAlertAction(title: K.firebaseFolders[K.sessionValues[2]]!, style: .default) { (action) in
-            self.selectedFolder = K.firebaseFolders[K.sessionValues[2]]!
+        let action3 = UIAlertAction(title: K.firebaseFoldersBase[K.sessionValues[2]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[2]]!
             self.updateTableView()
         }
         

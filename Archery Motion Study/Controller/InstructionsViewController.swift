@@ -12,7 +12,12 @@ class InstructionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if K.isAdmin{
+            let vc = storyboard?.instantiateViewController(identifier: "privatetableId")
+            self.tabBarController?.viewControllers?.append(vc!)
+        }
+        
         // Do any additional setup after loading the view.
     }
     

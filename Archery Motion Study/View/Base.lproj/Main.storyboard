@@ -455,7 +455,7 @@
                                                         <rect key="frame" x="0.0" y="252" width="398" height="216"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsc-NM-axQ">
-                                                                <rect key="frame" x="21" y="21" width="26" height="41"/>
+                                                                <rect key="frame" x="21" y="20.999999999999996" width="26" height="40.666666666666657"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -917,13 +917,16 @@
                                     <action selector="shareButtonPressed:" destination="nxk-Di-EUs" id="GeI-l4-uog"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="trash" id="Xma-ea-s0t">
+                            <barButtonItem enabled="NO" systemItem="trash" id="Xma-ea-s0t">
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="nxk-Di-EUs" id="QeT-ZF-9Y7"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="Xma-ea-s0t" id="Qvd-BB-E05"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E51-3K-Ytl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -932,7 +935,7 @@
         <!--Cloud Access-->
         <scene sceneID="YQk-Oq-AWg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ztv-NB-VSs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="privatetableId" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ztv-NB-VSs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cloud Access" image="lock.icloud.fill" catalog="system" selectedImage="lock.icloud.fill" id="CHy-se-VoC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2To-zn-klu">
