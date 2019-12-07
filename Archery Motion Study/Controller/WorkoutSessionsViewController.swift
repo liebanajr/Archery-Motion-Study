@@ -23,6 +23,43 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    func addFillerData(){
+        
+        for _ in 0...5 {
+            
+            do {
+                let randomSession = Session(context: context)
+                randomSession.averageHeartRate = Int64.random(in: 40...120)
+                randomSession.bowType = K.categoryValues[Int.random(in: 0...1)]
+                randomSession.caloriesBurned = Int64.random(in: 90...500)
+                let formatter = DateFormatter()
+                formatter.dateFormat = K.dateFormat
+                let randomDate = Date(timeIntervalSinceReferenceDate: TimeInterval(Int.random(in: 300000000...597369600)))
+                randomSession.sessionId = formatter.string(from: randomDate)
+                randomSession.sessionType = K.sessionValues[0]
+                randomSession.watchLocation = K.handValues[Int.random(in: 0...1)]
+                try context.save()
+                
+                for number in 0...5 {
+                    
+                    let randomEnd = MotionDataFile(context: context)
+                    randomEnd.sessionId = randomSession.sessionId
+                    randomEnd.endIndex = Int64(number + 1)
+                    randomEnd.fileName = "Mock file name"
+                    randomEnd.isUploaded = true
+                    randomEnd.firebaseLocation = K.firebaseFolders[K.sessionValues[0]]
+                    try context.save()
+                    
+                }
+                
+            } catch {
+                print("Error trying to create mock data: \(error)")
+            }
+            
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +73,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         
         tableView.separatorStyle = .none
         
+//        addFillerData()
         
         fetchAvailableSessions()
         self.refreshControl?.addTarget(self, action: #selector(fetchAvailableSessions), for: .valueChanged)
