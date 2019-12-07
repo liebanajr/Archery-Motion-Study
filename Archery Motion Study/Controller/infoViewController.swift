@@ -36,10 +36,7 @@ class infoViewController: UIViewController {
         
         if defaults.value(forKey: K.healthkitKey) != nil {
         
-            healthkitButton.isEnabled = false
-            healthkitButton.setTitle(NSLocalizedString("healthkitButton", comment: ""), for: .normal)
-            healthkitButton.backgroundColor = UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
-            healthkitButton.setTitleColor(.systemGreen, for: .normal)
+            disableHealthkitButton()
             
         }
         
@@ -48,6 +45,15 @@ class infoViewController: UIViewController {
     @IBAction func authorizeHealthkitButtonPressed(_ sender: Any) {
         
         authorizeHealthKit()
+        
+    }
+    
+    func disableHealthkitButton(){
+        
+        healthkitButton.isEnabled = false
+        healthkitButton.setTitle(NSLocalizedString("healthkitButton", comment: ""), for: .normal)
+        healthkitButton.backgroundColor = UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
+        healthkitButton.setTitleColor(.systemGreen, for: .normal)
         
     }
     
@@ -65,6 +71,9 @@ class infoViewController: UIViewController {
             } else {
                 print("HealthKit successfully authorized!")
                 self.defaults.setValue(true, forKey: K.healthkitKey)
+                DispatchQueue.main.async {
+                    self.disableHealthkitButton()
+                }
             }
         }
         

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch42"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
@@ -110,7 +110,7 @@
                                         </timer>
                                         <group width="1" alignment="left" id="R3C-q4-Hem">
                                             <items>
-                                                <label width="29" alignment="left" text="End " id="TP1-hu-ctz">
+                                                <label width="34" alignment="left" text="End " id="TP1-hu-ctz">
                                                     <fontDescription key="font" type="system" pointSize="14"/>
                                                 </label>
                                                 <label alignment="left" text="1" id="eQ9-A8-vbg">
@@ -174,7 +174,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-127" y="371"/>
+            <point key="canvasLocation" x="-127.28205128205128" y="370.94871794871796"/>
         </scene>
         <!--Interface Controller-->
         <scene sceneID="dMJ-rk-8H3">
