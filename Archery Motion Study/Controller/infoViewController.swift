@@ -34,7 +34,7 @@ class infoViewController: UIViewController {
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)
         setInitialDefaults()
         
-        if defaults.value(forKey: K.healthkitKey) != nil {
+        if defaults.value(forKey: K.healthkitKey) as! Bool {
         
             disableHealthkitButton()
             
@@ -89,6 +89,11 @@ class infoViewController: UIViewController {
             self.bowTypeSegment.selectedSegmentIndex = bowTypeIndex
             self.watchLocationSegment.selectedSegmentIndex = watchLocationIndex
             self.sessionTypeSegment.selectedSegmentIndex = sessionTypeIndex
+            if self.defaults.value(forKey: K.healthkitKey) as! Bool {
+            
+                self.disableHealthkitButton()
+                
+            }
         }
         
     }
@@ -99,6 +104,7 @@ class infoViewController: UIViewController {
             defaults.setValue(K.categoryValues[0], forKey: K.bowTypeKey)
             defaults.setValue(K.handValues[0], forKey: K.handKey)
             defaults.setValue(K.sessionValues[0], forKey: K.sessionTypeKey)
+            defaults.setValue(false, forKey: K.healthkitKey)
             syncDefaults()
         }
         

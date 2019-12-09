@@ -757,6 +757,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -781,6 +782,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -805,6 +807,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				IBSC_MODULE = Archery_Motion_Study_WatchKit_Extension;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit App/Info.plist";
@@ -825,6 +828,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				IBSC_MODULE = Archery_Motion_Study_WatchKit_Extension;
 				INFOPLIST_FILE = "Archery Motion Study WatchKit App/Info.plist";
@@ -846,6 +850,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study/Archery Motion StudyDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -867,6 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

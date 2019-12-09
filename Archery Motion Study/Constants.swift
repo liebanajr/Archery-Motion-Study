@@ -10,7 +10,7 @@ import Foundation
 
 struct K {
     
-    static let isAdmin = true
+    static let isAdmin = false
     
     static let dateFormat : String = "ddMMyy'T'HHmmss"
     static let graphSmootherSamples : Int = 20
@@ -22,9 +22,11 @@ struct K {
     static let handKey : String = "hand"
     static let sessionTypeKey : String = "sessionType"
     static let healthkitKey : String = "isHealthkitAuthorized"
+    static let friendsKey : String = "isFriend"
     
     static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/"]
     static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
+    static let firebaseFoldersFriends : [String : String] = [sessionValues[0] : "Shot-friends/", sessionValues[1] : "Abort-friends/", sessionValues[2] : "Other-friends/"]
     
     static var firebaseFolders : [String : String]  {
         if self.isAdmin {

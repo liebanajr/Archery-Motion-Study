@@ -33,6 +33,7 @@ class startViewController: WKInterfaceController {
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
         
+        setInitialDefaults()
         deleteAllLocalData()
         authorizeHealthKit()
         
@@ -68,7 +69,20 @@ class startViewController: WKInterfaceController {
                 print(error!)
             } else {
                 print("HealthKit successfully authorized!")
+                self.defaults.setValue(true, forKey: K.healthkitKey)
+                self.syncUserDefaults()
             }
+        }
+        
+    }
+    
+    func setInitialDefaults(){
+        
+        if defaults.value(forKey: K.bowTypeKey) == nil {
+            defaults.set(K.categoryValues[0], forKey: K.bowTypeKey)
+            defaults.set(K.handValues[0], forKey: K.handKey)
+            defaults.set(K.sessionValues[0], forKey: K.sessionTypeKey)
+            defaults.set(false, forKey: K.healthkitKey)
         }
         
     }
@@ -122,7 +136,7 @@ class startViewController: WKInterfaceController {
     
     func syncUserDefaults(){
         
-        let info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!]
+        let info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!, K.healthkitKey: defaults.value(forKey: K.healthkitKey)!]
         session.transferUserInfo(info)
         
     }

@@ -37,6 +37,9 @@
 /* Class = "UILabel"; text = "Authorize access to healthkit to allow us to read and record data about your workouts"; ObjectID = "G2D-qh-4iR"; */
 "G2D-qh-4iR.text" = "Solo usamos datos releveantes del entrenamiento como ritmo cardíaco, calorías activas o distancia caminando para informarte durante tus sesiones de entreno. Estos datos se mantienen siempre en el dispositivo y se pueden visualizar en la aplicación Salud. En ningún caso se envían fuera del dispositivo.";
 
+/* Class = "UILabel"; text = "Use Shooting when performing regular shots, Aborting when not finishing shots, and Other when walking or retrieving arrows."; ObjectID = "bGA-Wf-XSd"; */
+"bGA-Wf-XSd.text" = "Usa Normal para sesiones de tiro, Abortado cuando bajes flechas y Otro al caminar o recoger flechas.";
+
 /* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[0] = "Shooting"; ObjectID = "IIs-dx-bsO"; */
 "IIs-dx-bsO.segmentTitles[0]" = "Normal";
 

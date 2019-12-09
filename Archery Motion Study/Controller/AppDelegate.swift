@@ -87,7 +87,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             motionDataFileItem.endIndex = endIndex
             motionDataFileItem.sessionId = sessionId
             motionDataFileItem.isUploaded = false
-            let folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            var folderName = ""
+            if defaults.value(forKey: K.friendsKey) != nil {
+                folderName = K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            } else {
+                folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            }
             motionDataFileItem.firebaseLocation = folderName
             
             let sessionRequest = NSFetchRequest<Session>(entityName: "Session")

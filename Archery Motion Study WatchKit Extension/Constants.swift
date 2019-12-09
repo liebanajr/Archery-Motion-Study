@@ -13,6 +13,7 @@ struct K {
     static let bowTypeKey : String = "bowType"
     static let handKey : String = "hand"
     static let sessionTypeKey : String = "sessionType"
+    static let healthkitKey : String = "isHealthkitAuthorized"
     
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
