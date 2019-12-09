@@ -37,8 +37,17 @@
 /* Class = "UILabel"; text = "Authorize access to healthkit to allow us to read and record data about your workouts"; ObjectID = "G2D-qh-4iR"; */
 "G2D-qh-4iR.text" = "Solo usamos datos releveantes del entrenamiento como ritmo cardíaco, calorías activas o distancia caminando para informarte durante tus sesiones de entreno. Estos datos se mantienen siempre en el dispositivo y se pueden visualizar en la aplicación Salud. En ningún caso se envían fuera del dispositivo.";
 
-/* Class = "UILabel"; text = "Use Shooting when performing regular shots, Aborting when not finishing shots, and Other when walking or retrieving arrows."; ObjectID = "bGA-Wf-XSd"; */
-"bGA-Wf-XSd.text" = "Usa Normal para sesiones de tiro, Abortado cuando bajes flechas y Otro al caminar o recoger flechas.";
+/* Class = "UILabel"; text = "To join as a collaborator, enter the code you were given."; ObjectID = "aNb-9H-mUv"; */
+"aNb-9H-mUv.text" = "Para unirte como colaborador, introduce el código que has recibido.";
+
+/* Class = "UILabel"; text = "To join as a collaborator, enter the code you were given."; ObjectID = "aNb-9H-mUv"; */
+"aNb-9H-mUv.text" = "Para unirte como colaborador, introduce el código que has recibido.";
+
+/* Class = "UILabel"; text = "Send feedback and comments"; ObjectID = "tYu-Gp-Tc1"; */
+"tYu-Gp-Tc1.text" = "Enviar comentarios";
+
+/* Class = "UILabel"; text = "Follow project development"; ObjectID = "tk1-ey-cpY"; */
+"tk1-ey-cpY.text" = "Seguir desarrollo del proyecto";
 
 /* Class = "UISegmentedControl"; IIs-dx-bsO.segmentTitles[0] = "Shooting"; ObjectID = "IIs-dx-bsO"; */
 "IIs-dx-bsO.segmentTitles[0]" = "Normal";
@@ -68,7 +77,10 @@
 "LXl-NH-fsP.text" = "Text";
 
 /* Class = "UILabel"; text = "Healthkit"; ObjectID = "LnB-GA-sUP"; */
-"LnB-GA-sUP.text" = "Healthkit";
+"LnB-GA-sUP.text" = "Salud";
+
+/* Class = "UILabel"; text = "Collaborators"; ObjectID = "tM3-w4-BkD"; */
+"tM3-w4-BkD.text" = "Colaboradores";
 
 /* Class = "UILabel"; text = "Start a workout by tapping the play button on your apple watch."; ObjectID = "NJQ-2w-o06"; */
 "NJQ-2w-o06.text" = "Comienza un entreno pulsando el botón play en tu Apple Watch.";

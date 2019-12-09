@@ -10,6 +10,7 @@ target 'Archery Motion Study' do
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Storage'
   pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
 
 end
 

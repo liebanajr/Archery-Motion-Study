@@ -29,17 +29,24 @@ struct K {
     static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
     static let firebaseFoldersFriends : [String : String] = [sessionValues[0] : "Shot-friends/", sessionValues[1] : "Abort-friends/", sessionValues[2] : "Other-friends/"]
     
-    static var firebaseFolders : [String : String]  {
-        if self.isAdmin {
-            return self.firebaseFoldersAdmin
-        } else {
-            return self.firebaseFoldersBase
-        }
-        
-    }
+//    static var firebaseFolders : [String : String]  {
+//        if self.isAdmin {
+//            return self.firebaseFoldersAdmin
+//        } else {
+//            return self.firebaseFoldersBase
+//        }
+//        
+//    }
     
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
     static let sessionValues = ["Shooting", "Aborting", "Other"]
+    
+    static let collaboratorCode = "archeryproject"
+    static let feedbackEmail = "feedback.juan@icloud.com"
+    static let feedbackEmailSubject = "Comments on Archer Motion App"
+    static let twitterURL = URL(string: "https://twitter.com/JuanIRL")
+    static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")
+    
     
 }

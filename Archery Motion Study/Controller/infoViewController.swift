@@ -10,13 +10,16 @@ import UIKit
 import HealthKit
 import HealthKitUI
 import WatchConnectivity
+import MessageUI
 
-class infoViewController: UIViewController {
+class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var bowTypeSegment: UISegmentedControl!
     @IBOutlet var watchLocationSegment: UISegmentedControl!
     @IBOutlet var sessionTypeSegment: UISegmentedControl!
     @IBOutlet var healthkitButton: UIButton!
+    @IBOutlet var collaboratorsTextField: UITextField!
+    @IBOutlet var collaboratorsSendButton: UIButton!
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
@@ -41,6 +44,10 @@ class infoViewController: UIViewController {
         }
         
         updateInterface()
+        
+        self.collaboratorsTextField.delegate = self
+        disableCollaboratorsTextField()
+        
     }
     @IBAction func authorizeHealthkitButtonPressed(_ sender: Any) {
         
@@ -99,7 +106,7 @@ class infoViewController: UIViewController {
     }
     
     func setInitialDefaults() {
-        
+                
         if defaults.value(forKey: K.bowTypeKey) == nil {
             defaults.setValue(K.categoryValues[0], forKey: K.bowTypeKey)
             defaults.setValue(K.handValues[0], forKey: K.handKey)
@@ -139,6 +146,83 @@ class infoViewController: UIViewController {
     func syncDefaults(){
         let info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!]
         session.transferUserInfo(info)
+    }
+    
+    func disableCollaboratorsTextField(){
+        
+        if defaults.value(forKey: K.friendsKey) != nil {
+            collaboratorsTextField.isEnabled = false
+            collaboratorsTextField.text = NSLocalizedString("isFriend", comment: "")
+            collaboratorsTextField.placeholder = ""
+            collaboratorsTextField.borderStyle = .none
+            collaboratorsTextField.textColor = .systemGreen
+            collaboratorsTextField.textAlignment = .center
+            collaboratorsSendButton.setBackgroundImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            collaboratorsSendButton.tintColor = .systemGreen
+            collaboratorsSendButton.isHidden = true
+        }
+        
+    }
+    
+    @IBAction func sendCollaboratorsCodeButtonPressed(_ sender: Any) {
+        print("Send button pressed")
+        if collaboratorsTextField.text == K.collaboratorCode {
+            defaults.set(true, forKey: K.friendsKey)
+            disableCollaboratorsTextField()
+        } else {
+            
+        }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendCollaboratorsCodeButtonPressed(textField)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        collaboratorsSendButton.isHidden = true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        collaboratorsSendButton.isHidden = false
+    }
+    
+//    MARK: - Feedback and social
+    
+    @IBAction func feedbackButtonPressed(_ sender: Any) {
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([K.feedbackEmail])
+            mail.setSubject(K.feedbackEmailSubject)
+
+            present(mail, animated: true)
+        } else {
+            print("Failed while trying to send email")
+        }
+
+        
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    @IBAction func twitterButtonPressed(_ sender: Any) {
+
+        if let url = K.twitterURL {
+            UIApplication.shared.open(url)
+        }
+        
+    }
+    @IBAction func instagramButtonPressed(_ sender: Any) {
+        
+        if let url = K.instagramURL {
+            UIApplication.shared.open(url)
+        }
+        
     }
 
     /*

@@ -11,6 +11,7 @@ import WatchConnectivity
 import Foundation
 import Firebase
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
@@ -35,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
 
         FirebaseApp.configure()
+        
+        IQKeyboardManager.shared.enable = true
         
         return true
     }
@@ -87,11 +90,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             motionDataFileItem.endIndex = endIndex
             motionDataFileItem.sessionId = sessionId
             motionDataFileItem.isUploaded = false
+//            SELECTING FOLDER TYPE DEPENDING ON USER
             var folderName = ""
-            if defaults.value(forKey: K.friendsKey) != nil {
+            if K.isAdmin {
+                folderName = K.firebaseFoldersAdmin[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+            }else if defaults.value(forKey: K.friendsKey) != nil {
                 folderName = K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
             } else {
-                folderName = K.firebaseFolders[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+                folderName = K.firebaseFoldersBase[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
             }
             motionDataFileItem.firebaseLocation = folderName
             

@@ -241,12 +241,28 @@ class PrivateTableViewController: UITableViewController {
             self.updateTableView()
         }
         
+        let action7 = UIAlertAction(title: K.firebaseFoldersFriends[K.sessionValues[0]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersFriends[K.sessionValues[0]]!
+            self.updateTableView()
+        }
+        let action8 = UIAlertAction(title: K.firebaseFoldersFriends[K.sessionValues[1]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersFriends[K.sessionValues[1]]!
+            self.updateTableView()
+        }
+        let action9 = UIAlertAction(title: K.firebaseFoldersFriends[K.sessionValues[2]]!, style: .default) { (action) in
+            self.selectedFolder = K.firebaseFoldersFriends[K.sessionValues[2]]!
+            self.updateTableView()
+        }
+        
         list.addAction(action1)
         list.addAction(action2)
         list.addAction(action3)
         list.addAction(action4)
         list.addAction(action5)
         list.addAction(action6)
+        list.addAction(action7)
+        list.addAction(action8)
+        list.addAction(action9)
         
         present(list,animated: true)
         
