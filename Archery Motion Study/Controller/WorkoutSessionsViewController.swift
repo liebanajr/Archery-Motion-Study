@@ -20,6 +20,8 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     
     var exportedSessionId : String?
     
+    let defaults = UserDefaults.standard
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
@@ -59,6 +61,13 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
             
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if defaults.value(forKey: K.freshKey) == nil {
+            self.tabBarController?.selectedIndex = 1
+            defaults.set(true, forKey: K.freshKey)
+        }
     }
 
     override func viewDidLoad() {
