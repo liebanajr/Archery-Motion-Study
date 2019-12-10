@@ -92,7 +92,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     func startWorkout(){
         
+        #if DEBUG
         print("Starting workout...")
+        #endif
         
         let workoutConfiguration = HKWorkoutConfiguration()
         workoutConfiguration.activityType = .archery
@@ -114,7 +116,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         
         builder!.beginCollection(withStart: Date()) { (success, error) in
             if !success {
+                #if DEBUG
                 print("Couldn't start collection of workout data: \(error!)")
+                #endif
                 self.endWorkout()
                 return
             }
@@ -123,7 +127,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
                 
         if motionManager.isDeviceMotionActive {
             
+            #if DEBUG
             print("Device motion is already active. Stopping updates...")
+            #endif
             endWorkout()
             return
 
@@ -141,11 +147,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         /// Obtain the elapsed time from the workout builder.
         /// - Tag: ObtainElapsedTime
         let timerDate = Date(timeInterval: -self.builder!.elapsedTime, since: Date())
-        print("Attempting to set timer with time: \(timerDate)")
         
         // Dispatch to main, because we are updating the interface.
         DispatchQueue.main.async {
-            print("Updating timer...")
             self.timer.setDate(timerDate)
         }
         
@@ -159,17 +163,23 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     func endWorkout(){
         
+        #if DEBUG
         print("Ending workout session...")
+        #endif
 //        When using private build we're not storing workout data on healthkit
         if K.saveWorkoutData {
             builder.endCollection(withEnd: Date()) { (success, error) in
                 guard success else {
+                    #if DEBUG
                     print("Error when ending builder collection: \(error!)")
+                    #endif
                     return
                 }
                 self.builder.finishWorkout { (workout, error) in
                     if error != nil {
+                        #if DEBUG
                         print("Error finishing workout: \(error!)")
+                        #endif
                     }
                 }
             }
@@ -184,14 +194,18 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     func stopMotionUpdates() {
         
+        #if DEBUG
         print("Stopping motion updates...")
+        #endif
         motionManager.stopDeviceMotionUpdates()
         
     }
     
     func startMotionUpdates(){
         
+        #if DEBUG
         print("Starting Device Motion Updates...")
+        #endif
 
         var timeStamp : Double = 0.0
         
@@ -220,7 +234,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     //    Mark: data management functions
     func resetData() {
+        #if DEBUG
         print("Resetting data...")
+        #endif
         csvText = K.csvTextHeader
         fileReadyForTransfer = nil
     }
@@ -240,13 +256,17 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         let fileName = "\(category)_\(hand)_\(date)_\(id).csv"
         
         let url = URL(fileURLWithPath: documentDir + "/" + fileName)
+        #if DEBUG
         print("Guardando datos en: \(url.absoluteString)")
+        #endif
         
         do{
             try dataString.write(to: url, atomically: true, encoding: .utf8)
             fileReadyForTransfer = url
         } catch {
+            #if DEBUG
             print("Error guardando datos: \(error)")
+            #endif
         }
         
     }
@@ -260,7 +280,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
             }
             
         } else {
+            #if DEBUG
             print("Unable to transfer files because WC Session is inactive")
+            #endif
         }
     }
         
@@ -287,16 +309,22 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
+        #if DEBUG
         print("Workout session failed: \(error)")
+        #endif
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didGenerate event: HKWorkoutEvent) {
+        #if DEBUG
         print("Generated workout event \(event)")
+        #endif
     }
     
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        #if DEBUG
         print("Workout builder collected some data...")
         print(collectedTypes)
+        #endif
         for type in collectedTypes {
             guard let quantityType = type as? HKQuantityType else {
                 return // Nothing to do.
@@ -318,18 +346,24 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
             let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.meter()))
             workoutInfo!.cumulativeDistance = value
 //            distanceLabel.setText("\(value)")
+            #if DEBUG
             print("Updating distance label with: \(value)")
+            #endif
             return
         case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
             let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.kilocalorie()))
             workoutInfo!.cumulativeCaloriesBurned = value
             calorieLabel.setText("\(value)")
-            print("Updating calorie label with: \(value)")
+            #if DEBUG
+            print("Updating calories label with: \(value)")
+            #endif
             return
         case HKQuantityType.quantityType(forIdentifier: .heartRate):
             let value = Int(statistics.mostRecentQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
             heartRateLabel.setText("\(value)")
+            #if DEBUG
             print("Updating heart rate label with: \(value)")
+            #endif
             
             let maxValue = Int(statistics.maximumQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
             let avgValue = Int(statistics.averageQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
@@ -345,7 +379,9 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
 //        TODO
+        #if DEBUG
         print("Builder received an event!")
+        #endif
     }
     
 }

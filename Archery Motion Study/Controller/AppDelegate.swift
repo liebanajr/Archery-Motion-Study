@@ -263,3 +263,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
 }
 
+func print(object: Any) {
+    
+//    Swift.print(object)
+    
+}
+
