@@ -950,10 +950,10 @@
             </objects>
             <point key="canvasLocation" x="3453.6231884057975" y="-708.48214285714278"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="f1G-VU-peD">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oYc-GF-KSw" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oYc-GF-KSw" customClass="TabBarViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9am-us-D8m">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

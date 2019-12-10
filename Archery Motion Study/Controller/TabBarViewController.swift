@@ -1,18 +1,23 @@
 //
-//  InstructionsViewController.swift
+//  TabBarViewController.swift
 //  Archery Motion Study
 //
-//  Created by Juan I Rodriguez on 16/11/2019.
+//  Created by Juan I Rodriguez on 10/12/2019.
 //  Copyright © 2019 liebanajr. All rights reserved.
 //
 
 import UIKit
 
-class InstructionsViewController: UIViewController {
+class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if K.isAdmin{
+            let vc = self.storyboard!.instantiateViewController(identifier: "privatetableId")
+            self.viewControllers?.append(vc)
+        }
+
         // Do any additional setup after loading the view.
     }
     

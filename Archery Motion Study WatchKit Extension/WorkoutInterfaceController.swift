@@ -58,7 +58,6 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         let date = formatter.string(from: Date())
         workoutInfo = WorkoutSessionDetails(sessionId: date)
                 
-        // Configure interface objects here.
     }
 
     override func willActivate() {
@@ -68,9 +67,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-        endWorkout()
-        
+        super.didDeactivate()        
     }
     
     @IBAction func addButtonPressed() {

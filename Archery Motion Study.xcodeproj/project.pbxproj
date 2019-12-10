@@ -45,6 +45,7 @@
 		D996D27223802E9400793F17 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D996D27123802E9400793F17 /* InstructionsViewController.swift */; };
 		D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE741237F57C800E4809A /* SettingsRowController.swift */; };
 		D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */; };
+		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +149,7 @@
 		D996D27123802E9400793F17 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		D99FE741237F57C800E4809A /* SettingsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowController.swift; sourceTree = "<group>"; };
 		D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsInterfaceController.swift; sourceTree = "<group>"; };
+		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				D966A64E2371FD8F00EB2141 /* infoViewController.swift */,
 				D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */,
 				D996D27123802E9400793F17 /* InstructionsViewController.swift */,
+				D9C2FAA723A04015000284D1 /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */,
 				8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */,
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
 				D98422C82375EDE9003130E7 /* WorkoutSessionCell.swift in Sources */,
