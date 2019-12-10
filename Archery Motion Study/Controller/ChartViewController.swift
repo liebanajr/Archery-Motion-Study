@@ -176,7 +176,7 @@ class ChartViewController: UIViewController {
             chtChart.leftAxis.labelTextColor = .label
             chtChart.rightAxis.labelTextColor = .label
 //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
-            chtChart.animate(xAxisDuration: 1.3)
+//            chtChart.animate(xAxisDuration: 1.3)
             
         } else {
             chtChart.data = nil

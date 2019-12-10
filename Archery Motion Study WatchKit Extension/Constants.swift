@@ -26,6 +26,6 @@ struct K {
     static let timeStampPrecision : String  = "%.2f"
     static let csvSeparator = ","
     static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z\n"
-    static let saveWorkoutData : Bool = true
+    static let saveWorkoutData : Bool = false
     
 }
