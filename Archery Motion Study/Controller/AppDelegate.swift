@@ -113,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     workoutSession.bowType = defaults.value(forKey: K.bowTypeKey) as? String
                     workoutSession.watchLocation = defaults.value(forKey: K.handKey) as? String
                     workoutSession.sessionType = defaults.value(forKey: K.sessionTypeKey) as? String
+                    workoutSession.dateFinished = Date()
                 } else {
                     print("Session exists. Updating session with id: \(sessionId)")
                     workoutSession = result.first!

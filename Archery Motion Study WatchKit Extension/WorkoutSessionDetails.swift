@@ -14,6 +14,7 @@ class WorkoutSessionDetails : NSObject{
     var cumulativeDistance : Int
     var averageHeartRate : Int
     var maxHeartRate : Int
+    var currentHeartRate : Int
     var endCounter : Int
     
     let sessionId : String
@@ -23,6 +24,7 @@ class WorkoutSessionDetails : NSObject{
         self.cumulativeDistance = 0
         self.averageHeartRate = 0
         self.maxHeartRate = 0
+        self.currentHeartRate = 0
         self.endCounter = 1
         
         self.sessionId = id

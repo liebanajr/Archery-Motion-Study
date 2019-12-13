@@ -26,6 +26,18 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         return .portrait
     }
     
+    func removeAllData(){
+        
+        fetchAvailableSessions()
+        for session in availableSessions! {
+            if session != nil {
+                deleteSession(fromSessionObject: session)
+            }
+            
+        }
+        
+    }
+    
     func addFillerData(){
         
         for _ in 0...5 {
@@ -38,6 +50,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
                 let formatter = DateFormatter()
                 formatter.dateFormat = K.dateFormat
                 let randomDate = Date(timeIntervalSinceReferenceDate: TimeInterval(Int.random(in: 300000000...597369600)))
+                randomSession.dateFinished = randomDate
                 randomSession.sessionId = formatter.string(from: randomDate)
                 randomSession.sessionType = K.sessionValues[0]
                 randomSession.watchLocation = K.handValues[Int.random(in: 0...1)]
@@ -82,6 +95,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         
         tableView.separatorStyle = .none
         
+//        removeAllData()
 //        addFillerData()
         
         fetchAvailableSessions()
@@ -93,6 +107,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     @objc func fetchAvailableSessions(){
         print("Fetching data from model")
         let request = NSFetchRequest<Session>(entityName: "Session")
+        request.sortDescriptors = [NSSortDescriptor(key: "dateFinished", ascending: false)]
         do {
             let result = try context.fetch(request)
             availableSessions = result

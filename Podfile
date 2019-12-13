@@ -11,6 +11,7 @@ target 'Archery Motion Study' do
   pod 'Firebase/Storage'
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwiftSpinner'
 
 end
 

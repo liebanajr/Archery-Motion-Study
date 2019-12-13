@@ -77,11 +77,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             }
         }
     }
-
-}
-
-func print(object: Any) {
     
-    Swift.print(object)
-    
+    func handleActiveWorkoutRecovery() {
+//        TODO: Recuperar de crashes
+    }
+
 }

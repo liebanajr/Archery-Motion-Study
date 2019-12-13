@@ -166,6 +166,7 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="addButton" destination="v9T-cp-0Zt" id="Zph-gC-cyu"/>
                         <outlet property="calorieLabel" destination="oMz-dk-Vls" id="bPF-Qz-mFp"/>
                         <outlet property="endLabel" destination="eQ9-A8-vbg" id="CLp-5t-Asm"/>
                         <outlet property="heartRateLabel" destination="yFY-EC-Lfe" id="irt-fY-oW7"/>

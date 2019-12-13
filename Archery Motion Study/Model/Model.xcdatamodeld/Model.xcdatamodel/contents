@@ -11,6 +11,7 @@
         <attribute name="averageHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="bowType" optional="YES" attributeType="String"/>
         <attribute name="caloriesBurned" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateFinished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="distanceWalked" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="maxHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="String"/>
@@ -19,6 +20,6 @@
     </entity>
     <elements>
         <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Session" positionX="-63" positionY="9" width="128" height="163"/>
+        <element name="Session" positionX="-63" positionY="9" width="128" height="178"/>
     </elements>
 </model>
