@@ -93,19 +93,19 @@ class WorkoutManager: NSObject {
     func endWorkout(){
         
         workoutSession!.end()
-        builder!.endCollection(withEnd: Date()) { (success, error) in
-            guard success else {
-                fatalError("Couldn't finish collection: \(error!)")
-            }
-            if K.saveWorkoutData {
-                self.builder!.finishWorkout { (_, error) in
-                    if error != nil {
-                        fatalError("Couldn't finish workout: \(error!)")
-                    }
+        if K.saveWorkoutData {
+            builder!.endCollection(withEnd: Date()) { (success, error) in
+                guard success else {
+                    fatalError("Couldn't finish collection: \(error!)")
                 }
+                    self.builder!.finishWorkout { (_, error) in
+                        if error != nil {
+                            fatalError("Couldn't finish workout: \(error!)")
+                        }
+                    }
             }
         }
-        
+            
         if motionManager != nil {
             
             saveWorkout()
