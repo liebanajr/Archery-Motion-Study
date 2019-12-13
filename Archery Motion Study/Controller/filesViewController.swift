@@ -102,7 +102,7 @@ class filesViewController: UITableViewController{
         self.present(alert, animated: true)
     
     }
-    func deleteItems(itemPath: [IndexPath]?) {
+    func deleteItems(itemPath: [IndexPath]) {
         
         let dir = self.documentDir!
         
@@ -125,7 +125,7 @@ class filesViewController: UITableViewController{
 //        }
         do {
             
-            for item in itemPath! {
+            for item in itemPath {
                 let file = filesArray[item.row]
                 let fileName = file.fileName!
                 try fileManager.removeItem(atPath: dir + fileName)
@@ -133,18 +133,14 @@ class filesViewController: UITableViewController{
                 print("Removed item: \(fileName)")
             }
             try context.save()
-            updateTableWithDirectoryData()
+//            updateTableWithDirectoryData()
         
         } catch {
             print("Error removing files: \(error)")
         }
+        
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
-        
-        if filesArray.isEmpty {
-            filesDelegate!.didEmptySession(with: importedSessionId!)
-            self.navigationController?.popViewController(animated: true)
-        }
         
     }
     
@@ -173,6 +169,12 @@ class filesViewController: UITableViewController{
         } catch {
             print("Error looking for files in database: \(error)")
         }
+        
+        if filesArray.isEmpty {
+            filesDelegate!.didEmptySession(with: importedSessionId!)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         DispatchQueue.main.async {
             self.tableView.isEditing = false
             self.editButton.title = "Edit"

@@ -57,11 +57,10 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         } else if workoutManager!.workoutSession!.state == .paused {
             
             addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-            endLabel.setText(String(workoutManager!.workoutData!.endCounter))
             workoutManager!.resumeWorkout()
+            endLabel.setText("\(workoutManager!.workoutData!.endCounter)")
             timer.start()
             addButton.setBackgroundImage(UIImage(systemName: "plus"))
-            
         }
         
     }

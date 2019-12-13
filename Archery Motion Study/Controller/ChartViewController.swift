@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import Accelerate
+import SwiftSpinner
 
 class ChartViewController: UIViewController {
         
@@ -127,60 +128,66 @@ class ChartViewController: UIViewController {
     
     func updateGraph () {
         chtChart.clear()
-        if !desiredDataSets!.isEmpty {
-            fullScreenButton.isHidden = false
-            let data = LineChartData()
-            
-            
-            for dataSet in desiredDataSets!{
-                
-                var lineChartEntry = [ChartDataEntry]()
-                
-//                Average sensor data
-                let smoothData = averageManager?.averageSignal(inputSignal: dataSet.data)
-                       
-                for (index,value) in smoothData!.enumerated() {
-                    
-                    let entry = ChartDataEntry(x: timeStamp!.data[index], y: value)
-                    lineChartEntry.append(entry)
-                }
-                
-                let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
+        if !self.desiredDataSets!.isEmpty {
+            SwiftSpinner.show(delay: 1.0, title: NSLocalizedString("spinnerMessage", comment: ""))
+            DispatchQueue.global(qos: .utility).async {
+                let data = LineChartData()
 
-                switch dataSet.label {
-                case "Accelerometer X":
-                    line1.colors = [colorArray[0]]
-                case "Accelerometer Y":
-                    line1.colors = [colorArray[1]]
-                case "Accelerometer Z":
-                    line1.colors = [colorArray[2]]
-                case "Gyroscope X":
-                    line1.colors = [colorArray[3]]
-                case "Gyroscope Y":
-                    line1.colors = [colorArray[4]]
-                case "Gyroscope Z":
-                    line1.colors = [colorArray[5]]
-                default:
-                    line1.colors = [.darkGray]
+
+                for dataSet in self.desiredDataSets!{
+
+                    var lineChartEntry = [ChartDataEntry]()
+
+                    //                Average sensor data
+                    let smoothData = self.averageManager?.averageSignal(inputSignal: dataSet.data)
+                           
+                    for (index,value) in smoothData!.enumerated() {
+                        
+                        let entry = ChartDataEntry(x: self.timeStamp!.data[index], y: value)
+                        lineChartEntry.append(entry)
+                    }
+
+                    let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
+
+                    switch dataSet.label {
+                        case "Accelerometer X":
+                            line1.colors = [self.colorArray[0]]
+                        case "Accelerometer Y":
+                            line1.colors = [self.colorArray[1]]
+                        case "Accelerometer Z":
+                            line1.colors = [self.colorArray[2]]
+                        case "Gyroscope X":
+                            line1.colors = [self.colorArray[3]]
+                        case "Gyroscope Y":
+                            line1.colors = [self.colorArray[4]]
+                        case "Gyroscope Z":
+                            line1.colors = [self.colorArray[5]]
+                        default:
+                            line1.colors = [.darkGray]
+                    }
+
+                    line1.drawCirclesEnabled = false
+
+                    data.addDataSet(line1)
+
                 }
-                
-                line1.drawCirclesEnabled = false
-                
-                data.addDataSet(line1)
-                
+                DispatchQueue.main.async {
+                    self.chtChart.data = data
+                    self.chtChart.legend.enabled = false
+                    self.chtChart.xAxis.labelTextColor = .label
+                    self.chtChart.leftAxis.labelTextColor = .label
+                    self.chtChart.rightAxis.labelTextColor = .label
+                    self.fullScreenButton.isHidden = false
+                    //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
+                    //            chtChart.animate(xAxisDuration: 1.3)
+
+                    SwiftSpinner.hide()
+                }
             }
-            
-            chtChart.data = data
-            chtChart.legend.enabled = false
-            chtChart.xAxis.labelTextColor = .label
-            chtChart.leftAxis.labelTextColor = .label
-            chtChart.rightAxis.labelTextColor = .label
-//            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
-//            chtChart.animate(xAxisDuration: 1.3)
-            
-        } else {
-            chtChart.data = nil
-            fullScreenButton.isHidden = true
+            } else {
+            self.fullScreenButton.isHidden = true
+//            self.chtChart.data = nil
+//            self.fullScreenButton.isHidden = true
         }
         
     }

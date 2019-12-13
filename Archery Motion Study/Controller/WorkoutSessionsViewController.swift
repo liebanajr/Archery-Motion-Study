@@ -30,9 +30,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         
         fetchAvailableSessions()
         for session in availableSessions! {
-            if session != nil {
-                deleteSession(fromSessionObject: session)
-            }
+            deleteSession(fromSessionObject: session)
             
         }
         
@@ -40,6 +38,7 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     
     func addFillerData(){
         
+        print("ADDING FILLER DATA!!")
         for _ in 0...5 {
             
             do {
@@ -90,7 +89,6 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         tableView.register(UINib(nibName: "WorkoutSessionCell", bundle: nil), forCellReuseIdentifier: "sessionCell")
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadTableWithNewData), name: Notification.Name("NewDataAvailable"), object: nil)
-        print("Done registering cell")
         documentDir = paths.firstObject as! String + K.motionDataFolder
         
         tableView.separatorStyle = .none
@@ -99,13 +97,15 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
 //        addFillerData()
         
         fetchAvailableSessions()
-        self.refreshControl?.addTarget(self, action: #selector(fetchAvailableSessions), for: .valueChanged)
+        self.refreshControl?.isEnabled = false
+//        self.refreshControl?.addTarget(self, action: #selector(fetchAvailableSessions), for: .valueChanged)
 
         // Do any additional setup after loading the view.
     }
     
     @objc func fetchAvailableSessions(){
         print("Fetching data from model")
+//        availableSessions = []
         let request = NSFetchRequest<Session>(entityName: "Session")
         request.sortDescriptors = [NSSortDescriptor(key: "dateFinished", ascending: false)]
         do {
@@ -118,53 +118,51 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
             print("Error fetching sessions: \(error)")
         }
         print("Done fetching data from model")
-        if self.refreshControl!.isRefreshing {
-            self.tableView.reloadData()
-            self.refreshControl!.endRefreshing()
-        }
     }
     
     @objc func reloadTableWithNewData(){
+        self.fetchAvailableSessions()
         DispatchQueue.main.async {
-            self.fetchAvailableSessions()
             self.tableView.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let session = availableSessions![indexPath.row]
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = K.dateFormat
-        let formattedDate = formatter.date(from: session.sessionId!)
-        formatter.locale = .current
-        formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
-        let dateString = formatter.string(from: formattedDate!)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
-        cell.selectionStyle = .none
-        cell.delegate = self
-        cell.currentCellIndex = indexPath
-        cell.titleLabel.text = dateString
-        cell.avgHRLabel.text = "\(session.averageHeartRate) bpm \(NSLocalizedString("average", comment: ""))"
-        cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
-        cell.sessionTypeLabel.text = NSLocalizedString(session.sessionType!, comment: "") + " " + NSLocalizedString(session.bowType!, comment: "") + ","
-        cell.watchLocationLabel.text = NSLocalizedString("Watch in", comment: "") + " " + NSLocalizedString(session.watchLocation!, comment: "")
-        do{
-            let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
-            request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
-            let result = try context.fetch(request)
-            let endsCount = result.count
+        print("Setting cell number: \(indexPath.row)")
+            let session = availableSessions![indexPath.row]
+            let formatter = DateFormatter()
+            formatter.dateFormat = K.dateFormat
+            let formattedDate = formatter.date(from: session.sessionId!)
+            formatter.locale = .current
+            formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
+            let dateString = formatter.string(from: formattedDate!)
             
-            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: ""))"
-        } catch {
-            print("Error fetching ends count: \(error)")
-        }
-        return cell
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+            cell.selectionStyle = .none
+            cell.delegate = self
+            cell.currentCellIndex = indexPath
+            cell.titleLabel.text = dateString
+            cell.avgHRLabel.text = "\(session.averageHeartRate) bpm \(NSLocalizedString("average", comment: ""))"
+            cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
+            cell.sessionTypeLabel.text = NSLocalizedString(session.sessionType!, comment: "") + " " + NSLocalizedString(session.bowType!, comment: "") + ","
+            cell.watchLocationLabel.text = NSLocalizedString("Watch in", comment: "") + " " + NSLocalizedString(session.watchLocation!, comment: "")
+            do{
+                let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
+                request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
+                let result = try context.fetch(request)
+                let endsCount = result.count
+                
+                cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: ""))"
+            } catch {
+                print("Error fetching ends count: \(error)")
+            }
+            return cell
         
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Number of rows in section: \(availableSessions!.count)")
         if availableSessions!.count == 0 {
             tableView.setEmptyView(title: NSLocalizedString("noDataTitle", comment: ""), message: NSLocalizedString("noDataMessage", comment: ""))
         }
@@ -227,13 +225,15 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     }
     
     func didEmptySession(with id: String){
-        print("Deleting empty session")
+        print("Deleting empty session...")
         
         for session in availableSessions! {
             if session.sessionId == id {
                 deleteSession(fromSessionObject: session)
             }
         }
+        fetchAvailableSessions()
+        tableView.reloadData()
     }
     /*
     // MARK: - Navigation

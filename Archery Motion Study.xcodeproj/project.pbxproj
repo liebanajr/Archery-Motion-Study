@@ -49,7 +49,6 @@
 		D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
 		D9C2FAAA23A2C664000284D1 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA923A2C664000284D1 /* MotionManager.swift */; };
-		D9C2FAAC23A2D282000284D1 /* delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAAB23A2D282000284D1 /* delete.swift */; };
 		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
 		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -157,7 +156,6 @@
 		D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsInterfaceController.swift; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9C2FAA923A2C664000284D1 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		D9C2FAAB23A2D282000284D1 /* delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = delete.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +264,6 @@
 				D99FE741237F57C800E4809A /* SettingsRowController.swift */,
 				D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */,
 				D9C2FAA923A2C664000284D1 /* MotionManager.swift */,
-				D9C2FAAB23A2D282000284D1 /* delete.swift */,
 				D96068B623A2E54100C81228 /* WorkoutManager.swift */,
 				D959312723A2FE5B004693B4 /* FilesManager.swift */,
 			);
@@ -583,7 +580,6 @@
 				D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */,
 				D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */,
 				D96068B723A2E54100C81228 /* WorkoutManager.swift in Sources */,
-				D9C2FAAC23A2D282000284D1 /* delete.swift in Sources */,
 				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
 				D9967F73237DF39900C2253C /* Constants.swift in Sources */,
 				D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */,

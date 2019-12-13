@@ -92,7 +92,7 @@
 "QIm-t8-yBY.title" = "Modo de uso";
 
 /* Class = "UILabel"; text = "4"; ObjectID = "RBy-fo-08R"; */
-"RBy-fo-08R.text" = "5";
+"RBy-fo-08R.text" = "6";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "X8w-OW-0RU"; */
 "X8w-OW-0RU.title" = "Item";
@@ -143,7 +143,13 @@
 "u7u-At-Q7A.text" = "4";
 
 /* Class = "UILabel"; text = "Go to the Analysis section of any session at any time to view a report of your shots."; ObjectID = "wTE-S6-K2a"; */
-"wTE-S6-K2a.text" = "Ve a la sección Análisis en cualquier momento para ver el informe de tus tiros.";
+"wTE-S6-K2a.text" = "Navega a Sesiones > Selecciona una sesión > Análisis serie en cualquier momento para visualizar la información de cada tiro.";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "mky-VL-EAb"; */
+"mky-VL-EAb.text" = "5";
+
+/* Class = "UILabel"; text = "Don't forget to tap the play button to start the next end."; ObjectID = "CbH-EN-R2z"; */
+"CbH-EN-R2z.text" = "No te olvides de pulsar el botón 'play' para comenzar la siguiente serie.";
 
 /* Class = "UILabel"; text = "In order to sync workout data with the Health app, authorize the use of Healthkit by pressing the button under settings."; ObjectID = "om8-1Z-gTD"; */
 "om8-1Z-gTD.text" = "Para poder sincronizar los datos con la aplicación Salud, autoriza el uso de Healthkit pulsando el botón debajo de Ajustes.";
