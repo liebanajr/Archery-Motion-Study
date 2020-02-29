@@ -19,3 +19,7 @@
 "Session type" = "Session type";
 "userDefaultsAlert" = "No initial settings defined. Before going on, make sure the current settings are correct on the Force Touch menu or on your iPhone";
 "Initial settings" = "Initial settings";
+"finish" = "End";
+"goOn" = "Keep going";
+"endWorkoutTitle" = "";
+"endWorkoutMessage" = "Do you want to end the workout?";

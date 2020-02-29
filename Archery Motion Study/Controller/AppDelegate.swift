@@ -64,9 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let sessionId = metadata["sessionId"]! as! String
             let calories = metadata["calories"]! as! Int64
             let maxHR = metadata["maxHR"]! as! Int64
+            let minHR = metadata["minHR"]! as! Int64
             let avgHR = metadata["avgHR"]! as! Int64
             let distance = metadata["distance"]! as! Int64
-            print("End: \(endIndex)   SessionId: \(sessionId)   Calories so far: \(calories)      Max HR: \(maxHR)" )
+            let duration = metadata["elapsedTime"]! as! Int64
+            let arrowCount = metadata["arrowCount"]! as! Int64
+//            print("End: \(endIndex)   SessionId: \(sessionId)   Calories so far: \(calories)      Max HR: \(maxHR)" )
             
             let srcURL = file.fileURL
             
@@ -79,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 try fileManager.createDirectory(at: URL(fileURLWithPath: documentDir), withIntermediateDirectories: false, attributes: nil)
             }
             
-            print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
+//            print("Attemmpting to move \(srcURL.absoluteString) to \(dstURL.absoluteString)")
             try fileManager.moveItem(at: srcURL, to: dstURL)
             print("File moved successfully!")
             
@@ -90,6 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             motionDataFileItem.endIndex = endIndex
             motionDataFileItem.sessionId = sessionId
             motionDataFileItem.isUploaded = false
+            motionDataFileItem.endMinHR = minHR
+            motionDataFileItem.endMaxHR = maxHR
 //            SELECTING FOLDER TYPE DEPENDING ON USER
             var folderName = ""
             if K.isAdmin {
@@ -105,24 +110,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             sessionRequest.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [sessionId])
             do {
                 let result = try context.fetch(sessionRequest)
-                print("Fetch request result: \(result)")
+//                print("Fetch request result: \(result)")
                 var workoutSession : Session
                 if result.isEmpty {
-                    print("Session does not exist. Creating new workout session with id: \(sessionId)")
+//                    print("Session does not exist. Creating new workout session with id: \(sessionId)")
                     workoutSession = Session(context: context)
                     workoutSession.bowType = defaults.value(forKey: K.bowTypeKey) as? String
                     workoutSession.watchLocation = defaults.value(forKey: K.handKey) as? String
                     workoutSession.sessionType = defaults.value(forKey: K.sessionTypeKey) as? String
                     workoutSession.dateFinished = Date()
+                    workoutSession.duration = 0
                 } else {
-                    print("Session exists. Updating session with id: \(sessionId)")
+//                    print("Session exists. Updating session with id: \(sessionId)")
                     workoutSession = result.first!
                 }
                 workoutSession.sessionId = sessionId
                 workoutSession.averageHeartRate = avgHR
                 workoutSession.caloriesBurned = calories
                 workoutSession.maxHeartRate = maxHR
+                workoutSession.minHeartRate = minHR
                 workoutSession.distanceWalked = distance
+                workoutSession.arrowCount = arrowCount
+                
+//                Duration needs special treatment so it's separated and calculated before saving
+                motionDataFileItem.endDuration = duration - workoutSession.duration
+                workoutSession.duration = duration
                 
             } catch {
                 print("Error fetching existing Session: \(error)")
@@ -130,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             self.saveContext()
             print("Data saved successfully!")
             
-            print("Attempting to store \(fileName) in folder \(folderName) in Firebase cloud storage")
+//            print("Attempting to store \(fileName) in folder \(folderName) in Firebase cloud storage")
             let storage = Storage.storage()
             let storageRef = storage.reference()
             let motionDataDestination = storageRef.child(folderName + fileName)
@@ -184,6 +196,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         if activationState != .activated {
             print("WC Session is not active")
         }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print("Error de Apple Watch en WorkoutManager: \(message["errorMessage"]!)")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {

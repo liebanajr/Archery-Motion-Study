@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import WatchConnectivity
 
 protocol WorkoutManagerDelegate {
     
@@ -27,7 +28,10 @@ class WorkoutManager: NSObject {
     var workoutConfiguration : HKWorkoutConfiguration?
     
     var motionManager: MotionManager?
+    var asyncDataMotionManager : MotionManager?
     var filesManager : FilesManager?
+    
+    let wcSession = WCSession.default
     
     override init() {
         
@@ -78,22 +82,23 @@ class WorkoutManager: NSObject {
     func pauseWorkout(){
         
         workoutSession!.pause()
-        saveWorkout()
         
     }
     
     func resumeWorkout(){
         
         workoutSession!.resume()
-        motionManager = MotionManager()
-        motionManager!.startMotionUpdates()
-        workoutData!.endCounter += 1
+        if motionManager == nil {
+            print("Motion manager was nil. Creating new")
+            motionManager = MotionManager()
+            motionManager!.startMotionUpdates()
+        }
     }
     
     func endWorkout(){
         
-        workoutSession!.end()
         if K.saveWorkoutData {
+            print("Ending collection...")
             builder!.endCollection(withEnd: Date()) { (success, error) in
                 guard success else {
                     fatalError("Couldn't finish collection: \(error!)")
@@ -105,9 +110,12 @@ class WorkoutManager: NSObject {
                     }
             }
         }
+        
+        print("Trying to end workout")
+        workoutSession!.end()
             
         if motionManager != nil {
-            
+            print("Trying to save workout")
             saveWorkout()
             
         }
@@ -117,13 +125,19 @@ class WorkoutManager: NSObject {
 //    MARK: Other functions
     
     func saveWorkout(){
-        
+        print("Saving workout")
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("saveTaskStarted"), object: nil)
         motionManager!.stopMotionUpdates()
+        asyncDataMotionManager = motionManager
+        motionManager = nil
         DispatchQueue.global(qos: .utility).async {
-            let csv = self.motionManager!.toCSVString()
+            let csv = self.asyncDataMotionManager!.toCSVString()
             let url = self.filesManager!.saveDataLocally(dataString: csv)!
+            self.workoutData!.elapsedSeconds = Int(DateInterval(start: self.workoutSession!.startDate!, end: Date()).duration.magnitude)
             self.filesManager!.sendDataToiPhone(url, with: self.workoutData!)
-            self.motionManager = nil
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name("saveTaskFinished"), object: nil)
         }
         
     }
@@ -162,10 +176,16 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
                 let value = Int(statistics.mostRecentQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
                 let maxValue = Int(statistics.maximumQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
+                let minValue = Int(statistics.minimumQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
                 let avgValue = Int(statistics.averageQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
                 
                 workoutData!.currentHeartRate = value
-                workoutData!.maxHeartRate = maxValue
+                if maxValue > workoutData!.maxHeartRate {
+                    workoutData!.maxHeartRate = maxValue
+                }
+                if minValue < workoutData!.minHeartRate {
+                    workoutData!.minHeartRate = minValue
+                }
                 workoutData!.averageHeartRate = avgValue
                 return
             default:
@@ -207,6 +227,7 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         print("Workout session failed with error: \(error)")
+        wcSession.sendMessage(["errorMessage":error], replyHandler: nil, errorHandler: nil)
     }
     
     

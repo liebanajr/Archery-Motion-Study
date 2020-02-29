@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16117.1" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MotionDataFile" representedClassName="MotionDataFile" syncable="YES" codeGenerationType="class">
+        <attribute name="endDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="endIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endMaxHR" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endMinHR" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fileName" optional="YES" attributeType="String"/>
         <attribute name="firebaseLocation" optional="YES" attributeType="String"/>
         <attribute name="isUploaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Session" representedClassName="Session" syncable="YES" codeGenerationType="class">
+        <attribute name="arrowCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="averageHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="bowType" optional="YES" attributeType="String"/>
         <attribute name="caloriesBurned" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dateFinished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="distanceWalked" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="maxHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="String"/>
         <attribute name="sessionType" optional="YES" attributeType="String"/>
         <attribute name="watchLocation" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Session" positionX="-63" positionY="9" width="128" height="178"/>
+        <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Session" positionX="-63" positionY="9" width="128" height="223"/>
     </elements>
 </model>

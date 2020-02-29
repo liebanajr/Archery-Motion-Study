@@ -26,10 +26,6 @@ class startViewController: WKInterfaceController {
         
         super.awake(withContext: context)
         
-        if #available(watchOSApplicationExtension 6.0, *) {
-            startButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"))
-        }
-        
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
         
@@ -120,7 +116,8 @@ class startViewController: WKInterfaceController {
             return
         } else {
 //            pushController(withName: "goToWorkout", context: self)
-            presentController(withName: "WorkoutInterfaceController", context: self)
+            presentController(withName: "page2", context: self)
+//            WKInterfaceController.reloadRootPageControllers(withNames: ["page1","page2","page3"], contexts: nil, orientation: .horizontal, pageIndex: 1)
         }
         
     }

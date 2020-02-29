@@ -28,7 +28,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
     }
-    
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.

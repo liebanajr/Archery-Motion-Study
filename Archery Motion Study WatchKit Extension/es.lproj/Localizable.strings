@@ -19,3 +19,7 @@
 "Session type" = "Entrenamiento";
 "userDefaultsAlert" = "No hay ajustes definidos. Por favor, antes de comenzar comprueba que son correctos accediendo a ajustes en el menú Force Touch o en tu iPhone";
 "Initial settings" = "Ajustes iniciales";
+"finish" = "Terminar";
+"goOn" = "Continuar";
+"endWorkoutTitle" = "";
+"endWorkoutMessage" = "¿Deseas terminar el entrenamiento?";

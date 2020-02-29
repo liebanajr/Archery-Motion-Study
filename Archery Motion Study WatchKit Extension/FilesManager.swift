@@ -39,7 +39,7 @@ class FilesManager: NSObject {
         let fileName = "\(category)_\(hand)_\(date)_\(id).csv"
         
         let url = URL(fileURLWithPath: documentDir + "/" + fileName)
-        print("Guardando datos en: \(url.absoluteString)")
+//        print("Guardando datos en: \(url.absoluteString)")
         
         do{
             try dataString.write(to: url, atomically: true, encoding: .utf8)
@@ -53,8 +53,8 @@ class FilesManager: NSObject {
     
     func sendDataToiPhone(_ file: URL, with workoutInfo: WorkoutSessionDetails){
         if wcSession.activationState == .activated {
-            print("Sending \(file.absoluteString) to iPhone...")
-            let dictionary : [String : Any] = ["end" : workoutInfo.endCounter , "sessionId" : workoutInfo.sessionId , "calories" : workoutInfo.cumulativeCaloriesBurned , "avgHR" : workoutInfo.averageHeartRate , "maxHR" : workoutInfo.maxHeartRate , "distance" : workoutInfo.cumulativeDistance]
+//            print("Sending \(file.absoluteString) to iPhone...")
+            let dictionary : [String : Any] = ["end" : workoutInfo.endCounter , "sessionId" : workoutInfo.sessionId , "calories" : workoutInfo.cumulativeCaloriesBurned , "avgHR" : workoutInfo.averageHeartRate , "maxHR" : workoutInfo.maxHeartRate ,"minHR" : workoutInfo.minHeartRate , "distance" : workoutInfo.cumulativeDistance,"elapsedTime" : workoutInfo.elapsedSeconds, "arrowCount" : workoutInfo.arrowCounter]
             wcSession.transferFile(file, metadata: dictionary)
             
         } else {
