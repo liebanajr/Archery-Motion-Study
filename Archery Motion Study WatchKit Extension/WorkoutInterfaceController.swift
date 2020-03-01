@@ -26,7 +26,9 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
     @IBOutlet weak var heartRateLabel: WKInterfaceLabel!
     @IBOutlet weak var endLabel: WKInterfaceLabel!
     @IBOutlet var addButton: WKInterfaceButton!
+    @IBOutlet var addButtonBackground: WKInterfaceGroup!
     @IBOutlet var endButton: WKInterfaceButton!
+    @IBOutlet var endButtonBackground: WKInterfaceGroup!
     
     var arrowCount : Int = 0
     
@@ -56,24 +58,36 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
 //        nc.addObserver(self, selector: #selector(saveTasksFinished), name: Notification.Name("saveTaskFinished"), object: nil)
 //        nc.addObserver(self, selector: #selector(saveTasksStarting), name: Notification.Name("saveTaskStarted"), object: nil)
         
-        let model = WKInterfaceDevice.current().name
+        let modelWidth = WKInterfaceDevice.current().screenBounds.width*2
         
-        let start = model.index(model.endIndex, offsetBy: -4)
-        let end = model.index(model.endIndex, offsetBy: -2)
-        let range = start..<end
+        
+//        let start = model.index(model.endIndex, offsetBy: -4)
+//        let end = model.index(model.endIndex, offsetBy: -2)
+//        let range = start..<end
          
-        let modelSize = Int(model[range])
+//        let modelSize = Int(model[range])
         
-        switch modelSize {
-            case 40:
-                addButton.setWidth(52)
-                endButton.setWidth(52)
-            case 42:
-                addButton.setWidth(55)
-                endButton.setWidth(55)
-            case 44:
-                addButton.setWidth(60)
-                endButton.setWidth(60)
+        switch modelWidth {
+        case 272.0:
+                endButtonBackground.setWidth(68)
+                endButtonBackground.setHeight(45)
+                addButtonBackground.setWidth(68)
+                addButtonBackground.setHeight(45)
+        case 312.0:
+                endButtonBackground.setWidth(75)
+                endButtonBackground.setHeight(50)
+                addButtonBackground.setWidth(75)
+                addButtonBackground.setHeight(50)
+        case 324.0:
+                endButtonBackground.setWidth(80)
+                endButtonBackground.setHeight(55)
+                addButtonBackground.setWidth(80)
+                addButtonBackground.setHeight(55)
+        case 368.0:
+                endButtonBackground.setWidth(85)
+                endButtonBackground.setHeight(60)
+                addButtonBackground.setWidth(80)
+                addButtonBackground.setHeight(60)
             default:
                 print("Watch model not supported")
         }
@@ -99,7 +113,9 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         print("Task finished. Enabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(true)
+            self.addButtonBackground.setAlpha(1.0)
             self.endButton.setEnabled(true)
+            self.endButtonBackground.setAlpha(1.0)
         }
         
         if sessionState == .workoutFinished {
@@ -115,7 +131,9 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         print("Task starting. Disabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(false)
+            self.addButtonBackground.setAlpha(0.5)
             self.endButton.setEnabled(false)
+            self.endButtonBackground.setAlpha(0.5)
         }
         
     }
@@ -169,8 +187,8 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
             
             sessionState = .workoutPaused
             startController!.sessionState = sessionState!
-            addButton.setBackgroundImage(UIImage(systemName: "play"))
-            addButton.setBackgroundColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
+            addButton.setBackgroundImage(UIImage(systemName: "play.fill"))
+//            addButton.setBackgroundColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
             stopTimer()
             workoutManager!.pauseWorkout()
             workoutManager!.saveWorkout()
@@ -180,7 +198,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
             
             sessionState = .workoutRunning
             startController!.sessionState = sessionState!
-            addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+//            addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
             addButton.setBackgroundImage(UIImage(systemName: "plus"))
             workoutManager!.resumeWorkout()
             workoutManager!.workoutData!.endCounter += 1

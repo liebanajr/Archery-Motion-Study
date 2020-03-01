@@ -147,20 +147,26 @@
                                 </group>
                                 <group width="1" alignment="center" verticalAlignment="center" spacing="0.0" id="9us-si-dh8">
                                     <items>
-                                        <group width="90" height="60" alignment="center" verticalAlignment="center" backgroundImage="capsule.fill" catalog="system" layout="vertical" id="3Ji-e0-vN8">
+                                        <group width="85" height="60" alignment="center" verticalAlignment="center" animationDuration="1" layout="overlap" id="3Ji-e0-vN8">
                                             <items>
-                                                <button width="40" height="40" alignment="center" verticalAlignment="center" backgroundImage="plus" catalog="system" id="v9T-cp-0Zt">
-                                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageView width="1" height="1" alignment="left" alpha="0.69999999999999996" image="capsule.fill" catalog="system" animationDuration="1" id="uwm-JD-1Cd">
+                                                    <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <button width="0.5" height="0.69999999999999996" alignment="center" verticalAlignment="center" backgroundImage="plus" catalog="system" id="v9T-cp-0Zt">
+                                                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="addButtonPressed" destination="hOH-hO-zEw" id="5Cq-Fj-cU7"/>
                                                     </connections>
                                                 </button>
                                             </items>
                                         </group>
-                                        <group width="90" height="60" alignment="center" verticalAlignment="center" backgroundImage="capsule.fill" catalog="system" layout="vertical" id="lay-ZP-XMf">
+                                        <group width="85" height="60" alignment="center" verticalAlignment="center" backgroundImage="capsule.fill" catalog="system" layout="overlap" id="lay-ZP-XMf">
                                             <items>
-                                                <button width="40" height="40" alignment="center" verticalAlignment="center" backgroundImage="xmark" catalog="system" id="uKi-uo-AQx">
-                                                    <color key="backgroundColor" red="0.77744458770000002" green="0.1881103234" blue="0.1005006182" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <imageView width="1" height="1" alignment="left" image="capsule.fill" catalog="system" id="Bbn-wu-6tL">
+                                                    <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <button width="0.5" height="0.69999999999999996" alignment="center" verticalAlignment="center" backgroundImage="xmark" catalog="system" id="uKi-uo-AQx">
+                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="endButtonPressed" destination="hOH-hO-zEw" id="6zQ-k7-Rp4"/>
                                                     </connections>
@@ -174,8 +180,10 @@
                     </items>
                     <connections>
                         <outlet property="addButton" destination="v9T-cp-0Zt" id="Zph-gC-cyu"/>
+                        <outlet property="addButtonBackground" destination="3Ji-e0-vN8" id="OAI-ls-Qfa"/>
                         <outlet property="calorieLabel" destination="oMz-dk-Vls" id="bPF-Qz-mFp"/>
                         <outlet property="endButton" destination="uKi-uo-AQx" id="N6g-Sq-Rqf"/>
+                        <outlet property="endButtonBackground" destination="lay-ZP-XMf" id="tcN-uR-I9t"/>
                         <outlet property="endLabel" destination="eQ9-A8-vbg" id="CLp-5t-Asm"/>
                         <outlet property="heartRateLabel" destination="yFY-EC-Lfe" id="irt-fY-oW7"/>
                         <outlet property="timer" destination="t3L-21-cS3" id="FXB-3x-NtV"/>
