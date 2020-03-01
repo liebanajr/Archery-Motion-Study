@@ -19,8 +19,22 @@ class ArrowNumberPickerInterfaceController: WKInterfaceController, WKCrownDelega
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+//        if let id = self.value(forKey: "_viewControllerID") as? NSString {
+//            let strClassDescription = String(describing: self)
+//
+//            print("\(strClassDescription) has the Interface Controller ID \(id)")
+//        }
         crownSequencer.delegate = self
         workoutInterfaceController = context as? WorkoutInterfaceController
+        let arrowsPerHour = 66.0
+        let arrowsPerSecond = arrowsPerHour/(60*60)
+        
+        let elapsedTime = -workoutInterfaceController!.timerStartDate!.timeIntervalSinceNow
+        
+        print("\(elapsedTime)*\(arrowsPerSecond) = \(elapsedTime * arrowsPerSecond)")
+        arrowValue = Int(elapsedTime * arrowsPerSecond)
+        arrowNumberLabel.setText("\(arrowValue)")
         // Configure interface objects here.
     }
 
@@ -57,6 +71,7 @@ class ArrowNumberPickerInterfaceController: WKInterfaceController, WKCrownDelega
         
         workoutInterfaceController!.arrowCount = arrowValue
         workoutInterfaceController!.didEndWorkout()
+        self.dismiss()
     }
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {

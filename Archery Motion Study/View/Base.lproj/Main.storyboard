@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,21 +17,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="fileItemCell" id="6b8-0O-Vas" customClass="FileItemViewCell" customModule="Archery_Motion_Study" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44.333332061767578"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6b8-0O-Vas" id="mYk-kE-oSQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="44.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud-fill" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-mT-DmC">
-                                            <rect key="frame" x="346.33333333333331" y="13.333333333333334" width="24" height="17.666666666666664"/>
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-mT-DmC">
+                                            <rect key="frame" x="346.33333333333331" y="14.666666666666668" width="24" height="14.666666666666661"/>
                                             <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="7h0-LB-7yC"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-NH-fsP">
-                                            <rect key="frame" x="20" y="0.0" width="318.33333333333331" height="44.333333333333336"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serie 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-NH-fsP">
+                                            <rect key="frame" x="19.999999999999996" y="-0.33333333333333215" width="63.666666666666657" height="44.333333333333329"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="ozT-4A-aS3"/>
                                             </constraints>
@@ -39,18 +39,41 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8PW-Ss-NZX">
+                                            <rect key="frame" x="88" y="22" width="0.0" height="0.0"/>
+                                            <subviews>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vOL-cu-ViC">
+                                                    <rect key="frame" x="0.0" y="1.9999999999999982" width="25" height="22"/>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="Jwo-k4-N0S"/>
+                                                        <constraint firstAttribute="height" constant="25" id="s1E-fq-Vc0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uco-kq-dLA">
+                                                    <rect key="frame" x="0.0" y="1.9999999999999982" width="25" height="22"/>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="QMk-8M-6rU"/>
+                                                        <constraint firstAttribute="height" constant="25" id="UAh-9p-sx6"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="gAP-mT-DmC" firstAttribute="leading" secondItem="LXl-NH-fsP" secondAttribute="trailing" constant="8" id="Lj7-8m-F3a"/>
+                                        <constraint firstItem="8PW-Ss-NZX" firstAttribute="centerY" secondItem="mYk-kE-oSQ" secondAttribute="centerY" id="Iug-s7-aNq"/>
                                         <constraint firstItem="gAP-mT-DmC" firstAttribute="centerY" secondItem="mYk-kE-oSQ" secondAttribute="centerY" id="Obs-U6-JB5"/>
+                                        <constraint firstItem="LXl-NH-fsP" firstAttribute="centerY" secondItem="mYk-kE-oSQ" secondAttribute="centerY" id="USE-tp-a8w"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="gAP-mT-DmC" secondAttribute="trailing" constant="4.6666666666666856" id="fKF-hm-pIh"/>
+                                        <constraint firstItem="8PW-Ss-NZX" firstAttribute="leading" secondItem="LXl-NH-fsP" secondAttribute="trailing" constant="4.3300000000000001" id="il2-yh-3ik"/>
                                         <constraint firstItem="LXl-NH-fsP" firstAttribute="leading" secondItem="mYk-kE-oSQ" secondAttribute="leading" constant="20" id="kZJ-yu-geS"/>
-                                        <constraint firstItem="LXl-NH-fsP" firstAttribute="top" secondItem="mYk-kE-oSQ" secondAttribute="top" id="nYi-yY-Pdv"/>
-                                        <constraint firstAttribute="bottom" secondItem="LXl-NH-fsP" secondAttribute="bottom" id="v9f-6G-kge"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="fileNameLabel" destination="LXl-NH-fsP" id="8z1-dQ-EPm"/>
+                                    <outlet property="maxHRCheckmark" destination="vOL-cu-ViC" id="SoF-iL-yzP"/>
+                                    <outlet property="minHRCheckmark" destination="uco-kq-dLA" id="Guu-rT-iHK"/>
                                     <outlet property="uploadedCheckmark" destination="gAP-mT-DmC" id="qck-iX-Yuz"/>
                                     <segue destination="FtX-gL-NzW" kind="show" identifier="goToGraph" trigger="accessoryAction" id="NZT-jg-QAZ"/>
                                 </connections>
@@ -84,7 +107,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JU-rR-6lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="153"/>
+            <point key="canvasLocation" x="2562.3188405797105" y="152.67857142857142"/>
         </scene>
         <!--Analysis-->
         <scene sceneID="csd-eq-bwk">
@@ -986,7 +1009,9 @@
                         <outlet property="collaboratorsSendButton" destination="gc5-5Z-F9X" id="aiK-TK-RAd"/>
                         <outlet property="collaboratorsTextField" destination="eKT-AJ-nhg" id="0KU-wS-wh6"/>
                         <outlet property="healthkitButton" destination="DgO-Ml-7be" id="dB4-qB-rpE"/>
-                        <outlet property="sessionTypeSegment" destination="IIs-dx-bsO" id="tJJ-fj-eb6"/>
+                        <outlet property="sessionTypeInfoLabel" destination="bGA-Wf-XSd" id="2mo-tB-4I6"/>
+                        <outlet property="sessionTypeLabel" destination="Ai5-g7-ryq" id="mMi-ei-sP6"/>
+                        <outlet property="sessionTypeSegment" destination="IIs-dx-bsO" id="33z-gE-5ai"/>
                         <outlet property="watchLocationSegment" destination="IXE-Eg-Hm1" id="bmz-jh-tH8"/>
                     </connections>
                 </viewController>
@@ -1017,7 +1042,7 @@
         <scene sceneID="oQv-P3-m8z">
             <objects>
                 <tableViewController id="Oyk-Ou-ZcP" customClass="WorkoutSessionsViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pwJ-TT-cff">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pwJ-TT-cff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1026,12 +1051,25 @@
                             <outlet property="delegate" destination="Oyk-Ou-ZcP" id="Sm8-z1-oF4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sessions" id="lcf-mS-ftF"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="fN0-fI-hgy">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
+                    <navigationItem key="navigationItem" title="Sessions" id="lcf-mS-ftF">
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" title="Item" id="4iH-im-B34">
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="Oyk-Ou-ZcP" id="Bgc-gR-jlf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Item" id="sQW-ia-ujg">
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="Oyk-Ou-ZcP" id="Tiz-r8-BOT"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="sQW-ia-ujg" id="O7j-iG-AHU"/>
+                        <outlet property="editButton" destination="4iH-im-B34" id="NE7-OL-5GD"/>
                         <segue destination="IQo-nj-Pki" kind="show" identifier="goToEnds" id="qay-U8-EeL"/>
                     </connections>
                 </tableViewController>
@@ -1150,19 +1188,20 @@
     </scenes>
     <resources>
         <image name="Twitter_Logo_Blue" width="400" height="400"/>
-        <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="64" height="56"/>
-        <image name="cloud-fill" width="26" height="17.666666030883789"/>
-        <image name="doc.fill" catalog="system" width="56" height="64"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="info.circle" catalog="system" width="64" height="60"/>
+        <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="128" height="115"/>
+        <image name="cloud.fill" catalog="system" width="128" height="84"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="instagram" width="1500" height="1500"/>
         <image name="iphone-screenshot" width="512" height="894"/>
-        <image name="line.horizontal.3.decrease.circle" catalog="system" width="64" height="60"/>
-        <image name="lock.icloud.fill" catalog="system" width="64" height="44"/>
-        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
-        <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="rectangle.stack.fill" catalog="system" width="64" height="60"/>
+        <image name="line.horizontal.3.decrease.circle" catalog="system" width="128" height="121"/>
+        <image name="lock.icloud.fill" catalog="system" width="128" height="88"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="settings-arrow" width="512" height="512"/>
         <image name="watch-screenshot1" width="512" height="512"/>
         <image name="watch-screenshot2" width="512" height="512"/>

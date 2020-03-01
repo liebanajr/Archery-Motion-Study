@@ -9,7 +9,7 @@
 "Analysis end" = "Analysis end";
 "filesTitleDateFormat" = "MMMM dd HH:mm yyyy";
 "cellTitleDateFormat" = "MMMM d, yyyy HH:mm";
-"average" = "average";
+"average" = "avg.";
 "Ends" = "ends";
 "Delete data" = "Delete data";
 "deleteDataMessage" = "Please, before removing the data, make sure it's synced and a blue cloud icon appears next to each end";
@@ -33,3 +33,4 @@
 "healthkitButton" = "Healthkit authorized";
 "isFriend" = "You are a collaborator";
 "spinnerMessage" = "Working...";
+"arrows" = "arrows";

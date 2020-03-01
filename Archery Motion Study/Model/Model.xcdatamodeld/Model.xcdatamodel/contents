@@ -19,13 +19,15 @@
         <attribute name="distanceWalked" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="maxHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="maxHeartRateEnd" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="minHeartRate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minHeartRateEnd" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="String"/>
         <attribute name="sessionType" optional="YES" attributeType="String"/>
         <attribute name="watchLocation" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="MotionDataFile" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="Session" positionX="-63" positionY="9" width="128" height="223"/>
+        <element name="Session" positionX="-63" positionY="9" width="128" height="253"/>
     </elements>
 </model>

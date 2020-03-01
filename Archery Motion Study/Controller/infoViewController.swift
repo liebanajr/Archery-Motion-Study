@@ -20,6 +20,8 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     @IBOutlet var healthkitButton: UIButton!
     @IBOutlet var collaboratorsTextField: UITextField!
     @IBOutlet var collaboratorsSendButton: UIButton!
+    @IBOutlet var sessionTypeLabel: UILabel!
+    @IBOutlet var sessionTypeInfoLabel: UILabel!
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
@@ -36,6 +38,12 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)
         setInitialDefaults()
+        
+        if !K.isAdmin {
+            sessionTypeSegment.isHidden = true
+            sessionTypeLabel.isHidden = true
+            sessionTypeInfoLabel.isHidden = true
+        }
         
         if defaults.value(forKey: K.healthkitKey) as! Bool {
         

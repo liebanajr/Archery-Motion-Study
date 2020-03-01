@@ -9,7 +9,7 @@
 "Analysis end" = "Análisis serie";
 "filesTitleDateFormat" = "dd MMMM HH:mm yyyy";
 "cellTitleDateFormat" = "d MMMM, yyy HH:mm";
-"average" = "promedio";
+"average" = "prom.";
 "Ends" = "series";
 "Delete data" = "Eliminar datos";
 "deleteDataMessage" = "Por favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul junto a cada serie";
@@ -33,3 +33,4 @@
 "healthkitButton" = "Healthkit ya utorizado";
 "isFriend" = "Ya eres colaborador";
 "spinnerMessage" = "Procesando...";
+"arrows" = "flechas";

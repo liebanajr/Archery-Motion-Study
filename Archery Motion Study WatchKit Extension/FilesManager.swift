@@ -54,7 +54,7 @@ class FilesManager: NSObject {
     func sendDataToiPhone(_ file: URL, with workoutInfo: WorkoutSessionDetails){
         if wcSession.activationState == .activated {
 //            print("Sending \(file.absoluteString) to iPhone...")
-            let dictionary : [String : Any] = ["end" : workoutInfo.endCounter , "sessionId" : workoutInfo.sessionId , "calories" : workoutInfo.cumulativeCaloriesBurned , "avgHR" : workoutInfo.averageHeartRate , "maxHR" : workoutInfo.maxHeartRate ,"minHR" : workoutInfo.minHeartRate , "distance" : workoutInfo.cumulativeDistance,"elapsedTime" : workoutInfo.elapsedSeconds, "arrowCount" : workoutInfo.arrowCounter]
+            let dictionary : [String : Any] = ["end" : workoutInfo.endCounter , "sessionId" : workoutInfo.sessionId , "calories" : workoutInfo.cumulativeCaloriesBurned , "avgHR" : workoutInfo.averageHeartRate , "maxHR" : workoutInfo.maxHeartRate ,"minHR" : workoutInfo.minHeartRate , "distance" : workoutInfo.cumulativeDistance,"elapsedTime" : workoutInfo.elapsedSeconds, "arrowCount" : workoutInfo.arrowCounter, "maxHREnd" : workoutInfo.maxHRAtEnd, "minHREnd" : workoutInfo.minHRAtEnd]
             wcSession.transferFile(file, metadata: dictionary)
             
         } else {

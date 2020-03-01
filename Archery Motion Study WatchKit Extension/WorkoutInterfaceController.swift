@@ -15,6 +15,7 @@ import HealthKit
 enum SessionState {
     case workoutRunning
     case workoutPaused
+    case workoutFinished
     
 }
 
@@ -38,14 +39,22 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
     var sessionState : SessionState?
     
     var previousSessionState : SessionState?
+    
+    var startController : startViewController?
         
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+//        if let id = self.value(forKey: "_viewControllerID") as? NSString {
+//            let strClassDescription = String(describing: self)
+//
+//            print("\(strClassDescription) has the Interface Controller ID \(id)")
+//        }
         
+        startController = context as? startViewController
         
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(enableButtons), name: Notification.Name("saveTaskFinished"), object: nil)
-        nc.addObserver(self, selector: #selector(disableButtons), name: Notification.Name("saveTaskStarted"), object: nil)
+//        let nc = NotificationCenter.default
+//        nc.addObserver(self, selector: #selector(saveTasksFinished), name: Notification.Name("saveTaskFinished"), object: nil)
+//        nc.addObserver(self, selector: #selector(saveTasksStarting), name: Notification.Name("saveTaskStarted"), object: nil)
         
         let model = WKInterfaceDevice.current().name
         
@@ -56,17 +65,17 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         let modelSize = Int(model[range])
         
         switch modelSize {
-        case 40:
-            addButton.setWidth(52)
-            endButton.setWidth(52)
-        case 42:
-            addButton.setWidth(55)
-            endButton.setWidth(55)
-        case 44:
-            addButton.setWidth(60)
-            endButton.setWidth(60)
-        default:
-            print("Watch model not supported")
+            case 40:
+                addButton.setWidth(52)
+                endButton.setWidth(52)
+            case 42:
+                addButton.setWidth(55)
+                endButton.setWidth(55)
+            case 44:
+                addButton.setWidth(60)
+                endButton.setWidth(60)
+            default:
+                print("Watch model not supported")
         }
         
         sessionState = .workoutRunning
@@ -75,7 +84,9 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         workoutManager!.delegate = self
         workoutManager!.startWorkout()
         
-        
+        startController!.workoutManager = workoutManager!
+        startController!.sessionState = sessionState!
+                
         timerStopInterval = 0.0
         timerStartDate = Date(timeIntervalSinceNow : timerStopInterval!)
         timerRestartDate = timerStartDate
@@ -84,16 +95,23 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
                 
     }
     
-    @objc func enableButtons(){
+    @objc func didFinishSaveTasks(){
         print("Task finished. Enabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(true)
             self.endButton.setEnabled(true)
         }
         
+        if sessionState == .workoutFinished {
+            print("Task finished. Workout finished. Dismissing controller")
+            DispatchQueue.main.async {
+                self.dismiss()
+            }
+        }
+        
     }
     
-    @objc func disableButtons(){
+    @objc func didStartSaveTasks(){
         print("Task starting. Disabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(false)
@@ -123,6 +141,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
             if previous == .workoutRunning {
                 print("Workout was preivously running. Resuming timer and workout")
                 sessionState = .workoutRunning
+                startController!.sessionState = sessionState!
                 restartTimer()
                 workoutManager!.resumeWorkout()
             } else if previous == .workoutPaused {
@@ -141,6 +160,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        print("Did disappear")
     }
     
     @IBAction func addButtonPressed() {
@@ -148,6 +168,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         if sessionState! == .workoutRunning {
             
             sessionState = .workoutPaused
+            startController!.sessionState = sessionState!
             addButton.setBackgroundImage(UIImage(systemName: "play"))
             addButton.setBackgroundColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
             stopTimer()
@@ -158,6 +179,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         } else if sessionState! == .workoutPaused {
             
             sessionState = .workoutRunning
+            startController!.sessionState = sessionState!
             addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
             addButton.setBackgroundImage(UIImage(systemName: "plus"))
             workoutManager!.resumeWorkout()
@@ -184,6 +206,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         previousSessionState = sessionState!
         if sessionState! == .workoutRunning {
             sessionState = .workoutPaused
+            startController!.sessionState = sessionState!
             stopTimer()
             workoutManager!.pauseWorkout()
         } else if sessionState! == .workoutPaused {
@@ -195,14 +218,13 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
     
     func didEndWorkout(){
         stopTimer()
+        self.sessionState = .workoutFinished
+        startController!.sessionState = sessionState!
+        self.previousSessionState = .workoutFinished
         self.workoutManager!.workoutData!.arrowCounter = arrowCount
+        print("Calling end workout in workout interface")
         self.workoutManager!.endWorkout()
-        self.dismiss()
-        self.dismiss()
-//        DispatchQueue.main.async {
-//            self.dismiss()
-//            self.dismiss()
-//        }
+        
     }
     
     func didReceiveWorkoutData(_ workoutData: WorkoutSessionDetails) {

@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let sessionId = metadata["sessionId"]! as! String
             let calories = metadata["calories"]! as! Int64
             let maxHR = metadata["maxHR"]! as! Int64
+            let maxHREnd = metadata["maxHREnd"] as? Int64
             let minHR = metadata["minHR"]! as! Int64
+            let minHREnd = metadata["minHREnd"] as? Int64
             let avgHR = metadata["avgHR"]! as! Int64
             let distance = metadata["distance"]! as! Int64
             let duration = metadata["elapsedTime"]! as! Int64
@@ -128,7 +130,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 workoutSession.averageHeartRate = avgHR
                 workoutSession.caloriesBurned = calories
                 workoutSession.maxHeartRate = maxHR
+                workoutSession.maxHeartRateEnd = maxHREnd!
                 workoutSession.minHeartRate = minHR
+                workoutSession.minHeartRateEnd = minHREnd!
                 workoutSession.distanceWalked = distance
                 workoutSession.arrowCount = arrowCount
                 
@@ -199,7 +203,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("Error de Apple Watch en WorkoutManager: \(message["errorMessage"]!)")
+        if let error = message["errorMessage"]{
+            print("Error de Apple Watch en WorkoutManager: \(error)")
+        }
+        
+        if let arrowCount = message["arrowCount"] {
+            let sessionId = message["sessionId"]! as! String
+            let sessionRequest = NSFetchRequest<Session>(entityName: "Session")
+            sessionRequest.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [sessionId])
+            let context = persistentContainer.viewContext
+            do {
+                let result = try context.fetch(sessionRequest)
+    //                print("Fetch request result: \(result)")
+                var workoutSession : Session
+                workoutSession = result.first!
+                
+                workoutSession.arrowCount = arrowCount as! Int64
+                                
+            } catch {
+                print("Error fetching existing Session: \(error)")
+            }
+            self.saveContext()
+            print("Data saved successfully!")
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {

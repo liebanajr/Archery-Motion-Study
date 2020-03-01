@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate, FIlesDelegate {
+class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
+    
+    @IBOutlet var editButton: UIBarButtonItem!
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fileManager = FileManager()
@@ -130,34 +133,60 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         print("Setting cell number: \(indexPath.row)")
-            let session = availableSessions![indexPath.row]
-            let formatter = DateFormatter()
-            formatter.dateFormat = K.dateFormat
-            let formattedDate = formatter.date(from: session.sessionId!)
-            formatter.locale = .current
-            formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
-            let dateString = formatter.string(from: formattedDate!)
+        let session = availableSessions![indexPath.row]
+        let formatter = DateFormatter()
+        formatter.dateFormat = K.dateFormat
+        let formattedDate = formatter.date(from: session.sessionId!)
+        formatter.locale = .current
+        formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
+        let dateString = formatter.string(from: formattedDate!)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+        cell.selectionStyle = .none
+//        cell.delegate = self
+        cell.currentCellIndex = indexPath
+        cell.titleLabel.text = dateString
+        cell.avgHRLabel.text = "\(session.averageHeartRate) \(NSLocalizedString("average", comment: ""))"
+        cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
+        cell.sessionTypeLabel.text = NSLocalizedString(session.sessionType!, comment: "") + " " + NSLocalizedString(session.bowType!, comment: "") + ","
+        cell.watchLocationLabel.text = NSLocalizedString("Watch in", comment: "") + " " + NSLocalizedString(session.watchLocation!, comment: "")
+        
+        var arrowCountText = ""
+        if session.arrowCount > 0 {
+            arrowCountText = " \(session.arrowCount) \(NSLocalizedString("arrows", comment: ""))"
+        }
+        
+        var maxHRText = "---"
+        var minHRText = "---"
+        if session.maxHeartRate > 0 && session.minHeartRate > 0{
+            var endsString = NSLocalizedString("Ends", comment: "")
+            endsString = String(endsString.dropLast())
+            maxHRText = "\(session.maxHeartRate) max. \(endsString) \(session.maxHeartRateEnd)"
+            minHRText = "\(session.minHeartRate) min. \(endsString) \(session.minHeartRateEnd)"
+        }
+        
+        var durationText = "---"
+        if session.duration > 0 {
+            var minutes = Int(session.duration/60)
+            let hours = Int(minutes/60)
+            minutes = minutes - hours*minutes
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
-            cell.selectionStyle = .none
-            cell.delegate = self
-            cell.currentCellIndex = indexPath
-            cell.titleLabel.text = dateString
-            cell.avgHRLabel.text = "\(session.averageHeartRate) bpm \(NSLocalizedString("average", comment: ""))"
-            cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
-            cell.sessionTypeLabel.text = NSLocalizedString(session.sessionType!, comment: "") + " " + NSLocalizedString(session.bowType!, comment: "") + ","
-            cell.watchLocationLabel.text = NSLocalizedString("Watch in", comment: "") + " " + NSLocalizedString(session.watchLocation!, comment: "")
-            do{
-                let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
-                request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
-                let result = try context.fetch(request)
-                let endsCount = result.count
-                
-                cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: ""))"
-            } catch {
-                print("Error fetching ends count: \(error)")
-            }
-            return cell
+            durationText = "\(hours)h \(minutes)m"
+        }
+        
+        do{
+            let request = NSFetchRequest<MotionDataFile>(entityName: "MotionDataFile")
+            request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
+            let result = try context.fetch(request)
+            let endsCount = result.count
+            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: "")) \(arrowCountText)"
+            cell.maxHRLabel.text = maxHRText
+            cell.minHRLabel.text = minHRText
+            cell.durationLabel.text = durationText
+        } catch {
+            print("Error fetching ends count: \(error)")
+        }
+        return cell
         
     }
     
@@ -175,26 +204,80 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let session = availableSessions![indexPath.row]
-        exportedSessionId = session.sessionId
-        performSegue(withIdentifier: "goToEnds", sender: self)
-        exportedSessionId = nil
+        if !tableView.isEditing {
+            let session = availableSessions![indexPath.row]
+            exportedSessionId = session.sessionId
+            performSegue(withIdentifier: "goToEnds", sender: self)
+            exportedSessionId = nil
+        }
+        deleteButton.isEnabled = true
         
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteSelectedCell(atIndex: indexPath)
+        }
     }
     
     func deleteSelectedCell(atIndex index: IndexPath) {
         let rowToDelete = index.row
-        let alert = UIAlertController(title: NSLocalizedString("deleteSessionAlertTitle", comment: ""), message: NSLocalizedString("deleteSessionAlertMessage", comment: ""), preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: NSLocalizedString("deleteSessionAction", comment: ""), style: .destructive) { (action) in
-            self.deleteSession(fromSessionObject: self.availableSessions![rowToDelete])
-        }
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
-            return
-        }
-        alert.addAction(action)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
+//        let alert = UIAlertController(title: NSLocalizedString("deleteSessionAlertTitle", comment: ""), message: NSLocalizedString("deleteSessionAlertMessage", comment: ""), preferredStyle: .actionSheet)
+//        let action = UIAlertAction(title: NSLocalizedString("deleteSessionAction", comment: ""), style: .destructive) { (action) in
+//            self.deleteSession(fromSessionObject: self.availableSessions![rowToDelete])
+//        }
+//        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+//            return
+//        }
+//        alert.addAction(action)
+//        alert.addAction(cancelAction)
+//        present(alert, animated: true)
         
+        self.deleteSession(fromSessionObject: self.availableSessions![rowToDelete])
+        reloadTableWithNewData()
+        
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        
+        let alert = UIAlertController(title: NSLocalizedString("Delete data", comment: ""), message: NSLocalizedString("deleteDataMessage", comment: ""), preferredStyle: .actionSheet)
+        let actionDelete = UIAlertAction(title: NSLocalizedString("Delete selected", comment: ""), style: .destructive) { (action) in
+            if let items = self.tableView.indexPathsForSelectedRows {
+                self.deleteSessions(with: items)
+            }
+        }
+//        REMOVE FROM FINAL RELEASE
+//        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
+//            self.deleteItems(itemPath: nil)
+//        }
+//        alert.addAction(actionDeleteAll)
+        alert.addAction(actionDelete)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+        
+    }
+    
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            editButton.title = NSLocalizedString("Edit", comment: "")
+            editButton.style = .plain
+            deleteButton.isEnabled = false
+        } else {
+            tableView.setEditing(true, animated: true)
+            editButton.title = NSLocalizedString("Done", comment: "")
+            editButton.style = .done
+//            deleteButton.isEnabled = true
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.indexPathsForSelectedRows == nil {
+            deleteButton.isEnabled = false
+        }
     }
     
     func deleteSession(fromSessionObject session: Session) {
@@ -212,8 +295,15 @@ class WorkoutSessionsViewController: UITableViewController, SessionCellDelegate,
         } catch {
             print("Error deleting files from session with id: \(session.sessionId!)")
         }
-        reloadTableWithNewData()
         
+    }
+    
+    func deleteSessions(with indexPaths: [IndexPath]){
+        for index in indexPaths {
+            let row = index.row
+            deleteSession(fromSessionObject: self.availableSessions![row])
+        }
+        reloadTableWithNewData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

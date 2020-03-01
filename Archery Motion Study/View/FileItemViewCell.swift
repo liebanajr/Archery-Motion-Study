@@ -13,6 +13,8 @@ class FileItemViewCell: UITableViewCell {
     
     @IBOutlet weak var fileNameLabel: UILabel!
     @IBOutlet weak var uploadedCheckmark: UIImageView!
+    @IBOutlet var minHRCheckmark: UIImageView!
+    @IBOutlet var maxHRCheckmark: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

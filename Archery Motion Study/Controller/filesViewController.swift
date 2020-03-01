@@ -31,6 +31,8 @@ class filesViewController: UITableViewController{
     var exportedFileName = ""
     var importedSessionId : String?
     
+    var session : Session?
+    
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir : String!
     
@@ -55,6 +57,16 @@ class filesViewController: UITableViewController{
         formatter.dateFormat =  NSLocalizedString("filesTitleDateFormat", comment: "")
         self.navigationItem.title = formatter.string(from: date)
         
+        let request : NSFetchRequest<Session> = Session.fetchRequest()
+        request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [importedSessionId!])
+        
+        do {
+            let sessionArray = try context.fetch(request)
+            session = sessionArray.first
+        } catch {
+            print("Error while fetching session")
+        }
+        
         updateTableWithDirectoryData()
     }
     
@@ -71,13 +83,19 @@ class filesViewController: UITableViewController{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileItemCell", for: indexPath) as! FileItemViewCell
         
-        if #available(iOS 13, *) {
-            cell.uploadedCheckmark.image = UIImage(systemName: "cloud.fill")
+        let item = filesArray[indexPath.row]
+        var endsString = NSLocalizedString("Ends", comment: "")
+        endsString = String(endsString.dropLast()).capitalizingFirstLetter()
+        cell.fileNameLabel.text = endsString + " \(item.endIndex)"
+        cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
+        
+        if session!.maxHeartRateEnd - 1 == indexPath.row {
+            cell.maxHRCheckmark.isHidden = false
         }
         
-        let item = filesArray[indexPath.row]
-        cell.fileNameLabel.text = NSLocalizedString("Analysis end", comment: "") + " \(item.endIndex)"
-        cell.uploadedCheckmark.isHidden = item.isUploaded ? false : true
+        if session!.minHeartRateEnd - 1 == indexPath.row {
+            cell.minHRCheckmark.isHidden = false
+        }
         
         return cell
     }
@@ -279,5 +297,15 @@ class filesViewController: UITableViewController{
     
     
 
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
 

@@ -28,3 +28,12 @@
 
 /* Class = "WKInterfaceLabel"; text = "---"; ObjectID = "yFY-EC-Lfe"; */
 "yFY-EC-Lfe.text" = "---";
+
+/* Class = "WKInterfaceLabel"; text = "---"; ObjectID = "pfR-nC-Zf1"; */
+"pfR-nC-Zf1.text" = "Finalizar";
+
+/* Class = "WKInterfaceLabel"; text = "---"; ObjectID = "LUk-6X-WYX"; */
+"LUk-6X-WYX.text" = "¿Cuántas flechas has tirado?";
+
+/* Class = "WKInterfaceButton"; text = "---"; ObjectID = "o1S-SH-HQR"; */
+"o1S-SH-HQR.title" = "Guardar";

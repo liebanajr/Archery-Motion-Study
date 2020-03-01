@@ -13,7 +13,8 @@ import WatchConnectivity
 protocol WorkoutManagerDelegate {
     
     func didReceiveWorkoutData(_ workoutData: WorkoutSessionDetails)
-    
+    func didStartSaveTasks()
+    func didFinishSaveTasks()
 }
 
 class WorkoutManager: NSObject {
@@ -32,7 +33,7 @@ class WorkoutManager: NSObject {
     var filesManager : FilesManager?
     
     let wcSession = WCSession.default
-    
+        
     override init() {
         
         super.init()
@@ -97,6 +98,8 @@ class WorkoutManager: NSObject {
     
     func endWorkout(){
         
+        print("Trying to end workout")
+        workoutSession!.end()
         if K.saveWorkoutData {
             print("Ending collection...")
             builder!.endCollection(withEnd: Date()) { (success, error) in
@@ -110,24 +113,29 @@ class WorkoutManager: NSObject {
                     }
             }
         }
-        
-        print("Trying to end workout")
-        workoutSession!.end()
             
         if motionManager != nil {
             print("Trying to save workout")
             saveWorkout()
             
+        } else {
+            sendArrowCount()
         }
         
+    }
+    
+    func sendArrowCount() {
+        wcSession.sendMessage(["arrowCount":workoutData!.arrowCounter,"sessionId" : workoutData!.sessionId], replyHandler: nil, errorHandler: nil)
+        delegate!.didFinishSaveTasks()
     }
     
 //    MARK: Other functions
     
     func saveWorkout(){
         print("Saving workout")
-        let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("saveTaskStarted"), object: nil)
+//        let nc = NotificationCenter.default
+//        nc.post(name: Notification.Name("saveTaskStarted"), object: nil)
+        delegate!.didStartSaveTasks()
         motionManager!.stopMotionUpdates()
         asyncDataMotionManager = motionManager
         motionManager = nil
@@ -136,8 +144,9 @@ class WorkoutManager: NSObject {
             let url = self.filesManager!.saveDataLocally(dataString: csv)!
             self.workoutData!.elapsedSeconds = Int(DateInterval(start: self.workoutSession!.startDate!, end: Date()).duration.magnitude)
             self.filesManager!.sendDataToiPhone(url, with: self.workoutData!)
-            let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("saveTaskFinished"), object: nil)
+//            let nc = NotificationCenter.default
+//            nc.post(name: Notification.Name("saveTaskFinished"), object: nil)
+            self.delegate!.didFinishSaveTasks()
         }
         
     }
@@ -182,9 +191,11 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
                 workoutData!.currentHeartRate = value
                 if maxValue > workoutData!.maxHeartRate {
                     workoutData!.maxHeartRate = maxValue
+                    workoutData!.maxHRAtEnd = workoutData!.endCounter
                 }
                 if minValue < workoutData!.minHeartRate {
                     workoutData!.minHeartRate = minValue
+                    workoutData!.minHRAtEnd = workoutData!.endCounter
                 }
                 workoutData!.averageHeartRate = avgValue
                 return

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
-protocol SessionCellDelegate {
-    
-    func deleteSelectedCell(atIndex index: IndexPath)
-}
+//
+//protocol SessionCellDelegate {
+//
+//    func deleteSelectedCell(atIndex index: IndexPath)
+//}
 
 class WorkoutSessionCell: UITableViewCell {
     
@@ -20,12 +20,15 @@ class WorkoutSessionCell: UITableViewCell {
     @IBOutlet var calorieLabel: UILabel!
     @IBOutlet var avgHRLabel: UILabel!
     @IBOutlet var endsLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
+    @IBOutlet var maxHRLabel: UILabel!
+    @IBOutlet var minHRLabel: UILabel!
     
     @IBOutlet var sessionTypeLabel: UILabel!
     @IBOutlet var watchLocationLabel: UILabel!
     
     
-    var delegate : SessionCellDelegate?
+//    var delegate : SessionCellDelegate?
     var currentCellIndex : IndexPath?
     
     override func awakeFromNib() {
@@ -43,16 +46,15 @@ class WorkoutSessionCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
-    @IBAction func deleteButtonPressed(_ sender: Any) {
-        
-        print("Cell number \(currentCellIndex!.row) delete button pressed")
-        delegate!.deleteSelectedCell(atIndex: currentCellIndex!)
-        
-    }
+//    @IBAction func deleteButtonPressed(_ sender: Any) {
+//        
+//        print("Cell number \(currentCellIndex!.row) delete button pressed")
+//        delegate!.deleteSelectedCell(atIndex: currentCellIndex!)
+//        
+//    }
     
     
 }
