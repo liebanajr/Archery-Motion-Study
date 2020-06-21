@@ -10,7 +10,7 @@ import Foundation
 
 struct K {
     
-    static let isAdmin = false
+    static let isAdmin = true
     
     static let dateFormat : String = "ddMMyy'T'HHmmss"
     static let graphSmootherSamples : Int = 20
