@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */; };
+		1349F1C91A5ED6ABC815F530 /* libPods-Archery Motion Study.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE6948490B1CFF4C40D0064 /* libPods-Archery Motion Study.a */; };
 		8A002DA223466042000C14E1 /* SampleAverageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A002DA123466042000C14E1 /* SampleAverageManager.swift */; };
 		8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AB232BB9440065CE08 /* AppDelegate.swift */; };
 		8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2AF232BB9440065CE08 /* filesViewController.swift */; };
@@ -30,6 +30,10 @@
 		8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC060FD233275D600F40881 /* FileItemViewCell.swift */; };
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
 		8ADC42C723312408005B079F /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC42C623312408005B079F /* ChartViewController.swift */; };
+		95E8FD7824ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
+		95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
+		95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
+		962B0FDAD837984E1BDE129C /* libPods-Archery Motion Study WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E872355FF352B407C622F356 /* libPods-Archery Motion Study WatchKit Extension.a */; };
 		D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */; };
 		D959312823A2FE5B004693B4 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959312723A2FE5B004693B4 /* FilesManager.swift */; };
 		D96068B723A2E54100C81228 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96068B623A2E54100C81228 /* WorkoutManager.swift */; };
@@ -42,7 +46,6 @@
 		D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */; };
 		D9917BE5237C46960078B6A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
 		D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BEE237C8E9F0078B6A4 /* Localizable.strings */; };
-		D9967F73237DF39900C2253C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9967F72237DF39900C2253C /* Constants.swift */; };
 		D9967F76237E0EB500C2253C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9967F78237E0EB500C2253C /* Localizable.strings */; };
 		D996D27223802E9400793F17 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D996D27123802E9400793F17 /* InstructionsViewController.swift */; };
 		D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE741237F57C800E4809A /* SettingsRowController.swift */; };
@@ -50,8 +53,7 @@
 		D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
 		D9C2FAAA23A2C664000284D1 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA923A2C664000284D1 /* MotionManager.swift */; };
-		E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */; };
-		F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */; };
+		F22C3D0C7661C913352786DE /* libPods-Archery Motion Study WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D5F6E90744109EAB51E575 /* libPods-Archery Motion Study WatchKit App.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +101,9 @@
 /* Begin PBXFileReference section */
 		06D6EA8F2A0BAFFA13B388F2 /* Pods-Archery Motion Study WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		165F47E5FB7D5B1D90DB9A28 /* Pods-Archery Motion Study.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study.debug.xcconfig"; sourceTree = "<group>"; };
+		48D5F6E90744109EAB51E575 /* libPods-Archery Motion Study WatchKit App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Archery Motion Study WatchKit App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E558DD5FAFE7964BF7DAC0 /* Pods-Archery Motion Study.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study.release.xcconfig"; sourceTree = "<group>"; };
 		781382D1075FA2B1801ED2E3 /* Pods-Archery Motion Study WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F619BB0FCD438BD418A57E2 /* Pods-Archery Motion Study WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit App/Pods-Archery Motion Study WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		8A002DA123466042000C14E1 /* SampleAverageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAverageManager.swift; sourceTree = "<group>"; };
 		8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archery Motion Study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,8 +132,9 @@
 		8AC060FD233275D600F40881 /* FileItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemViewCell.swift; sourceTree = "<group>"; };
 		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8ADC42C623312408005B079F /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Archery_Motion_Study_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95E8FD7724ABA10A00F12C3C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		BCE6948490B1CFF4C40D0064 /* libPods-Archery Motion Study.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Archery Motion Study.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionDetails.swift; sourceTree = "<group>"; };
 		D92504692381684A001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
 		D959312723A2FE5B004693B4 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
@@ -149,7 +151,6 @@
 		D9917BED237C8E9F0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9917BF0237C8F710078B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9925B9B239C01D4004091E0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		D9967F72237DF39900C2253C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D9967F77237E0EB500C2253C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9967F79237E0EBD00C2253C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D996D27123802E9400793F17 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowNumberPickerInterfaceController.swift; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9C2FAA923A2C664000284D1 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		E872355FF352B407C622F356 /* libPods-Archery Motion Study WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Archery Motion Study WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EBF7C1E321670765F081BA /* Pods_Archery_Motion_Study_WatchKit_App.framework in Frameworks */,
+				F22C3D0C7661C913352786DE /* libPods-Archery Motion Study WatchKit App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,8 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30DF78FAABB7030ABFA9BB50 /* Pods_Archery_Motion_Study.framework in Frameworks */,
 				D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */,
+				1349F1C91A5ED6ABC815F530 /* libPods-Archery Motion Study.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,8 +184,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9BDFE4FFA474A8E5949988F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework in Frameworks */,
 				8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */,
+				962B0FDAD837984E1BDE129C /* libPods-Archery Motion Study WatchKit Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,9 +197,9 @@
 			children = (
 				D966A651237204DD00EB2141 /* HealthKit.framework */,
 				8A7DB34923302C5700781F0D /* HealthKit.framework */,
-				7DB5AFF38302CCBEB2EB61D4 /* Pods_Archery_Motion_Study.framework */,
-				7A5364A3E436482D12AF13E9 /* Pods_Archery_Motion_Study_WatchKit_App.framework */,
-				938618B005C333D93C6EAE5F /* Pods_Archery_Motion_Study_WatchKit_Extension.framework */,
+				BCE6948490B1CFF4C40D0064 /* libPods-Archery Motion Study.a */,
+				48D5F6E90744109EAB51E575 /* libPods-Archery Motion Study WatchKit App.a */,
+				E872355FF352B407C622F356 /* libPods-Archery Motion Study WatchKit Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -205,6 +207,8 @@
 		8A37D29F232BB9440065CE08 = {
 			isa = PBXGroup;
 			children = (
+				95E8FD7724ABA10A00F12C3C /* Log.swift */,
+				D9917BE4237C46960078B6A4 /* Constants.swift */,
 				8A37D2AA232BB9440065CE08 /* Archery Motion Study */,
 				8A37D2C0232BB9450065CE08 /* Archery Motion Study WatchKit App */,
 				8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */,
@@ -234,7 +238,6 @@
 				8A37D2B4232BB9450065CE08 /* Assets.xcassets */,
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
 				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
-				D9917BE4237C46960078B6A4 /* Constants.swift */,
 				D9917BEE237C8E9F0078B6A4 /* Localizable.strings */,
 			);
 			path = "Archery Motion Study";
@@ -261,7 +264,6 @@
 				8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */,
 				D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */,
 				D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */,
-				D9967F72237DF39900C2253C /* Constants.swift */,
 				D9967F78237E0EB500C2253C /* Localizable.strings */,
 				D99FE741237F57C800E4809A /* SettingsRowController.swift */,
 				D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */,
@@ -337,7 +339,6 @@
 				8A37D2A5232BB9440065CE08 /* Frameworks */,
 				8A37D2A6232BB9440065CE08 /* Resources */,
 				8A37D2E0232BB9470065CE08 /* Embed Watch Content */,
-				DC1B46F20B8BEB106DB25EE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -393,7 +394,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = liebanajr;
 				TargetAttributes = {
 					8A37D2A7232BB9440065CE08 = {
@@ -529,23 +530,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DC1B46F20B8BEB106DB25EE0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Archery Motion Study/Pods-Archery Motion Study-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -561,6 +545,7 @@
 				8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */,
 				D98422C52375E482003130E7 /* WorkoutSessionsViewController.swift in Sources */,
 				8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */,
+				95E8FD7824ABA10A00F12C3C /* Log.swift in Sources */,
 				D9917BE5237C46960078B6A4 /* Constants.swift in Sources */,
 				8A37D2AC232BB9440065CE08 /* AppDelegate.swift in Sources */,
 				8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */,
@@ -578,6 +563,7 @@
 			files = (
 				D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */,
 				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
+				95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */,
 				D9C2FAAA23A2C664000284D1 /* MotionManager.swift in Sources */,
 				D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */,
 				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
@@ -585,7 +571,7 @@
 				D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */,
 				D96068B723A2E54100C81228 /* WorkoutManager.swift in Sources */,
 				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
-				D9967F73237DF39900C2253C /* Constants.swift in Sources */,
+				95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */,
 				D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */,
 				D959312823A2FE5B004693B4 /* FilesManager.swift in Sources */,
 			);
@@ -681,6 +667,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -742,6 +729,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

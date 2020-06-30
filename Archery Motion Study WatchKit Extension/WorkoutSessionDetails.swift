@@ -21,6 +21,7 @@ class WorkoutSessionDetails : NSObject{
     var endCounter : Int
     var elapsedSeconds : Int
     var arrowCounter : Int
+    var endDate : Date?
     
     let sessionId : String
     

@@ -201,8 +201,8 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
 //            addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
             addButton.setBackgroundImage(UIImage(systemName: "plus"))
             workoutManager!.resumeWorkout()
-            workoutManager!.workoutData!.endCounter += 1
-            endLabel.setText("\(workoutManager!.workoutData!.endCounter)")
+            workoutManager!.workoutData.endCounter += 1
+            endLabel.setText("\(workoutManager!.workoutData.endCounter)")
             restartTimer()
         }
         
@@ -227,6 +227,7 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
             startController!.sessionState = sessionState!
             stopTimer()
             workoutManager!.pauseWorkout()
+            workoutManager?.saveWorkout()
         } else if sessionState! == .workoutPaused {
             previousSessionState = .workoutPaused
         }
@@ -239,7 +240,8 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         self.sessionState = .workoutFinished
         startController!.sessionState = sessionState!
         self.previousSessionState = .workoutFinished
-        self.workoutManager!.workoutData!.arrowCounter = arrowCount
+        self.workoutManager?.workoutData.arrowCounter = arrowCount
+        self.workoutManager?.sendArrowCount()
         print("Calling end workout in workout interface")
         self.workoutManager!.endWorkout()
         

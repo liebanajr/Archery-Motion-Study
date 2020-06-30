@@ -3,7 +3,7 @@
 
 target 'Archery Motion Study' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
   # Pods for Archery Motion Study
   # add pods for desired Firebase products
@@ -11,13 +11,13 @@ target 'Archery Motion Study' do
   pod 'Firebase/Storage'
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
-  pod 'SwiftSpinner'
+  pod 'SwiftSpinner'  
 
 end
 
 target 'Archery Motion Study WatchKit App' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
   # Pods for Archery Motion Study WatchKit App
 
@@ -25,7 +25,7 @@ end
 
 target 'Archery Motion Study WatchKit Extension' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
   # Pods for Archery Motion Study WatchKit Extension
 

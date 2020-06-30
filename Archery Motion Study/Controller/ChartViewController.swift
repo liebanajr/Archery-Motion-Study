@@ -34,7 +34,7 @@ class ChartViewController: UIViewController {
     
     var chartIsFullScreen = false
     
-    var desiredDataSets : [SensorDataSet]?
+    var desiredDataSets : [SensorDataSet] = []
     
     var averageManager : SampleAverageManager?
 
@@ -128,13 +128,13 @@ class ChartViewController: UIViewController {
     
     func updateGraph () {
         chtChart.clear()
-        if !self.desiredDataSets!.isEmpty {
+        if !self.desiredDataSets.isEmpty {
             SwiftSpinner.show(delay: 1.0, title: NSLocalizedString("spinnerMessage", comment: ""))
             DispatchQueue.global(qos: .utility).async {
                 let data = LineChartData()
 
 
-                for dataSet in self.desiredDataSets!{
+                for dataSet in self.desiredDataSets{
 
                     var lineChartEntry = [ChartDataEntry]()
 
@@ -155,6 +155,12 @@ class ChartViewController: UIViewController {
                         case "Accelerometer Y":
                             line1.colors = [self.colorArray[1]]
                         case "Accelerometer Z":
+                            line1.colors = [self.colorArray[2]]
+                        case "Transformed accelerometer X":
+                            line1.colors = [self.colorArray[0]]
+                        case "Transformed accelerometer Y":
+                            line1.colors = [self.colorArray[1]]
+                        case "Transformed accelerometer Z":
                             line1.colors = [self.colorArray[2]]
                         case "Gyroscope X":
                             line1.colors = [self.colorArray[3]]
@@ -194,11 +200,15 @@ class ChartViewController: UIViewController {
     
     @objc func checkSelectedSwitch(){
         
-        desiredDataSets?.removeAll(keepingCapacity: true)
+        desiredDataSets.removeAll(keepingCapacity: true)
         
         for (index,element) in switchesArray!.enumerated() {
+            var adminIndex = index
+            if K.isAdmin, adminIndex < 3 {
+                adminIndex += 1
+            }
             if element.isOn {
-                desiredDataSets?.append(availableDataSets![index])
+                desiredDataSets.append(availableDataSets![adminIndex])
             }
         }
         updateGraph()

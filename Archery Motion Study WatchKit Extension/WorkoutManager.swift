@@ -21,22 +21,20 @@ class WorkoutManager: NSObject {
     
     var delegate: WorkoutManagerDelegate?
 
-    var workoutData : WorkoutSessionDetails?
+    var workoutData : WorkoutSessionDetails
     
     var workoutSession : HKWorkoutSession?
     var builder : HKLiveWorkoutBuilder?
-    var healthStore : HKHealthStore?
-    var workoutConfiguration : HKWorkoutConfiguration?
+    var healthStore : HKHealthStore
+    var workoutConfiguration : HKWorkoutConfiguration
     
     var motionManager: MotionManager?
     var asyncDataMotionManager : MotionManager?
-    var filesManager : FilesManager?
+    let filesManager = FilesManager()
     
     let wcSession = WCSession.default
         
     override init() {
-        
-        super.init()
         
         let formatter = DateFormatter()
         let timeZone = TimeZone(abbreviation: "UTC+2")
@@ -45,17 +43,17 @@ class WorkoutManager: NSObject {
         let id = formatter.string(from: Date())
         
         workoutData = WorkoutSessionDetails(sessionId: id)
-        
-        filesManager = FilesManager()
-        
+                
         healthStore = HKHealthStore()
         workoutConfiguration = HKWorkoutConfiguration()
-        workoutConfiguration!.activityType = .archery
-        workoutConfiguration?.locationType = .outdoor
+        workoutConfiguration.activityType = .archery
+        workoutConfiguration.locationType = .outdoor
+        super.init()
+        
         do {
-            workoutSession = try HKWorkoutSession(healthStore: healthStore!, configuration: workoutConfiguration!)
+            workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
             builder = workoutSession!.associatedWorkoutBuilder()
-            builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore!, workoutConfiguration: workoutConfiguration!)
+            builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: workoutConfiguration)
             
             workoutSession!.delegate = self
             builder!.delegate = self
@@ -69,64 +67,69 @@ class WorkoutManager: NSObject {
     
     func startWorkout(){
         
-        workoutSession!.startActivity(with: Date())
-        builder!.beginCollection(withStart: Date()) { (success, error) in
+//        WE don't create workout and helathkit objects if no workout save is needed (development)
+        if K.isSaveWorkoutActive {
+            do {
+                workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
+                builder = workoutSession!.associatedWorkoutBuilder()
+                builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: workoutConfiguration)
+
+                workoutSession!.delegate = self
+                builder!.delegate = self
+            } catch {
+                Log.warning("Unable to create workout session: \(error)")
+            }
+        } else {
+            Log.warning("No healthkit objects are being created")
+        }
+        
+        workoutSession?.startActivity(with: Date())
+        builder?.beginCollection(withStart: Date()) { (success, error) in
             guard success else {
                 fatalError("Error collecting workout data: \(error!)")
             }
         }
         motionManager = MotionManager()
-        motionManager!.startMotionUpdates()
+        motionManager?.startMotionUpdates()
         
     }
     
     func pauseWorkout(){
         
-        workoutSession!.pause()
+        workoutSession?.pause()
+        motionManager?.pauseMotionUpdates()
+        workoutData.elapsedSeconds = Int(motionManager!.timeStamp)
         
     }
     
     func resumeWorkout(){
         
-        workoutSession!.resume()
-        if motionManager == nil {
-            print("Motion manager was nil. Creating new")
-            motionManager = MotionManager()
-            motionManager!.startMotionUpdates()
-        }
+        workoutSession?.resume()
+        motionManager?.resumeMotionUpdates()
     }
     
     func endWorkout(){
         
-        print("Trying to end workout")
-        workoutSession!.end()
-        if K.saveWorkoutData {
-            print("Ending collection...")
-            builder!.endCollection(withEnd: Date()) { (success, error) in
-                guard success else {
-                    fatalError("Couldn't finish collection: \(error!)")
-                }
-                    self.builder!.finishWorkout { (_, error) in
-                        if error != nil {
-                            fatalError("Couldn't finish workout: \(error!)")
-                        }
-                    }
+        Log.trace("Trying to end workout")
+        workoutSession?.end()
+        workoutData.endDate = Date()
+        builder?.endCollection(withEnd: Date()) { (success, error) in
+            guard success else {
+                Log.error("Couldn't finish collection: \(error!)")
+                return
             }
-        }
-            
-        if motionManager != nil {
-            print("Trying to save workout")
-            saveWorkout()
-            
-        } else {
-            sendArrowCount()
+            self.builder?.finishWorkout { (_, error) in
+                if error != nil {
+                    Log.error("Couldn't finish workout: \(error!)")
+                }
+            }
         }
         
     }
     
     func sendArrowCount() {
-        wcSession.sendMessage(["arrowCount":workoutData!.arrowCounter,"sessionId" : workoutData!.sessionId], replyHandler: nil, errorHandler: nil)
-        delegate!.didFinishSaveTasks()
+        wcSession.sendMessage(["arrowCount":workoutData.arrowCounter,"sessionId" : workoutData.sessionId], replyHandler: nil, errorHandler: nil)
+        delegate?.didFinishSaveTasks()
     }
     
 //    MARK: Other functions
@@ -135,18 +138,19 @@ class WorkoutManager: NSObject {
         print("Saving workout")
 //        let nc = NotificationCenter.default
 //        nc.post(name: Notification.Name("saveTaskStarted"), object: nil)
-        delegate!.didStartSaveTasks()
-        motionManager!.stopMotionUpdates()
+        delegate?.didStartSaveTasks()
+        motionManager?.stopMotionUpdates()
         asyncDataMotionManager = motionManager
         motionManager = nil
         DispatchQueue.global(qos: .utility).async {
             let csv = self.asyncDataMotionManager!.toCSVString()
-            let url = self.filesManager!.saveDataLocally(dataString: csv)!
-            self.workoutData!.elapsedSeconds = Int(DateInterval(start: self.workoutSession!.startDate!, end: Date()).duration.magnitude)
-            self.filesManager!.sendDataToiPhone(url, with: self.workoutData!)
+            if let url = self.filesManager.saveDataLocally(dataString: csv) {
+                self.workoutData.elapsedSeconds = Int(DateInterval(start: self.workoutSession!.startDate!, end: Date()).duration.magnitude)
+                self.filesManager.sendDataToiPhone(url, with: self.workoutData)
+            }
 //            let nc = NotificationCenter.default
 //            nc.post(name: Notification.Name("saveTaskFinished"), object: nil)
-            self.delegate!.didFinishSaveTasks()
+            self.delegate?.didFinishSaveTasks()
         }
         
     }
@@ -167,7 +171,7 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
             let statistics = workoutBuilder.statistics(for: quantityType)!
             self.updateWorkoutForQuantityType(quantityType, statistics)
             
-            delegate!.didReceiveWorkoutData(workoutData!)
+            delegate!.didReceiveWorkoutData(workoutData)
         }
     }
     
@@ -176,11 +180,11 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
         switch quantityType {
             case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
                 let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.meter()))
-                workoutData!.cumulativeDistance = value
+                workoutData.cumulativeDistance = value
                 return
             case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
                 let value = Int(statistics.sumQuantity()!.doubleValue(for: HKUnit.kilocalorie()))
-                workoutData!.cumulativeCaloriesBurned = value
+                workoutData.cumulativeCaloriesBurned = value
                 return
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
                 let value = Int(statistics.mostRecentQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
@@ -188,16 +192,16 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
                 let minValue = Int(statistics.minimumQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
                 let avgValue = Int(statistics.averageQuantity()!.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
                 
-                workoutData!.currentHeartRate = value
-                if maxValue > workoutData!.maxHeartRate {
-                    workoutData!.maxHeartRate = maxValue
-                    workoutData!.maxHRAtEnd = workoutData!.endCounter
+                workoutData.currentHeartRate = value
+                if maxValue > workoutData.maxHeartRate {
+                    workoutData.maxHeartRate = maxValue
+                    workoutData.maxHRAtEnd = workoutData.endCounter
                 }
-                if minValue < workoutData!.minHeartRate {
-                    workoutData!.minHeartRate = minValue
-                    workoutData!.minHRAtEnd = workoutData!.endCounter
+                if minValue < workoutData.minHeartRate {
+                    workoutData.minHeartRate = minValue
+                    workoutData.minHRAtEnd = workoutData.endCounter
                 }
-                workoutData!.averageHeartRate = avgValue
+                workoutData.averageHeartRate = avgValue
                 return
             default:
                 return
