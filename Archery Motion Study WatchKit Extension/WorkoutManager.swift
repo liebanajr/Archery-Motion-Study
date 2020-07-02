@@ -139,9 +139,7 @@ class WorkoutManager: NSObject {
 //        let nc = NotificationCenter.default
 //        nc.post(name: Notification.Name("saveTaskStarted"), object: nil)
         delegate?.didStartSaveTasks()
-        motionManager?.stopMotionUpdates()
         asyncDataMotionManager = motionManager
-        motionManager = nil
         DispatchQueue.global(qos: .utility).async {
             let csv = self.asyncDataMotionManager!.toCSVString()
             if let url = self.filesManager.saveDataLocally(dataString: csv) {

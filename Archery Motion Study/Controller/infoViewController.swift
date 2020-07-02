@@ -22,6 +22,7 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     @IBOutlet var collaboratorsSendButton: UIButton!
     @IBOutlet var sessionTypeLabel: UILabel!
     @IBOutlet var sessionTypeInfoLabel: UILabel!
+    @IBOutlet weak var appVersionLabel: UILabel!
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
@@ -34,6 +35,8 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appVersionLabel.text = "Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)"
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)

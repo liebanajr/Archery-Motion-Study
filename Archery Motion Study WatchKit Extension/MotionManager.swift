@@ -163,16 +163,19 @@ class MotionManager: NSObject {
     func stopMotionUpdates() {
         
         Log.trace("Stopping motion updates...")
-        motion!.stopDeviceMotionUpdates()
-        motion = nil
+        motion?.stopDeviceMotionUpdates()
         
     }
     
 //    MARK: Utility geometric functions
-    static private func calculateAngle(vectorA a: simd_double3, vectorB b: simd_double3) -> Double{
-        let dotProduct = simd_dot(simd_normalize(a),simd_normalize(b))
-        print("Dot product = \(dotProduct)")
+    private static func calculateAngle(vectorA a: simd_double3, vectorB b: simd_double3) -> Double{
+        let norm_a = simd_normalize(a)
+        let norm_b = simd_normalize(b)
+        let dotProduct = simd_dot(norm_a, norm_b)
         let angle = acos(dotProduct)
+//    print("Normalized vector a = \(norm_a)")
+//    print("Normalized vector b = \(norm_b)")
+//    print("Dot product = \(dotProduct)")
         return angle
     }
 
@@ -182,13 +185,18 @@ class MotionManager: NSObject {
         let used_g = -simd_normalize(simd_double3(g[0], g[1], g[2]))
         let z_axis = simd_double3(0.0,0.0,1.0)
         let rotation_angle = calculateAngle(vectorA: used_g, vectorB: z_axis)
-        print("Rotation angle: \(rotation_angle)")
-        let rotation_axis = simd_normalize(simd_cross(z_axis,used_g))
-        print("Rotation axis: \(rotation_axis)")
+        let rotation_axis = simd_normalize(simd_cross(used_g,z_axis))
         let quaternion = simd_quatd(angle: rotation_angle, axis: rotation_axis)
         let resultVector = quaternion.act(v)
-        print("Result vector: \(resultVector) length: \(simd_length(resultVector))")
-        if simd_length(resultVector) != simd_length(v){Log.error("Passed and result vectors have different lengths")}
+//        print("Vector v = \(v)")
+//        print("Vector g = \(g)")
+//        print("Inverted g = \(used_g)")
+//        print("Rotation angle: \(rotation_angle)")
+//        print("Rotation axis: \(rotation_axis)")
+//        let resultGravity = quaternion.act(g)
+//        print("Result vector: \(resultVector) length: \(simd_length(resultVector))")
+//        print("Result gravity: \(resultGravity) length: \(simd_length(resultVector))")
+//        if simd_length(resultVector) != simd_length(v){print("Passed and result vectors have different lengths")}
         return [resultVector.x,resultVector.y,resultVector.z]
     }
 

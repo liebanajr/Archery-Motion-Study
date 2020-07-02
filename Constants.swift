@@ -11,12 +11,13 @@ import Foundation
 struct K {
     #if DEBUG
     static let minLogLevel : LOGLEVEL = .TRACE
-    #else
-    static let minLogLevel : LOGLEVEL = .WARNING
-    #endif
-    
     static let isAdmin = true
     static let isSaveWorkoutActive = false
+    #else
+    static let minLogLevel : LOGLEVEL = .WARNING
+    static let isAdmin = false
+    static let isSaveWorkoutActive = true
+    #endif
     
     static let dateFormat : String = "ddMMyy'T'HHmmss"
     static let graphSmootherSamples : Int = 20
@@ -54,13 +55,12 @@ struct K {
     static let twitterURL = URL(string: "https://twitter.com/JuanIRL")
     static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")
     
-    static let sampleInterval = 1.0/20.0
+    static let sampleInterval = 1.0/30.0
     static let sensorScaleFactor = 1.0
-    static let sensorPrecision : String = "%.8f"
+    static let sensorPrecision : String = "%.3f"
     static let timeStampPrecision : String  = "%.2f"
     static let csvSeparator = ","
     static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z,Gravity X,Gravity Y,Gravity Z,Transformed accelerometer X,Transformed accelerometer Y,Transformed accelerometer Z\n"
-    static let saveWorkoutData : Bool = true
     
     
 }

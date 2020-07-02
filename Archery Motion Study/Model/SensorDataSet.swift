@@ -20,10 +20,11 @@ class SensorDataSet: NSObject {
     
     func appendDataPoint(value: String){
         if let doubleValue = Double(value){
+//            Log.trace("Appending \(self.label) - \(doubleValue)")
             data.append(doubleValue)
             return
         }
-        data.append(0)
+        data.append(0.0)
     }
 
 }

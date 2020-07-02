@@ -58,6 +58,13 @@ class ChartViewController: UIViewController {
                 
         averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
         
+        self.chtChart.legend.enabled = false
+        self.chtChart.xAxis.labelTextColor = .label
+        self.chtChart.leftAxis.labelTextColor = .label
+        self.chtChart.rightAxis.enabled = false
+        
+        chtChart.xAxis.labelTextColor = .label
+        chtChart.xAxis.labelPosition = .bottom
         chtChart.dragXEnabled = true
         chtChart.dragYEnabled = true
         chtChart.setScaleEnabled(true)
@@ -135,7 +142,9 @@ class ChartViewController: UIViewController {
 
 
                 for dataSet in self.desiredDataSets{
-
+                    
+                    Log.trace("Rendering \(dataSet.label)")
+                    
                     var lineChartEntry = [ChartDataEntry]()
 
                     //                Average sensor data
@@ -148,7 +157,7 @@ class ChartViewController: UIViewController {
                     }
 
                     let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
-
+                    
                     switch dataSet.label {
                         case "Accelerometer X":
                             line1.colors = [self.colorArray[0]]
@@ -179,10 +188,6 @@ class ChartViewController: UIViewController {
                 }
                 DispatchQueue.main.async {
                     self.chtChart.data = data
-                    self.chtChart.legend.enabled = false
-                    self.chtChart.xAxis.labelTextColor = .label
-                    self.chtChart.leftAxis.labelTextColor = .label
-                    self.chtChart.rightAxis.labelTextColor = .label
                     self.fullScreenButton.isHidden = false
                     //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
                     //            chtChart.animate(xAxisDuration: 1.3)
@@ -205,7 +210,7 @@ class ChartViewController: UIViewController {
         for (index,element) in switchesArray!.enumerated() {
             var adminIndex = index
             if K.isAdmin, adminIndex < 3 {
-                adminIndex += 1
+                adminIndex += 9
             }
             if element.isOn {
                 desiredDataSets.append(availableDataSets![adminIndex])

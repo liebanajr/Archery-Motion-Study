@@ -12,6 +12,7 @@ import CoreData
 
 class PrivateTableViewController: UITableViewController {
     @IBOutlet var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var itemsList : [StorageReference]?
     
@@ -37,7 +38,7 @@ class PrivateTableViewController: UITableViewController {
         deleteLocalFiles()
                 
         itemsList = [StorageReference]()
-                // Uncomment the following line to preserve selection between presentations
+        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -209,6 +210,22 @@ class PrivateTableViewController: UITableViewController {
         }
         
         
+    }
+    
+    @IBAction func selectAllButtonPressed(_ sender: Any) {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            self.deleteButton.isEnabled = false
+        } else {
+            tableView.setEditing(true, animated: true)
+            self.deleteButton.isEnabled = true
+            if let list = itemsList {
+                for (index,row) in list.enumerated() {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                }
+            }
+        }
     }
     
     @IBAction func filterButtonPressed(_ sender: Any) {

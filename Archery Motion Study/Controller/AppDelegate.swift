@@ -207,8 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             print("Error de Apple Watch en WorkoutManager: \(error)")
         }
         
-        if let arrowCount = message["arrowCount"] {
-            let sessionId = message["sessionId"]! as! String
+        if let arrowCount = message["arrowCount"], let sessionId = message["sessionId"] as? String {
             let sessionRequest = NSFetchRequest<Session>(entityName: "Session")
             sessionRequest.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [sessionId])
             let context = persistentContainer.viewContext
@@ -216,17 +215,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 let result = try context.fetch(sessionRequest)
     //                print("Fetch request result: \(result)")
                 var workoutSession : Session
-                workoutSession = result.first!
-                
-                workoutSession.arrowCount = arrowCount as! Int64
+                if let firstResult = result.first {
+                    workoutSession = firstResult
+                    workoutSession.arrowCount = arrowCount as! Int64
+                    
+                    self.saveContext()
+                    print("Data saved successfully!")
+                    let nc = NotificationCenter.default
+                    nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
+                }
                                 
             } catch {
                 print("Error fetching existing Session: \(error)")
             }
-            self.saveContext()
-            print("Data saved successfully!")
-            let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("NewDataAvailable"), object: nil)
         }
     }
     
