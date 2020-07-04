@@ -11,7 +11,8 @@ import Charts
 import Accelerate
 import SwiftSpinner
 
-class ChartViewController: UIViewController {
+class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
         
     @IBOutlet weak var chtChart: LineChartView!
     @IBOutlet var chartSuperview: UIView!
@@ -22,6 +23,14 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var gyrXSwitch: UISwitch!
     @IBOutlet weak var gyrYSwitch: UISwitch!
     @IBOutlet weak var gyrZSwitch: UISwitch!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var timeArrow: UIStackView!
+    
+    #if DEBUG
+    var selectionCells = ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration"]
+    #else
+    var selectionCells = ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]"]
+    #endif
     
     var switchesArray : [UISwitch]?
     var colorArray = [NSUIColor]()
@@ -30,16 +39,21 @@ class ChartViewController: UIViewController {
     var timeStamp : SensorDataSet?
     var availableDataSets : [SensorDataSet]?
     
+    var pendingIndexPath : IndexPath?
+    
     @IBOutlet var fullScreenButton: UIButton!
     
     var chartIsFullScreen = false
     
     var desiredDataSets : [SensorDataSet] = []
     
-    var averageManager : SampleAverageManager?
+    var averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         accXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         accYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
@@ -49,14 +63,11 @@ class ChartViewController: UIViewController {
         gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         
         switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
-        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple]
+        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .label, .label]
         
-        availableDataSets = extractDataSets(tableArray: readDataFromCSV(fileName: importedFileName))
-        timeStamp = availableDataSets?.remove(at: 0)
+        loadAvailableDataSets()
         
         desiredDataSets = []
-                
-        averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
         
         self.chtChart.legend.enabled = false
         self.chtChart.xAxis.labelTextColor = .label
@@ -73,10 +84,155 @@ class ChartViewController: UIViewController {
         chtChart.dragDecelerationEnabled = false
         chtChart.noDataTextColor = .label
         chtChart.noDataText = ""
-        chtChart.backgroundColor = .systemBackground
+        chtChart.backgroundColor = .systemGroupedBackground
         
         fullScreenButton.layer.cornerRadius = fullScreenButton.frame.size.width / 5
     }
+    
+    func loadAvailableDataSets(){
+        Log.info("Loading available data sets")
+        availableDataSets = [SensorDataSet]()
+        for _ in selectionCells {
+            availableDataSets?.append(SensorDataSet(labelName: "dummy"))
+        }
+        DispatchQueue.global(qos: .utility).async {
+            var dataSets = self.extractDataSets(tableArray: self.readDataFromCSV(fileName: self.importedFileName))
+            self.timeStamp = dataSets.remove(at: 0)
+            
+            var positionIndexes = [Int]()
+            for (index,_) in self.selectionCells.enumerated() {
+                positionIndexes.append(index)
+            }
+            var extractIndex = 0
+            var isNeedsUpdateGraph = false
+            while positionIndexes.count > 0 {
+                let dataSet = dataSets.remove(at: extractIndex)
+                let index = positionIndexes.remove(at: extractIndex)
+                
+                let smoothData = self.averageManager.averageSignal(inputSignal: dataSet.data)
+                let newDataSet = SensorDataSet(labelName: dataSet.label)
+                newDataSet.data = smoothData
+                self.availableDataSets?[index] = newDataSet
+                
+                var count = 0
+                for element in self.availableDataSets! {
+                    if element.label != "dummy" {
+                        count += 1
+                    }
+                }
+                Log.info("availableDataSets now has \(count) elements")
+                
+                extractIndex = 0
+                
+                if let pendingDataSetToRender = self.pendingIndexPath{
+                    if isNeedsUpdateGraph {
+                        DispatchQueue.main.async {
+                            self.selectRow(at: pendingDataSetToRender)
+                            SwiftSpinner.hide()
+                        }
+                        self.pendingIndexPath = nil
+                        isNeedsUpdateGraph = false
+                        continue
+                    }
+                    
+                    let diff = self.selectionCells.count - positionIndexes.count
+                    extractIndex = pendingDataSetToRender.row - diff
+                    isNeedsUpdateGraph = true
+                    
+                }
+            }
+            
+//            for (index,dataSet) in dataSets.enumerated() {
+//                let smoothData = self.averageManager.averageSignal(inputSignal: dataSet.data)
+//                let newDataSet = SensorDataSet(labelName: dataSet.label)
+//                newDataSet.data = smoothData
+//                self.availableDataSets?[index] = newDataSet
+//                Log.info("availableDataSets now has \(self.availableDataSets!.count) elements")
+//
+//                if let pendingDataSetToRender = self.pendingIndexPath, pendingDataSetToRender.row == self.availableDataSets!.count-1 {
+//                    DispatchQueue.main.async {
+////                        self.tableView.selectRow(at: pendingDataSetToRender, animated: true, scrollPosition: .none)
+//                        self.selectRow(at: pendingDataSetToRender)
+//                        SwiftSpinner.hide()
+//                        self.pendingIndexPath = nil
+////                        self.updateGraph()
+//                    }
+//                }
+//
+//                if self.availableDataSets?.count == self.selectionCells.count {
+//                    break
+//                }
+//            }
+            DispatchQueue.main.async {
+                SwiftSpinner.hide()
+//                self.updateGraph()
+            }
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectionCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell") as? ChartSelectionCell {
+            cell.selectionTitleLabel?.text = NSLocalizedString(selectionCells[indexPath.row], comment: "")
+            cell.colorArray = self.colorArray
+            if let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.contains(indexPath) {
+                cell.style(at: indexPath, for: true)
+            } else {
+                cell.style(at: indexPath, for: false)
+            }
+            return cell
+        }
+        return UITableViewCell(style: .default, reuseIdentifier: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectRow(at: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        deselectRow(at: indexPath)
+    }
+    
+    private func selectRow(at indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? ChartSelectionCell
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        cell?.style(at: indexPath, for: true)
+        checkSelectedDataSet()
+    }
+    
+    private func deselectRow(at indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? ChartSelectionCell
+        tableView.deselectRow(at: indexPath, animated: true)
+        cell?.style(at: indexPath, for: false)
+        checkSelectedDataSet()
+    }
+    
+    func checkSelectedDataSet(){
+        desiredDataSets.removeAll()
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            for indexPath in indexPaths {
+//                if let available = availableDataSets, indexPath.row < available.count  {
+                if let available = availableDataSets, available[indexPath.row].label != "dummy"  {
+                    desiredDataSets.append(available[indexPath.row])
+                } else {
+                    SwiftSpinner.show(delay: 0.1, title: NSLocalizedString("spinnerMessage", comment: ""))
+                    pendingIndexPath = indexPath
+//                    tableView.deselectRow(at: indexPath, animated: true)
+                    deselectRow(at: indexPath)
+//                    return
+                }
+            }
+        }
+        updateGraph()
+    }
+    
 //    MARK: Enable rotation on view controller
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -136,7 +292,7 @@ class ChartViewController: UIViewController {
     func updateGraph () {
         chtChart.clear()
         if !self.desiredDataSets.isEmpty {
-            SwiftSpinner.show(delay: 1.0, title: NSLocalizedString("spinnerMessage", comment: ""))
+//            SwiftSpinner.show(delay: 1.0, title: NSLocalizedString("spinnerMessage", comment: ""))
             DispatchQueue.global(qos: .utility).async {
                 let data = LineChartData()
 
@@ -148,9 +304,9 @@ class ChartViewController: UIViewController {
                     var lineChartEntry = [ChartDataEntry]()
 
                     //                Average sensor data
-                    let smoothData = self.averageManager?.averageSignal(inputSignal: dataSet.data)
+                    let smoothData = dataSet.data
                            
-                    for (index,value) in smoothData!.enumerated() {
+                    for (index,value) in smoothData.enumerated() {
                         
                         let entry = ChartDataEntry(x: self.timeStamp!.data[index], y: value)
                         lineChartEntry.append(entry)
@@ -189,6 +345,7 @@ class ChartViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.chtChart.data = data
                     self.fullScreenButton.isHidden = false
+                    self.timeArrow.isHidden = false
                     //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
                     //            chtChart.animate(xAxisDuration: 1.3)
 
@@ -196,7 +353,8 @@ class ChartViewController: UIViewController {
                 }
             }
             } else {
-            self.fullScreenButton.isHidden = true
+                self.fullScreenButton.isHidden = true
+                self.timeArrow.isHidden = true
 //            self.chtChart.data = nil
 //            self.fullScreenButton.isHidden = true
         }
