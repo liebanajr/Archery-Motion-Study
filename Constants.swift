@@ -60,7 +60,7 @@ struct K {
     static let sensorPrecision : String = "%.3f"
     static let timeStampPrecision : String  = "%.2f"
     static let csvSeparator = ","
-    static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z,Gravity X,Gravity Y,Gravity Z,Transformed accelerometer X,Transformed accelerometer Y,Transformed accelerometer Z\n"
+    static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z,Transformed accelerometer X,Transformed accelerometer Y,Transformed accelerometer Z,Gravity X,Gravity Y,Gravity Z\n"
     
     
 }

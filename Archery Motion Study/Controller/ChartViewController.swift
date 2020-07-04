@@ -28,7 +28,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var selectionCells : [String] = {
         if K.isAdmin {
-            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration"]
+            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration", "Gravity X", "Gravity Y", "Gravity Z"]
         } else {
             return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]"]
         }
@@ -65,7 +65,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         
         switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
-        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .label, .label]
+        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .label, .label, .darkGray, .darkGray, .darkGray]
         
         loadAvailableDataSets()
         
@@ -324,11 +324,11 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         case "Accelerometer Z":
                             line1.colors = [self.colorArray[2]]
                         case "Transformed accelerometer X":
-                            line1.colors = [self.colorArray[0]]
+                            line1.colors = [self.colorArray[6]]
                         case "Transformed accelerometer Y":
-                            line1.colors = [self.colorArray[1]]
+                            line1.colors = [self.colorArray[6]]
                         case "Transformed accelerometer Z":
-                            line1.colors = [self.colorArray[2]]
+                            line1.colors = [self.colorArray[6]]
                         case "Gyroscope X":
                             line1.colors = [self.colorArray[3]]
                         case "Gyroscope Y":
@@ -351,7 +351,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
                     //            chtChart.animate(xAxisDuration: 1.3)
 
-                    SwiftSpinner.hide()
+//                    SwiftSpinner.hide()
                 }
             }
             } else {

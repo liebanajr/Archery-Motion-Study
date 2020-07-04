@@ -74,12 +74,12 @@ class MotionManager: NSObject {
             resultString.append(String(format: K.sensorPrecision, dataPoint.gyrX * K.sensorScaleFactor) + K.csvSeparator)
             resultString.append(String(format: K.sensorPrecision, dataPoint.gyrY * K.sensorScaleFactor) + K.csvSeparator)
             resultString.append(String(format: K.sensorPrecision, dataPoint.gyrZ * K.sensorScaleFactor) + K.csvSeparator)
-            resultString.append(String(format: K.sensorPrecision, dataPoint.gravX * K.sensorScaleFactor) + K.csvSeparator)
-            resultString.append(String(format: K.sensorPrecision, dataPoint.gravY * K.sensorScaleFactor) + K.csvSeparator)
-            resultString.append(String(format: K.sensorPrecision, dataPoint.gravZ * K.sensorScaleFactor) + K.csvSeparator)
             resultString.append(String(format: K.sensorPrecision, dataPoint.transformedAccX * K.sensorScaleFactor) + K.csvSeparator)
             resultString.append(String(format: K.sensorPrecision, dataPoint.transformedAccY * K.sensorScaleFactor) + K.csvSeparator)
-            resultString.append(String(format: K.sensorPrecision, dataPoint.transformedAccZ * K.sensorScaleFactor) + "\n")
+            resultString.append(String(format: K.sensorPrecision, dataPoint.transformedAccZ * K.sensorScaleFactor) + K.csvSeparator)
+            resultString.append(String(format: K.sensorPrecision, dataPoint.gravX * K.sensorScaleFactor) + K.csvSeparator)
+            resultString.append(String(format: K.sensorPrecision, dataPoint.gravY * K.sensorScaleFactor) + K.csvSeparator)
+            resultString.append(String(format: K.sensorPrecision, dataPoint.gravZ * K.sensorScaleFactor) + "\n")
             
         }
         
