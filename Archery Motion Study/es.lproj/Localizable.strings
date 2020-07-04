@@ -34,3 +34,9 @@
 "isFriend" = "Ya eres colaborador";
 "spinnerMessage" = "Procesando...";
 "arrows" = "flechas";
+"X axis acceleration [G]" = "Aceleración eje X [G]";
+"Y axis acceleration [G]" = "Aceleración eje Y [G]";
+"Z axis acceleration [G]" = "Aceleración eje Z [G]";
+"X axis rotation [rad/s]" = "Velocidad giro eje X [rad/s]";
+"Y axis rotation [rad/s]" = "Velocidad giro eje Y [rad/s]";
+"Z axis rotation [rad/s]" = "Velocidad giro eje Z [rad/s]";

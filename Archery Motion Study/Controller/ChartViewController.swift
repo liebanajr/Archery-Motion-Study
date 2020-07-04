@@ -26,11 +26,13 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeArrow: UIStackView!
     
-    #if DEBUG
-    var selectionCells = ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration"]
-    #else
-    var selectionCells = ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]"]
-    #endif
+    var selectionCells : [String] = {
+        if K.isAdmin {
+            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration"]
+        } else {
+            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]"]
+        }
+    }()
     
     var switchesArray : [UISwitch]?
     var colorArray = [NSUIColor]()
