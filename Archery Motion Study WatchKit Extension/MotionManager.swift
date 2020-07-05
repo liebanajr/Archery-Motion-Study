@@ -51,7 +51,12 @@ class MotionManager: NSObject {
     var motionDataPoints : Array<MotionDataPoint>
     var motion : CMMotionManager?
     var timeStamp : Double
-            
+    
+    
+    var isCrownInverted = false
+//    var isWatchLocationInverted = false
+    var isWatchHandInverted = false
+    var inverter = 1.0
     
     override init() {
         motionDataPoints = []
@@ -88,16 +93,16 @@ class MotionManager: NSObject {
     }
         
     private func storeDeviceMotion(_ deviceMotion: CMDeviceMotion, _ timeStamp: Double) -> MotionDataPoint{
-        
+                
         var motionDataPoint = MotionDataPoint()
-        motionDataPoint.accX = deviceMotion.userAcceleration.x
-        motionDataPoint.accY = deviceMotion.userAcceleration.y
+        motionDataPoint.accX = deviceMotion.userAcceleration.x * inverter
+        motionDataPoint.accY = deviceMotion.userAcceleration.y * inverter
         motionDataPoint.accZ = deviceMotion.userAcceleration.z
-        motionDataPoint.gyrX = deviceMotion.rotationRate.x
-        motionDataPoint.gyrY = deviceMotion.rotationRate.y
+        motionDataPoint.gyrX = deviceMotion.rotationRate.x * inverter
+        motionDataPoint.gyrY = deviceMotion.rotationRate.y * inverter
         motionDataPoint.gyrZ = deviceMotion.rotationRate.z
-        motionDataPoint.gravX = deviceMotion.gravity.x
-        motionDataPoint.gravY = deviceMotion.gravity.y
+        motionDataPoint.gravX = deviceMotion.gravity.x * inverter
+        motionDataPoint.gravY = deviceMotion.gravity.y * inverter
         motionDataPoint.gravZ = deviceMotion.gravity.z
         
         let accVector = [motionDataPoint.accX,motionDataPoint.accY,motionDataPoint.accZ]
@@ -133,6 +138,11 @@ class MotionManager: NSObject {
         
         motion = CMMotionManager()
         motion!.deviceMotionUpdateInterval = K.sampleInterval
+        
+        if (isCrownInverted && !isWatchHandInverted) || (!isCrownInverted && isWatchHandInverted) {
+            inverter = -1.0
+            Log.info("Inverter: \(inverter)")
+        }
         
         if motion!.isDeviceMotionAvailable {
             

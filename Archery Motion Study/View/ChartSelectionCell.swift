@@ -27,12 +27,10 @@ class ChartSelectionCell: UITableViewCell {
     
     func style(at indexPath: IndexPath, for selectionState: Bool) {
         if selectionState {
-            Log.info("Styling \(self.selectionTitleLabel.text!) for selected")
             self.selectionImageView.tintColor = colorArray?[indexPath.row]
             self.selectionImageView.image = UIImage(systemName: "checkmark.circle.fill")
             self.selectionImageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(scale: .large)
         } else {
-            Log.info("Styling \(self.selectionTitleLabel.text!) for not selected")
             self.selectionImageView.tintColor = UIColor.label
             self.selectionImageView.image = UIImage(systemName: "circle")
             self.selectionImageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(scale: .large)

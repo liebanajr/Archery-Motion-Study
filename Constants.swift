@@ -20,7 +20,7 @@ struct K {
     #endif
     
     static let dateFormat : String = "ddMMyy'T'HHmmss"
-    static let graphSmootherSamples : Int = 20
+    static let graphSmootherSamples : Int = 30
     static let graphSmootherFilterLevel : Int = 3
     static let motionDataFolder : String = "/MotionData/"
     static let motionDataFolderDownloads : String = motionDataFolder + "/Downloads/"

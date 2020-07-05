@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import WatchConnectivity
+import WatchKit
 
 protocol WorkoutManagerDelegate {
     
@@ -90,6 +91,20 @@ class WorkoutManager: NSObject {
             }
         }
         motionManager = MotionManager()
+        
+        if WKInterfaceDevice.current().crownOrientation == .left {
+            Log.info("Inverting XY for crown left")
+            motionManager?.isCrownInverted = true
+        }
+        if WKInterfaceDevice.current().wristLocation == .right {
+            Log.info("Inverting XY for Watch on right hand")
+            motionManager?.isWatchHandInverted = true
+        }
+//        if UserDefaults.standard.value(forKey: K.handKey) as? String == K.handValues.last {
+//            Log.info("Inverting XY for watch on String hand")
+//            motionManager?.isWatchLocationInverted = true
+//        }
+        
         motionManager?.startMotionUpdates()
         
     }

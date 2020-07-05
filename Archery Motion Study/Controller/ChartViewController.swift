@@ -25,6 +25,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var gyrZSwitch: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeArrow: UIStackView!
+    @IBOutlet weak var separator: UIImageView!
     
     var selectionCells : [String] = {
         if K.isAdmin {
@@ -40,6 +41,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var importedFileName = ""
     var timeStamp : SensorDataSet?
     var availableDataSets : [SensorDataSet]?
+    var sharpDataSets : [SensorDataSet]?
     
     var pendingIndexPath : IndexPath?
     
@@ -50,6 +52,8 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var desiredDataSets : [SensorDataSet] = []
     
     var averageManager = SampleAverageManager(nSamples: K.graphSmootherSamples, filterLevel: K.graphSmootherFilterLevel)
+    
+    var backgroundWorkItem : DispatchWorkItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,34 +91,79 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         chtChart.noDataTextColor = .label
         chtChart.noDataText = ""
         chtChart.backgroundColor = .systemGroupedBackground
-        
         fullScreenButton.layer.cornerRadius = fullScreenButton.frame.size.width / 5
+        separator.layer.cornerRadius = separator.frame.size.height / 2
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.backgroundWorkItem?.cancel()
+        }
     }
     
     func loadAvailableDataSets(){
-        Log.info("Loading available data sets")
-        availableDataSets = [SensorDataSet]()
-        for _ in selectionCells {
-            availableDataSets?.append(SensorDataSet(labelName: "dummy"))
-        }
-        DispatchQueue.global(qos: .utility).async {
+        backgroundWorkItem = DispatchWorkItem(block: {
+            Log.info("Loading available data sets")
+            self.availableDataSets = [SensorDataSet]()
             var dataSets = self.extractDataSets(tableArray: self.readDataFromCSV(fileName: self.importedFileName))
             self.timeStamp = dataSets.remove(at: 0)
+            
+            self.sharpDataSets = [SensorDataSet]()
+            for (index,_) in self.selectionCells.enumerated() {
+                self.availableDataSets?.append(SensorDataSet(labelName: "dummy"))
+                self.sharpDataSets?.append(dataSets[index])
+            }
             
             var positionIndexes = [Int]()
             for (index,_) in self.selectionCells.enumerated() {
                 positionIndexes.append(index)
             }
             var extractIndex = 0
+            var index = 0
             var isNeedsUpdateGraph = false
             while positionIndexes.count > 0 {
-                let dataSet = dataSets.remove(at: extractIndex)
-                let index = positionIndexes.remove(at: extractIndex)
+                if self.backgroundWorkItem!.isCancelled {
+                    Log.info("Cancelling data processing background task")
+                    break
+                }
+                if let pendingDataSetToRender = self.pendingIndexPath{
+                    if isNeedsUpdateGraph {
+                        DispatchQueue.main.async {
+//                            self.selectRow(at: pendingDataSetToRender)
+                            SwiftSpinner.hide()
+                        }
+                        self.pendingIndexPath = nil
+                        isNeedsUpdateGraph = false
+                        
+                    } else {
+                        if pendingDataSetToRender.row != index {
+                            let diff = self.selectionCells.count - positionIndexes.count
+                            extractIndex = pendingDataSetToRender.row - diff
+                        }
+                        isNeedsUpdateGraph = true
+                    }
+                    DispatchQueue.main.async {
+                        self.checkSelectedDataSet()
+                    }
+                }
                 
-                let smoothData = self.averageManager.averageSignal(inputSignal: dataSet.data)
+                let dataSet = dataSets.remove(at: extractIndex)
+                index = positionIndexes.remove(at: extractIndex)
+                
+                var smoothData : [Double]
+                Log.debug("Data points: \(dataSet.data.count); Samples window: \(K.graphSmootherSamples)")
+                if K.graphSmootherSamples > 0 && dataSet.data.count / 30 > K.graphSmootherSamples {
+                    smoothData = self.averageManager.averageSignal(inputSignal: dataSet.data)
+                } else {
+                    Log.warning("Not enough data for smoothing")
+                    smoothData = dataSet.data
+                }
                 let newDataSet = SensorDataSet(labelName: dataSet.label)
                 newDataSet.data = smoothData
                 self.availableDataSets?[index] = newDataSet
+                if self.pendingIndexPath?.row == index {
+                    isNeedsUpdateGraph = true
+                }
                 
                 var count = 0
                 for element in self.availableDataSets! {
@@ -123,25 +172,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                 }
                 Log.info("availableDataSets now has \(count) elements")
-                
                 extractIndex = 0
-                
-                if let pendingDataSetToRender = self.pendingIndexPath{
-                    if isNeedsUpdateGraph {
-                        DispatchQueue.main.async {
-                            self.selectRow(at: pendingDataSetToRender)
-                            SwiftSpinner.hide()
-                        }
-                        self.pendingIndexPath = nil
-                        isNeedsUpdateGraph = false
-                        continue
-                    }
-                    
-                    let diff = self.selectionCells.count - positionIndexes.count
-                    extractIndex = pendingDataSetToRender.row - diff
-                    isNeedsUpdateGraph = true
-                    
-                }
             }
             
 //            for (index,dataSet) in dataSets.enumerated() {
@@ -169,7 +200,9 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 SwiftSpinner.hide()
 //                self.updateGraph()
             }
-        }
+        })
+        
+        DispatchQueue.global(qos: .utility).async(execute: backgroundWorkItem!)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -224,10 +257,14 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let available = availableDataSets, available[indexPath.row].label != "dummy"  {
                     desiredDataSets.append(available[indexPath.row])
                 } else {
-                    SwiftSpinner.show(delay: 0.1, title: NSLocalizedString("spinnerMessage", comment: ""))
+//                    SwiftSpinner.show(delay: 0.1, title: NSLocalizedString("spinnerMessage", comment: ""))
                     pendingIndexPath = indexPath
+                    if let dataSet = sharpDataSets?[indexPath.row] {
+                        Log.info("Smooth data not available. Appending sharp data")
+                        desiredDataSets.append(dataSet)
+                    }
 //                    tableView.deselectRow(at: indexPath, animated: true)
-                    deselectRow(at: indexPath)
+//                    deselectRow(at: indexPath)
 //                    return
                 }
             }
@@ -340,7 +377,8 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
 
                     line1.drawCirclesEnabled = false
-
+                    line1.drawValuesEnabled = false
+                    line1.lineWidth = 2.0
                     data.addDataSet(line1)
 
                 }
