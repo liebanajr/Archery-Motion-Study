@@ -17,12 +17,12 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var chtChart: LineChartView!
     @IBOutlet var chartSuperview: UIView!
     
-    @IBOutlet weak var accXSwitch: UISwitch!
-    @IBOutlet weak var accYSwitch: UISwitch!
-    @IBOutlet weak var accZSwitch: UISwitch!
-    @IBOutlet weak var gyrXSwitch: UISwitch!
-    @IBOutlet weak var gyrYSwitch: UISwitch!
-    @IBOutlet weak var gyrZSwitch: UISwitch!
+//    @IBOutlet weak var accXSwitch: UISwitch!
+//    @IBOutlet weak var accYSwitch: UISwitch!
+//    @IBOutlet weak var accZSwitch: UISwitch!
+//    @IBOutlet weak var gyrXSwitch: UISwitch!
+//    @IBOutlet weak var gyrYSwitch: UISwitch!
+//    @IBOutlet weak var gyrZSwitch: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeArrow: UIStackView!
     @IBOutlet weak var separator: UIImageView!
@@ -61,14 +61,14 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
-        accXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        accYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        accZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        gyrXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        gyrYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        accXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        accYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        accZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        gyrXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        gyrYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
+//        gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         
-        switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
+//        switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
         colorArray = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .label, .label, .darkGray, .darkGray, .darkGray]
         
         loadAvailableDataSets()
@@ -401,22 +401,22 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    @objc func checkSelectedSwitch(){
-        
-        desiredDataSets.removeAll(keepingCapacity: true)
-        
-        for (index,element) in switchesArray!.enumerated() {
-            var adminIndex = index
-            if K.isAdmin, adminIndex < 3 {
-                adminIndex += 9
-            }
-            if element.isOn {
-                desiredDataSets.append(availableDataSets![adminIndex])
-            }
-        }
-        updateGraph()
-        
-    }
+//    @objc func checkSelectedSwitch(){
+//
+//        desiredDataSets.removeAll(keepingCapacity: true)
+//
+//        for (index,element) in switchesArray!.enumerated() {
+//            var adminIndex = index
+//            if K.isAdmin, adminIndex < 3 {
+//                adminIndex += 9
+//            }
+//            if element.isOn {
+//                desiredDataSets.append(availableDataSets![adminIndex])
+//            }
+//        }
+//        updateGraph()
+//
+//    }
 
     @IBAction func shareButtonPressed(_ sender: Any) {
     
