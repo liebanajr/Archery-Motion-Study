@@ -113,7 +113,7 @@
 "j8s-zy-TbS.text" = "Title";
 
 /* Class = "UILabel"; text = "Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. The positive X axis being the one where the Digital Crown is pointing. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s."; ObjectID = "jfH-ws-bph"; */
-"jfH-ws-bph.text" = "Las aceleraciones y ratios de giro hacen referencia a los ejes mostrados en la imagen anterior. Estos permanecen constantes sea cual sea la posición y orientación del Apple Watch. El eje X positivo se encuentra en la dirección de la Digital Crown. La aceleración se mide en G's (1G es el equivalente a la gravedad terrestre) y la rotación en rad/s.";
+"jfH-ws-bph.text" = "Las aceleraciones y ratios de giro hacen referencia a los ejes mostrados en la imagen superior. Estos permanecen constantes sea cual sea la posición y orientación del Apple Watch. La dirección positiva del eje X siempre apunta hacia la diana, y la del eje Y hacia la izquierda de la línea de tiro. La velocidad de rotación es positiva si es en dirección contraria a las agujas del reloj. La aceleración se mide en G's (1G es el equivalente a la gravedad terrestre) y la rotación en rad/s.";
 
 /* Class = "UILabel"; text = "On the workout view, tap the plus button after every end to improve the final report readability."; ObjectID = "kLC-V8-sbz"; */
 "kLC-V8-sbz.text" = "En la vista de entrenamiento, pulsa el botón '+' tras cada serie para mejorar los resultados del análisis.";

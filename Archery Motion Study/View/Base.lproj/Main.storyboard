@@ -423,18 +423,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G69-3k-Hg9">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watchaxis" translatesAutoresizingMaskIntoConstraints="NO" id="VRU-tT-lVa">
-                                                <rect key="frame" x="57" y="20" width="300" height="300"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="axis-graphic" translatesAutoresizingMaskIntoConstraints="NO" id="VRU-tT-lVa">
+                                                <rect key="frame" x="0.0" y="20" width="414" height="300"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="JXY-Pe-n10"/>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="kOs-lz-4EI"/>
+                                                    <constraint firstAttribute="height" constant="300" id="Osf-rW-mo9"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jfH-ws-bph">
-                                                <rect key="frame" x="20" y="340" width="374" height="274.66666666666674"/>
-                                                <string key="text">Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. The positive X axis being the one where the Digital Crown is pointing. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s.</string>
+                                                <rect key="frame" x="20" y="340" width="374" height="357"/>
+                                                <string key="text">Acceleration and rotations axes reference the ones on the image above. No matter where your watch is located or its orientation, these axes remain constant. The positive X axis points towards the target, and the positive Y axis towards the left side of the shooting line. Rotation is always positive when going counter-clockwise. Acceleration is measured in G (1G is the equivalent to earth's gravity) and rotation is measured in rad/s.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -443,7 +442,9 @@
                                             <constraint firstItem="jfH-ws-bph" firstAttribute="top" secondItem="VRU-tT-lVa" secondAttribute="bottom" constant="20" id="4xp-ga-Rn6"/>
                                             <constraint firstItem="VRU-tT-lVa" firstAttribute="centerX" secondItem="G69-3k-Hg9" secondAttribute="centerX" id="AFB-G7-0OJ"/>
                                             <constraint firstItem="jfH-ws-bph" firstAttribute="leading" secondItem="G69-3k-Hg9" secondAttribute="leading" constant="20" id="Cir-Va-nhK"/>
+                                            <constraint firstAttribute="trailing" secondItem="VRU-tT-lVa" secondAttribute="trailing" id="HiO-nN-Vew"/>
                                             <constraint firstAttribute="trailing" secondItem="jfH-ws-bph" secondAttribute="trailing" constant="20" id="JNx-BT-Jxi"/>
+                                            <constraint firstItem="VRU-tT-lVa" firstAttribute="leading" secondItem="G69-3k-Hg9" secondAttribute="leading" id="Kmn-Lc-7Mu"/>
                                             <constraint firstAttribute="height" constant="744" id="Zts-dK-aAc"/>
                                             <constraint firstItem="VRU-tT-lVa" firstAttribute="top" secondItem="G69-3k-Hg9" secondAttribute="top" constant="20" id="uAA-ed-FzC"/>
                                         </constraints>
@@ -1292,6 +1293,7 @@
         <image name="Twitter_Logo_Blue" width="400" height="400"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="128" height="115"/>
+        <image name="axis-graphic" width="1125" height="591"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="84"/>
@@ -1311,7 +1313,6 @@
         <image name="watch-screenshot1" width="512" height="512"/>
         <image name="watch-screenshot2" width="512" height="512"/>
         <image name="watch-screenshot3" width="512" height="512"/>
-        <image name="watchaxis" width="876" height="875"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
