@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16092.1" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17132" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch44"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17031"/>
     </dependencies>
     <scenes>
         <!--startViewController-->
@@ -12,7 +13,7 @@
                 <controller id="AgC-eL-Hgc" userLabel="startViewController" customClass="startViewController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
                         <button width="137" height="137" alignment="center" verticalAlignment="center" backgroundImage="play.circle" catalog="system" id="EIQ-pv-aqC">
-                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.86707085370000003" green="0.70630806680000002" blue="0.26639759540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
                             </connections>
@@ -104,7 +105,7 @@
                                 <group width="1" alignment="left" layout="vertical" spacing="0.0" id="KY4-1d-VfG">
                                     <items>
                                         <timer width="1" alignment="left" previewedSeconds="0" id="t3L-21-cS3">
-                                            <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.86707085370000003" green="0.70630806680000002" blue="0.26639759540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="font" type="boldSystem" pointSize="27"/>
                                         </timer>
                                         <group width="1" alignment="left" id="R3C-q4-Hem">
@@ -255,9 +256,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="capsule.fill" catalog="system" width="128" height="95"/>
+        <image name="capsule.fill" catalog="system" width="128" height="93"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
-        <image name="flame.fill" catalog="system" width="108" height="128"/>
+        <image name="flame.fill" catalog="system" width="111" height="128"/>
         <image name="heart.fill" catalog="system" width="128" height="105"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>

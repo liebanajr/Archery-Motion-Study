@@ -1002,13 +1002,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Sessions" id="lcf-mS-ftF">
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" title="Item" id="4iH-im-B34">
+                            <barButtonItem enabled="NO" id="4iH-im-B34">
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <action selector="editButtonPressed:" destination="Oyk-Ou-ZcP" id="Bgc-gR-jlf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" title="Item" id="sQW-ia-ujg">
+                            <barButtonItem enabled="NO" id="sQW-ia-ujg">
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="Oyk-Ou-ZcP" id="Tiz-r8-BOT"/>
