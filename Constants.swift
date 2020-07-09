@@ -36,6 +36,8 @@ struct K {
     static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
     static let firebaseFoldersFriends : [String : String] = [sessionValues[0] : "Shot-friends/", sessionValues[1] : "Abort-friends/", sessionValues[2] : "Other-friends/"]
     
+    static let firebaseFoldersPrefix : String = "30hz/"
+    
 //    static var firebaseFolders : [String : String]  {
 //        if self.isAdmin {
 //            return self.firebaseFoldersAdmin

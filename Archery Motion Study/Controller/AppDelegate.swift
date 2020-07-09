@@ -100,11 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 //            SELECTING FOLDER TYPE DEPENDING ON USER
             var folderName = ""
             if K.isAdmin {
-                folderName = K.firebaseFoldersAdmin[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersAdmin[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
             }else if defaults.value(forKey: K.friendsKey) != nil {
-                folderName = K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
             } else {
-                folderName = K.firebaseFoldersBase[(defaults.value(forKey: K.sessionTypeKey) as! String)]!
+                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersBase[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
             }
             motionDataFileItem.firebaseLocation = folderName
             
