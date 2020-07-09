@@ -36,7 +36,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }()
     
     var switchesArray : [UISwitch]?
-    var colorArray = [NSUIColor]()
+    var colorArray : [NSUIColor] = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .systemBlue, .systemPink, .systemRed, .systemIndigo, .systemYellow]
     
     var importedFileName = ""
     var timeStamp : SensorDataSet?
@@ -69,7 +69,6 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
         
 //        switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
-        colorArray = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .label, .label, .darkGray, .darkGray, .darkGray]
         
         loadAvailableDataSets()
         
@@ -353,29 +352,12 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
                     let line1 = LineChartDataSet(entries: lineChartEntry, label: dataSet.label)
                     
-                    switch dataSet.label {
-                        case "Accelerometer X":
-                            line1.colors = [self.colorArray[0]]
-                        case "Accelerometer Y":
-                            line1.colors = [self.colorArray[1]]
-                        case "Accelerometer Z":
-                            line1.colors = [self.colorArray[2]]
-                        case "Transformed accelerometer X":
-                            line1.colors = [self.colorArray[6]]
-                        case "Transformed accelerometer Y":
-                            line1.colors = [self.colorArray[6]]
-                        case "Transformed accelerometer Z":
-                            line1.colors = [self.colorArray[6]]
-                        case "Gyroscope X":
-                            line1.colors = [self.colorArray[3]]
-                        case "Gyroscope Y":
-                            line1.colors = [self.colorArray[4]]
-                        case "Gyroscope Z":
-                            line1.colors = [self.colorArray[5]]
-                        default:
-                            line1.colors = [.darkGray]
+                    let titlesArray = self.availableDataSets!.map { (data) -> String in
+                        return data.label
                     }
-
+                    
+                    let colorIndex = titlesArray.firstIndex(of: dataSet.label) ?? 0
+                    line1.colors = [self.colorArray[colorIndex]]
                     line1.drawCirclesEnabled = false
                     line1.drawValuesEnabled = false
                     line1.lineWidth = 2.0
