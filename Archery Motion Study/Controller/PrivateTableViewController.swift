@@ -42,11 +42,11 @@ class PrivateTableViewController: UITableViewController {
                 
         itemsList = [StorageReference]()
         
-        if #available(iOS 14.0, *) {
-            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
-        } else {
-            // Fallback on earlier versions
-        }
+//        if #available(iOS 14.0, *) {
+//            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
+//        } else {
+//            // Fallback on earlier versions
+//        }
     }
 
     // MARK: - Table view data source
@@ -233,21 +233,21 @@ class PrivateTableViewController: UITableViewController {
     }
     
     @IBAction func frequencyButtonPressed(_ sender: Any) {
-        let barItem = sender as! UIBarButtonItem
-        
-        if selectedFolderPrefix == K.firebaseFoldersPrefix {
-            selectedFolderPrefix = ""
-            barItem.tintColor = UIColor.gray
-        } else {
-            selectedFolderPrefix = K.firebaseFoldersPrefix
-            barItem.tintColor = UIColor.link
-        }
-        
-        if #available(iOS 14.0, *) {
-            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
-        } else {
-            // Fallback on earlier versions
-        }
+//        let barItem = sender as! UIBarButtonItem
+//        
+//        if selectedFolderPrefix == K.firebaseFoldersPrefix {
+//            selectedFolderPrefix = ""
+//            barItem.tintColor = UIColor.gray
+//        } else {
+//            selectedFolderPrefix = K.firebaseFoldersPrefix
+//            barItem.tintColor = UIColor.link
+//        }
+//        
+//        if #available(iOS 14.0, *) {
+//            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
+//        } else {
+//            // Fallback on earlier versions
+//        }
         
     }
     
