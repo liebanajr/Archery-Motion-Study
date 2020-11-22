@@ -13,6 +13,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
     
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var addSessionsButton: UIBarButtonItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fileManager = FileManager()
@@ -76,6 +77,8 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
             
         }
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,8 +99,15 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
         
         tableView.separatorStyle = .none
         
-//        removeAllData()
-//        addFillerData()
+        
+        if(!K.isAdmin) {
+            addSessionsButton.isEnabled = false
+            addSessionsButton.tintColor = UIColor.clear
+            editButton.isEnabled = false
+            editButton.tintColor = UIColor.clear
+            deleteButton.isEnabled = false
+            deleteButton.tintColor = UIColor.clear
+        }
         
         fetchAvailableSessions()
         self.refreshControl?.isEnabled = false
@@ -237,6 +247,10 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
         reloadTableWithNewData()
         
     }
+    @IBAction func randomSessionsButtonPressed(_ sender: Any) {
+        addFillerData()
+        reloadTableWithNewData()
+    }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
         
@@ -246,11 +260,13 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
                 self.deleteSessions(with: items)
             }
         }
-//        REMOVE FROM FINAL RELEASE
-//        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
-//            self.deleteItems(itemPath: nil)
-//        }
-//        alert.addAction(actionDeleteAll)
+        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
+            let indexPathsToDelete = self.availableSessions!.enumerated().map { (index, session) -> IndexPath in
+                return IndexPath(row: index, section: 0)
+            }
+            self.deleteSessions(with: indexPathsToDelete)
+        }
+        alert.addAction(actionDeleteAll)
         alert.addAction(actionDelete)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: true)
@@ -264,12 +280,10 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
             tableView.setEditing(false, animated: true)
             editButton.title = NSLocalizedString("Edit", comment: "")
             editButton.style = .plain
-            deleteButton.isEnabled = false
         } else {
             tableView.setEditing(true, animated: true)
             editButton.title = NSLocalizedString("Done", comment: "")
             editButton.style = .done
-//            deleteButton.isEnabled = true
         }
         
     }

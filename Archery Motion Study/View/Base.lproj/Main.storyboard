@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -193,7 +193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="circle" catalog="system" id="nsh-os-SZQ">
-                                                    <rect key="frame" x="22" y="15.666666666666664" width="20" height="19"/>
+                                                    <rect key="frame" x="22.166666666666668" y="15.666666666666664" width="19.666666666666664" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
@@ -1003,21 +1003,28 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Sessions" id="lcf-mS-ftF">
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" id="4iH-im-B34">
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                            <barButtonItem style="done" systemItem="edit" id="4iH-im-B34">
+                                <color key="tintColor" systemColor="systemBlueColor"/>
                                 <connections>
                                     <action selector="editButtonPressed:" destination="Oyk-Ou-ZcP" id="Bgc-gR-jlf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" id="sQW-ia-ujg">
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                            <barButtonItem image="trash.fill" catalog="system" id="sQW-ia-ujg">
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="Oyk-Ou-ZcP" id="Tiz-r8-BOT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="plus.circle.fill" catalog="system" style="plain" id="LAX-YW-PYx">
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <connections>
+                                    <action selector="randomSessionsButtonPressed:" destination="Oyk-Ou-ZcP" id="Jm6-vj-912"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addSessionsButton" destination="LAX-YW-PYx" id="9hw-tp-qkd"/>
                         <outlet property="deleteButton" destination="sQW-ia-ujg" id="O7j-iG-AHU"/>
                         <outlet property="editButton" destination="4iH-im-B34" id="NE7-OL-5GD"/>
                         <segue destination="IQo-nj-Pki" kind="show" identifier="goToEnds" id="qay-U8-EeL"/>
@@ -1162,9 +1169,11 @@
         <image name="line.horizontal.3.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="lock.icloud.fill" catalog="system" width="128" height="88"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="settings-arrow" width="512" height="512"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <image name="watch-screenshot1" width="512" height="512"/>
         <image name="watch-screenshot2" width="512" height="512"/>
         <image name="watch-screenshot3" width="512" height="512"/>
@@ -1200,6 +1209,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
