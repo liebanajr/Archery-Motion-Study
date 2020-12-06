@@ -31,6 +31,7 @@
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
 		8ADC42C723312408005B079F /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC42C623312408005B079F /* ChartViewController.swift */; };
 		95DF6A1424B097D6002BE13A /* ChartSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */; };
+		95E1FF08257A83F600A55818 /* EditSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1FF07257A83F600A55818 /* EditSessionViewController.swift */; };
 		95E8FD7824ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
 		95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
 		95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
@@ -134,6 +135,7 @@
 		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8ADC42C623312408005B079F /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionCell.swift; sourceTree = "<group>"; };
+		95E1FF07257A83F600A55818 /* EditSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewController.swift; sourceTree = "<group>"; };
 		95E8FD7724ABA10A00F12C3C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		ADA1719CD1A518BB5C96A379 /* Pods-Archery Motion Study WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Archery Motion Study WatchKit Extension/Pods-Archery Motion Study WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		BCE6948490B1CFF4C40D0064 /* libPods-Archery Motion Study.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Archery Motion Study.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +315,7 @@
 				D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */,
 				D996D27123802E9400793F17 /* InstructionsViewController.swift */,
 				D9C2FAA723A04015000284D1 /* TabBarViewController.swift */,
+				95E1FF07257A83F600A55818 /* EditSessionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				D996D27223802E9400793F17 /* InstructionsViewController.swift in Sources */,
 				8A002DA223466042000C14E1 /* SampleAverageManager.swift in Sources */,
 				95DF6A1424B097D6002BE13A /* ChartSelectionCell.swift in Sources */,
+				95E1FF08257A83F600A55818 /* EditSessionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

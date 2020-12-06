@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,10 +49,27 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecf-UX-5xM">
+                                        <rect key="frame" x="445" y="2.5" width="31" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24.5" id="2hG-bj-LcF"/>
+                                            <constraint firstAttribute="width" constant="31" id="fdf-aJ-9Lb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal">
+                                            <imageReference key="backgroundImage" image="square.and.pencil" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KFD-tT-Pfu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ecf-UX-5xM" secondAttribute="trailing" constant="8" id="DRf-Sx-NBQ"/>
                                     <constraint firstItem="03s-tJ-EyQ" firstAttribute="leading" secondItem="nSJ-Rs-OJB" secondAttribute="leading" constant="8" id="Gho-B3-NIQ"/>
                                     <constraint firstItem="03s-tJ-EyQ" firstAttribute="top" secondItem="5gK-ya-JqQ" secondAttribute="bottom" id="I2C-Bs-ahe"/>
+                                    <constraint firstItem="ecf-UX-5xM" firstAttribute="top" secondItem="nSJ-Rs-OJB" secondAttribute="top" constant="5" id="LwA-dg-y9w"/>
                                     <constraint firstAttribute="height" constant="53" id="WE5-XW-FFh"/>
                                     <constraint firstItem="5gK-ya-JqQ" firstAttribute="leading" secondItem="nSJ-Rs-OJB" secondAttribute="leading" constant="8" id="cRR-r9-yDC"/>
                                     <constraint firstItem="5gK-ya-JqQ" firstAttribute="top" secondItem="nSJ-Rs-OJB" secondAttribute="top" constant="5" id="hP1-Lt-g4d"/>
@@ -64,17 +82,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="202" height="92"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JOF-kJ-24T">
-                                                <rect key="frame" x="0.0" y="0.0" width="199" height="82"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="82"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jUJ-49-3Cf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="24"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="24"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sJ9-Y6-eDf">
                                                                 <rect key="frame" x="0.0" y="0.5" width="20" height="23"/>
                                                                 <color key="tintColor" systemColor="systemBlueColor"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 ends 360 arrows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrI-J3-2Kh">
-                                                                <rect key="frame" x="23" y="0.0" width="176" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 ends 360 ar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrI-J3-2Kh">
+                                                                <rect key="frame" x="23" y="0.0" width="134.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -223,6 +241,7 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="stopwatch" catalog="system" width="121" height="128"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

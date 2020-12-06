@@ -26,8 +26,8 @@ class WorkoutManager: NSObject {
     
     var workoutSession : HKWorkoutSession?
     var builder : HKLiveWorkoutBuilder?
-    var healthStore : HKHealthStore
-    var workoutConfiguration : HKWorkoutConfiguration
+    var healthStore : HKHealthStore?
+    var workoutConfiguration : HKWorkoutConfiguration?
     
     var motionManager: MotionManager?
     var asyncDataMotionManager : MotionManager?
@@ -45,23 +45,25 @@ class WorkoutManager: NSObject {
         
         workoutData = WorkoutSessionDetails(sessionId: id)
                 
-        healthStore = HKHealthStore()
-        workoutConfiguration = HKWorkoutConfiguration()
-        workoutConfiguration.activityType = .archery
-        workoutConfiguration.locationType = .outdoor
         super.init()
         
-        do {
-            workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
-            builder = workoutSession!.associatedWorkoutBuilder()
-            builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: workoutConfiguration)
+        if K.isSaveWorkoutActive {
+            healthStore = HKHealthStore()
+            workoutConfiguration = HKWorkoutConfiguration()
+            workoutConfiguration!.activityType = .archery
+            workoutConfiguration!.locationType = .outdoor
             
-            workoutSession!.delegate = self
-            builder!.delegate = self
-        } catch {
-            print("Unable to create workout session")
+            do {
+                workoutSession = try HKWorkoutSession(healthStore: healthStore!, configuration: workoutConfiguration!)
+                builder = workoutSession!.associatedWorkoutBuilder()
+                builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore!, workoutConfiguration: workoutConfiguration!)
+                
+                workoutSession!.delegate = self
+                builder!.delegate = self
+            } catch {
+                print("Unable to create workout session")
+            }
         }
-        
     }
     
 //   MARK: Workout lifecycle
@@ -71,9 +73,9 @@ class WorkoutManager: NSObject {
 //        WE don't create workout and helathkit objects if no workout save is needed (development)
         if K.isSaveWorkoutActive {
             do {
-                workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
+                workoutSession = try HKWorkoutSession(healthStore: healthStore!, configuration: workoutConfiguration!)
                 builder = workoutSession!.associatedWorkoutBuilder()
-                builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: workoutConfiguration)
+                builder!.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore!, workoutConfiguration: workoutConfiguration!)
 
                 workoutSession!.delegate = self
                 builder!.delegate = self
@@ -158,7 +160,7 @@ class WorkoutManager: NSObject {
         DispatchQueue.global(qos: .utility).async {
             let csv = self.asyncDataMotionManager!.toCSVString()
             if let url = self.filesManager.saveDataLocally(dataString: csv) {
-                self.workoutData.elapsedSeconds = Int(DateInterval(start: self.workoutSession!.startDate!, end: Date()).duration.magnitude)
+                self.workoutData.elapsedSeconds = Int(self.motionManager!.timeStamp)
                 self.filesManager.sendDataToiPhone(url, with: self.workoutData)
             }
 //            let nc = NotificationCenter.default

@@ -22,8 +22,8 @@ struct K {
     static let dateFormat : String = "ddMMyy'T'HHmmss"
     static let graphSmootherSamples : Int = 30
     static let graphSmootherFilterLevel : Int = 3
-    static let motionDataFolder : String = "/MotionData/"
-    static let motionDataFolderDownloads : String = motionDataFolder + "/Downloads/"
+    static let motionDataFolder : String = "/MotionData"
+    static let motionDataFolderDownloads : String = motionDataFolder + "/Downloads"
     
     static let bowTypeKey : String = "bowType"
     static let handKey : String = "hand"
@@ -32,9 +32,9 @@ struct K {
     static let friendsKey : String = "isFriend"
     static let freshKey : String = "isFreshStart"
     
-    static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/"]
-    static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/"]
-    static let firebaseFoldersFriends : [String : String] = [sessionValues[0] : "Shot-friends/", sessionValues[1] : "Abort-friends/", sessionValues[2] : "Other-friends/"]
+    static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/", sessionValues[3] : "Walk-admin/"]
+    static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/", sessionValues[3] : "Walk/"]
+    static let firebaseFoldersFriends : [String : String] = [sessionValues[0] : "Shot-friends/", sessionValues[1] : "Abort-friends/", sessionValues[2] : "Other-friends/", sessionValues[3] : "Walk-friends/"]
     
     static let firebaseFoldersPrefix : String = "30hz/"
     
@@ -49,7 +49,7 @@ struct K {
     
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
-    static let sessionValues = ["Shooting", "Aborting", "Other"]
+    static let sessionValues = ["Shooting", "Aborting", "Other", "Walk"]
     
     static let collaboratorCode = "archeryproject"
     static let feedbackEmail = "feedback.juan@icloud.com"

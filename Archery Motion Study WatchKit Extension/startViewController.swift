@@ -14,6 +14,8 @@ import WatchConnectivity
 class startViewController: WKInterfaceController {
     
     @IBOutlet weak var startButton: WKInterfaceButton!
+    @IBOutlet weak var settingsiOS14Button: WKInterfaceButton!
+    @IBOutlet weak var buttonsGroup: WKInterfaceGroup!
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir :String = ""
@@ -37,6 +39,13 @@ class startViewController: WKInterfaceController {
         
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
+        
+        if #available(watchOS 7.0, *) {
+            settingsiOS14Button.setHidden(false)
+            settingsiOS14Button.setTitle(NSLocalizedString("Settings", comment: ""))
+        } else {
+            buttonsGroup.sizeToFitHeight()
+        }
         
         setInitialDefaults()
         deleteAllLocalData()
@@ -167,7 +176,11 @@ class startViewController: WKInterfaceController {
             print(directoryContents)
             
             for path in directoryContents {
-                try fileManager.removeItem(atPath: documentDir + "/" + (path as! String))
+                let filePath = documentDir + "/" + (path as! String)
+                if filePath.contains(".csv") {
+                    Log.info("Deleting \(filePath)")
+                    try fileManager.removeItem(atPath: filePath)
+                }
             }
                         
         } catch {

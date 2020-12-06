@@ -40,3 +40,9 @@
 "X axis rotation [rad/s]" = "Velocidad giro eje X [rad/s]";
 "Y axis rotation [rad/s]" = "Velocidad giro eje Y [rad/s]";
 "Z axis rotation [rad/s]" = "Velocidad giro eje Z [rad/s]";
+"Delete" = "Eliminar";
+"Delete session" = "Eliminar entreno";
+"Save" = "Guardar";
+"Edit session" = "Editar entreno";
+"Arrows shot" = "Flechas tiradas";
+"Session duration" = "Duración del entreno";

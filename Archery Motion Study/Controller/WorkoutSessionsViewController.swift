@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
+class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, SessionCellDelegate {
     
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var deleteButton: UIBarButtonItem!
@@ -28,6 +28,10 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    func didUpdateSessionData() {
+        reloadTableWithNewData()
     }
     
     func removeAllData(){
@@ -50,6 +54,8 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
                 randomSession.averageHeartRate = Int64.random(in: 40...120)
                 randomSession.bowType = K.categoryValues[Int.random(in: 0...1)]
                 randomSession.caloriesBurned = Int64.random(in: 90...500)
+                randomSession.arrowCount = Int64.random(in: 90...500)
+                randomSession.duration = Int64.random(in: 1000...5000)
                 let formatter = DateFormatter()
                 formatter.dateFormat = K.dateFormat
                 let randomDate = Date(timeIntervalSinceReferenceDate: TimeInterval(Int.random(in: 300000000...597369600)))
@@ -152,8 +158,9 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
         let dateString = formatter.string(from: formattedDate!)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+        cell.delegate = self
+        cell.cellSession = session
         cell.selectionStyle = .none
-//        cell.delegate = self
         cell.currentCellIndex = indexPath
         cell.titleLabel.text = dateString
         cell.avgHRLabel.text = "\(session.averageHeartRate) \(NSLocalizedString("average", comment: ""))"
@@ -179,7 +186,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate {
         if session.duration > 0 {
             var minutes = Int(session.duration/60)
             let hours = Int(minutes/60)
-            minutes = minutes - hours*minutes
+            minutes = minutes - hours*60
             
             durationText = "\(hours)h \(minutes)m"
         }

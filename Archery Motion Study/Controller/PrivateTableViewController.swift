@@ -33,9 +33,11 @@ class PrivateTableViewController: UITableViewController {
         
         downloadsDir = paths.firstObject as! String + K.motionDataFolderDownloads
         documentsDir = paths.firstObject as! String + K.motionDataFolder
-        
+                
+        print("Downloads dir = \(downloadsDir)")
+                
         if !fileManager.fileExists(atPath: downloadsDir) {
-            fileManager.createFile(atPath: downloadsDir, contents: nil, attributes: nil)
+            try! fileManager.createDirectory(atPath: downloadsDir, withIntermediateDirectories: true, attributes: nil)
         }
         
         deleteLocalFiles()
@@ -78,10 +80,21 @@ class PrivateTableViewController: UITableViewController {
     
     func deleteLocalFiles() {
         
-        do{
-            try fileManager.removeItem(atPath: downloadsDir)
+        do {
+            let directoryContents : NSArray = try fileManager.contentsOfDirectory(atPath: downloadsDir) as NSArray
+            print("Contents of downloads folder")
+            print(directoryContents)
+            
+            for path in directoryContents {
+                let filePath = downloadsDir + "/" + (path as! String)
+                if filePath.contains(".csv") {
+                    Log.debug("Deleting \(filePath)")
+                    try fileManager.removeItem(atPath: filePath)
+                }
+            }
+                        
         } catch {
-            print("Error removing files at \(downloadsDir): \(error)")
+            print("Error deleting files: \(error)")
         }
         
     }
@@ -97,9 +110,13 @@ class PrivateTableViewController: UITableViewController {
             self.tableView.isEditing = false
             self.deleteButton.isEnabled = false
             self.tableView.reloadData()
-            self.title = self.selectedFolder
+            
+            if let items = self.itemsList, items.count > 0 {
+                self.title = "\(items.count) items"
+            } else {
+                self.title = "No items"
+            }
         })
-        
     }
 
     @IBAction func shareButtonPressed(_ sender: Any) {
@@ -126,20 +143,21 @@ class PrivateTableViewController: UITableViewController {
                     }
                 }
             }
-        }
-        for item in itemsList! {
-            let filePath = URL(fileURLWithPath: downloadsDir + item.name)
-            pendingDownloads += 1
-            item.write(toFile: filePath) { (url, error) in
-                pendingDownloads -= 1
-                if error != nil {
-                    print("Error while getting download URL: \(error!)")
-                } else {
-                    downloadedURLs.append(url!)
-                    if pendingDownloads <= 0 {
-                        self.removeSpinnerView(child: spinnerView)
-                        let vc = UIActivityViewController(activityItems: downloadedURLs, applicationActivities: nil)
-                        self.present(vc, animated: true, completion: nil)
+        } else {
+            for item in itemsList! {
+                let filePath = URL(fileURLWithPath: downloadsDir + item.name)
+                pendingDownloads += 1
+                item.write(toFile: filePath) { (url, error) in
+                    pendingDownloads -= 1
+                    if error != nil {
+                        print("Error while getting download URL: \(error!)")
+                    } else {
+                        downloadedURLs.append(url!)
+                        if pendingDownloads <= 0 {
+                            self.removeSpinnerView(child: spinnerView)
+                            let vc = UIActivityViewController(activityItems: downloadedURLs, applicationActivities: nil)
+                            self.present(vc, animated: true, completion: nil)
+                        }
                     }
                 }
             }
@@ -253,47 +271,28 @@ class PrivateTableViewController: UITableViewController {
     
     func filterButtonActions() -> [UIAction] {
             
+        var actions = [UIAction]()
         
-        let action1 = UIAction(title: "\(selectedFolderPrefix)\( K.firebaseFoldersBase[K.sessionValues[0]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\( K.firebaseFoldersBase[K.sessionValues[0]]!)"
-            self.updateTableView()
-        }
-        let action2 = UIAction(title: "\(selectedFolderPrefix)\( K.firebaseFoldersBase[K.sessionValues[1]]!)") { (action) in
-            self.selectedFolder="\(self.selectedFolderPrefix)\( K.firebaseFoldersBase[K.sessionValues[1]]!)"
-            self.updateTableView()
-        }
-        let action3 = UIAction(title: K.firebaseFoldersBase[K.sessionValues[2]]!) { (action) in
-            self.selectedFolder = K.firebaseFoldersBase[K.sessionValues[2]]!
-            self.updateTableView()
-        }
-        
-        let action4 = UIAction(title:"\(selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[0]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[0]]!)"
-            self.updateTableView()
-        }
-        let action5 = UIAction(title:"\(selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[1]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[1]]!)"
-            self.updateTableView()
-        }
-        let action6 = UIAction(title:"\(selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[2]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersAdmin[K.sessionValues[2]]!)"
-            self.updateTableView()
+        for sessionValue in K.sessionValues {
+            let baseAction = UIAction(title: "\(K.firebaseFoldersBase[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
+                self.selectedFolder = "\(self.selectedFolderPrefix)\( K.firebaseFoldersBase[sessionValue]!)"
+                self.updateTableView()
+            }
+            let adminAction = UIAction(title:"\(K.firebaseFoldersAdmin[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
+                self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersAdmin[sessionValue]!)"
+                self.updateTableView()
+            }
+            let friendsAction = UIAction(title: "\(K.firebaseFoldersFriends[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
+                self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersFriends[sessionValue]!)"
+                self.updateTableView()
+            }
+            
+            actions.append(baseAction)
+            actions.append(adminAction)
+            actions.append(friendsAction)
         }
         
-        let action7 = UIAction(title: "\(selectedFolderPrefix)\(K.firebaseFoldersFriends[K.sessionValues[0]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersFriends[K.sessionValues[0]]!)"
-            self.updateTableView()
-        }
-        let action8 = UIAction(title: "\(selectedFolderPrefix)\(K.firebaseFoldersFriends[K.sessionValues[1]]!)") { (action) in
-            self.selectedFolder = K.firebaseFoldersFriends[K.sessionValues[1]]!
-            self.updateTableView()
-        }
-        let action9 = UIAction(title: "\(selectedFolderPrefix)\(K.firebaseFoldersFriends[K.sessionValues[2]]!)") { (action) in
-            self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersFriends[K.sessionValues[2]]!)"
-            self.updateTableView()
-        }
-        
-        return [action1,action2,action3,action4,action5,action6,action7,action8,action9]
+        return actions
         
     }
     

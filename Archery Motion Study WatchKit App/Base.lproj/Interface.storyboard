@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17132" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch44"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17031"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
         <!--startViewController-->
@@ -12,12 +12,21 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="startViewController" customClass="startViewController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
-                        <button width="137" height="137" alignment="center" verticalAlignment="center" backgroundImage="play.circle" catalog="system" id="EIQ-pv-aqC">
-                            <color key="backgroundColor" red="0.86707085370000003" green="0.70630806680000002" blue="0.26639759540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
-                            </connections>
-                        </button>
+                        <group width="1" height="250" alignment="center" layout="vertical" spacing="55" id="rjy-HL-ljh">
+                            <items>
+                                <button width="140" height="140" alignment="center" backgroundImage="play.circle" catalog="system" id="EIQ-pv-aqC">
+                                    <color key="backgroundColor" red="0.86707085370000003" green="0.70630806680000002" blue="0.26639759540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <connections>
+                                        <action selector="startButtonPressed" destination="AgC-eL-Hgc" id="82y-OV-JND"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="center" hidden="YES" title="Settings" id="v8J-B1-6Ap">
+                                    <connections>
+                                        <segue destination="WGJ-J6-1YK" kind="push" id="ZJ7-Su-hye"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <menu key="menu" id="cXh-Tk-Mpo">
                         <items>
@@ -29,6 +38,8 @@
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="buttonsGroup" destination="rjy-HL-ljh" id="xz3-nr-jFB"/>
+                        <outlet property="settingsiOS14Button" destination="v8J-B1-6Ap" id="HBR-mU-TJx"/>
                         <outlet property="startButton" destination="EIQ-pv-aqC" id="ah1-EH-Uv5"/>
                     </connections>
                 </controller>
@@ -262,7 +273,7 @@
         <image name="heart.fill" catalog="system" width="128" height="105"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
-        <image name="plus" catalog="system" width="128" height="116"/>
+        <image name="plus" catalog="system" width="128" height="112"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="112"/>
     </resources>
