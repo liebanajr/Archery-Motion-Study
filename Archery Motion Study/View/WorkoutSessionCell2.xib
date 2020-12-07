@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sessionCell" rowHeight="248" id="KGk-i7-Jjw" customClass="WorkoutSessionCell" customModule="Archery_Motion_Study" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sessionCell2" rowHeight="248" id="KGk-i7-Jjw" customClass="WorkoutSessionCell" customModule="Archery_Motion_Study" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="512" height="248"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -168,7 +167,7 @@
                             <constraint firstAttribute="bottom" secondItem="rui-3E-q4n" secondAttribute="bottom" id="zWk-rY-yHD"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5x3-fl-Duc">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5x3-fl-Duc">
                         <rect key="frame" x="13" y="0.0" width="4" height="22"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
@@ -295,6 +294,9 @@
                                     <imageReference key="backgroundImage" image="chevron.compact.right" catalog="system" symbolScale="small"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="semibold"/>
                                 </state>
+                                <connections>
+                                    <action selector="viewButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fVK-fc-5AL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

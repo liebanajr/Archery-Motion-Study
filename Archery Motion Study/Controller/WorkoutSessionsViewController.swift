@@ -100,6 +100,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
         print("Registering cell")
         tableView.register(UINib(nibName: "WorkoutSessionCell", bundle: nil), forCellReuseIdentifier: "sessionCell")
         let nc = NotificationCenter.default
+        tableView.register(UINib(nibName: "WorkoutSessionCell2", bundle: nil), forCellReuseIdentifier: "sessionCell2")
         nc.addObserver(self, selector: #selector(reloadTableWithNewData), name: Notification.Name("NewDataAvailable"), object: nil)
         documentDir = paths.firstObject as! String + K.motionDataFolder
         
@@ -157,11 +158,16 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
         formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
         let dateString = formatter.string(from: formattedDate!)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+        var cell : WorkoutSessionCell
+        if indexPath.row == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell2", for: indexPath) as! WorkoutSessionCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! WorkoutSessionCell
+        }
         cell.delegate = self
         cell.cellSession = session
         cell.selectionStyle = .none
-        cell.currentCellIndex = indexPath
+        cell.currentCellIndex = indexPath.row
         cell.titleLabel.text = dateString
         cell.avgHRLabel.text = "\(session.averageHeartRate) \(NSLocalizedString("average", comment: ""))"
         cell.calorieLabel.text = "\(session.caloriesBurned) KCal"
@@ -196,7 +202,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
             request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
             let result = try context.fetch(request)
             let endsCount = result.count
-            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: "")) \(arrowCountText)"
+            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: "")). \(arrowCountText)"
             cell.maxHRLabel.text = maxHRText
             cell.minHRLabel.text = minHRText
             cell.durationLabel.text = durationText
@@ -221,13 +227,9 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if !tableView.isEditing {
-            let session = availableSessions![indexPath.row]
-            exportedSessionId = session.sessionId
-            performSegue(withIdentifier: "goToEnds", sender: self)
-            exportedSessionId = nil
-        }
-        deleteButton.isEnabled = true
+        let session = availableSessions![indexPath.row]
+        exportedSessionId = session.sessionId
+        performSegue(withIdentifier: "goToEnds", sender: self)
         
     }
     

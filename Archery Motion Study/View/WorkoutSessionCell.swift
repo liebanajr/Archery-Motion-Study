@@ -16,7 +16,6 @@ protocol SessionCellDelegate {
 
 class WorkoutSessionCell: UITableViewCell {
     
-    @IBOutlet var background: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var calorieLabel: UILabel!
     @IBOutlet var avgHRLabel: UILabel!
@@ -28,18 +27,21 @@ class WorkoutSessionCell: UITableViewCell {
     @IBOutlet var sessionTypeLabel: UILabel!
     @IBOutlet var watchLocationLabel: UILabel!
     
+    @IBOutlet weak var topLine: UIView!
+    @IBOutlet weak var bottomLine: UIView!
     
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editButtonParentView: UIView!
+    @IBOutlet weak var viewButtonParentView: UIView!
     var delegate : SessionCellDelegate?
-    var currentCellIndex : IndexPath?
+    var currentCellIndex : Int?
     var cellSession : Session?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        background.layer.cornerRadius = 10
-        if self.traitCollection.userInterfaceStyle == .light {
-            background.layer.backgroundColor = background.layer.backgroundColor?.copy(alpha: 0.4)
-        }
+        editButtonParentView.layer.cornerRadius = editButtonParentView.frame.height / 2
+        viewButtonParentView.layer.cornerRadius = viewButtonParentView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,5 +57,8 @@ class WorkoutSessionCell: UITableViewCell {
         
     }
     
+    @IBAction func viewButtonPressed(_ sender: Any) {
+        self.setSelected(true, animated: true)
+    }
     
 }
