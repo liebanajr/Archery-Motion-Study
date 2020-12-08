@@ -128,6 +128,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
                 self.sessionTypeLabel.isHidden = true
                 self.sessionTypeInfoLabel.isHidden = true
             }
+            
+            if let isFriend = self.defaults.value(forKey: K.friendsKey) as? Bool, isFriend {
+                self.disableCollaboratorsTextField()
+            }
             self.view.layoutIfNeeded()
         }
         
@@ -204,9 +208,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
         collaboratorsTextField.resignFirstResponder()
         if collaboratorsTextField.text == K.collaboratorCode {
             defaults.set(true, forKey: K.friendsKey)
-            disableCollaboratorsTextField()
         }
-        
+        updateInterface()
         syncDefaults()
         
     }
@@ -214,6 +217,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
         nameTextField.resignFirstResponder()
         let name = nameTextField.text ?? ""
         defaults.set(name, forKey: K.nameKey)
+        if name != "" {
+            defaults.set(true, forKey: K.friendsKey)
+        } else {
+            defaults.set(false, forKey: K.friendsKey)
+        }
         self.updateInterface()
         syncDefaults()
     }

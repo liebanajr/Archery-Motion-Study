@@ -11,7 +11,7 @@ import Foundation
 struct K {
     
     #warning("CHECK ADMIN STATUS BEFORE BUILDING")
-    static let isAdmin = true
+    static let isAdmin = false
     
     #if DEBUG
     static let minLogLevel : LOGLEVEL = .TRACE
