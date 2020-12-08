@@ -30,7 +30,7 @@
 "Aborting" = "Aborting";
 "Other" = "Other";
 "Watch in" = "Watch in";
-"healthkitButton" = "Healthkit authorized";
+"healthkitButton" = "Healthkit authorized. You can change this setting in the Settings app.";
 "isFriend" = "You are a collaborator";
 "spinnerMessage" = "Working...";
 "arrows" = "arrows";

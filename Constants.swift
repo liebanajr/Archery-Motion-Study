@@ -9,13 +9,15 @@
 import Foundation
 
 struct K {
+    
+    #warning("CHECK ADMIN STATUS BEFORE BUILDING")
+    static let isAdmin = true
+    
     #if DEBUG
     static let minLogLevel : LOGLEVEL = .TRACE
-    static let isAdmin = true
     static let isSaveWorkoutActive = false
     #else
     static let minLogLevel : LOGLEVEL = .WARNING
-    static let isAdmin = false
     static let isSaveWorkoutActive = true
     #endif
     
@@ -31,6 +33,7 @@ struct K {
     static let healthkitKey : String = "isHealthkitAuthorized"
     static let friendsKey : String = "isFriend"
     static let freshKey : String = "isFreshStart"
+    static let nameKey : String = "friendName"
     
     static let firebaseFoldersAdmin : [String : String] = [sessionValues[0] : "Shot-admin/", sessionValues[1] : "Abort-admin/", sessionValues[2] : "Other-admin/", sessionValues[3] : "Walk-admin/"]
     static let firebaseFoldersBase : [String : String] = [sessionValues[0] : "Shot/", sessionValues[1] : "Abort/", sessionValues[2] : "Other/", sessionValues[3] : "Walk/"]

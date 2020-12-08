@@ -75,7 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             let srcURL = file.fileURL
             
-            let fileName = file.fileURL.lastPathComponent
+            var fileName = file.fileURL.lastPathComponent
+            
+            if let friendName = defaults.value(forKey: K.nameKey) as? String {
+                fileName = friendName + "_" +  fileName
+            }
             
             let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
             
@@ -101,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             var folderName = ""
             if K.isAdmin {
                 folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersAdmin[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
-            }else if defaults.value(forKey: K.friendsKey) != nil {
+            }else if defaults.value(forKey: K.friendsKey) != nil || defaults.value(forKey: K.nameKey) != nil {
                 folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
             } else {
                 folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersBase[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"

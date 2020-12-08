@@ -12,7 +12,7 @@ import HealthKitUI
 import WatchConnectivity
 import MessageUI
 
-class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
+class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var bowTypeSegment: UISegmentedControl!
     @IBOutlet var watchLocationSegment: UISegmentedControl!
@@ -23,6 +23,8 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     @IBOutlet var sessionTypeLabel: UILabel!
     @IBOutlet var sessionTypeInfoLabel: UILabel!
     @IBOutlet weak var appVersionLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameSendButton: UIButton!
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
@@ -42,21 +44,17 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
         nc.addObserver(self, selector: #selector(updateInterface), name: Notification.Name("NewDataAvailable"), object: nil)
         setInitialDefaults()
         
-        if !K.isAdmin {
-            sessionTypeSegment.isHidden = true
-            sessionTypeLabel.isHidden = true
-            sessionTypeInfoLabel.isHidden = true
-        }
+        healthkitButton.layer.cornerCurve = .continuous
+        healthkitButton.layer.cornerRadius = healthkitButton.frame.height / 2
         
         if defaults.value(forKey: K.healthkitKey) as! Bool {
-        
             disableHealthkitButton()
-            
         }
         
         updateInterface()
         
         self.collaboratorsTextField.delegate = self
+        self.nameTextField.delegate = self
         disableCollaboratorsTextField()
         
     }
@@ -72,6 +70,8 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
         healthkitButton.setTitle(NSLocalizedString("healthkitButton", comment: ""), for: .normal)
         healthkitButton.backgroundColor = UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
         healthkitButton.setTitleColor(.systemGreen, for: .normal)
+        healthkitButton.titleLabel?.numberOfLines = 0
+        healthkitButton.titleLabel?.lineBreakMode = .byWordWrapping
         
     }
     
@@ -112,6 +112,23 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
                 self.disableHealthkitButton()
                 
             }
+            let friendName = self.defaults.value(forKey: K.nameKey) as? String
+            self.nameTextField.text = friendName
+            
+            if let name = self.defaults.value(forKey: K.nameKey) as? String, name != "" || K.isAdmin {
+                self.nameTextField.isHidden = false
+                self.sessionTypeSegment.isHidden = false
+                self.sessionTypeLabel.isHidden = false
+                self.sessionTypeInfoLabel.isHidden = false
+            } else {
+                #if DEBUG
+                self.nameTextField.isHidden = false
+                #endif
+                self.sessionTypeSegment.isHidden = true
+                self.sessionTypeLabel.isHidden = true
+                self.sessionTypeInfoLabel.isHidden = true
+            }
+            self.view.layoutIfNeeded()
         }
         
     }
@@ -155,7 +172,14 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     }
     
     func syncDefaults(){
-        let info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!]
+        var info = [K.bowTypeKey:defaults.value(forKey: K.bowTypeKey)!, K.handKey : defaults.value(forKey: K.handKey)!, K.sessionTypeKey:defaults.value(forKey: K.sessionTypeKey)!]
+        if let friends = defaults.value(forKey: K.friendsKey) {
+            info[K.friendsKey] = friends
+        }
+        
+        if let name = defaults.value(forKey: K.nameKey) {
+            info[K.nameKey] = name
+        }
         session.transferUserInfo(info)
     }
     
@@ -177,26 +201,53 @@ class infoViewController: UIViewController, UITextFieldDelegate, MFMailComposeVi
     
     @IBAction func sendCollaboratorsCodeButtonPressed(_ sender: Any) {
         print("Send button pressed")
+        collaboratorsTextField.resignFirstResponder()
         if collaboratorsTextField.text == K.collaboratorCode {
             defaults.set(true, forKey: K.friendsKey)
             disableCollaboratorsTextField()
-        } else {
-            
         }
         
+        syncDefaults()
+        
+    }
+    @IBAction func saveNameButtonPressed(_ sender: Any) {
+        nameTextField.resignFirstResponder()
+        let name = nameTextField.text ?? ""
+        defaults.set(name, forKey: K.nameKey)
+        self.updateInterface()
+        syncDefaults()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.sendCollaboratorsCodeButtonPressed(textField)
+        if textField == collaboratorsTextField {
+            self.sendCollaboratorsCodeButtonPressed(textField)
+        }
+        
+        if textField == nameTextField {
+            self.saveNameButtonPressed(textField)
+        }
+        
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        collaboratorsSendButton.isHidden = true
+        if textField == collaboratorsTextField {
+            collaboratorsSendButton.isHidden = true
+        }
+        
+        if textField == nameTextField {
+            nameSendButton.isHidden = true
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        collaboratorsSendButton.isHidden = false
+        if textField == collaboratorsTextField {
+            collaboratorsSendButton.isHidden = false
+        }
+        
+        if textField == nameTextField {
+            nameSendButton.isHidden = false
+        }
     }
     
 //    MARK: - Feedback and social

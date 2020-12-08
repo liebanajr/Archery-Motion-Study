@@ -30,7 +30,7 @@
 "Aborting" = "Tiro abortado";
 "Other" = "Otros";
 "Watch in" = "Reloj en";
-"healthkitButton" = "Healthkit ya utorizado";
+"healthkitButton" = "Healthkit ya autorizado. Puedes actualizar la configuración en los Ajustes del dispositivo.";
 "isFriend" = "Ya eres colaborador";
 "spinnerMessage" = "Procesando...";
 "arrows" = "flechas";
