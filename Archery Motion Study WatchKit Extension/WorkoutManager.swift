@@ -16,6 +16,7 @@ protocol WorkoutManagerDelegate {
     func didReceiveWorkoutData(_ workoutData: WorkoutSessionDetails)
     func didStartSaveTasks()
     func didFinishSaveTasks()
+    func addButtonPressed()
 }
 
 class WorkoutManager: NSObject {
@@ -34,6 +35,8 @@ class WorkoutManager: NSObject {
     let filesManager = FilesManager()
     
     let wcSession = WCSession.default
+    
+    var isRunning : Bool?
         
     override init() {
         
@@ -108,7 +111,8 @@ class WorkoutManager: NSObject {
 //        }
         
         motionManager?.startMotionUpdates()
-        
+        isRunning = true
+        WKInterfaceDevice.current().play(.start)
     }
     
     func pauseWorkout(){
@@ -116,13 +120,16 @@ class WorkoutManager: NSObject {
         workoutSession?.pause()
         motionManager?.pauseMotionUpdates()
         workoutData.elapsedSeconds = Int(motionManager!.timeStamp)
-        
+        isRunning = false
+        WKInterfaceDevice.current().play(.stop)
     }
     
     func resumeWorkout(){
         
         workoutSession?.resume()
         motionManager?.resumeMotionUpdates()
+        isRunning = true
+        WKInterfaceDevice.current().play(.start)
     }
     
     func endWorkout(){
@@ -141,7 +148,8 @@ class WorkoutManager: NSObject {
                 }
             }
         }
-        
+        isRunning = nil
+        WKInterfaceDevice.current().play(.success)
     }
     
     func sendArrowCount() {
@@ -260,7 +268,22 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
         wcSession.sendMessage(["errorMessage":error], replyHandler: nil, errorHandler: nil)
     }
     
-    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didGenerate event: HKWorkoutEvent) {
+        Log.info("Received workout request: \(event)")
+        if event.type == .pauseOrResumeRequest {
+            Log.info("Received pause or resume request")
+            if let runningState = isRunning {
+                delegate?.addButtonPressed()
+                if runningState {
+                    Log.info("Workout running. Pausing")
+                    pauseWorkout()
+                } else {
+                    Log.info("Workout paued. Resuming")
+                    resumeWorkout()
+                }
+            }
+        }
+    }
     
     
 }

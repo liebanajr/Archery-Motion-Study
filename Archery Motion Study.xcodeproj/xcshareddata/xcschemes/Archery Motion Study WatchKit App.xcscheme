@@ -57,10 +57,8 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       showNonLocalizedStrings = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/Archery Motion">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A37D2BB232BB9450065CE08"
@@ -68,7 +66,7 @@
             BlueprintName = "Archery Motion Study WatchKit App"
             ReferencedContainer = "container:Archery Motion Study.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -76,10 +74,8 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/Archery Motion">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A37D2BB232BB9450065CE08"
@@ -87,16 +83,7 @@
             BlueprintName = "Archery Motion Study WatchKit App"
             ReferencedContainer = "container:Archery Motion Study.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8A37D2BB232BB9450065CE08"
-            BuildableName = "Archery Motion Study WatchKit App.app"
-            BlueprintName = "Archery Motion Study WatchKit App"
-            ReferencedContainer = "container:Archery Motion Study.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
