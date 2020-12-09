@@ -1,6 +1,0 @@
-module Pods_Archery_Motion_Study {
-  umbrella header "Pods-Archery Motion Study-umbrella.h"
-
-  export *
-  module * { export * }
-}
