@@ -1072,7 +1072,7 @@
                                     <action selector="deleteButtonPressed:" destination="Oyk-Ou-ZcP" id="Tiz-r8-BOT"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="plus.circle.fill" catalog="system" style="plain" id="LAX-YW-PYx">
+                            <barButtonItem title="Item" image="plus.circle.fill" catalog="system" id="LAX-YW-PYx">
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <connections>
                                     <action selector="randomSessionsButtonPressed:" destination="Oyk-Ou-ZcP" id="Jm6-vj-912"/>

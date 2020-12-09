@@ -29,11 +29,11 @@
 		8AC060FE233275D600F40881 /* FileItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC060FD233275D600F40881 /* FileItemViewCell.swift */; };
 		8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */; };
 		8ADC42C723312408005B079F /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC42C623312408005B079F /* ChartViewController.swift */; };
-		9506C21C2580F4BB00B4E85D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C21B2580F4BB00B4E85D /* SwiftPackageProductDependency */; };
-		9506C22B2580F5A900B4E85D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C22A2580F5A900B4E85D /* SwiftPackageProductDependency */; };
-		9506C2392580F65D00B4E85D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C2382580F65D00B4E85D /* SwiftPackageProductDependency */; };
+		9506C21C2580F4BB00B4E85D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C21B2580F4BB00B4E85D /* FirebaseStorage */; };
+		9506C22B2580F5A900B4E85D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C22A2580F5A900B4E85D /* Charts */; };
+		9506C2392580F65D00B4E85D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C2382580F65D00B4E85D /* IQKeyboardManagerSwift */; };
 		95DF6A1424B097D6002BE13A /* ChartSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */; };
-		95DFFD042580F70E00599F5F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 95DFFD032580F70E00599F5F /* SwiftPackageProductDependency */; };
+		95DFFD042580F70E00599F5F /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 95DFFD032580F70E00599F5F /* SwiftSpinner */; };
 		95E1FF08257A83F600A55818 /* EditSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1FF07257A83F600A55818 /* EditSessionViewController.swift */; };
 		95E8FD7824ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
 		95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
@@ -170,11 +170,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9506C2392580F65D00B4E85D /* BuildFile in Frameworks */,
+				9506C2392580F65D00B4E85D /* IQKeyboardManagerSwift in Frameworks */,
 				D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */,
-				95DFFD042580F70E00599F5F /* BuildFile in Frameworks */,
-				9506C21C2580F4BB00B4E85D /* BuildFile in Frameworks */,
-				9506C22B2580F5A900B4E85D /* BuildFile in Frameworks */,
+				95DFFD042580F70E00599F5F /* SwiftSpinner in Frameworks */,
+				9506C21C2580F4BB00B4E85D /* FirebaseStorage in Frameworks */,
+				9506C22B2580F5A900B4E85D /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +207,6 @@
 				8A37D2C0232BB9450065CE08 /* Archery Motion Study WatchKit App */,
 				8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */,
 				8A37D2A9232BB9440065CE08 /* Products */,
-				F1CF4E0FC4AFEEAA0F5D561D /* Pods */,
 				4596ABD710EFABDA1BD012FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -310,13 +309,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		F1CF4E0FC4AFEEAA0F5D561D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,10 +328,10 @@
 			);
 			name = "Archery Motion Study";
 			packageProductDependencies = (
-				9506C21B2580F4BB00B4E85D /* SwiftPackageProductDependency */,
-				9506C22A2580F5A900B4E85D /* SwiftPackageProductDependency */,
-				9506C2382580F65D00B4E85D /* SwiftPackageProductDependency */,
-				95DFFD032580F70E00599F5F /* SwiftPackageProductDependency */,
+				9506C21B2580F4BB00B4E85D /* FirebaseStorage */,
+				9506C22A2580F5A900B4E85D /* Charts */,
+				9506C2382580F65D00B4E85D /* IQKeyboardManagerSwift */,
+				95DFFD032580F70E00599F5F /* SwiftSpinner */,
 			);
 			productName = "Archery Motion Study";
 			productReference = 8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */;
@@ -412,10 +404,10 @@
 			);
 			mainGroup = 8A37D29F232BB9440065CE08;
 			packageReferences = (
-				9506C21A2580F4BB00B4E85D /* RemoteSwiftPackageReference */,
-				9506C2292580F5A900B4E85D /* RemoteSwiftPackageReference */,
-				9506C2372580F65D00B4E85D /* RemoteSwiftPackageReference */,
-				95DFFD022580F70E00599F5F /* RemoteSwiftPackageReference */,
+				9506C21A2580F4BB00B4E85D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9506C2292580F5A900B4E85D /* XCRemoteSwiftPackageReference "Charts" */,
+				9506C2372580F65D00B4E85D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				95DFFD022580F70E00599F5F /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
 			);
 			productRefGroup = 8A37D2A9232BB9440065CE08 /* Products */;
 			projectDirPath = "";
@@ -869,7 +861,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9506C21A2580F4BB00B4E85D /* RemoteSwiftPackageReference */ = {
+		9506C21A2580F4BB00B4E85D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -877,15 +869,15 @@
 				minimumVersion = 7.2.0;
 			};
 		};
-		9506C2292580F5A900B4E85D /* RemoteSwiftPackageReference */ = {
+		9506C2292580F5A900B4E85D /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
-		9506C2372580F65D00B4E85D /* RemoteSwiftPackageReference */ = {
+		9506C2372580F65D00B4E85D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
 			requirement = {
@@ -893,7 +885,7 @@
 				minimumVersion = 6.5.6;
 			};
 		};
-		95DFFD022580F70E00599F5F /* RemoteSwiftPackageReference */ = {
+		95DFFD022580F70E00599F5F /* XCRemoteSwiftPackageReference "SwiftSpinner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/icanzilb/SwiftSpinner";
 			requirement = {
@@ -904,24 +896,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9506C21B2580F4BB00B4E85D /* SwiftPackageProductDependency */ = {
+		9506C21B2580F4BB00B4E85D /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9506C21A2580F4BB00B4E85D /* RemoteSwiftPackageReference */;
+			package = 9506C21A2580F4BB00B4E85D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		9506C22A2580F5A900B4E85D /* SwiftPackageProductDependency */ = {
+		9506C22A2580F5A900B4E85D /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9506C2292580F5A900B4E85D /* RemoteSwiftPackageReference */;
+			package = 9506C2292580F5A900B4E85D /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
-		9506C2382580F65D00B4E85D /* SwiftPackageProductDependency */ = {
+		9506C2382580F65D00B4E85D /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9506C2372580F65D00B4E85D /* RemoteSwiftPackageReference */;
+			package = 9506C2372580F65D00B4E85D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		95DFFD032580F70E00599F5F /* SwiftPackageProductDependency */ = {
+		95DFFD032580F70E00599F5F /* SwiftSpinner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 95DFFD022580F70E00599F5F /* RemoteSwiftPackageReference */;
+			package = 95DFFD022580F70E00599F5F /* XCRemoteSwiftPackageReference "SwiftSpinner" */;
 			productName = SwiftSpinner;
 		};
 /* End XCSwiftPackageProductDependency section */
