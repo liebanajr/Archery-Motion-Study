@@ -55,7 +55,7 @@ struct K {
     static let sessionValues = ["Shooting", "Aborting", "Other", "Walk"]
     
     static let collaboratorCode = "archeryproject"
-    static let feedbackEmail = "feedback.juan@icloud.com"
+    static let feedbackEmail = "shotsarcheryapp@gmail.com"
     static let feedbackEmailSubject = "Comments on Archer Motion App"
     static let twitterURL = URL(string: "https://twitter.com/JuanIRL")
     static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")

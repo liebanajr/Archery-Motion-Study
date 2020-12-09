@@ -56,6 +56,10 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
                 randomSession.caloriesBurned = Int64.random(in: 90...500)
                 randomSession.arrowCount = Int64.random(in: 90...500)
                 randomSession.duration = Int64.random(in: 1000...5000)
+                randomSession.maxHeartRate = Int64.random(in: 60...180)
+                randomSession.minHeartRate = Int64.random(in: 40...60)
+                randomSession.minHeartRateEnd = Int64.random(in: 1...6)
+                randomSession.maxHeartRateEnd = Int64.random(in: 1...6)
                 let formatter = DateFormatter()
                 formatter.dateFormat = K.dateFormat
                 let randomDate = Date(timeIntervalSinceReferenceDate: TimeInterval(Int.random(in: 300000000...597369600)))
