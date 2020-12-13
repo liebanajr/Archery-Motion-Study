@@ -11,6 +11,7 @@ import Foundation
 import CoreMotion
 import WatchConnectivity
 import HealthKit
+import ShotsWorkoutManager
 
 enum SessionState {
     case workoutRunning
@@ -19,7 +20,7 @@ enum SessionState {
     
 }
 
-class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate {
+class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
     
     @IBOutlet weak var timer: WKInterfaceTimer!
     @IBOutlet weak var calorieLabel: WKInterfaceLabel!
@@ -32,7 +33,11 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
     
     var arrowCount : Int = 0
     
-    var workoutManager : WorkoutManager?
+    var workoutManager = ShotsWorkoutManager.shared
+    var asyncDataMotionManager : ShotsMotionManager?
+    let wcSession = WCSession.default
+    
+    let filesManager = FilesManager()
     
     var timerStopInterval : TimeInterval?
     var timerRestartDate : Date?
@@ -46,26 +51,10 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-//        if let id = self.value(forKey: "_viewControllerID") as? NSString {
-//            let strClassDescription = String(describing: self)
-//
-//            print("\(strClassDescription) has the Interface Controller ID \(id)")
-//        }
-        
         startController = context as? startViewController
-        
-//        let nc = NotificationCenter.default
-//        nc.addObserver(self, selector: #selector(saveTasksFinished), name: Notification.Name("saveTaskFinished"), object: nil)
-//        nc.addObserver(self, selector: #selector(saveTasksStarting), name: Notification.Name("saveTaskStarted"), object: nil)
+
         
         let modelWidth = WKInterfaceDevice.current().screenBounds.width*2
-        
-        
-//        let start = model.index(model.endIndex, offsetBy: -4)
-//        let end = model.index(model.endIndex, offsetBy: -2)
-//        let range = start..<end
-         
-//        let modelSize = Int(model[range])
         
         switch modelWidth {
         case 272.0:
@@ -93,12 +82,13 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
         }
         
         sessionState = .workoutRunning
-
-        workoutManager = WorkoutManager()
-        workoutManager!.delegate = self
-        workoutManager!.startWorkout()
         
-        startController!.workoutManager = workoutManager!
+
+        workoutManager.delegate = self
+        workoutManager.startWorkout(id: "no_id", type: nil)
+        workoutManager.isSaveWorkoutActive = K.isSaveWorkoutActive
+        
+        startController!.workoutManager = workoutManager
         startController!.sessionState = sessionState!
                 
         timerStopInterval = 0.0
@@ -161,24 +151,13 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
                 sessionState = .workoutRunning
                 startController!.sessionState = sessionState!
                 restartTimer()
-                workoutManager!.resumeWorkout()
+                workoutManager.resumeWorkout()
             } else if previous == .workoutPaused {
                 
             }
         }
         previousSessionState = nil
         
-    }
-
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-        print("Did disappear")
     }
     
     @IBAction func addButtonPressed() {
@@ -188,72 +167,88 @@ class WorkoutInterfaceController: WKInterfaceController, WorkoutManagerDelegate 
             sessionState = .workoutPaused
             startController!.sessionState = sessionState!
             addButton.setBackgroundImage(UIImage(systemName: "play.fill"))
-//            addButton.setBackgroundColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
             stopTimer()
-            workoutManager!.pauseWorkout()
-            workoutManager!.saveWorkout()
+            workoutManager.pauseWorkout()
+            self.saveWorkout()
             
             
         } else if sessionState! == .workoutPaused {
             
             sessionState = .workoutRunning
             startController!.sessionState = sessionState!
-//            addButton.setBackgroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
             addButton.setBackgroundImage(UIImage(systemName: "plus"))
-            workoutManager!.resumeWorkout()
-            workoutManager!.workoutData.endCounter += 1
-            endLabel.setText("\(workoutManager!.workoutData.endCounter)")
+            workoutManager.resumeWorkout()
+            workoutManager.sessionData!.endCounter += 1
+            endLabel.setText("\(workoutManager.sessionData!.endCounter)")
             restartTimer()
         }
         
     }
     
     @IBAction func endButtonPressed() {
-        
-//        let action2 = WKAlertAction.init(title: NSLocalizedString("finish", comment: ""), style:.destructive) {
-//            self.timer.stop()
-//            self.workoutManager!.endWorkout()
-//            DispatchQueue.main.async {
-//                self.dismiss()
-//            }
-//        }
-//
-//        let action1 = WKAlertAction.init(title: NSLocalizedString("goOn", comment: ""), style:.default) {
-//
-//        }
         previousSessionState = sessionState!
         if sessionState! == .workoutRunning {
             sessionState = .workoutPaused
             startController!.sessionState = sessionState!
             stopTimer()
-            workoutManager!.pauseWorkout()
-            workoutManager?.saveWorkout()
+            workoutManager.pauseWorkout()
+            self.saveWorkout()
         } else if sessionState! == .workoutPaused {
             previousSessionState = .workoutPaused
         }
         presentController(withName: "arrowNumberPicker", context: self)
-//        presentAlert(withTitle: NSLocalizedString("endWorkoutTitle", comment: ""), message: NSLocalizedString("endWorkoutMessage", comment: ""), preferredStyle:.alert, actions: [action1,action2])
     }
     
-    func didEndWorkout(){
+    func workoutManager(didUpdateSession data: ShotsSessionDetails) {
+        DispatchQueue.main.async {
+            self.calorieLabel.setText(String(data.cumulativeCaloriesBurned))
+            self.heartRateLabel.setText(String(data.currentHeartRate))
+        }
+    }
+    
+    func workoutManager(didStopWorkout withData: ShotsSessionDetails) {
         stopTimer()
         self.sessionState = .workoutFinished
         startController!.sessionState = sessionState!
         self.previousSessionState = .workoutFinished
-        self.workoutManager?.workoutData.arrowCounter = arrowCount
-        self.workoutManager?.sendArrowCount()
+        self.sendArrowCount()
         print("Calling end workout in workout interface")
-        self.workoutManager!.endWorkout()
-        
+    }
+    func workoutManager(didLockScreen withData: ShotsSessionDetails?) {
+//        Nothing to do
+    }
+    func workoutManager(didStartWorkout withData: ShotsSessionDetails) {
+//        Nothing to do
+    }
+    func workoutManager(didPauseWorkout withData: ShotsSessionDetails) {
+//        Nothing to do
+    }
+    func workoutManager(didResumeWorkout withData: ShotsSessionDetails) {
+//        Nothing to do
     }
     
-    func didReceiveWorkoutData(_ workoutData: WorkoutSessionDetails) {
-        
-        DispatchQueue.main.async {
-            self.calorieLabel.setText(String(workoutData.cumulativeCaloriesBurned))
-            self.heartRateLabel.setText(String(workoutData.currentHeartRate))
+    func didEndWorkout(){
+        workoutManager.stopWorkout()
+    }
+    
+    func saveWorkout(){
+        print("Saving workout")
+        self.didStartSaveTasks()
+        asyncDataMotionManager = workoutManager.motionManager
+        DispatchQueue.global(qos: .utility).async {
+            let csv = self.asyncDataMotionManager!.toCSVString()
+            if let url = self.filesManager.saveDataLocally(dataString: csv) {
+                self.filesManager.sendDataToiPhone(url, with: self.workoutManager.sessionData!)
+            }
+            self.didFinishSaveTasks()
         }
         
     }
+    
+    func sendArrowCount() {
+        wcSession.sendMessage(["arrowCount":workoutManager.sessionData!.arrowCounter,"sessionId" : workoutManager.sessionData!.sessionId], replyHandler: nil, errorHandler: nil)
+        self.didFinishSaveTasks()
+    }
+    
     
 }

@@ -22,7 +22,6 @@
 		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
 		8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */; };
 		8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */; };
-		8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7DB34923302C5700781F0D /* HealthKit.framework */; };
 		8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */; };
 		8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA589EB232F125A007879E0 /* SpinnerViewController.swift */; };
 		8AB2FE06233232A800C1F554 /* SensorDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2FE05233232A800C1F554 /* SensorDataSet.swift */; };
@@ -38,10 +37,11 @@
 		95E8FD7824ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
 		95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8FD7724ABA10A00F12C3C /* Log.swift */; };
 		95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
+		95FDC42525866EA200EA30BD /* ShotsWorkoutManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FDC42025866B5900EA30BD /* ShotsWorkoutManager.framework */; };
+		95FDC42625866EA200EA30BD /* ShotsWorkoutManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 95FDC42025866B5900EA30BD /* ShotsWorkoutManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95FE2050257FBD09001F11C5 /* WorkoutSessionCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */; };
 		D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */; };
 		D959312823A2FE5B004693B4 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959312723A2FE5B004693B4 /* FilesManager.swift */; };
-		D96068B723A2E54100C81228 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96068B623A2E54100C81228 /* WorkoutManager.swift */; };
 		D966A64F2371FD8F00EB2141 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */; };
 		D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966A651237204DD00EB2141 /* HealthKit.framework */; };
 		D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */; };
@@ -56,7 +56,6 @@
 		D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */; };
 		D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
-		D9C2FAAA23A2C664000284D1 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA923A2C664000284D1 /* MotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +72,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8A37D2CA232BB9460065CE08;
 			remoteInfo = "Archery Motion Study WatchKit Extension";
+		};
+		95FDC41F25866B5900EA30BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95FDC41B25866B5900EA30BD /* ShotsWorkoutManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 95FDC3FD25866AD100EA30BD;
+			remoteInfo = ShotsWorkoutManager;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -99,6 +105,17 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95FDC42725866EA200EA30BD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				95FDC42625866EA200EA30BD /* ShotsWorkoutManager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -122,7 +139,6 @@
 		8A3B02E0232E973E007ECFBB /* settingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsInterfaceController.swift; sourceTree = "<group>"; };
 		8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion Study WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		8A7DB34923302C5700781F0D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8AA589EB232F125A007879E0 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		8AB2FE05233232A800C1F554 /* SensorDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataSet.swift; sourceTree = "<group>"; };
@@ -133,11 +149,11 @@
 		95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionCell.swift; sourceTree = "<group>"; };
 		95E1FF07257A83F600A55818 /* EditSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewController.swift; sourceTree = "<group>"; };
 		95E8FD7724ABA10A00F12C3C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		95FDC41B25866B5900EA30BD /* ShotsWorkoutManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShotsWorkoutManager.xcodeproj; path = ../LIBRARIES/ShotsWorkoutManager/ShotsWorkoutManager/ShotsWorkoutManager.xcodeproj; sourceTree = "<group>"; };
 		95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell2.xib; sourceTree = "<group>"; };
 		D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionDetails.swift; sourceTree = "<group>"; };
 		D92504692381684A001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
 		D959312723A2FE5B004693B4 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
-		D96068B623A2E54100C81228 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
 		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -155,7 +171,6 @@
 		D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsInterfaceController.swift; sourceTree = "<group>"; };
 		D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowNumberPickerInterfaceController.swift; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		D9C2FAA923A2C664000284D1 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7DB34A23302C5700781F0D /* HealthKit.framework in Frameworks */,
+				95FDC42525866EA200EA30BD /* ShotsWorkoutManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				D966A651237204DD00EB2141 /* HealthKit.framework */,
-				8A7DB34923302C5700781F0D /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,6 +215,7 @@
 		8A37D29F232BB9440065CE08 = {
 			isa = PBXGroup;
 			children = (
+				95FDC41B25866B5900EA30BD /* ShotsWorkoutManager.xcodeproj */,
 				95E8FD7724ABA10A00F12C3C /* Log.swift */,
 				D9917BE4237C46960078B6A4 /* Constants.swift */,
 				8A37D2AA232BB9440065CE08 /* Archery Motion Study */,
@@ -260,8 +275,6 @@
 				D9967F78237E0EB500C2253C /* Localizable.strings */,
 				D99FE741237F57C800E4809A /* SettingsRowController.swift */,
 				D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */,
-				D9C2FAA923A2C664000284D1 /* MotionManager.swift */,
-				D96068B623A2E54100C81228 /* WorkoutManager.swift */,
 				D959312723A2FE5B004693B4 /* FilesManager.swift */,
 				D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */,
 			);
@@ -307,6 +320,14 @@
 				95E1FF07257A83F600A55818 /* EditSessionViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		95FDC41C25866B5900EA30BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95FDC42025866B5900EA30BD /* ShotsWorkoutManager.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +383,7 @@
 				8A37D2C7232BB9460065CE08 /* Sources */,
 				8A37D2C8232BB9460065CE08 /* Frameworks */,
 				8A37D2C9232BB9460065CE08 /* Resources */,
+				95FDC42725866EA200EA30BD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -411,6 +433,12 @@
 			);
 			productRefGroup = 8A37D2A9232BB9440065CE08 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 95FDC41C25866B5900EA30BD /* Products */;
+					ProjectRef = 95FDC41B25866B5900EA30BD /* ShotsWorkoutManager.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8A37D2A7232BB9440065CE08 /* Archery Motion Study */,
@@ -419,6 +447,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		95FDC42025866B5900EA30BD /* ShotsWorkoutManager.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShotsWorkoutManager.framework;
+			remoteRef = 95FDC41F25866B5900EA30BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8A37D2A6232BB9440065CE08 /* Resources */ = {
@@ -488,12 +526,10 @@
 				D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */,
 				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
 				95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */,
-				D9C2FAAA23A2C664000284D1 /* MotionManager.swift in Sources */,
 				D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */,
 				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
 				D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */,
 				D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */,
-				D96068B723A2E54100C81228 /* WorkoutManager.swift in Sources */,
 				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
 				95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */,
 				D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */,
@@ -703,7 +739,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Debug;
 		};
@@ -728,7 +764,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Release;
 		};
@@ -749,7 +785,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Debug;
 		};
@@ -770,7 +806,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Release;
 		};

@@ -69,3 +69,11 @@ struct K {
     
     
 }
+
+enum REMOTE_CONTROL : String {
+    case START = "start_workout"
+    case STOP = "stop_workout"
+    case PAUSE = "pause_workout"
+    case RESUME = "resume_workout"
+    case SYNC = "sync_workout"
+}

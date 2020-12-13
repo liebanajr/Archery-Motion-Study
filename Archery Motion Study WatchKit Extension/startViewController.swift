@@ -10,6 +10,7 @@ import WatchKit
 import Foundation
 import HealthKit
 import WatchConnectivity
+import ShotsWorkoutManager
 
 class startViewController: WKInterfaceController {
     
@@ -24,18 +25,13 @@ class startViewController: WKInterfaceController {
     
     let session = WCSession.default
     
-    var workoutManager : Any = ""
+    var workoutManager : ShotsWorkoutManager?
     
     var sessionState : SessionState = .workoutPaused
     
     override func awake(withContext context: Any?) {
         
         super.awake(withContext: context)
-//        if let id = self.value(forKey: "_viewControllerID") as? NSString {
-//            let strClassDescription = String(describing: self)
-//
-//            print("\(strClassDescription) has the Interface Controller ID \(id)")
-//        }
         
         documentDir = paths.firstObject as! String
         print("Document directory: \(documentDir)")
@@ -66,15 +62,7 @@ class startViewController: WKInterfaceController {
     
     override func didAppear() {
         if sessionState == .workoutRunning {
-            print("Session was running. Ending workout")
-            (workoutManager as! WorkoutManager).motionManager!.stopMotionUpdates()
-            (workoutManager as! WorkoutManager).workoutSession!.end()
-            (workoutManager as! WorkoutManager).builder!.endCollection(withEnd: Date()) { (success, error) in
-                if !success {
-                    print("Error ending collection from start view \(error!)") 
-                }
-                print("Finished collection")
-            }
+            workoutManager?.stopWorkout()
         }
     }
     
