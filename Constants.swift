@@ -11,7 +11,7 @@ import Foundation
 struct K {
     
     #warning("CHECK ADMIN STATUS BEFORE BUILDING")
-    static let isAdmin = false
+    static let isAdmin = true
     
     #if DEBUG
     static let minLogLevel : LOGLEVEL = .TRACE
@@ -67,10 +67,15 @@ struct K {
     static let csvSeparator = ","
     static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z,Transformed accelerometer X,Transformed accelerometer Y,Transformed accelerometer Z,Gravity X,Gravity Y,Gravity Z\n"
     
-    
 }
 
 enum REMOTE_CONTROL : String {
+    case NOTIFICATION = "workout_notification"
+    case NOTIFICATION_SUCCESS = "workout_notification_success"
+    case NOTIFICATION_ERROR = "workout_notification_error"
+    case RESPONSE_RUNNING = "workout_is_running"
+    case RESPONSE_PAUSED = "workout_is_paused"
+    case RESPONSE_STOPPED = "workout_is_not_running"
     case START = "start_workout"
     case STOP = "stop_workout"
     case PAUSE = "pause_workout"

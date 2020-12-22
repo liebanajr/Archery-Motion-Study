@@ -233,6 +233,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 print("Error fetching existing Session: \(error)")
             }
         }
+        
+        if let notification = message[REMOTE_CONTROL.NOTIFICATION.rawValue] as? String {
+            Log.info("Received remote control notification: \(notification)")
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: notification)
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -313,9 +319,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
 }
 
-func print(object: Any) {
-    
-//    Swift.print(object)
-    
-}
 

@@ -8,11 +8,14 @@
 
 import WatchKit
 import WatchConnectivity
+import ShotsWorkoutManager
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
     let defaults = UserDefaults.standard
     let session = WCSession.default
+    
+    let workoutManager = ShotsWorkoutManager.shared
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if activationState != .activated {
@@ -20,6 +23,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         }
     }
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        
+        if let remoteNotification = userInfo[REMOTE_CONTROL.NOTIFICATION.rawValue] as? String {
+            manageRemoteControlNotification(remoteNotification)
+            return
+        }
+        
         for element in userInfo {
             print("Key: \(element.key)   Value: \(element.value)")
         }
@@ -37,6 +46,56 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         } else {
             print("WCSession not supported")
         }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        if let message = message[REMOTE_CONTROL.NOTIFICATION.rawValue] as? String {
+            manageRemoteControlNotification(message)
+        }
+    }
+    
+    func manageRemoteControlNotification(_ message: String) {
+        Log.info("Did receive remote notification: \(message)")
+        switch message {
+            case REMOTE_CONTROL.START.rawValue:
+                workoutManager.startWorkout(id: "remote_workout", type: .FREE)
+                respondToRemoteNotification()
+            case REMOTE_CONTROL.STOP.rawValue:
+                workoutManager.stopWorkout()
+                respondToRemoteNotification()
+            case REMOTE_CONTROL.PAUSE.rawValue:
+                workoutManager.pauseWorkout()
+                respondToRemoteNotification()
+            case REMOTE_CONTROL.RESUME.rawValue:
+                workoutManager.resumeWorkout()
+                respondToRemoteNotification()
+            case REMOTE_CONTROL.SYNC.rawValue:
+                respondToRemoteNotification()
+            default:
+                let messageContent = "Remote notification [\(message)] not recognized."
+                session.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : messageContent], replyHandler: nil, errorHandler: nil)
+                Log.error(messageContent)
+        }
+    }
+    
+    func respondToRemoteNotification() {
+        Log.info("Checking workout state for syncing")
+        
+        switch workoutManager.isWorkoutRunning {
+            case nil:
+                session.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.RESPONSE_STOPPED.rawValue], replyHandler: nil, errorHandler: nil)
+            case true:
+                session.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.RESPONSE_RUNNING.rawValue], replyHandler: nil, errorHandler: nil)
+
+            case false:
+                session.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.RESPONSE_PAUSED.rawValue], replyHandler: nil, errorHandler: nil)
+
+            default:
+                let messageContent = "Error: Workout state not recognized"
+                session.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : messageContent], replyHandler: nil, errorHandler: nil)
+
+        }
+        
     }
 
     func applicationDidBecomeActive() {

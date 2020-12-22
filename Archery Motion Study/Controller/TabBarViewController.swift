@@ -16,6 +16,8 @@ class TabBarViewController: UITabBarController {
         if K.isAdmin{
             let vc = self.storyboard!.instantiateViewController(identifier: "privatetableId")
             self.viewControllers?.append(vc)
+            let vc2 = self.storyboard!.instantiateViewController(identifier: "remoteViewController")
+            self.viewControllers?.append(vc2)
         }
 
         // Do any additional setup after loading the view.

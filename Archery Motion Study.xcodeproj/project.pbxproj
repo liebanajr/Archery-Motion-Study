@@ -31,6 +31,8 @@
 		9506C21C2580F4BB00B4E85D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C21B2580F4BB00B4E85D /* FirebaseStorage */; };
 		9506C22B2580F5A900B4E85D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C22A2580F5A900B4E85D /* Charts */; };
 		9506C2392580F65D00B4E85D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C2382580F65D00B4E85D /* IQKeyboardManagerSwift */; };
+		954271F7258697C7002EA242 /* SyncWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954271F6258697C7002EA242 /* SyncWorkoutManager.swift */; };
+		954271FC2586AFE3002EA242 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954271FB2586AFE3002EA242 /* RemoteControlViewController.swift */; };
 		95DF6A1424B097D6002BE13A /* ChartSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */; };
 		95DFFD042580F70E00599F5F /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 95DFFD032580F70E00599F5F /* SwiftSpinner */; };
 		95E1FF08257A83F600A55818 /* EditSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1FF07257A83F600A55818 /* EditSessionViewController.swift */; };
@@ -41,7 +43,6 @@
 		95FDC42625866EA200EA30BD /* ShotsWorkoutManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 95FDC42025866B5900EA30BD /* ShotsWorkoutManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95FE2050257FBD09001F11C5 /* WorkoutSessionCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */; };
 		D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */; };
-		D959312823A2FE5B004693B4 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959312723A2FE5B004693B4 /* FilesManager.swift */; };
 		D966A64F2371FD8F00EB2141 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */; };
 		D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966A651237204DD00EB2141 /* HealthKit.framework */; };
 		D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */; };
@@ -72,6 +73,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8A37D2CA232BB9460065CE08;
 			remoteInfo = "Archery Motion Study WatchKit Extension";
+		};
+		954B59D02587F2BE00F5DA0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95FDC41B25866B5900EA30BD /* ShotsWorkoutManager.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FDC3FC25866AD100EA30BD;
+			remoteInfo = ShotsWorkoutManager;
 		};
 		95FDC41F25866B5900EA30BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -146,6 +154,8 @@
 		8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8ADC42C623312408005B079F /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		9506C2162580E80D00B4E85D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		954271F6258697C7002EA242 /* SyncWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWorkoutManager.swift; sourceTree = "<group>"; };
+		954271FB2586AFE3002EA242 /* RemoteControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
 		95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionCell.swift; sourceTree = "<group>"; };
 		95E1FF07257A83F600A55818 /* EditSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewController.swift; sourceTree = "<group>"; };
 		95E8FD7724ABA10A00F12C3C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -153,7 +163,6 @@
 		95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell2.xib; sourceTree = "<group>"; };
 		D90DA5C72375A906007A442E /* WorkoutSessionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionDetails.swift; sourceTree = "<group>"; };
 		D92504692381684A001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
-		D959312723A2FE5B004693B4 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
 		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -275,8 +284,8 @@
 				D9967F78237E0EB500C2253C /* Localizable.strings */,
 				D99FE741237F57C800E4809A /* SettingsRowController.swift */,
 				D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */,
-				D959312723A2FE5B004693B4 /* FilesManager.swift */,
 				D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */,
+				954271F6258697C7002EA242 /* SyncWorkoutManager.swift */,
 			);
 			path = "Archery Motion Study WatchKit Extension";
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 				D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */,
 				D9C2FAA723A04015000284D1 /* TabBarViewController.swift */,
 				95E1FF07257A83F600A55818 /* EditSessionViewController.swift */,
+				954271FB2586AFE3002EA242 /* RemoteControlViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -388,6 +398,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				954B59D12587F2BE00F5DA0D /* PBXTargetDependency */,
 			);
 			name = "Archery Motion Study WatchKit Extension";
 			productName = "Archery Motion Study WatchKit Extension";
@@ -498,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				954271FC2586AFE3002EA242 /* RemoteControlViewController.swift in Sources */,
 				D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */,
 				8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */,
 				8A37D2B0232BB9440065CE08 /* filesViewController.swift in Sources */,
@@ -525,6 +537,7 @@
 			files = (
 				D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */,
 				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
+				954271F7258697C7002EA242 /* SyncWorkoutManager.swift in Sources */,
 				95E8FD7924ABA10A00F12C3C /* Log.swift in Sources */,
 				D90DA5C82375A906007A442E /* WorkoutSessionDetails.swift in Sources */,
 				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
@@ -533,7 +546,6 @@
 				8A3B02E1232E973E007ECFBB /* settingsInterfaceController.swift in Sources */,
 				95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */,
 				D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */,
-				D959312823A2FE5B004693B4 /* FilesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +561,11 @@
 			isa = PBXTargetDependency;
 			target = 8A37D2CA232BB9460065CE08 /* Archery Motion Study WatchKit Extension */;
 			targetProxy = 8A37D2CD232BB9460065CE08 /* PBXContainerItemProxy */;
+		};
+		954B59D12587F2BE00F5DA0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ShotsWorkoutManager;
+			targetProxy = 954B59D02587F2BE00F5DA0D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

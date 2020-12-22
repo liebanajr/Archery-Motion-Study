@@ -20,7 +20,7 @@ enum SessionState {
     
 }
 
-class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
+class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate, SyncWorkoutManagerDelegate {
     
     @IBOutlet weak var timer: WKInterfaceTimer!
     @IBOutlet weak var calorieLabel: WKInterfaceLabel!
@@ -34,18 +34,11 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
     var arrowCount : Int = 0
     
     var workoutManager = ShotsWorkoutManager.shared
-    var asyncDataMotionManager : ShotsMotionManager?
-    let wcSession = WCSession.default
-    
-    let filesManager = FilesManager()
+    let syncManager = SyncWorkoutManager.shared
     
     var timerStopInterval : TimeInterval?
     var timerRestartDate : Date?
     var timerStartDate : Date?
-    
-    var sessionState : SessionState?
-    
-    var previousSessionState : SessionState?
     
     var startController : startViewController?
         
@@ -80,16 +73,17 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
             default:
                 print("Watch model not supported")
         }
-        
-        sessionState = .workoutRunning
-        
 
         workoutManager.delegate = self
-        workoutManager.startWorkout(id: "no_id", type: nil)
         workoutManager.isSaveWorkoutActive = K.isSaveWorkoutActive
+        let formatter = DateFormatter()
+        let timeZone = TimeZone(identifier: "Europe/Paris")
+        formatter.timeZone = .some(timeZone!)
+        formatter.dateFormat = K.dateFormat
+        let id = formatter.string(from: Date())
+        workoutManager.startWorkout(id: id, type: .FREE)
         
-        startController!.workoutManager = workoutManager
-        startController!.sessionState = sessionState!
+        syncManager.delegate = self
                 
         timerStopInterval = 0.0
         timerStartDate = Date(timeIntervalSinceNow : timerStopInterval!)
@@ -99,7 +93,7 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
                 
     }
     
-    @objc func didFinishSaveTasks(){
+    func didFinishSaveTasks(){
         print("Task finished. Enabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(true)
@@ -108,7 +102,7 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
             self.endButtonBackground.setAlpha(1.0)
         }
         
-        if sessionState == .workoutFinished {
+        if workoutManager.isWorkoutRunning == nil {
             print("Task finished. Workout finished. Dismissing controller")
             DispatchQueue.main.async {
                 self.dismiss()
@@ -117,7 +111,7 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
         
     }
     
-    @objc func didStartSaveTasks(){
+    func didStartSaveTasks(){
         print("Task starting. Disabling buttons")
         DispatchQueue.main.async {
             self.addButton.setEnabled(false)
@@ -141,61 +135,27 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
         timer.stop()
     }
     
-    override func didAppear() {
-        
-        print("Appeared")
-        
-        if let previous = previousSessionState {
-            if previous == .workoutRunning {
-                print("Workout was preivously running. Resuming timer and workout")
-                sessionState = .workoutRunning
-                startController!.sessionState = sessionState!
-                restartTimer()
-                workoutManager.resumeWorkout()
-            } else if previous == .workoutPaused {
-                
-            }
-        }
-        previousSessionState = nil
-        
-    }
-    
     @IBAction func addButtonPressed() {
         
-        if sessionState! == .workoutRunning {
-            
-            sessionState = .workoutPaused
-            startController!.sessionState = sessionState!
-            addButton.setBackgroundImage(UIImage(systemName: "play.fill"))
-            stopTimer()
-            workoutManager.pauseWorkout()
-            self.saveWorkout()
-            
-            
-        } else if sessionState! == .workoutPaused {
-            
-            sessionState = .workoutRunning
-            startController!.sessionState = sessionState!
-            addButton.setBackgroundImage(UIImage(systemName: "plus"))
-            workoutManager.resumeWorkout()
-            workoutManager.sessionData!.endCounter += 1
-            endLabel.setText("\(workoutManager.sessionData!.endCounter)")
-            restartTimer()
+        if let isRunning = workoutManager.isWorkoutRunning {
+            if isRunning {
+                workoutManager.pauseWorkout()
+            } else {
+                workoutManager.resumeWorkout()
+                workoutManager.sessionData!.endCounter += 1
+                endLabel.setText("\(workoutManager.sessionData!.endCounter)")
+            }
+        } else {
+            Log.error("Workout was stopped when trying to add end")
         }
         
     }
     
     @IBAction func endButtonPressed() {
-        previousSessionState = sessionState!
-        if sessionState! == .workoutRunning {
-            sessionState = .workoutPaused
-            startController!.sessionState = sessionState!
-            stopTimer()
+        if let isRunning = workoutManager.isWorkoutRunning, isRunning {
             workoutManager.pauseWorkout()
-            self.saveWorkout()
-        } else if sessionState! == .workoutPaused {
-            previousSessionState = .workoutPaused
         }
+        
         presentController(withName: "arrowNumberPicker", context: self)
     }
     
@@ -208,11 +168,10 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
     
     func workoutManager(didStopWorkout withData: ShotsSessionDetails) {
         stopTimer()
-        self.sessionState = .workoutFinished
-        startController!.sessionState = sessionState!
-        self.previousSessionState = .workoutFinished
-        self.sendArrowCount()
-        print("Calling end workout in workout interface")
+        syncManager.sendArrowCount()
+        DispatchQueue.main.async {
+            self.dismiss()
+        }
     }
     func workoutManager(didLockScreen withData: ShotsSessionDetails?) {
 //        Nothing to do
@@ -221,33 +180,18 @@ class WorkoutInterfaceController: WKInterfaceController, ShotsWorkoutDelegate {
 //        Nothing to do
     }
     func workoutManager(didPauseWorkout withData: ShotsSessionDetails) {
-//        Nothing to do
+        addButton.setBackgroundImage(UIImage(systemName: "play.fill"))
+        stopTimer()
+        syncManager.saveWorkout()
     }
     func workoutManager(didResumeWorkout withData: ShotsSessionDetails) {
-//        Nothing to do
+        addButton.setBackgroundImage(UIImage(systemName: "plus"))
+        endLabel.setText("\(workoutManager.sessionData!.endCounter)")
+        restartTimer()
     }
     
     func didEndWorkout(){
         workoutManager.stopWorkout()
-    }
-    
-    func saveWorkout(){
-        print("Saving workout")
-        self.didStartSaveTasks()
-        asyncDataMotionManager = workoutManager.motionManager
-        DispatchQueue.global(qos: .utility).async {
-            let csv = self.asyncDataMotionManager!.toCSVString()
-            if let url = self.filesManager.saveDataLocally(dataString: csv) {
-                self.filesManager.sendDataToiPhone(url, with: self.workoutManager.sessionData!)
-            }
-            self.didFinishSaveTasks()
-        }
-        
-    }
-    
-    func sendArrowCount() {
-        wcSession.sendMessage(["arrowCount":workoutManager.sessionData!.arrowCounter,"sessionId" : workoutManager.sessionData!.sessionId], replyHandler: nil, errorHandler: nil)
-        self.didFinishSaveTasks()
     }
     
     

@@ -1,34 +1,63 @@
 //
-//  FilesManager.swift
+//  SyncWorkoutManager.swift
 //  Archery Motion Study WatchKit Extension
 //
-//  Created by Juan I Rodriguez on 13/12/2019.
-//  Copyright © 2019 liebanajr. All rights reserved.
+//  Created by Juan Rodríguez on 13/12/20.
+//  Copyright © 2020 liebanajr. All rights reserved.
 //
 
-import UIKit
-import WatchConnectivity
+import Foundation
 import ShotsWorkoutManager
+import WatchConnectivity
 
-class FilesManager: NSObject {
+protocol SyncWorkoutManagerDelegate {
+    func didStartSaveTasks()
+    func didFinishSaveTasks()
+}
+
+class SyncWorkoutManager {
     
+    static let shared = SyncWorkoutManager()
+    
+    let wcSession = WCSession.default
     let fileManager = FileManager()
     let defaults = UserDefaults.standard
-    let wcSession = WCSession.default
+    var workoutManager = ShotsWorkoutManager.shared
+    
+    var delegate : SyncWorkoutManagerDelegate?
     
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     var documentDir : String = ""
-        
-    override init() {
-        super.init()
-        
+    
+    init() {
         documentDir = paths.firstObject as! String
+    }
+    
+    func saveWorkout(){
+        print("Saving workout")
+        delegate?.didStartSaveTasks()
+        let motionManager = workoutManager.motionManager
+        DispatchQueue.global(qos: .utility).async {
+            let csv = motionManager!.toCSVString()
+            Log.debug("CSV result: \(csv)")
+            if let url = self.saveDataLocally(dataString: csv) {
+                self.sendDataToiPhone(url, with: self.workoutManager.sessionData!)
+            }
+            self.delegate?.didFinishSaveTasks()
+            motionManager?.emptyMotionDataPoints()
+        }
+        
+    }
+    
+    func sendArrowCount() {
+        wcSession.sendMessage(["arrowCount":workoutManager.sessionData!.arrowCounter,"sessionId" : workoutManager.sessionData!.sessionId], replyHandler: nil, errorHandler: nil)
+        delegate?.didFinishSaveTasks()
     }
     
     func saveDataLocally(dataString: String) -> URL?{
         
         let formatter = DateFormatter()
-        let timeZone = TimeZone(abbreviation: "UTC+2")
+        let timeZone = TimeZone(identifier: "Europe/Paris")
         formatter.timeZone = .some(timeZone!)
         formatter.dateFormat = K.dateFormat
         let date = formatter.string(from: Date())
@@ -62,5 +91,5 @@ class FilesManager: NSObject {
             print("Unable to transfer files because WC Session is inactive")
         }
     }
-
+    
 }

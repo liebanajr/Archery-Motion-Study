@@ -53,7 +53,7 @@ class filesViewController: UITableViewController{
         
         let formatter = DateFormatter()
         formatter.dateFormat = K.dateFormat
-        let date = formatter.date(from: importedSessionId!)!
+        let date = formatter.date(from: importedSessionId!) ?? Date(timeIntervalSince1970: 0)
         formatter.dateFormat =  NSLocalizedString("filesTitleDateFormat", comment: "")
         self.navigationItem.title = formatter.string(from: date)
         

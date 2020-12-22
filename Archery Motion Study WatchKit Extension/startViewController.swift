@@ -25,9 +25,8 @@ class startViewController: WKInterfaceController {
     
     let session = WCSession.default
     
-    var workoutManager : ShotsWorkoutManager?
+    var workoutManager = ShotsWorkoutManager.shared
     
-    var sessionState : SessionState = .workoutPaused
     
     override func awake(withContext context: Any?) {
         
@@ -61,8 +60,8 @@ class startViewController: WKInterfaceController {
     }
     
     override func didAppear() {
-        if sessionState == .workoutRunning {
-            workoutManager?.stopWorkout()
+        if let isRunning = workoutManager.isWorkoutRunning, isRunning {
+            workoutManager.stopWorkout()
         }
     }
     

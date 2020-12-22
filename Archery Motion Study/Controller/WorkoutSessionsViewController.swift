@@ -157,10 +157,10 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
         let session = availableSessions![indexPath.row]
         let formatter = DateFormatter()
         formatter.dateFormat = K.dateFormat
-        let formattedDate = formatter.date(from: session.sessionId!)
+        let formattedDate = formatter.date(from: session.sessionId!) ?? Date(timeIntervalSince1970: 0)
         formatter.locale = .current
         formatter.dateFormat = NSLocalizedString("cellTitleDateFormat", comment: "")
-        let dateString = formatter.string(from: formattedDate!)
+        let dateString = formatter.string(from: formattedDate)
         
         var cell : WorkoutSessionCell
         if indexPath.row == 0 {
