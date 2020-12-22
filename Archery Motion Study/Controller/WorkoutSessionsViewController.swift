@@ -76,7 +76,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
                     randomEnd.endIndex = Int64(number + 1)
                     randomEnd.fileName = "Mock file name"
                     randomEnd.isUploaded = true
-                    randomEnd.firebaseLocation = K.firebaseFoldersBase[K.sessionValues[0]]
+                    randomEnd.firebaseLocation = K.fireBaseFolder
                     try context.save()
                     
                 }

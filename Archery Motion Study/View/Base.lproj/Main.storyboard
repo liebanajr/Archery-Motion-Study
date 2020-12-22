@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1381,10 +1381,10 @@
             </objects>
             <point key="canvasLocation" x="402.89855072463769" y="-708.48214285714278"/>
         </scene>
-        <!--Private Table View Controller-->
+        <!--Admin View Controller-->
         <scene sceneID="u0m-Vk-sYX">
             <objects>
-                <tableViewController id="nxk-Di-EUs" customClass="PrivateTableViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="nxk-Di-EUs" customClass="AdminViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="m8m-f3-z6k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1430,11 +1430,6 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="line.horizontal.3.decrease.circle" catalog="system" id="X8w-OW-0RU"/>
-                            <barButtonItem title="30Hz" style="done" id="ypU-uc-YEa">
-                                <connections>
-                                    <action selector="frequencyButtonPressed:" destination="nxk-Di-EUs" id="V2v-3c-bSC"/>
-                                </connections>
-                            </barButtonItem>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="action" id="gFl-GP-gtd">

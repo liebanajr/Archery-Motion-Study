@@ -56,20 +56,11 @@ class SyncWorkoutManager {
     
     func saveDataLocally(dataString: String) -> URL?{
         
-        let formatter = DateFormatter()
-        let timeZone = TimeZone(identifier: "Europe/Paris")
-        formatter.timeZone = .some(timeZone!)
-        formatter.dateFormat = K.dateFormat
-        let date = formatter.string(from: Date())
-        let randNum = Int.random(in: 0...9999)
-        let id = "\(randNum)"
-        let category = defaults.string(forKey: K.bowTypeKey) ?? K.categoryValues[0]
-        let hand = (defaults.string(forKey: K.handKey) ?? K.handValues[0]).replacingOccurrences(of: " ", with: "")
         
-        let fileName = "\(category)_\(hand)_\(date)_\(id).csv"
+        
+        let fileName = F.calculateRecordingFileName()
         
         let url = URL(fileURLWithPath: documentDir + "/" + fileName)
-//        print("Guardando datos en: \(url.absoluteString)")
         
         do{
             try dataString.write(to: url, atomically: true, encoding: .utf8)

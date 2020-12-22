@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreData
 
-class PrivateTableViewController: UITableViewController {
+class AdminViewController: UITableViewController {
     @IBOutlet var deleteButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var filterButton: UIBarButtonItem!
@@ -44,11 +44,7 @@ class PrivateTableViewController: UITableViewController {
                 
         itemsList = [StorageReference]()
         
-        if #available(iOS 14.0, *) {
-            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
-        } else {
-            // Fallback on earlier versions
-        }
+        filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
     }
 
     // MARK: - Table view data source
@@ -250,48 +246,31 @@ class PrivateTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func frequencyButtonPressed(_ sender: Any) {
-        let barItem = sender as! UIBarButtonItem
-        
-        if selectedFolderPrefix == K.firebaseFoldersPrefix {
-            selectedFolderPrefix = ""
-            barItem.tintColor = UIColor.gray
-        } else {
-            selectedFolderPrefix = K.firebaseFoldersPrefix
-            barItem.tintColor = UIColor.link
-        }
-        
-        if #available(iOS 14.0, *) {
-            filterButton.menu = UIMenu(title: "Select folder", image: nil, identifier: nil, options: [], children: self.filterButtonActions())
-        } else {
-            // Fallback on earlier versions
-        }
-        
-    }
-    
     func filterButtonActions() -> [UIAction] {
             
         var actions = [UIAction]()
         
         for sessionValue in K.sessionValues {
             let baseAction = UIAction(title: "\(K.firebaseFoldersBase[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
-                self.selectedFolder = "\(self.selectedFolderPrefix)\( K.firebaseFoldersBase[sessionValue]!)"
+                self.selectedFolder = "\(K.firebaseFoldersPrefix)\( K.firebaseFoldersBase[sessionValue]!)"
                 self.updateTableView()
             }
-            let adminAction = UIAction(title:"\(K.firebaseFoldersAdmin[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
-                self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersAdmin[sessionValue]!)"
-                self.updateTableView()
-            }
+
             let friendsAction = UIAction(title: "\(K.firebaseFoldersFriends[sessionValue]!)".replacingOccurrences(of: "/", with: "")) { (action) in
-                self.selectedFolder = "\(self.selectedFolderPrefix)\(K.firebaseFoldersFriends[sessionValue]!)"
+                self.selectedFolder = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersFriends[sessionValue]!)"
                 self.updateTableView()
             }
             
             actions.append(baseAction)
-            actions.append(adminAction)
             actions.append(friendsAction)
         }
         
+        let v3Action = UIAction(title: "Version 3") { (action) in
+            self.selectedFolder = K.fireBaseFolder
+            self.updateTableView()
+        }
+        
+        actions.append(v3Action)
         return actions
         
     }

@@ -71,15 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let distance = metadata["distance"]! as! Int64
             let duration = metadata["elapsedTime"]! as! Int64
             let arrowCount = metadata["arrowCount"]! as! Int64
-//            print("End: \(endIndex)   SessionId: \(sessionId)   Calories so far: \(calories)      Max HR: \(maxHR)" )
             
             let srcURL = file.fileURL
             
-            var fileName = file.fileURL.lastPathComponent
-            
-            if let friendName = defaults.value(forKey: K.nameKey) as? String {
-                fileName = friendName + "_" +  fileName
-            }
+            let fileName = F.calculateRecordingFileName()
             
             let dstURL = URL(fileURLWithPath: documentDir + "/" + fileName)
             
@@ -102,14 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             motionDataFileItem.endMinHR = minHR
             motionDataFileItem.endMaxHR = maxHR
 //            SELECTING FOLDER TYPE DEPENDING ON USER
-            var folderName = ""
-            if K.isAdmin {
-                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersAdmin[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
-            }else if defaults.value(forKey: K.friendsKey) != nil || defaults.value(forKey: K.nameKey) != nil {
-                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersFriends[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
-            } else {
-                folderName = "\(K.firebaseFoldersPrefix)\(K.firebaseFoldersBase[(defaults.value(forKey: K.sessionTypeKey) as! String)]!)"
-            }
+            let folderName = "\(K.fireBaseFolder)"
+
             motionDataFileItem.firebaseLocation = folderName
             
             let sessionRequest = NSFetchRequest<Session>(entityName: "Session")

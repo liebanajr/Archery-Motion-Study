@@ -41,14 +41,7 @@ struct K {
     
     static let firebaseFoldersPrefix : String = "30hz/"
     
-//    static var firebaseFolders : [String : String]  {
-//        if self.isAdmin {
-//            return self.firebaseFoldersAdmin
-//        } else {
-//            return self.firebaseFoldersBase
-//        }
-//        
-//    }
+    static let fireBaseFolder : String = "V3/"
     
     static let categoryValues = ["Recurve","Compund"]
     static let handValues = ["Bow Hand", "String Hand"]
@@ -81,4 +74,34 @@ enum REMOTE_CONTROL : String {
     case PAUSE = "pause_workout"
     case RESUME = "resume_workout"
     case SYNC = "sync_workout"
+}
+
+struct F {
+    static func calculateRecordingFileName() -> String{
+        let defaults = UserDefaults.standard
+        
+        let formatter = DateFormatter()
+        let timeZone = TimeZone(identifier: "Europe/Paris")
+        formatter.timeZone = .some(timeZone!)
+        formatter.dateFormat = "yyyyMMdd_HHmm"
+        let date = formatter.string(from: Date())
+        let randNum = Int.random(in: 0...9999)
+        let id = "\(randNum)"
+        let category = defaults.string(forKey: K.bowTypeKey) ?? "no_category"
+        let hand = (defaults.string(forKey: K.handKey) ?? "no_hand").replacingOccurrences(of: " ", with: "")
+        let sessionType = defaults.value(forKey: K.sessionTypeKey) as? String ?? "no_sessionType"
+        
+        var productor = "Unknown"
+        
+        if K.isAdmin {
+            productor = "Admin"
+        } else if defaults.value(forKey: K.friendsKey) != nil{
+            productor = "Friend"
+            if let name = defaults.value(forKey: K.nameKey) as? String {
+                productor += "_\(name)"
+            }
+        }
+        
+        return "\(productor)_\(sessionType)_\(hand)_\(category)_\(date)_\(id).csv"
+    }
 }
