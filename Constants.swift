@@ -11,7 +11,7 @@ import Foundation
 struct K {
     
     #warning("CHECK ADMIN STATUS BEFORE BUILDING")
-    static let isAdmin = true
+    static let isAdmin = false
     
     #if DEBUG
     static let minLogLevel : LOGLEVEL = .TRACE
@@ -52,13 +52,6 @@ struct K {
     static let feedbackEmailSubject = "Comments on Archer Motion App"
     static let twitterURL = URL(string: "https://twitter.com/JuanIRL")
     static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")
-    
-    static let sampleInterval = 1.0/30.0
-    static let sensorScaleFactor = 1.0
-    static let sensorPrecision : String = "%.3f"
-    static let timeStampPrecision : String  = "%.2f"
-    static let csvSeparator = ","
-    static let csvTextHeader = "Time Stamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Gyroscope X,Gyroscope Y,Gyroscope Z,Transformed accelerometer X,Transformed accelerometer Y,Transformed accelerometer Z,Gravity X,Gravity Y,Gravity Z\n"
     
 }
 

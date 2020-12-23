@@ -17,26 +17,28 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var chtChart: LineChartView!
     @IBOutlet var chartSuperview: UIView!
     
-//    @IBOutlet weak var accXSwitch: UISwitch!
-//    @IBOutlet weak var accYSwitch: UISwitch!
-//    @IBOutlet weak var accZSwitch: UISwitch!
-//    @IBOutlet weak var gyrXSwitch: UISwitch!
-//    @IBOutlet weak var gyrYSwitch: UISwitch!
-//    @IBOutlet weak var gyrZSwitch: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeArrow: UIStackView!
     @IBOutlet weak var separator: UIImageView!
     
     var selectionCells : [String] = {
         if K.isAdmin {
-            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration", "Gravity X", "Gravity Y", "Gravity Z"]
+            return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]", "Transformed X acceleration", "Transformed Y acceleration", "Transformed Z acceleration","Transformed X axis rotation [rad/s]", "Transformed Y axis rotation [rad/s]", "Transformed Z axis rotation [rad/s]", "Gravity X", "Gravity Y", "Gravity Z"]
         } else {
             return ["X axis acceleration [G]", "Y axis acceleration [G]", "Z axis acceleration [G]", "X axis rotation [rad/s]", "Y axis rotation [rad/s]", "Z axis rotation [rad/s]"]
         }
     }()
     
+    var selectionColumnsToPrint : [Int] = {
+        if K.isAdmin {
+            return [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        } else {
+            return [0,7,8,9,10,11,12]
+        }
+    }()
+    
     var switchesArray : [UISwitch]?
-    var colorArray : [NSUIColor] = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .systemBlue, .systemPink, .systemRed, .systemIndigo, .systemYellow]
+    var colorArray : [NSUIColor] = [.orange, .blue, .brown, .cyan, .green, .purple, .label, .systemBlue, .systemPink, .systemRed, .systemIndigo, .systemYellow, .systemTeal, .systemPurple, .systemOrange]
     
     var importedFileName = ""
     var timeStamp : SensorDataSet?
@@ -60,15 +62,6 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-//        accXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-//        accYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-//        accZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-//        gyrXSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-//        gyrYSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-//        gyrZSwitch.addTarget(self, action: #selector(checkSelectedSwitch), for: .valueChanged)
-        
-//        switchesArray = [accXSwitch,accYSwitch,accZSwitch, gyrXSwitch,gyrYSwitch,gyrZSwitch]
         
         loadAvailableDataSets()
         
@@ -128,7 +121,6 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let pendingDataSetToRender = self.pendingIndexPath{
                     if isNeedsUpdateGraph {
                         DispatchQueue.main.async {
-//                            self.selectRow(at: pendingDataSetToRender)
                             SwiftSpinner.hide()
                         }
                         self.pendingIndexPath = nil
@@ -173,31 +165,9 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 Log.info("availableDataSets now has \(count) elements")
                 extractIndex = 0
             }
-            
-//            for (index,dataSet) in dataSets.enumerated() {
-//                let smoothData = self.averageManager.averageSignal(inputSignal: dataSet.data)
-//                let newDataSet = SensorDataSet(labelName: dataSet.label)
-//                newDataSet.data = smoothData
-//                self.availableDataSets?[index] = newDataSet
-//                Log.info("availableDataSets now has \(self.availableDataSets!.count) elements")
-//
-//                if let pendingDataSetToRender = self.pendingIndexPath, pendingDataSetToRender.row == self.availableDataSets!.count-1 {
-//                    DispatchQueue.main.async {
-////                        self.tableView.selectRow(at: pendingDataSetToRender, animated: true, scrollPosition: .none)
-//                        self.selectRow(at: pendingDataSetToRender)
-//                        SwiftSpinner.hide()
-//                        self.pendingIndexPath = nil
-////                        self.updateGraph()
-//                    }
-//                }
-//
-//                if self.availableDataSets?.count == self.selectionCells.count {
-//                    break
-//                }
-//            }
+
             DispatchQueue.main.async {
                 SwiftSpinner.hide()
-//                self.updateGraph()
             }
         })
         
@@ -252,19 +222,15 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         desiredDataSets.removeAll()
         if let indexPaths = tableView.indexPathsForSelectedRows {
             for indexPath in indexPaths {
-//                if let available = availableDataSets, indexPath.row < available.count  {
                 if let available = availableDataSets, available[indexPath.row].label != "dummy"  {
                     desiredDataSets.append(available[indexPath.row])
                 } else {
-//                    SwiftSpinner.show(delay: 0.1, title: NSLocalizedString("spinnerMessage", comment: ""))
                     pendingIndexPath = indexPath
                     if let dataSet = sharpDataSets?[indexPath.row] {
                         Log.info("Smooth data not available. Appending sharp data")
                         desiredDataSets.append(dataSet)
                     }
-//                    tableView.deselectRow(at: indexPath, animated: true)
-//                    deselectRow(at: indexPath)
-//                    return
+
                 }
             }
         }
@@ -298,6 +264,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let columns = row.components(separatedBy: ",")
                 result.append(columns)
             }
+            result.remove(at: result.count - 1)
             return result
         } catch {
             print("Error trying to read the file: \(error)")
@@ -309,20 +276,40 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func extractDataSets(tableArray: [[String]]) -> [SensorDataSet]{
         
         var dataSetTable = tableArray
-        
+//        print(dataSetTable)
         var dataSet = [SensorDataSet]()
         
-        for element in dataSetTable[0] {
-            dataSet.append(SensorDataSet(labelName: element))
-        }
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let appVersionDouble = Double(appVersion) ?? 0.0
         
-        dataSetTable.remove(at: 0)
-        
-        for rowValue in dataSetTable {
-            for (columnIndex, columnValue) in rowValue.enumerated(){
-                dataSet[columnIndex].appendDataPoint(value: columnValue)
+//        We check app version to prevent crashes for missing data
+        if appVersionDouble < 2.1 {
+            Log.info("App version \(appVersionDouble) is lower. Using old extract method")
+            for element in dataSetTable[0] {
+                dataSet.append(SensorDataSet(labelName: element))
+            }
+            
+            dataSetTable.remove(at: 0)
+            
+            for rowValue in dataSetTable {
+                for (columnIndex, columnValue) in rowValue.enumerated(){
+                    dataSet[columnIndex].appendDataPoint(value: columnValue)
+                }
+            }
+//            New version of the extraction method
+        } else {
+            Log.info("App version \(appVersionDouble) is good. Using new extract method")
+            for value in selectionColumnsToPrint {
+                let labelName = dataSetTable[0][value]
+                print("Setting data \(value) for \(labelName)")
+                var data = dataSetTable.map { $0[ value ] }
+                data.remove(at: 0)
+                let dataSetPoint = SensorDataSet(labelName: labelName)
+                dataSetPoint.setData(values: data)
+                dataSet.append(dataSetPoint)
             }
         }
+        
         return dataSet
                 
     }
@@ -330,7 +317,6 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func updateGraph () {
         chtChart.clear()
         if !self.desiredDataSets.isEmpty {
-//            SwiftSpinner.show(delay: 1.0, title: NSLocalizedString("spinnerMessage", comment: ""))
             DispatchQueue.global(qos: .utility).async {
                 let data = LineChartData()
 

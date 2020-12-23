@@ -26,5 +26,13 @@ class SensorDataSet: NSObject {
         }
         data.append(0.0)
     }
+    
+    func setData(values: [String]){
+        let doublesArray = values.map { (string) -> Double in
+            return Double(string) ?? Double.infinity
+        }
+        
+        data = doublesArray
+    }
 
 }
