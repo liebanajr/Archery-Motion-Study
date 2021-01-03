@@ -206,7 +206,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
             request.predicate = NSPredicate(format: "sessionId = %@", argumentArray: [session.sessionId!])
             let result = try context.fetch(request)
             let endsCount = result.count
-            cell.endsLabel.text = "\(endsCount) \(NSLocalizedString("Ends", comment: "")). \(arrowCountText)"
+            cell.endsLabel.text = "\(arrowCountText) \(endsCount) \(NSLocalizedString("Ends", comment: ""))"
             cell.maxHRLabel.text = maxHRText
             cell.minHRLabel.text = minHRText
             cell.durationLabel.text = durationText

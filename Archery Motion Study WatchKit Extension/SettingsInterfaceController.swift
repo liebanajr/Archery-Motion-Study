@@ -9,7 +9,7 @@
 import WatchKit
 import Foundation
 
-class settingsInterfaceController: WKInterfaceController {
+class SettingsInterfaceController: WKInterfaceController {
 
     @IBOutlet var settingsTable: WKInterfaceTable!
     

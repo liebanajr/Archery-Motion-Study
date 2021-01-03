@@ -128,6 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 workoutSession.minHeartRateEnd = minHREnd!
                 workoutSession.distanceWalked = distance
                 workoutSession.arrowCount = arrowCount
+                Log.info("Arrow count = \(arrowCount)")
                 
 //                Duration needs special treatment so it's separated and calculated before saving
                 motionDataFileItem.endDuration = duration - workoutSession.duration

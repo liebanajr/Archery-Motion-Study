@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-
+import ShotsWorkoutManager
 
 class ArrowNumberPickerInterfaceController: WKInterfaceController, WKCrownDelegate {
 
@@ -19,12 +19,7 @@ class ArrowNumberPickerInterfaceController: WKInterfaceController, WKCrownDelega
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-//        if let id = self.value(forKey: "_viewControllerID") as? NSString {
-//            let strClassDescription = String(describing: self)
-//
-//            print("\(strClassDescription) has the Interface Controller ID \(id)")
-//        }
+
         crownSequencer.delegate = self
         workoutInterfaceController = context as? WorkoutInterfaceController
         let arrowsPerHour = 66.0
@@ -70,6 +65,7 @@ class ArrowNumberPickerInterfaceController: WKInterfaceController, WKCrownDelega
     @IBAction func saveButtonPressed() {
         
         workoutInterfaceController!.arrowCount = arrowValue
+        ShotsWorkoutManager.shared.sessionData?.arrowCounter = arrowValue
         workoutInterfaceController!.didEndWorkout()
         self.dismiss()
     }

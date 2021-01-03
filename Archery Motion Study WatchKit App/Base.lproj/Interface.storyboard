@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch44"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
@@ -49,7 +49,7 @@
         <!--settingsInterfaceController-->
         <scene sceneID="TN5-Fa-5g1">
             <objects>
-                <controller identifier="settingsInterfaceController" fullBounds="YES" id="WGJ-J6-1YK" userLabel="settingsInterfaceController" customClass="settingsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                <controller identifier="settingsInterfaceController" fullBounds="YES" id="WGJ-J6-1YK" userLabel="settingsInterfaceController" customClass="SettingsInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="v5g-xo-pv8">
                             <items>
@@ -208,42 +208,46 @@
         <!--arrowNumberPicker-->
         <scene sceneID="75d-Be-xuU">
             <objects>
-                <controller identifier="arrowNumberPicker" id="qW6-H0-VCB" customClass="ArrowNumberPickerInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
+                <controller identifier="arrowNumberPicker" fullScreen="YES" id="qW6-H0-VCB" customClass="ArrowNumberPickerInterfaceController" customModule="Archery_Motion_Study_WatchKit_Extension">
                     <items>
-                        <label width="1" alignment="left" text="End workout" textAlignment="right" id="pfR-nC-Zf1">
-                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                        </label>
-                        <group width="1" height="1" alignment="left" layout="vertical" id="Sca-qd-vc2">
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="oBH-Kd-5Kg">
                             <items>
-                                <label width="1" alignment="left" text="How many arrows did you shoot?" textAlignment="right" numberOfLines="0" id="LUk-6X-WYX">
-                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                <label width="1" alignment="left" text="End workout" textAlignment="right" id="pfR-nC-Zf1">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                 </label>
-                                <group width="1" height="53" alignment="left" id="h9u-hy-SbT">
+                                <group width="1" height="1" alignment="left" layout="vertical" id="Sca-qd-vc2">
                                     <items>
-                                        <button width="30" height="30" alignment="left" verticalAlignment="center" backgroundImage="minus.circle.fill" catalog="system" id="pJb-q8-O6C">
-                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="minusButtonPressed" destination="qW6-H0-VCB" id="QVd-S0-Tcp"/>
-                                            </connections>
-                                        </button>
-                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="KXQ-ZR-9jO">
-                                            <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="font" style="UICTFontTextStyleTitle0"/>
+                                        <label width="1" alignment="left" text="How many arrows did you shoot?" textAlignment="right" numberOfLines="0" id="LUk-6X-WYX">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                         </label>
-                                        <button width="30" height="30" alignment="right" verticalAlignment="center" backgroundImage="plus.circle.fill" catalog="system" id="2rg-EE-Wvp">
-                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <group width="1" height="53" alignment="left" id="h9u-hy-SbT">
+                                            <items>
+                                                <button width="30" height="30" alignment="left" verticalAlignment="center" backgroundImage="minus.circle.fill" catalog="system" id="pJb-q8-O6C">
+                                                    <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="minusButtonPressed" destination="qW6-H0-VCB" id="QVd-S0-Tcp"/>
+                                                    </connections>
+                                                </button>
+                                                <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="KXQ-ZR-9jO">
+                                                    <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" style="UICTFontTextStyleTitle0"/>
+                                                </label>
+                                                <button width="30" height="30" alignment="right" verticalAlignment="center" backgroundImage="plus.circle.fill" catalog="system" id="2rg-EE-Wvp">
+                                                    <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="plusButtonPressed" destination="qW6-H0-VCB" id="AQp-vF-g8u"/>
+                                                    </connections>
+                                                </button>
+                                            </items>
+                                        </group>
+                                        <button width="1" alignment="left" title="Save workout" id="o1S-SH-HQR">
+                                            <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="plusButtonPressed" destination="qW6-H0-VCB" id="AQp-vF-g8u"/>
+                                                <action selector="saveButtonPressed" destination="qW6-H0-VCB" id="lmY-9q-PPe"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <button width="1" alignment="left" title="Save workout" id="o1S-SH-HQR">
-                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="saveButtonPressed" destination="qW6-H0-VCB" id="lmY-9q-PPe"/>
-                                    </connections>
-                                </button>
                             </items>
                         </group>
                     </items>
@@ -252,7 +256,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-128.60869565217391" y="659.50892857142856"/>
+            <point key="canvasLocation" x="-128.60869565217391" y="668.23660714285711"/>
         </scene>
         <!--page3-->
         <scene sceneID="dMJ-rk-8H3">
