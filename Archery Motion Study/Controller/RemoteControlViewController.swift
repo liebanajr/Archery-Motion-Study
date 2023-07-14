@@ -7,68 +7,62 @@
 //
 
 import UIKit
-import WatchConnectivity
+import iOSUtils
 
-class RemoteControlViewController: UIViewController {
-
+class RemoteControlViewController: UIViewController, RCControllerDelegate {
+    
     @IBOutlet weak var messageLabel: UILabel!
-    let wcSession = WCSession.default
+    
+    let rcController = RCController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(updateLabelWithMessage), name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: nil)
-            
-        self.syncButtonPressed(self)
+        rcController.delegate = self
     }
     
-    @objc func updateLabelWithMessage(_ notification: NSNotification){
-        if let message = notification.object as? String {
-            DispatchQueue.main.async {
-                self.messageLabel.text = message
-            }
+    @IBAction func registerClassButtonPressed(_ sender: Any) {
+        if let button = sender as? UIButton {
+            let tag = button.tag
+            Log.info("Pressed button with tag \(tag)")
+            let type = getSessionType(for: tag)
+            rcController.registerClass(class: type)
+        }
+    }
+    
+    @IBAction func startStopButtonPressed(_ sender: Any) {
+        let button = sender as! UIButton
+        if rcController.isRecording {
+            rcController.isRecording = false
+            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        } else {
+            rcController.isRecording = true
+            button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
         }
         
     }
-    
-    @IBAction func startButtonPressed(_ sender: Any) {
-        Log.info("Requesting remote workout start")
-//        wcSession.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.START.rawValue], replyHandler: nil, errorHandler: { error in
-//            Log.error(error.localizedDescription)
-//            let nc = NotificationCenter.default
-//            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: error.localizedDescription)
-//        })
-        wcSession.transferUserInfo([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.START.rawValue])
-    }
-    @IBAction func pauseButtonPressed(_ sender: Any) {
-        Log.info("Requesting remote workout pause")
-//        wcSession.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.PAUSE.rawValue], replyHandler: nil, errorHandler:  { error in
-//            Log.error(error.localizedDescription)
-//            let nc = NotificationCenter.default
-//            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: error.localizedDescription)
-//        })
-        wcSession.transferUserInfo([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.PAUSE.rawValue])
-    }
-    @IBAction func stopButtonPressed(_ sender: Any) {
-        Log.info("Requesting remote workout stop")
-//        wcSession.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.STOP.rawValue], replyHandler: nil, errorHandler:  { error in
-//            Log.error(error.localizedDescription)
-//            let nc = NotificationCenter.default
-//            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: error.localizedDescription)
-//        })
-        wcSession.transferUserInfo([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.STOP.rawValue])
-    }
-    @IBAction func syncButtonPressed(_ sender: Any) {
-        Log.info("Requesting remote workout sync")
-//        wcSession.sendMessage([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.SYNC.rawValue], replyHandler: nil, errorHandler:  { error in
-//            Log.error(error.localizedDescription)
-//            let nc = NotificationCenter.default
-//            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: error.localizedDescription)
-//        })
-        wcSession.transferUserInfo([REMOTE_CONTROL.NOTIFICATION.rawValue : REMOTE_CONTROL.SYNC.rawValue])
+    func getSessionType(for tag: Int) -> String{
+        switch tag {
+        case 0:
+            return "shot"
+        case 1:
+            return "letdown"
+        case 2:
+            return "walk"
+        case 3:
+            return "other"
+        default:
+            return "other"
+        }
     }
     
+    func didFinishUploadingFile(_ message: String) {
+        messageLabel.text = message
+    }
+    
+    func didRegisterClass(_ named: String, at time: String) {
+        messageLabel.text = "\(named) at \(time)"
+    }
     /*
     // MARK: - Navigation
 

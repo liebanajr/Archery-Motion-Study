@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseStorage
 import CoreData
+import iOSUtils
 
 class AdminViewController: UITableViewController {
     @IBOutlet var deleteButton: UIBarButtonItem!
@@ -102,7 +103,8 @@ class AdminViewController: UITableViewController {
             if error != nil {
                 print("Error trying to list items: \(error!)")
             }
-            self.itemsList = result.items
+            
+            self.itemsList = result?.items
             self.tableView.isEditing = false
             self.deleteButton.isEnabled = false
             self.tableView.reloadData()

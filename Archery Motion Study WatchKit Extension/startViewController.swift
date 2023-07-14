@@ -11,6 +11,7 @@ import Foundation
 import HealthKit
 import WatchConnectivity
 import ShotsWorkoutManager
+import watchOSUtils
 
 class startViewController: WKInterfaceController {
     

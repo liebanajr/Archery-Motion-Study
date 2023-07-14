@@ -10,8 +10,10 @@ import UIKit
 import WatchConnectivity
 import Foundation
 import Firebase
+import FirebaseStorage
 import CoreData
 import IQKeyboardManagerSwift
+import iOSUtils
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
@@ -140,6 +142,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             self.saveContext()
             print("Data saved successfully!")
             
+            let rcController = RCController.shared
+            rcController.saveRecording(for: fileName)
+            
 //            print("Attempting to store \(fileName) in folder \(folderName) in Firebase cloud storage")
             let storage = Storage.storage()
             let storageRef = storage.reference()
@@ -222,12 +227,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             } catch {
                 print("Error fetching existing Session: \(error)")
             }
-        }
-        
-        if let notification = message[REMOTE_CONTROL.NOTIFICATION.rawValue] as? String {
-            Log.info("Received remote control notification: \(notification)")
-            let nc = NotificationCenter.default
-            nc.post(name: Notification.Name(REMOTE_CONTROL.NOTIFICATION.rawValue), object: notification)
         }
     }
     

@@ -7,6 +7,11 @@
 //
 
 import UIKit
+#if os(iOS)
+import iOSUtils
+#elseif os(watchOS)
+import watchOSUtils
+#endif
 
 class SensorDataSet: NSObject {
     

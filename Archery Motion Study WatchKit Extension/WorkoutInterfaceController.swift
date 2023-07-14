@@ -12,6 +12,7 @@ import CoreMotion
 import WatchConnectivity
 import HealthKit
 import ShotsWorkoutManager
+import watchOSUtils
 
 enum SessionState {
     case workoutRunning

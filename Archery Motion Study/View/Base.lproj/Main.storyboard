@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYc-GF-KSw">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,14 +20,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="fileItemCell" id="6b8-0O-Vas" customClass="FileItemViewCell" customModule="Archery_Motion_Study" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6b8-0O-Vas" id="mYk-kE-oSQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-mT-DmC">
-                                            <rect key="frame" x="346" y="14.666666666666668" width="24" height="14.666666666666661"/>
+                                            <rect key="frame" x="347" y="14.333333333333329" width="24" height="15.333333333333336"/>
                                             <color key="tintColor" systemColor="systemBlueColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="7h0-LB-7yC"/>
@@ -204,7 +206,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aap-MI-XL4">
-                                        <rect key="frame" x="39" y="6.0000000000000178" width="136" height="8.6666666666666679"/>
+                                        <rect key="frame" x="39" y="5.6666666666666838" width="136" height="9.3333333333333375"/>
                                         <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="136" id="nAs-Z6-v08"/>
@@ -267,11 +269,11 @@
             <objects>
                 <viewController id="O3p-nD-c6q" customClass="AxisInfoViewController" customModule="Archery_Motion_Study" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UWP-qK-yap">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oz6-5k-RYP">
-                                <rect key="frame" x="0.0" y="64" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="822"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G69-3k-Hg9">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
@@ -376,69 +378,94 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="x96-PZ-3Vd">
-                                <rect key="frame" x="20" y="248" width="374" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRW-dv-Teb">
-                                        <rect key="frame" x="0.0" y="1" width="50" height="48.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="DZW-HY-2Aj"/>
-                                            <constraint firstAttribute="width" constant="50" id="T3s-vP-dYC"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemGreenColor"/>
-                                        <state key="normal" backgroundImage="play.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="startButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="Sl1-vi-0FB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4j-ue-dAy">
-                                        <rect key="frame" x="108" y="1" width="50" height="48.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="h8m-ZN-vu6"/>
-                                            <constraint firstAttribute="height" constant="50" id="w7r-61-K4g"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" backgroundImage="pause.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="pauseButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="Fif-cG-ROm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-QE-aW3">
-                                        <rect key="frame" x="216" y="1" width="50" height="48.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="25Z-s6-42R"/>
-                                            <constraint firstAttribute="height" constant="50" id="xTp-Zj-KyV"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
-                                        <state key="normal" backgroundImage="stop.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="stopButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="4wd-Yj-1hv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-Ud-Dcl">
-                                        <rect key="frame" x="324" y="1" width="50" height="48.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="HCh-8u-QKS"/>
-                                            <constraint firstAttribute="height" constant="50" id="MCx-Eh-IwQ"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemBlueColor"/>
-                                        <state key="normal" backgroundImage="arrow.clockwise.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="syncButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="9tz-99-CJ3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uD-WH-JCt">
+                                <rect key="frame" x="20" y="248" width="374" height="45"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="rd6-To-k9a"/>
+                                </constraints>
+                                <state key="normal" title="Shot">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerClassButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="hXG-VU-7pX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJo-40-tit">
+                                <rect key="frame" x="20" y="301" width="374" height="45"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="RPK-tA-U5p"/>
+                                </constraints>
+                                <state key="normal" title="Letdown">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerClassButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="hGK-aL-bYB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CT5-IU-Jgi">
+                                <rect key="frame" x="20" y="354" width="374" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YxF-6b-8rg"/>
+                                </constraints>
+                                <state key="normal" title="Walk">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerClassButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="IhE-O7-2Jg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-tn-wzo">
+                                <rect key="frame" x="20" y="407" width="374" height="45"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="gdW-hi-xrc"/>
+                                </constraints>
+                                <state key="normal" title="Other">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerClassButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="4Ik-C1-zhK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKJ-Sb-Gsg">
+                                <rect key="frame" x="177" y="552" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="daW-sF-h33"/>
+                                    <constraint firstAttribute="width" constant="60" id="n3p-Bg-OsO"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopButtonPressed:" destination="9Gv-fX-R7p" eventType="touchUpInside" id="hGQ-Hd-KYT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dlb-tp-ejC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="x96-PZ-3Vd" secondAttribute="trailing" constant="20" id="6XB-dZ-YvQ"/>
+                            <constraint firstItem="5uD-WH-JCt" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="0Le-Rr-x36"/>
+                            <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="sJo-40-tit" secondAttribute="trailing" constant="20" id="0tv-OS-leh"/>
+                            <constraint firstItem="CT5-IU-Jgi" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="5Av-VZ-DaR"/>
                             <constraint firstItem="CvX-K4-PDc" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="92w-hC-nS7"/>
                             <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="CvX-K4-PDc" secondAttribute="trailing" constant="20" id="BI9-Sb-LKh"/>
-                            <constraint firstItem="x96-PZ-3Vd" firstAttribute="top" secondItem="CvX-K4-PDc" secondAttribute="bottom" constant="8" symbolic="YES" id="OKk-VT-asC"/>
+                            <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="5uD-WH-JCt" secondAttribute="trailing" constant="20" id="Enb-Im-I0J"/>
+                            <constraint firstItem="cKJ-Sb-Gsg" firstAttribute="top" secondItem="Qd5-tn-wzo" secondAttribute="bottom" constant="100" id="K8h-ff-4Dn"/>
+                            <constraint firstItem="cKJ-Sb-Gsg" firstAttribute="centerX" secondItem="Zan-An-LOW" secondAttribute="centerX" id="SlC-dD-UvZ"/>
+                            <constraint firstItem="sJo-40-tit" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="WiU-QF-xbQ"/>
+                            <constraint firstItem="5uD-WH-JCt" firstAttribute="top" secondItem="CvX-K4-PDc" secondAttribute="bottom" constant="8" symbolic="YES" id="boZ-gs-wXY"/>
+                            <constraint firstItem="sJo-40-tit" firstAttribute="top" secondItem="5uD-WH-JCt" secondAttribute="bottom" constant="8" symbolic="YES" id="cVf-En-xxp"/>
+                            <constraint firstItem="Qd5-tn-wzo" firstAttribute="top" secondItem="CT5-IU-Jgi" secondAttribute="bottom" constant="8" symbolic="YES" id="ede-Y5-zIe"/>
+                            <constraint firstItem="CT5-IU-Jgi" firstAttribute="top" secondItem="sJo-40-tit" secondAttribute="bottom" constant="8" symbolic="YES" id="ek5-Fn-0SP"/>
+                            <constraint firstItem="Qd5-tn-wzo" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="hfj-vs-WR2"/>
+                            <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="CT5-IU-Jgi" secondAttribute="trailing" constant="20" id="mdt-ej-BQQ"/>
                             <constraint firstItem="CvX-K4-PDc" firstAttribute="top" secondItem="Zan-An-LOW" secondAttribute="top" constant="112" id="mtZ-Oj-eJj"/>
-                            <constraint firstItem="x96-PZ-3Vd" firstAttribute="leading" secondItem="dlb-tp-ejC" secondAttribute="leading" constant="20" id="oLp-Te-Tzc"/>
+                            <constraint firstItem="dlb-tp-ejC" firstAttribute="trailing" secondItem="Qd5-tn-wzo" secondAttribute="trailing" constant="20" id="vct-sx-8CN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mWF-dt-w4d"/>
@@ -1391,7 +1418,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="fireBaseItemCell" textLabel="j8s-zy-TbS" imageView="sBR-Z4-fXT" style="IBUITableViewCellStyleDefault" id="N0M-RL-ATI">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N0M-RL-ATI" id="dML-Gu-ddY">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
@@ -1429,7 +1456,7 @@
                                     <action selector="selectAllButtonPressed:" destination="nxk-Di-EUs" id="FyQ-IV-eTq"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="line.horizontal.3.decrease.circle" catalog="system" id="X8w-OW-0RU"/>
+                            <barButtonItem title="Item" image="line.3.horizontal.decrease.circle" catalog="system" id="X8w-OW-0RU"/>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="action" id="gFl-GP-gtd">
@@ -1477,38 +1504,35 @@
     <resources>
         <image name="Apple Health" width="1920" height="1920"/>
         <image name="Twitter_Logo_Blue" width="400" height="400"/>
-        <image name="airplayaudio" catalog="system" width="128" height="121"/>
+        <image name="airplayaudio" catalog="system" width="128" height="123"/>
         <image name="analysis-vertical" width="300" height="593"/>
-        <image name="arrow.clockwise.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="128" height="115"/>
         <image name="axis-graphic" width="1125" height="591"/>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="cloud.fill" catalog="system" width="128" height="84"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="cloud.fill" catalog="system" width="128" height="87"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
-        <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="instagram" width="1500" height="1500"/>
-        <image name="line.horizontal.3.decrease.circle" catalog="system" width="128" height="121"/>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
-        <image name="lock.icloud.fill" catalog="system" width="128" height="88"/>
-        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
-        <image name="pause.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="play.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="lock.icloud.fill" catalog="system" width="128" height="90"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <image name="play.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="sessions" width="300" height="593"/>
         <image name="start" width="400" height="400"/>
-        <image name="stop.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <image name="trash.fill" catalog="system" width="119" height="128"/>
         <image name="workout-arrows" width="400" height="400"/>
         <image name="workout-play" width="400" height="400"/>
         <image name="workout-plus" width="400" height="400"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1531,11 +1555,17 @@
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

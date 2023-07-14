@@ -9,6 +9,7 @@
 import Foundation
 import ShotsWorkoutManager
 import WatchConnectivity
+import watchOSUtils
 
 protocol SyncWorkoutManagerDelegate {
     func didStartSaveTasks()

@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Charts
+import DGCharts
 import Accelerate
 import SwiftSpinner
+import iOSUtils
 
 class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -318,9 +319,9 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         chtChart.clear()
         if !self.desiredDataSets.isEmpty {
             DispatchQueue.global(qos: .utility).async {
-                let data = LineChartData()
-
-
+//                let data = LineChartData()
+                var lineChartDataSets: [LineChartDataSetProtocol] = []
+                
                 for dataSet in self.desiredDataSets{
                     
                     Log.trace("Rendering \(dataSet.label)")
@@ -347,9 +348,11 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     line1.drawCirclesEnabled = false
                     line1.drawValuesEnabled = false
                     line1.lineWidth = 2.0
-                    data.addDataSet(line1)
-
+                    lineChartDataSets.append(line1)
+//                    data.addDataSet(line1)
                 }
+                
+                let data = LineChartData(dataSets: lineChartDataSets)
                 DispatchQueue.main.async {
                     self.chtChart.data = data
                     self.fullScreenButton.isHidden = false
