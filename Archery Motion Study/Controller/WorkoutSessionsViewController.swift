@@ -273,7 +273,7 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
                 self.deleteSessions(with: items)
             }
         }
-        let actionDeleteAll = UIAlertAction(title: "Eliminar todo", style: .destructive) { (action) in
+        let actionDeleteAll = UIAlertAction(title: NSLocalizedString("Delete all", comment: ""), style: .destructive) { (action) in
             let indexPathsToDelete = self.availableSessions!.enumerated().map { (index, session) -> IndexPath in
                 return IndexPath(row: index, section: 0)
             }

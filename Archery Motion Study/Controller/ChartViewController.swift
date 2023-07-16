@@ -68,11 +68,11 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         desiredDataSets = []
         
-        self.chtChart.legend.enabled = false
-        self.chtChart.xAxis.labelTextColor = .label
-        self.chtChart.leftAxis.labelTextColor = .label
-        self.chtChart.rightAxis.enabled = false
-        
+        chtChart.legend.enabled = false
+        chtChart.xAxis.labelTextColor = .label
+        chtChart.leftAxis.labelTextColor = .label
+        chtChart.rightAxis.enabled = false
+
         chtChart.xAxis.labelTextColor = .label
         chtChart.xAxis.labelPosition = .bottom
         chtChart.dragXEnabled = true
@@ -410,8 +410,11 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func toggleDeviceOrientation() {
         
         var value : Int = UIInterfaceOrientation.landscapeRight.rawValue
-        if UIApplication.shared.windows.first?.windowScene?.interfaceOrientation == .landscapeLeft || UIApplication.shared.windows.first?.windowScene?.interfaceOrientation == .landscapeRight{
-           value = UIInterfaceOrientation.portrait.rawValue
+        
+        if let windowScene = UIApplication.shared.connectedScenes.filter({ $0.activationState == .foregroundActive }).first(where: { $0 is UIWindowScene }) as? UIWindowScene {
+            if windowScene.interfaceOrientation == .landscapeLeft || windowScene.interfaceOrientation == .landscapeRight {
+                value = UIInterfaceOrientation.portrait.rawValue
+            }
         }
 
         UIDevice.current.setValue(value, forKey: "orientation")

@@ -69,7 +69,7 @@
 "Jw6-vH-lEe.text" = "Selecciona un entreno y depués una serie para ver las grabaciones de los sensores de movimiento en tu Apple Watch.";
 
 /* Class = "UITabBarItem"; title = "Saved Sessions"; ObjectID = "KVD-yP-kEs"; */
-"KVD-yP-kEs.title" = "Entrenos Guardados";
+"KVD-yP-kEs.title" = "Entrenos";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "LAX-YW-PYx"; */
 "LAX-YW-PYx.title" = "Item";
