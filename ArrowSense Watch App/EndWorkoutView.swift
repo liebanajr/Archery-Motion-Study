@@ -46,14 +46,11 @@ struct EndWorkoutView: View {
                     .buttonStyle(.plain)
                     Spacer()
                     VStack {
-                        Text("\(sessionController.workoutManager.sessionData?.arrowCounter ?? 0)")
+                        Text("\(sessionData.arrowCounter)")
                             .font(.system(.title2, design: .rounded))
                             .foregroundColor(.yellow)
                             .id(idToForceUpdates)
                     }
-//                    .onChange(of: sessionController.workoutManager.sessionData) { newData in
-//                        idToForceUpdates += 1
-//                    }
                     Spacer()
                     Button {
                         sessionController.workoutManager.addArrow()
@@ -77,14 +74,14 @@ struct EndWorkoutView: View {
         }
         .padding()
         .task {
-            if let arrowCount = sessionController.workoutManager.sessionData?.arrowCounter, arrowCount == 0 {
+            if sessionData.arrowCounter == 0 {
                 let arrowsPerHour = 66.0
                 let arrowsPerSecond = arrowsPerHour/(60*60)
                 
-                let elapsedTime = sessionController.workoutManager.sessionData?.elapsedSeconds ?? 0
+                let elapsedTime = sessionData.elapsedSeconds
                 
                 print("\(elapsedTime)*\(arrowsPerSecond) = \(-Double(elapsedTime) * arrowsPerSecond)")
-                sessionController.workoutManager.sessionData?.arrowCounter = Int(-Double(elapsedTime) * arrowsPerSecond)
+                sessionData.arrowCounter = Int(-Double(elapsedTime) * arrowsPerSecond)
             }
         }
     }
@@ -93,6 +90,7 @@ struct EndWorkoutView: View {
 struct EndWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         EndWorkoutView()
-            .environmentObject(ActiveSessionController())
+            .environmentObject(ActiveSessionController(isShowingActiveSessionView: .constant(true)))
+            .environmentObject(ActiveSessionController(isShowingActiveSessionView: .constant(true)).workoutManager.sessionData)
     }
 }

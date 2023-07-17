@@ -42,7 +42,7 @@ class SyncWorkoutManager {
             let csv = motionManager.toCSVString()
             Log.debug("CSV result: \(csv)")
             if let url = self.saveDataLocally(dataString: csv) {
-                self.sendDataToiPhone(url, with: self.workoutManager.sessionData!)
+                self.sendDataToiPhone(url, with: self.workoutManager.sessionData)
             }
             self.delegate?.didFinishSaveTasks()
             motionManager.emptyMotionDataPoints()
@@ -51,7 +51,7 @@ class SyncWorkoutManager {
     }
     
     func sendArrowCount() {
-        wcSession.sendMessage(["arrowCount":workoutManager.sessionData!.arrowCounter,"sessionId" : workoutManager.sessionData!.sessionId], replyHandler: nil, errorHandler: nil)
+        wcSession.sendMessage(["arrowCount":workoutManager.sessionData.arrowCounter,"sessionId" : workoutManager.sessionData.sessionId], replyHandler: nil, errorHandler: nil)
         delegate?.didFinishSaveTasks()
     }
     

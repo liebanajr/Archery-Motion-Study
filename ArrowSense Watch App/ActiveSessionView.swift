@@ -18,14 +18,17 @@ import Combine
 
 struct ActiveSessionView: View {
     
-    @StateObject var sessionController = ActiveSessionController()
-    @State private var tabIndex: Int = 1
-    
-    @Binding var isShowingActiveSessionView: Bool
+    @StateObject var sessionController: ActiveSessionController
+    @State private var tabIndex: Int
+        
+    init(isShowingActiveSessionView: Binding<Bool>) {
+        self._sessionController = StateObject(wrappedValue: ActiveSessionController(isShowingActiveSessionView: isShowingActiveSessionView))
+        self.tabIndex = 1
+    }
     
     var body: some View {
         TabView(selection: $tabIndex) {
-            SessionControllerView(tabIndex: $tabIndex, isShowingActiveSessionView: $isShowingActiveSessionView)
+            SessionControllerView(tabIndex: $tabIndex)
                 .environmentObject(sessionController)
                 .tag(0)
             SessionView()
@@ -43,7 +46,6 @@ struct SessionControllerView: View {
     @EnvironmentObject private var sessionController: ActiveSessionController
     
     @Binding var tabIndex: Int
-    @Binding var isShowingActiveSessionView: Bool
     
     @State private var isShowingEndWorkoutView = false
     
@@ -88,7 +90,7 @@ struct SessionControllerView: View {
         }
         .disabled(!sessionController.buttonsEnabled)
         .fullScreenCover(isPresented: $isShowingEndWorkoutView) {
-            isShowingActiveSessionView = false
+            //
         } content: {
             EndWorkoutView()
                 .environmentObject(sessionController)
@@ -223,7 +225,10 @@ class ActiveSessionController: ObservableObject, ShotsWorkoutDelegate, SyncWorko
     
     @Published var buttonsEnabled = true
     
-    init() {
+    var isShowingActiveSessionView: Binding<Bool>
+    
+    init(isShowingActiveSessionView: Binding<Bool>) {
+        self.isShowingActiveSessionView = isShowingActiveSessionView
         startSession()
     }
     
@@ -284,6 +289,7 @@ class ActiveSessionController: ObservableObject, ShotsWorkoutDelegate, SyncWorko
     func workoutManager(didStopWorkout withData: ShotsSessionDetails) {
         stopTimer()
         syncManager.sendArrowCount()
+        isShowingActiveSessionView.wrappedValue = false
     }
     func workoutManager(didLockScreen withData: ShotsSessionDetails?) {
         //Nothing to do
