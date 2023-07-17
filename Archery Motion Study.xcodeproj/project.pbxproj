@@ -13,14 +13,6 @@
 		8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B1232BB9440065CE08 /* Main.storyboard */; };
 		8A37D2B5232BB9450065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B4232BB9450065CE08 /* Assets.xcassets */; };
 		8A37D2B8232BB9450065CE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2B6232BB9450065CE08 /* LaunchScreen.storyboard */; };
-		8A37D2BD232BB9450065CE08 /* Archery Motion Study WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8A37D2C3232BB9450065CE08 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2C1232BB9450065CE08 /* Interface.storyboard */; };
-		8A37D2C5232BB9460065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2C4232BB9460065CE08 /* Assets.xcassets */; };
-		8A37D2CC232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D0232BB9460065CE08 /* startViewController.swift */; };
-		8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */; };
-		8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A37D2D4232BB9470065CE08 /* Assets.xcassets */; };
-		8A3B02E1232E973E007ECFBB /* SettingsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3B02E0232E973E007ECFBB /* SettingsInterfaceController.swift */; };
 		8A6A41F6232ED6A600207CA6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A41F4232ED6A600207CA6 /* Model.xcdatamodeld */; };
 		8A9E9AFD232F240F006A0B5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */; };
 		8AA589EC232F125A007879E0 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA589EB232F125A007879E0 /* SpinnerViewController.swift */; };
@@ -31,51 +23,40 @@
 		9506C21C2580F4BB00B4E85D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C21B2580F4BB00B4E85D /* FirebaseStorage */; };
 		9506C2392580F65D00B4E85D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9506C2382580F65D00B4E85D /* IQKeyboardManagerSwift */; };
 		950C3E8D25AC78D200DCD941 /* RCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C3E8C25AC78D200DCD941 /* RCController.swift */; };
-		954271F7258697C7002EA242 /* SyncWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954271F6258697C7002EA242 /* SyncWorkoutManager.swift */; };
 		954271FC2586AFE3002EA242 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954271FB2586AFE3002EA242 /* RemoteControlViewController.swift */; };
 		95DF6A1424B097D6002BE13A /* ChartSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */; };
 		95DFFD042580F70E00599F5F /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 95DFFD032580F70E00599F5F /* SwiftSpinner */; };
 		95E1FF08257A83F600A55818 /* EditSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1FF07257A83F600A55818 /* EditSessionViewController.swift */; };
-		95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
 		95FE2050257FBD09001F11C5 /* WorkoutSessionCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */; };
+		D939F0CC2A64544700DADD15 /* ShotsWorkoutManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96DC96E2A616A8E00E2D113 /* ShotsWorkoutManager.framework */; };
+		D939F0CD2A64544700DADD15 /* ShotsWorkoutManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D96DC96E2A616A8E00E2D113 /* ShotsWorkoutManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D939F0CF2A64544A00DADD15 /* watchOSUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7E2A616DC200F41456 /* watchOSUtils.framework */; };
+		D939F0D02A64544A00DADD15 /* watchOSUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7E2A616DC200F41456 /* watchOSUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D939F0D22A64599600DADD15 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939F0D12A64599600DADD15 /* SettingsView.swift */; };
+		D939F0D32A645B0E00DADD15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
+		D939F0D52A64634700DADD15 /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939F0D42A64634700DADD15 /* ActiveSessionView.swift */; };
+		D939F0D62A64690E00DADD15 /* SyncWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954271F6258697C7002EA242 /* SyncWorkoutManager.swift */; };
+		D939F0D92A65250900DADD15 /* EndWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939F0D82A65250900DADD15 /* EndWorkoutView.swift */; };
 		D966A64F2371FD8F00EB2141 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */; };
 		D966A652237204DD00EB2141 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966A651237204DD00EB2141 /* HealthKit.framework */; };
-		D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */; };
 		D966BED42384C5DA00504631 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966BED32384C5DA00504631 /* AdminViewController.swift */; };
 		D98422C52375E482003130E7 /* WorkoutSessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */; };
 		D98422C82375EDE9003130E7 /* WorkoutSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98422C62375EDE9003130E7 /* WorkoutSessionCell.swift */; };
 		D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98422C72375EDE9003130E7 /* WorkoutSessionCell.xib */; };
 		D9917BE5237C46960078B6A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
 		D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BEE237C8E9F0078B6A4 /* Localizable.strings */; };
-		D9967F76237E0EB500C2253C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9967F78237E0EB500C2253C /* Localizable.strings */; };
-		D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE741237F57C800E4809A /* SettingsRowController.swift */; };
-		D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */; };
-		D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
-		D9EC0B722A616B4600F41456 /* ShotsWorkoutManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96DC96E2A616A8E00E2D113 /* ShotsWorkoutManager.framework */; };
-		D9EC0B732A616B4600F41456 /* ShotsWorkoutManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D96DC96E2A616A8E00E2D113 /* ShotsWorkoutManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9EC0B752A616D8A00F41456 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = D9EC0B742A616D8A00F41456 /* DGCharts */; };
-		D9EC0B7F2A616E1500F41456 /* watchOSUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7E2A616DC200F41456 /* watchOSUtils.framework */; };
-		D9EC0B802A616E1500F41456 /* watchOSUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7E2A616DC200F41456 /* watchOSUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9EC0B812A616E2900F41456 /* iOSUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7C2A616DC200F41456 /* iOSUtils.framework */; };
 		D9EC0B822A616E2900F41456 /* iOSUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7C2A616DC200F41456 /* iOSUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9EC0B8A2A644E0A00F41456 /* ArrowSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */; };
+		D9EC0B8C2A644E0A00F41456 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC0B8B2A644E0A00F41456 /* StartView.swift */; };
+		D9EC0B8E2A644E0B00F41456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EC0B8D2A644E0B00F41456 /* Assets.xcassets */; };
+		D9EC0B912A644E0B00F41456 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EC0B902A644E0B00F41456 /* Preview Assets.xcassets */; };
+		D9EC0B942A644E0B00F41456 /* ArrowSense Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8A37D2BE232BB9450065CE08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A37D2A0232BB9440065CE08 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A37D2BB232BB9450065CE08;
-			remoteInfo = "Archery Motion Study WatchKit App";
-		};
-		8A37D2CD232BB9460065CE08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A37D2A0232BB9440065CE08 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A37D2CA232BB9460065CE08;
-			remoteInfo = "Archery Motion Study WatchKit Extension";
-		};
 		D96DC96D2A616A8E00E2D113 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D96DC9692A616A8E00E2D113 /* ShotsWorkoutManager.xcodeproj */;
@@ -97,27 +78,23 @@
 			remoteGlobalIDString = 958D474B25A31D9A00B5491C;
 			remoteInfo = watchOSUtils;
 		};
+		D9EC0B922A644E0B00F41456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A37D2A0232BB9440065CE08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EC0B862A644E0A00F41456;
+			remoteInfo = "ArrowSense Watch App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8A37D2DC232BB9470065CE08 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				8A37D2CC232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8A37D2E0232BB9470065CE08 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				8A37D2BD232BB9450065CE08 /* Archery Motion Study WatchKit App.app in Embed Watch Content */,
+				D9EC0B942A644E0B00F41456 /* ArrowSense Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,14 +110,14 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95FDC42725866EA200EA30BD /* Embed Frameworks */ = {
+		D939F0CE2A64544700DADD15 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9EC0B802A616E1500F41456 /* watchOSUtils.framework in Embed Frameworks */,
-				D9EC0B732A616B4600F41456 /* ShotsWorkoutManager.framework in Embed Frameworks */,
+				D939F0D02A64544A00DADD15 /* watchOSUtils.framework in Embed Frameworks */,
+				D939F0CD2A64544700DADD15 /* ShotsWorkoutManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,18 +133,8 @@
 		8A37D2B4232BB9450065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A37D2B7232BB9450065CE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A37D2B9232BB9450065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archery Motion Study WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A37D2C2232BB9450065CE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		8A37D2C4232BB9460065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A37D2C6232BB9460065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Archery Motion Study WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A37D2D0232BB9460065CE08 /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
-		8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		8A37D2D4232BB9470065CE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A37D2D6232BB9470065CE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A3B02E0232E973E007ECFBB /* SettingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInterfaceController.swift; sourceTree = "<group>"; };
+		8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Archery Motion Study WatchKit App.app"; path = "/Users/liebanajr/Documents/PROYECTOS/SWIFT/Archery Motion Study/build/Debug-watchos/Archery Motion Study WatchKit App.app"; sourceTree = "<absolute>"; };
 		8A6A41F5232ED6A600207CA6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion Study WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		8A9E9AFC232F240F006A0B5C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8AA589EB232F125A007879E0 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		8AB2FE05233232A800C1F554 /* SensorDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataSet.swift; sourceTree = "<group>"; };
@@ -181,11 +148,13 @@
 		95DF6A1324B097D6002BE13A /* ChartSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionCell.swift; sourceTree = "<group>"; };
 		95E1FF07257A83F600A55818 /* EditSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewController.swift; sourceTree = "<group>"; };
 		95FE204C257FBCF7001F11C5 /* WorkoutSessionCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutSessionCell2.xib; sourceTree = "<group>"; };
-		D92504692381684A001AD73D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Interface.strings; sourceTree = "<group>"; };
+		D939F0D12A64599600DADD15 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D939F0D42A64634700DADD15 /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
+		D939F0D72A64A0C400DADD15 /* ArrowSense Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ArrowSense Watch App.entitlements"; sourceTree = "<group>"; };
+		D939F0D82A65250900DADD15 /* EndWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndWorkoutView.swift; sourceTree = "<group>"; };
 		D966A64E2371FD8F00EB2141 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Archery Motion StudyDebug.entitlements"; sourceTree = "<group>"; };
 		D966A651237204DD00EB2141 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 		D966BED32384C5DA00504631 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		D96DC9692A616A8E00E2D113 /* ShotsWorkoutManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShotsWorkoutManager.xcodeproj; path = ../../LIBRARIES/ShotsWorkoutManager/ShotsWorkoutManager/ShotsWorkoutManager.xcodeproj; sourceTree = "<group>"; };
 		D98422C42375E482003130E7 /* WorkoutSessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionsViewController.swift; sourceTree = "<group>"; };
@@ -194,23 +163,16 @@
 		D9917BE4237C46960078B6A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D9917BED237C8E9F0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9917BF0237C8F710078B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9967F77237E0EB500C2253C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9967F79237E0EBD00C2253C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D99FE741237F57C800E4809A /* SettingsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowController.swift; sourceTree = "<group>"; };
-		D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsInterfaceController.swift; sourceTree = "<group>"; };
-		D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowNumberPickerInterfaceController.swift; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9EC0B762A616DC000F41456 /* SwiftUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftUtils.xcodeproj; path = ../../LIBRARIES/SwiftUtils/SwiftUtils.xcodeproj; sourceTree = "<group>"; };
+		D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArrowSense Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowSenseApp.swift; sourceTree = "<group>"; };
+		D9EC0B8B2A644E0A00F41456 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		D9EC0B8D2A644E0B00F41456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9EC0B902A644E0B00F41456 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2E03C9D9EAC173A5232CD5E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8A37D2A5232BB9440065CE08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,12 +186,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A37D2C8232BB9460065CE08 /* Frameworks */ = {
+		D9EC0B842A644E0A00F41456 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9EC0B7F2A616E1500F41456 /* watchOSUtils.framework in Frameworks */,
-				D9EC0B722A616B4600F41456 /* ShotsWorkoutManager.framework in Frameworks */,
+				D939F0CF2A64544A00DADD15 /* watchOSUtils.framework in Frameworks */,
+				D939F0CC2A64544700DADD15 /* ShotsWorkoutManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,10 +212,10 @@
 				D96DC9682A616A7D00E2D113 /* Dependencies */,
 				D9917BE4237C46960078B6A4 /* Constants.swift */,
 				8A37D2AA232BB9440065CE08 /* Archery Motion Study */,
-				8A37D2C0232BB9450065CE08 /* Archery Motion Study WatchKit App */,
-				8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */,
+				D9EC0B882A644E0A00F41456 /* ArrowSense Watch App */,
 				8A37D2A9232BB9440065CE08 /* Products */,
 				4596ABD710EFABDA1BD012FB /* Frameworks */,
+				D939F0C82A64532B00DADD15 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,8 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */,
-				8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */,
-				8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */,
+				D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,35 +241,6 @@
 				D9917BEE237C8E9F0078B6A4 /* Localizable.strings */,
 			);
 			path = "Archery Motion Study";
-			sourceTree = "<group>";
-		};
-		8A37D2C0232BB9450065CE08 /* Archery Motion Study WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				8A37D2C1232BB9450065CE08 /* Interface.storyboard */,
-				8A37D2C4232BB9460065CE08 /* Assets.xcassets */,
-				8A37D2C6232BB9460065CE08 /* Info.plist */,
-			);
-			path = "Archery Motion Study WatchKit App";
-			sourceTree = "<group>";
-		};
-		8A37D2CF232BB9460065CE08 /* Archery Motion Study WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				8A7DB34823302C5700781F0D /* Archery Motion Study WatchKit Extension.entitlements */,
-				8A37D2D0232BB9460065CE08 /* startViewController.swift */,
-				8A37D2D2232BB9460065CE08 /* ExtensionDelegate.swift */,
-				8A37D2D4232BB9470065CE08 /* Assets.xcassets */,
-				8A37D2D6232BB9470065CE08 /* Info.plist */,
-				8A3B02E0232E973E007ECFBB /* SettingsInterfaceController.swift */,
-				D966A653237230B800EB2141 /* WorkoutInterfaceController.swift */,
-				D9967F78237E0EB500C2253C /* Localizable.strings */,
-				D99FE741237F57C800E4809A /* SettingsRowController.swift */,
-				D99FE743237F6A8100E4809A /* DefaultsInterfaceController.swift */,
-				D9B3DAC82409940D00332408 /* ArrowNumberPickerInterfaceController.swift */,
-				954271F6258697C7002EA242 /* SyncWorkoutManager.swift */,
-			);
-			path = "Archery Motion Study WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		8A6A41F1232ED65A00207CA6 /* Model */ = {
@@ -354,6 +286,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		D939F0C82A64532B00DADD15 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D96DC9682A616A7D00E2D113 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +320,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D9EC0B882A644E0A00F41456 /* ArrowSense Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				D939F0D72A64A0C400DADD15 /* ArrowSense Watch App.entitlements */,
+				D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */,
+				954271F6258697C7002EA242 /* SyncWorkoutManager.swift */,
+				D9EC0B8B2A644E0A00F41456 /* StartView.swift */,
+				D9EC0B8D2A644E0B00F41456 /* Assets.xcassets */,
+				D9EC0B8F2A644E0B00F41456 /* Preview Content */,
+				D939F0D12A64599600DADD15 /* SettingsView.swift */,
+				D939F0D42A64634700DADD15 /* ActiveSessionView.swift */,
+				D939F0D82A65250900DADD15 /* EndWorkoutView.swift */,
+			);
+			path = "ArrowSense Watch App";
+			sourceTree = "<group>";
+		};
+		D9EC0B8F2A644E0B00F41456 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D9EC0B902A644E0B00F41456 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,7 +360,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8A37D2BF232BB9450065CE08 /* PBXTargetDependency */,
+				D9EC0B932A644E0B00F41456 /* PBXTargetDependency */,
 			);
 			name = "Archery Motion Study";
 			packageProductDependencies = (
@@ -409,41 +373,23 @@
 			productReference = 8A37D2A8232BB9440065CE08 /* Archery Motion Study.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8A37D2BB232BB9450065CE08 /* Archery Motion Study WatchKit App */ = {
+		D9EC0B862A644E0A00F41456 /* ArrowSense Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A37D2DD232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit App" */;
+			buildConfigurationList = D9EC0B952A644E0B00F41456 /* Build configuration list for PBXNativeTarget "ArrowSense Watch App" */;
 			buildPhases = (
-				8A37D2BA232BB9450065CE08 /* Resources */,
-				8A37D2DC232BB9470065CE08 /* Embed Foundation Extensions */,
-				2E03C9D9EAC173A5232CD5E2 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A37D2CE232BB9460065CE08 /* PBXTargetDependency */,
-			);
-			name = "Archery Motion Study WatchKit App";
-			productName = "Archery Motion Study WatchKit App";
-			productReference = 8A37D2BC232BB9450065CE08 /* Archery Motion Study WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		8A37D2CA232BB9460065CE08 /* Archery Motion Study WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8A37D2D9232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit Extension" */;
-			buildPhases = (
-				8A37D2C7232BB9460065CE08 /* Sources */,
-				8A37D2C8232BB9460065CE08 /* Frameworks */,
-				8A37D2C9232BB9460065CE08 /* Resources */,
-				95FDC42725866EA200EA30BD /* Embed Frameworks */,
+				D9EC0B832A644E0A00F41456 /* Sources */,
+				D9EC0B842A644E0A00F41456 /* Frameworks */,
+				D9EC0B852A644E0A00F41456 /* Resources */,
+				D939F0CE2A64544700DADD15 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Archery Motion Study WatchKit Extension";
-			productName = "Archery Motion Study WatchKit Extension";
-			productReference = 8A37D2CB232BB9460065CE08 /* Archery Motion Study WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			name = "ArrowSense Watch App";
+			productName = "ArrowSense Watch App";
+			productReference = D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -452,18 +398,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = liebanajr;
 				TargetAttributes = {
 					8A37D2A7232BB9440065CE08 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					8A37D2BB232BB9450065CE08 = {
-						CreatedOnToolsVersion = 11.0;
-					};
-					8A37D2CA232BB9460065CE08 = {
-						CreatedOnToolsVersion = 11.0;
+					D9EC0B862A644E0A00F41456 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -498,8 +441,7 @@
 			projectRoot = "";
 			targets = (
 				8A37D2A7232BB9440065CE08 /* Archery Motion Study */,
-				8A37D2BB232BB9450065CE08 /* Archery Motion Study WatchKit App */,
-				8A37D2CA232BB9460065CE08 /* Archery Motion Study WatchKit Extension */,
+				D9EC0B862A644E0A00F41456 /* ArrowSense Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -543,21 +485,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A37D2BA232BB9450065CE08 /* Resources */ = {
+		D9EC0B852A644E0A00F41456 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A37D2C5232BB9460065CE08 /* Assets.xcassets in Resources */,
-				8A37D2C3232BB9450065CE08 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A37D2C9232BB9460065CE08 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A37D2D5232BB9470065CE08 /* Assets.xcassets in Resources */,
-				D9967F76237E0EB500C2253C /* Localizable.strings in Resources */,
+				D9EC0B912A644E0B00F41456 /* Preview Assets.xcassets in Resources */,
+				D9EC0B8E2A644E0B00F41456 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,34 +523,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A37D2C7232BB9460065CE08 /* Sources */ = {
+		D9EC0B832A644E0A00F41456 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B3DAC92409940D00332408 /* ArrowNumberPickerInterfaceController.swift in Sources */,
-				8A37D2D3232BB9460065CE08 /* ExtensionDelegate.swift in Sources */,
-				954271F7258697C7002EA242 /* SyncWorkoutManager.swift in Sources */,
-				8A37D2D1232BB9460065CE08 /* startViewController.swift in Sources */,
-				D99FE744237F6A8100E4809A /* DefaultsInterfaceController.swift in Sources */,
-				D966A654237230B800EB2141 /* WorkoutInterfaceController.swift in Sources */,
-				8A3B02E1232E973E007ECFBB /* SettingsInterfaceController.swift in Sources */,
-				95E8FD7A24ABA19B00F12C3C /* Constants.swift in Sources */,
-				D99FE742237F57C800E4809A /* SettingsRowController.swift in Sources */,
+				D939F0D22A64599600DADD15 /* SettingsView.swift in Sources */,
+				D9EC0B8C2A644E0A00F41456 /* StartView.swift in Sources */,
+				D939F0D62A64690E00DADD15 /* SyncWorkoutManager.swift in Sources */,
+				D939F0D92A65250900DADD15 /* EndWorkoutView.swift in Sources */,
+				D9EC0B8A2A644E0A00F41456 /* ArrowSenseApp.swift in Sources */,
+				D939F0D52A64634700DADD15 /* ActiveSessionView.swift in Sources */,
+				D939F0D32A645B0E00DADD15 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A37D2BF232BB9450065CE08 /* PBXTargetDependency */ = {
+		D9EC0B932A644E0B00F41456 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A37D2BB232BB9450065CE08 /* Archery Motion Study WatchKit App */;
-			targetProxy = 8A37D2BE232BB9450065CE08 /* PBXContainerItemProxy */;
-		};
-		8A37D2CE232BB9460065CE08 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8A37D2CA232BB9460065CE08 /* Archery Motion Study WatchKit Extension */;
-			targetProxy = 8A37D2CD232BB9460065CE08 /* PBXContainerItemProxy */;
+			target = D9EC0B862A644E0A00F41456 /* ArrowSense Watch App */;
+			targetProxy = D9EC0B922A644E0B00F41456 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -639,29 +565,11 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		8A37D2C1232BB9450065CE08 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A37D2C2232BB9450065CE08 /* Base */,
-				D92504692381684A001AD73D /* es */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		D9917BEE237C8E9F0078B6A4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D9917BED237C8E9F0078B6A4 /* es */,
 				D9917BF0237C8F710078B6A4 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D9967F78237E0EB500C2253C /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9967F77237E0EB500C2253C /* es */,
-				D9967F79237E0EBD00C2253C /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -787,101 +695,10 @@
 			};
 			name = Release;
 		};
-		8A37D2DA232BB9470065CE08 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F5G9LGK25B;
-				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Debug;
-		};
-		8A37D2DB232BB9470065CE08 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study WatchKit Extension/Archery Motion Study WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F5G9LGK25B;
-				INFOPLIST_FILE = "Archery Motion Study WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Release;
-		};
-		8A37D2DE232BB9470065CE08 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F5G9LGK25B;
-				IBSC_MODULE = Archery_Motion_Study_WatchKit_Extension;
-				INFOPLIST_FILE = "Archery Motion Study WatchKit App/Info.plist";
-				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Debug;
-		};
-		8A37D2DF232BB9470065CE08 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F5G9LGK25B;
-				IBSC_MODULE = Archery_Motion_Study_WatchKit_Extension;
-				INFOPLIST_FILE = "Archery Motion Study WatchKit App/Info.plist";
-				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Release;
-		};
 		8A37D2E2232BB9470065CE08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Archery Motion Study/Archery Motion StudyDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -894,10 +711,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -906,6 +726,7 @@
 		8A37D2E3232BB9470065CE08 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -916,11 +737,83 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D9EC0B962A644E0B00F41456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "ArrowSense Watch App/ArrowSense Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ArrowSense Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = F5G9LGK25B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ArrowSense;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We will use data related to your workout to inform you about your progress";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We will store relevant workout data to the Health app so you can keep track of your evolution";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.liebanajr.Archery-Motion-Study";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		D9EC0B972A644E0B00F41456 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "ArrowSense Watch App/ArrowSense Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ArrowSense Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = F5G9LGK25B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ArrowSense;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We will use data related to your workout to inform you about your progress";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We will store relevant workout data to the Health app so you can keep track of your evolution";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.liebanajr.Archery-Motion-Study";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liebanajr.Archery-Motion-Study.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -936,29 +829,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A37D2D9232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A37D2DA232BB9470065CE08 /* Debug */,
-				8A37D2DB232BB9470065CE08 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8A37D2DD232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A37D2DE232BB9470065CE08 /* Debug */,
-				8A37D2DF232BB9470065CE08 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8A37D2E1232BB9470065CE08 /* Build configuration list for PBXNativeTarget "Archery Motion Study" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A37D2E2232BB9470065CE08 /* Debug */,
 				8A37D2E3232BB9470065CE08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EC0B952A644E0B00F41456 /* Build configuration list for PBXNativeTarget "ArrowSense Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EC0B962A644E0B00F41456 /* Debug */,
+				D9EC0B972A644E0B00F41456 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

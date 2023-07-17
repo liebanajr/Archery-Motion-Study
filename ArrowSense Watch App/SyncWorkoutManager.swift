@@ -39,13 +39,13 @@ class SyncWorkoutManager {
         delegate?.didStartSaveTasks()
         let motionManager = workoutManager.motionManager
         DispatchQueue.global(qos: .utility).async {
-            let csv = motionManager!.toCSVString()
+            let csv = motionManager.toCSVString()
             Log.debug("CSV result: \(csv)")
             if let url = self.saveDataLocally(dataString: csv) {
                 self.sendDataToiPhone(url, with: self.workoutManager.sessionData!)
             }
             self.delegate?.didFinishSaveTasks()
-            motionManager?.emptyMotionDataPoints()
+            motionManager.emptyMotionDataPoints()
         }
         
     }

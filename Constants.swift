@@ -9,13 +9,12 @@
 import Foundation
 
 struct K {
-    
-    #warning("CHECK ADMIN STATUS BEFORE BUILDING")
-    static let isAdmin = true
-    
+        
     #if DEBUG
+    static let isAdmin = true
     static let isSaveWorkoutActive = false
     #else
+    static let isAdmin = false
     static let isSaveWorkoutActive = true
     #endif
     
