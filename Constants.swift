@@ -47,7 +47,7 @@ struct K {
     static let collaboratorCode = "archeryproject"
     static let feedbackEmail = "shotsarcheryapp@gmail.com"
     static let feedbackEmailSubject = "Comments on Archer Motion App"
-    static let twitterURL = URL(string: "https://twitter.com/JuanIRL")
+    static let twitterURL = URL(string: "https://twitter.com/liebana_jr")
     static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")
     
 }
