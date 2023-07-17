@@ -27,11 +27,10 @@ struct ActiveSessionView: View {
         TabView(selection: $tabIndex) {
             SessionControllerView(tabIndex: $tabIndex, isShowingActiveSessionView: $isShowingActiveSessionView)
                 .environmentObject(sessionController)
-                .disabled(!sessionController.buttonsEnabled)
                 .tag(0)
             SessionView()
                 .environmentObject(sessionController)
-                .disabled(!sessionController.buttonsEnabled)
+                .environmentObject(sessionController.workoutManager.sessionData)
                 .tag(1)
             NowPlayingView()
                 .tag(2)
@@ -56,7 +55,7 @@ struct SessionControllerView: View {
                         sessionController.workoutManager.pauseWorkout()
                     } else if sessionController.workoutManager.state == .workoutPaused {
                         sessionController.workoutManager.resumeWorkout()
-                        sessionController.workoutManager.sessionData!.endCounter += 1
+                        sessionController.workoutManager.sessionData.endCounter += 1
                     }
                     withAnimation {
                         tabIndex = 1
@@ -65,6 +64,7 @@ struct SessionControllerView: View {
                     let imageName = sessionController.workoutManager.state == .workoutRunning ? "pause" : "plus"
                     Image(systemName: imageName)
                         .imageScale(.large)
+                        .fontWeight(.bold)
                 }
                 .foregroundColor(.blue)
                 let text: LocalizedStringKey = sessionController.workoutManager.state == .workoutRunning ? "Pause end" : "New end"
@@ -78,6 +78,7 @@ struct SessionControllerView: View {
                 } label: {
                     Image(systemName: "xmark")
                         .imageScale(.large)
+                        .fontWeight(.bold)
                 }
                 .foregroundColor(.red)
                 Text("Finish")
@@ -85,11 +86,13 @@ struct SessionControllerView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .sheet(isPresented: $isShowingEndWorkoutView) {
+        .disabled(!sessionController.buttonsEnabled)
+        .fullScreenCover(isPresented: $isShowingEndWorkoutView) {
             isShowingActiveSessionView = false
         } content: {
             EndWorkoutView()
                 .environmentObject(sessionController)
+                .environmentObject(sessionController.workoutManager.sessionData)
         }
 
     }
@@ -106,7 +109,7 @@ struct SessionControllerView: View {
 struct SessionView: View {
     
     @EnvironmentObject private var sessionController: ActiveSessionController
-    @State private var digitalCrownAmount = 0.0
+    @EnvironmentObject private var sessionData: ShotsSessionDetails
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -136,7 +139,7 @@ struct SessionView: View {
                             Spacer()
                         }
                         .frame(width: 15)
-                        Text("\(sessionController.workoutManager.sessionData?.cumulativeCaloriesBurned ?? 0) kCal")
+                        Text("\(sessionData.cumulativeCaloriesBurned) kCal")
                         Spacer()
                     }
                     Spacer()
@@ -147,7 +150,7 @@ struct SessionView: View {
                             Spacer()
                         }
                         .frame(width: 15)
-                        Text("End \(sessionController.workoutManager.sessionData?.endCounter ?? 0)")
+                        Text("End \(sessionData.endCounter)")
                         Spacer()
                     }
                 }
@@ -158,7 +161,7 @@ struct SessionView: View {
                         Spacer()
                     }
                     .frame(width: 15)
-                    Text("\(sessionController.workoutManager.sessionData?.currentHeartRate ?? 0) bpm")
+                    Text("\(sessionData.currentHeartRate) bpm")
                     Spacer()
                 }
             }
@@ -180,16 +183,10 @@ struct SessionView: View {
                     .buttonStyle(.plain)
                     Spacer()
                     VStack {
-                        Text("\(sessionController.workoutManager.sessionData?.arrowCounter ?? 0)")
-                            .font(.system(.title2, design: .rounded))
-                            .foregroundColor(.yellow)
-//                            .focusable(true)
-//                            .digitalCrownRotation(detent: $digitalCrownAmount, from: -.infinity, through: .infinity, by: 0.1, sensitivity: .high, isContinuous: true, isHapticFeedbackEnabled: true)
-//                            .onChange(of: digitalCrownAmount) { newValue in
-//                                print("digital crown value:\(newValue)")
-//                                sessionController.workoutManager.sessionData?.arrowCounter += Int(digitalCrownAmount)
-//                            }
+                        Text("\(sessionData.arrowCounter)")
                     }
+                    .font(.system(.title2, design: .rounded))
+                    .foregroundColor(.yellow)
                     Spacer()
                     Button {
                         sessionController.workoutManager.addArrow()
@@ -203,6 +200,7 @@ struct SessionView: View {
                     }
                     .buttonStyle(.plain)
                 }
+                .disabled(!sessionController.buttonsEnabled)
                 Text("Arrows shot")
                     .font(.footnote)
             }
@@ -216,10 +214,11 @@ class ActiveSessionController: ObservableObject, ShotsWorkoutDelegate, SyncWorko
     //Timer
     @Published var timerStartDate = Date.now
     @Published var timerTimeElapsed: TimeInterval = .zero
-    let timer = Timer.publish(every: 1, on: .main, in: .common)
+    let timer = Timer.publish(every: 1.0, on: .main, in: .common)
     private var cancellableTimer: AnyCancellable?
     
-    let workoutManager = ShotsWorkoutManager.shared
+    @Published
+    var workoutManager = ShotsWorkoutManager.shared
     let syncManager = SyncWorkoutManager.shared
     
     @Published var buttonsEnabled = true

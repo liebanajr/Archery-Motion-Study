@@ -21,7 +21,6 @@ struct SettingsView: View {
     @State private var settings: [Setting] = []
     
     var body: some View {
-        NavigationStack {
             Form {
                 if settings.indices.contains(0) {
                     Button("Bow type") {
@@ -41,18 +40,19 @@ struct SettingsView: View {
                     }
                 }
                 
-                if settings.indices.contains(2), let name = userDefaults.value(forKey: K.nameKey) as? String, name != "" || K.isAdmin {
-                    Button("Session type") {
-                        isShowingSessionTypeView.toggle()
-                    }
-                    .navigationDestination(isPresented: $isShowingSessionTypeView) {
-                        EditSettingsView(setting: $settings[2])
+                if settings.indices.contains(2) {
+                    if K.isAdmin || (userDefaults.value(forKey: K.nameKey) as? String != nil && userDefaults.value(forKey: K.nameKey) as! String != "") {
+                        Button("Session type") {
+                            isShowingSessionTypeView.toggle()
+                        }
+                        .navigationDestination(isPresented: $isShowingSessionTypeView) {
+                            EditSettingsView(setting: $settings[2])
+                        }
                     }
                 }
             }
             .navigationTitle(Text("Settings"))
             .navigationBarTitleDisplayMode(.inline)
-        }
         .task {
             initializeSettings()
         }
@@ -134,6 +134,8 @@ struct Setting {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        NavigationStack {
+            SettingsView()
+        }
     }
 }

@@ -7,14 +7,16 @@
 //
 
 import SwiftUI
+import ShotsWorkoutManager
 
 struct EndWorkoutView: View {
     
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject private var sessionController: ActiveSessionController
+    @EnvironmentObject private var sessionData: ShotsSessionDetails
     
-    @State private var digitalCrownAmount = 0.0
+    @State private var idToForceUpdates: Int = 0
     
     var body: some View {
         VStack {
@@ -47,13 +49,11 @@ struct EndWorkoutView: View {
                         Text("\(sessionController.workoutManager.sessionData?.arrowCounter ?? 0)")
                             .font(.system(.title2, design: .rounded))
                             .foregroundColor(.yellow)
-//                            .focusable(true)
-//                            .digitalCrownRotation(detent: $digitalCrownAmount, from: -.infinity, through: .infinity, by: 0.1, sensitivity: .high, isContinuous: true, isHapticFeedbackEnabled: true)
-//                            .onChange(of: digitalCrownAmount) { newValue in
-//                                print("digital crown value:\(newValue)")
-//                                sessionController.workoutManager.sessionData?.arrowCounter += Int(digitalCrownAmount)
-//                            }
+                            .id(idToForceUpdates)
                     }
+//                    .onChange(of: sessionController.workoutManager.sessionData) { newData in
+//                        idToForceUpdates += 1
+//                    }
                     Spacer()
                     Button {
                         sessionController.workoutManager.addArrow()
@@ -67,6 +67,7 @@ struct EndWorkoutView: View {
                     }
                     .buttonStyle(.plain)
                 }
+                .disabled(!sessionController.buttonsEnabled)
                 Button("Save") {
                     sessionController.workoutManager.stopWorkout()
                     dismiss()
