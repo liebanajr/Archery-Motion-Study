@@ -46,6 +46,7 @@
 		D9917BE5237C46960078B6A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9917BE4237C46960078B6A4 /* Constants.swift */; };
 		D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9917BEE237C8E9F0078B6A4 /* Localizable.strings */; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
+		D9C57BCE2A6588A100DEB164 /* Passwords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9C57BCD2A6588A100DEB164 /* Passwords.plist */; };
 		D9EC0B752A616D8A00F41456 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = D9EC0B742A616D8A00F41456 /* DGCharts */; };
 		D9EC0B812A616E2900F41456 /* iOSUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7C2A616DC200F41456 /* iOSUtils.framework */; };
 		D9EC0B822A616E2900F41456 /* iOSUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9EC0B7C2A616DC200F41456 /* iOSUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -164,6 +165,7 @@
 		D9917BED237C8E9F0078B6A4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9917BF0237C8F710078B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D9C57BCD2A6588A100DEB164 /* Passwords.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Passwords.plist; sourceTree = "<group>"; };
 		D9EC0B762A616DC000F41456 /* SwiftUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftUtils.xcodeproj; path = ../../LIBRARIES/SwiftUtils/SwiftUtils.xcodeproj; sourceTree = "<group>"; };
 		D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArrowSense Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowSenseApp.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		8A37D29F232BB9440065CE08 = {
 			isa = PBXGroup;
 			children = (
+				D9C57BCC2A65885A00DEB164 /* Confidential */,
 				D96DC9682A616A7D00E2D113 /* Dependencies */,
 				D9917BE4237C46960078B6A4 /* Constants.swift */,
 				8A37D2AA232BB9440065CE08 /* Archery Motion Study */,
@@ -237,7 +240,6 @@
 				8A6A41F1232ED65A00207CA6 /* Model */,
 				8A37D2B4232BB9450065CE08 /* Assets.xcassets */,
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
-				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
 				D9917BEE237C8E9F0078B6A4 /* Localizable.strings */,
 			);
 			path = "Archery Motion Study";
@@ -309,6 +311,15 @@
 				D96DC96E2A616A8E00E2D113 /* ShotsWorkoutManager.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D9C57BCC2A65885A00DEB164 /* Confidential */ = {
+			isa = PBXGroup;
+			children = (
+				8AD78684232EC2EC005A9761 /* GoogleService-Info.plist */,
+				D9C57BCD2A6588A100DEB164 /* Passwords.plist */,
+			);
+			path = Confidential;
 			sourceTree = "<group>";
 		};
 		D9EC0B772A616DC000F41456 /* Products */ = {
@@ -482,6 +493,7 @@
 				95FE2050257FBD09001F11C5 /* WorkoutSessionCell2.xib in Resources */,
 				8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */,
 				D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */,
+				D9C57BCE2A6588A100DEB164 /* Passwords.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

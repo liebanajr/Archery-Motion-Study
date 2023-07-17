@@ -44,9 +44,8 @@ struct K {
     static let handValues = ["Bow Hand", "String Hand"]
     static let sessionValues = ["Shooting", "Aborting", "Other", "Walk"]
     
-    static let collaboratorCode = "archeryproject"
     static let feedbackEmail = "shotsarcheryapp@gmail.com"
-    static let feedbackEmailSubject = "Comments on Archer Motion App"
+    static let feedbackEmailSubject = "Comments on ArrowSense App"
     static let twitterURL = URL(string: "https://twitter.com/liebana_jr")
     static let instagramURL = URL(string: "https://www.instagram.com/liebana.jr/")
     
@@ -79,5 +78,15 @@ struct F {
         }
         
         return "\(productor)_\(sessionType)_\(hand)_\(category)_\(date)_\(id).csv"
+    }
+    
+    static func readDictionaryFrom(plist name: String) -> NSDictionary? {
+        if let path = Bundle.main.path(forResource: name, ofType: "plist") {
+            if let resourceFileDictionaryContent = NSDictionary(contentsOfFile: path) {
+                print(resourceFileDictionaryContent)
+                return resourceFileDictionaryContent
+            }
+        }
+        return nil
     }
 }

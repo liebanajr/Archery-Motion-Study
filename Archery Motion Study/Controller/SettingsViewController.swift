@@ -30,6 +30,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
     let session = WCSession.default
     
     let healthStore = HKHealthStore()
+    
+    var collaboratorPassword: String? = nil
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
@@ -55,6 +57,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
         
         self.collaboratorsTextField.delegate = self
         self.nameTextField.delegate = self
+        collaboratorPassword = F.readDictionaryFrom(plist: "Passwords")?.object(forKey: "collaboratorCode") as? String
         disableCollaboratorsTextField()
         
     }
@@ -206,7 +209,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, MFMailCompo
     @IBAction func sendCollaboratorsCodeButtonPressed(_ sender: Any) {
         print("Send button pressed")
         collaboratorsTextField.resignFirstResponder()
-        if collaboratorsTextField.text == K.collaboratorCode {
+        if collaboratorsTextField.text == collaboratorPassword {
             defaults.set(true, forKey: K.friendsKey)
         }
         updateInterface()
