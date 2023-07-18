@@ -358,7 +358,7 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.fullScreenButton.isHidden = false
                     self.timeArrow.isHidden = false
                     //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
-                    //            chtChart.animate(xAxisDuration: 1.3)
+//                    self.chtChart.animate(xAxisDuration: 1.3)
 
 //                    SwiftSpinner.hide()
                 }
