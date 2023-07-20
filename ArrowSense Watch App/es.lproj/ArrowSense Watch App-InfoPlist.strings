@@ -1,0 +1,6 @@
+/* Privacy - Health Share Usage Description */
+"NSHealthShareUsageDescription" = "Usaremos información relacionada con tus entrenos para mostrarte tu progeso";
+
+/* Privacy - Health Update Usage Description */
+"NSHealthUpdateUsageDescription" = "Almacenamos información de tus entrenos en la app Salud para seguir tu evolución";
+

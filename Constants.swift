@@ -13,9 +13,15 @@ struct K {
     #if DEBUG
     static let isAdmin = true
     static let isSaveWorkoutActive = false
+    #if targetEnvironment(simulator)
+    static let isMockup = true
+    #else
+    static let isMockup = false
+    #endif
     #else
     static let isAdmin = false
     static let isSaveWorkoutActive = true
+    static let isMockup = false
     #endif
     
     static let dateFormat : String = "ddMMyy'T'HHmmss"

@@ -1,49 +1,109 @@
-/* 
-  Localizable.strings
+/* (No Comment) */
+"Aborting" = "Tiro abortado";
+
+/* Localizable.strings
   Archery Motion Study
 
   Created by Juan I Rodriguez on 13/11/2019.
-  Copyright © 2019 liebanajr. All rights reserved.
-*/
-
+  Copyright © 2019 liebanajr. All rights reserved. */
 "Analysis end" = "Análisis serie";
-"filesTitleDateFormat" = "dd MMMM HH:mm yyyy";
-"cellTitleDateFormat" = "d MMMM, yyy HH:mm";
-"average" = "prom.";
-"Ends" = "series";
-"Delete data" = "Eliminar datos";
-"deleteDataMessage" = "Por favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul junto a cada serie";
-"Delete selected" = "Eliminar seleccionados";
-"Cancel" = "Cancelar";
-"Edit" = "Editar";
-"Done" = "Hecho";
-"noDataTitle"="No hay entrenamientos disponibles";
-"noDataMessage"="Añade sesiones de entrenamiento desde tu Apple Watch";
-"deleteSessionAlertTitle" = "¿Deseas eliminar el entrenamiento?";
-"deleteSessionAlertMessage" = "";
-"deleteSessionAction" = "Eliminar";
-"Recurve" = "Recurvo";
-"Compund" = "Compuesto";
-"Bow Hand" = "Mano de arco";
-"String Hand" = "Mano de cuerda";
-"Shooting" = "Tiro normal";
-"Aborting" = "Tiro abortado";
-"Other" = "Otros";
-"Watch in" = "Reloj en";
-"healthkitButton" = "Healthkit ya autorizado. Puedes actualizar la configuración en los Ajustes del dispositivo.";
-"isFriend" = "Ya eres colaborador";
-"spinnerMessage" = "Procesando...";
+
+/* (No Comment) */
 "arrows" = "flechas";
-"X axis acceleration [G]" = "Aceleración eje X [G]";
-"Y axis acceleration [G]" = "Aceleración eje Y [G]";
-"Z axis acceleration [G]" = "Aceleración eje Z [G]";
-"X axis rotation [rad/s]" = "Velocidad giro eje X [rad/s]";
-"Y axis rotation [rad/s]" = "Velocidad giro eje Y [rad/s]";
-"Z axis rotation [rad/s]" = "Velocidad giro eje Z [rad/s]";
-"Delete" = "Eliminar";
-"Delete session" = "Eliminar entreno";
-"Save" = "Guardar";
-"Edit session" = "Editar entreno";
+
+/* No comment provided by engineer. */
 "Arrows shot" = "Flechas tiradas";
-"Session duration" = "Duración del entreno";
+
+/* (No Comment) */
+"average" = "prom.";
+
+/* (No Comment) */
+"Bow Hand" = "Mano de arco";
+
+/* (No Comment) */
+"Cancel" = "Cancelar";
+
+/* (No Comment) */
+"cellTitleDateFormat" = "d MMMM, yyy HH:mm";
+
+/* (No Comment) */
+"Compund" = "Compuesto";
+
+/* No comment provided by engineer. */
+"Delete" = "Eliminar";
+
+/* No comment provided by engineer. */
 "Delete all" = "Eliminar todo";
+
+/* (No Comment) */
+"Delete data" = "Eliminar datos";
+
+/* (No Comment) */
+"Delete selected" = "Eliminar seleccionados";
+
+/* No comment provided by engineer. */
+"Delete session" = "Eliminar entreno";
+
+/* (No Comment) */
+"deleteDataMessage" = "Por favor, antes de elminar los datos, comprueba que se han sincronizado correctamente y aparece una nube azul junto a cada serie";
+
+/* (No Comment) */
+"deleteSessionAction" = "Eliminar";
+
+/* (No Comment) */
+"deleteSessionAlertMessage" = "";
+
+/* (No Comment) */
+"deleteSessionAlertTitle" = "¿Deseas eliminar el entrenamiento?";
+
+/* (No Comment) */
+"Done" = "Hecho";
+
+/* (No Comment) */
+"Edit" = "Editar";
+
+/* No comment provided by engineer. */
+"Edit session" = "Editar entreno";
+
+/* (No Comment) */
+"Ends" = "series";
+
+/* (No Comment) */
+"filesTitleDateFormat" = "dd MMMM HH:mm yyyy";
+
+/* (No Comment) */
+"healthkitButton" = "Healthkit ya autorizado. Puedes actualizar la configuración en los Ajustes del dispositivo.";
+
+/* (No Comment) */
+"isFriend" = "Ya eres colaborador";
+
+/* (No Comment) */
+"noDataMessage" = "Añade sesiones de entrenamiento desde tu Apple Watch";
+
+/* (No Comment) */
+"noDataTitle" = "No hay entrenamientos disponibles";
+
+/* (No Comment) */
+"Other" = "Otros";
+
+/* (No Comment) */
+"Recurve" = "Recurvo";
+
+/* No comment provided by engineer. */
+"Save" = "Guardar";
+
+/* No comment provided by engineer. */
+"Session duration" = "Duración del entreno";
+
+/* (No Comment) */
+"Shooting" = "Tiro normal";
+
+/* (No Comment) */
+"spinnerMessage" = "Procesando...";
+
+/* (No Comment) */
+"String Hand" = "Mano de cuerda";
+
+/* (No Comment) */
+"Watch in" = "Reloj en";
+

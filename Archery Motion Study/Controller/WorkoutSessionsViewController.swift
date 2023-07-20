@@ -74,12 +74,27 @@ class WorkoutSessionsViewController: UITableViewController, FIlesDelegate, Sessi
                     let randomEnd = MotionDataFile(context: context)
                     randomEnd.sessionId = randomSession.sessionId
                     randomEnd.endIndex = Int64(number + 1)
-                    randomEnd.fileName = "Mock file name"
+                    randomEnd.fileName = "mock_motion_data.csv"
                     randomEnd.isUploaded = true
                     randomEnd.firebaseLocation = K.fireBaseFolder
                     try context.save()
                     
                 }
+                
+//                do {
+//                    if let mockDataUrl = Bundle.main.url(forResource: "mock_motion_data", withExtension: "csv") {
+//                        let path = documentDir + "/mock_motion_data.csv"
+//                        print("mock data path: \(path)")
+//                        try fileManager.createFile(atPath: path, contents: Data(contentsOf: mockDataUrl))
+////                        print(fileManager.contents(atPath: documentDir))
+////                        try Data(contentsOf: mockDataUrl).write(to: URL(fileURLWithPath: path, isDirectory: false), options: .atomic)
+//                    } else {
+//                        print("Couldn't find mock data file")
+//                    }
+//                } catch {
+//                    print("Error moving mock data file")
+//                    print(error)
+//                }
                 
             } catch {
                 print("Error trying to create mock data: \(error)")

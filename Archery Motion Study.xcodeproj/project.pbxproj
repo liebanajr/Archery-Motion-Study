@@ -49,6 +49,11 @@
 		D9A1B5C02A658EF70091C7B9 /* watchOSUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9A1B5BA2A658EB10091C7B9 /* watchOSUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9C2FAA823A04015000284D1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2FAA723A04015000284D1 /* TabBarViewController.swift */; };
 		D9C57BCE2A6588A100DEB164 /* Passwords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9C57BCD2A6588A100DEB164 /* Passwords.plist */; };
+		D9C7BE3D2A6817530034A2D0 /* mock_motion_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9C7BE3C2A6817530034A2D0 /* mock_motion_data.csv */; };
+		D9C7BE3E2A6820EF0034A2D0 /* mock_motion_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9C7BE3C2A6817530034A2D0 /* mock_motion_data.csv */; };
+		D9C7BE412A6957C80034A2D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9C7BE3F2A6957C80034A2D0 /* InfoPlist.strings */; };
+		D9C7BE442A6957C80034A2D0 /* ArrowSense Watch App-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9C7BE422A6957C80034A2D0 /* ArrowSense Watch App-InfoPlist.strings */; };
+		D9C7BE472A6957C80034A2D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9C7BE452A6957C80034A2D0 /* Localizable.strings */; };
 		D9EC0B752A616D8A00F41456 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = D9EC0B742A616D8A00F41456 /* DGCharts */; };
 		D9EC0B8A2A644E0A00F41456 /* ArrowSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */; };
 		D9EC0B8C2A644E0A00F41456 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC0B8B2A644E0A00F41456 /* StartView.swift */; };
@@ -167,6 +172,10 @@
 		D9A1B5B22A658EB10091C7B9 /* SwiftUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftUtils.xcodeproj; path = ../../../../SWIFT/LIBRARIES/SwiftUtils/SwiftUtils.xcodeproj; sourceTree = "<group>"; };
 		D9C2FAA723A04015000284D1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9C57BCD2A6588A100DEB164 /* Passwords.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Passwords.plist; sourceTree = "<group>"; };
+		D9C7BE3C2A6817530034A2D0 /* mock_motion_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mock_motion_data.csv; sourceTree = "<group>"; };
+		D9C7BE402A6957C80034A2D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9C7BE432A6957C80034A2D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/ArrowSense Watch App-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9C7BE462A6957C80034A2D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9EC0B872A644E0A00F41456 /* ArrowSense Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArrowSense Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EC0B892A644E0A00F41456 /* ArrowSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowSenseApp.swift; sourceTree = "<group>"; };
 		D9EC0B8B2A644E0A00F41456 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -211,6 +220,8 @@
 		8A37D29F232BB9440065CE08 = {
 			isa = PBXGroup;
 			children = (
+				D9C7BE452A6957C80034A2D0 /* Localizable.strings */,
+				D9C7BE422A6957C80034A2D0 /* ArrowSense Watch App-InfoPlist.strings */,
 				D9C57BCC2A65885A00DEB164 /* Confidential */,
 				D96DC9682A616A7D00E2D113 /* Dependencies */,
 				D9917BE4237C46960078B6A4 /* Constants.swift */,
@@ -234,12 +245,14 @@
 		8A37D2AA232BB9440065CE08 /* Archery Motion Study */ = {
 			isa = PBXGroup;
 			children = (
+				D9C7BE3B2A6815990034A2D0 /* Development Assets */,
 				D966A650237204DD00EB2141 /* Archery Motion StudyDebug.entitlements */,
 				8A6A41F3232ED67300207CA6 /* Controller */,
 				8A6A41F2232ED66B00207CA6 /* View */,
 				8A6A41F1232ED65A00207CA6 /* Model */,
 				8A37D2B4232BB9450065CE08 /* Assets.xcassets */,
 				8A37D2B9232BB9450065CE08 /* Info.plist */,
+				D9C7BE3F2A6957C80034A2D0 /* InfoPlist.strings */,
 				D9917BEE237C8E9F0078B6A4 /* Localizable.strings */,
 			);
 			path = "Archery Motion Study";
@@ -329,6 +342,14 @@
 				D9C57BCD2A6588A100DEB164 /* Passwords.plist */,
 			);
 			path = Confidential;
+			sourceTree = "<group>";
+		};
+		D9C7BE3B2A6815990034A2D0 /* Development Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D9C7BE3C2A6817530034A2D0 /* mock_motion_data.csv */,
+			);
+			path = "Development Assets";
 			sourceTree = "<group>";
 		};
 		D9EC0B882A644E0A00F41456 /* ArrowSense Watch App */ = {
@@ -486,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C7BE3D2A6817530034A2D0 /* mock_motion_data.csv in Resources */,
 				8A37D2B8232BB9450065CE08 /* LaunchScreen.storyboard in Resources */,
 				D9917BEC237C8E9F0078B6A4 /* Localizable.strings in Resources */,
 				8AD78685232EC2EC005A9761 /* GoogleService-Info.plist in Resources */,
@@ -494,6 +516,7 @@
 				8A37D2B3232BB9440065CE08 /* Main.storyboard in Resources */,
 				D98422C92375EDE9003130E7 /* WorkoutSessionCell.xib in Resources */,
 				D9C57BCE2A6588A100DEB164 /* Passwords.plist in Resources */,
+				D9C7BE412A6957C80034A2D0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +524,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C7BE472A6957C80034A2D0 /* Localizable.strings in Resources */,
+				D9C7BE442A6957C80034A2D0 /* ArrowSense Watch App-InfoPlist.strings in Resources */,
+				D9C7BE3E2A6820EF0034A2D0 /* mock_motion_data.csv in Resources */,
 				D9EC0B912A644E0B00F41456 /* Preview Assets.xcassets in Resources */,
 				D9EC0B8E2A644E0B00F41456 /* Assets.xcassets in Resources */,
 			);
@@ -584,6 +610,32 @@
 				D9917BF0237C8F710078B6A4 /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D9C7BE3F2A6957C80034A2D0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C7BE402A6957C80034A2D0 /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D9C7BE422A6957C80034A2D0 /* ArrowSense Watch App-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C7BE432A6957C80034A2D0 /* es */,
+			);
+			name = "ArrowSense Watch App-InfoPlist.strings";
+			path = "ArrowSense Watch App";
+			sourceTree = "<group>";
+		};
+		D9C7BE452A6957C80034A2D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C7BE462A6957C80034A2D0 /* es */,
+			);
+			name = Localizable.strings;
+			path = "ArrowSense Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -716,6 +768,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Archery\\ Motion\\ Study/Development\\ Assets/mock_motion_data.csv";
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -742,6 +795,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Archery\\ Motion\\ Study/Development\\ Assets/mock_motion_data.csv";
 				DEVELOPMENT_TEAM = F5G9LGK25B;
 				INFOPLIST_FILE = "Archery Motion Study/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

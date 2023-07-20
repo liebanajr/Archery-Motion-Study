@@ -255,7 +255,13 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func readDataFromCSV(fileName: String) -> [[String]]{
-        let filePath = importedFileName
+        
+        var filePath = ""
+        if K.isMockup, let mockDataUrl = Bundle.main.path(forResource: "mock_motion_data", ofType: "csv") {
+            filePath = mockDataUrl
+        } else {
+            filePath = importedFileName
+        }
         
         do{
             let contents = try String(contentsOfFile: filePath, encoding: .utf8)
@@ -358,7 +364,9 @@ class ChartViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.fullScreenButton.isHidden = false
                     self.timeArrow.isHidden = false
                     //            chtChart.zoom(scaleX: 3, scaleY: 3, xValue: 0, yValue: 0, axis: .left)
-//                    self.chtChart.animate(xAxisDuration: 1.3)
+                    if K.isMockup {
+                        self.chtChart.animate(xAxisDuration: 1.3)
+                    }
 
 //                    SwiftSpinner.hide()
                 }

@@ -141,7 +141,7 @@ struct SessionView: View {
                             Spacer()
                         }
                         .frame(width: 15)
-                        Text("\(sessionData.cumulativeCaloriesBurned) kCal")
+                        Text("\(K.isMockup ? 144 : sessionData.cumulativeCaloriesBurned) kCal")
                         Spacer()
                     }
                     Spacer()
@@ -163,7 +163,7 @@ struct SessionView: View {
                         Spacer()
                     }
                     .frame(width: 15)
-                    Text("\(sessionData.currentHeartRate) bpm")
+                    Text("\(K.isMockup ? 70 : sessionData.currentHeartRate) bpm")
                     Spacer()
                 }
             }
