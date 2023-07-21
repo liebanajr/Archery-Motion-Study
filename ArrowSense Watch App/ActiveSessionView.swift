@@ -58,9 +58,9 @@ struct SessionControllerView: View {
                     } else if sessionController.workoutManager.state == .workoutPaused {
                         sessionController.workoutManager.resumeWorkout()
                         sessionController.workoutManager.sessionData.endCounter += 1
-                    }
-                    withAnimation {
-                        tabIndex = 1
+                        withAnimation {
+                            tabIndex = 1
+                        }
                     }
                 } label: {
                     let imageName = sessionController.workoutManager.state == .workoutRunning ? "pause" : "plus"
@@ -302,7 +302,7 @@ class ActiveSessionController: ObservableObject, ShotsWorkoutDelegate, SyncWorko
         syncManager.saveWorkout()
     }
     func workoutManager(didResumeWorkout withData: ShotsSessionDetails) {
-        restartTimer()
+        startTimer()
     }
     
 }
